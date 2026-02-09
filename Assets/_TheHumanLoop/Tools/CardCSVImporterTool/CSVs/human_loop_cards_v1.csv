@@ -1,0 +1,60 @@
+ID,Title,Category,Description,Choice_L,L_B,L_T,L_M,L_Q,Next_L,Choice_R,R_B,R_T,R_M,R_Q,Next_R,Use_Cond,Conditions,L_Stats_Count,R_Stats_Count,Phase
+EG_01,Inversor Ángel,Business,"He oído que vuestra IA ""cura la soledad"". Tomad 500k, pero quiero un prototipo para el viernes.",Negociar,-5,5,0,0,null,Aceptar,10,-10,0,-5,null,FALSE,,2,3,Early
+EG_02,Crunch de Pizza,Team,"¿Pizza gratis a cambio de trabajar el domingo? Es para crear equipo, no por el trabajo... obvio.",Pagar horas,-10,0,10,0,null,Obligar,0,10,-10,5,null,FALSE,,2,3,Early
+EG_03,El Becario,Technical,He encontrado una librería sin licencia que escribe código sola. Es magia negra.,Revisar,0,-10,0,5,null,Usarla,0,15,0,-10,EG_03_S,FALSE,,2,2,Early
+EG_03_S,Copyright,Business,Resulta que la 'librería mágica' era de Disney. Sus abogados están en la puerta.,Pagar,-20,0,0,5,null,Ignorar,0,0,-10,-15,null,FALSE,,2,2,Early
+EG_04,Servidor Humo,Technical,El modelo está sobrecalentando los servidores. Necesitamos refrigeración líquida.,Ventilador,0,-5,-5,-5,null,Comprar,-15,10,0,10,null,TRUE,Time:>:70,3,3,Early
+EG_05,Datos Sucios,AI,¿Usamos los chats privados de la empresa para entrenar el filtro de spam? Nadie se enterará.,Es ilegal,0,-10,5,-10,null,Hazlo,0,10,-15,15,EG_05_S,FALSE,,3,3,Early
+EG_05_S,El Filtrador,Team,Alguien ha descubierto que la IA cita textualmente los correos del CEO. Hay pánico.,Mentir,-10,0,-10,0,null,Despedir,0,0,-20,5,null,FALSE,,2,2,Early
+EG_06,Deuda Técnica,Technical,Podemos escribir código limpio o lanzar mañana. Elige tu veneno.,Limpiar,0,-15,5,15,null,Lanzar,0,15,-5,-10,null,FALSE,,3,3,Early
+EG_07,El Gurú de IA,Business,Un influencer de LinkedIn quiere ser 'Advisor'. Pide equity y una silla ergonómica cara.,Rechazar,0,0,0,0,null,Contratar,-10,0,5,5,null,FALSE,,0,3,Early
+EG_08,Bug en Twitter,Technical,Un usuario dice que la IA le insultó. Dice que es un caso aislado... ¿verdad?,Ignorar,0,5,0,-10,null,Investigar,0,-10,-5,10,null,TRUE,Quality:<:50,2,3,Early
+EG_09,Open Space,Team,¡Adiós a los cubículos! Vamos a poner mesas compartidas para 'fomentar la sinergia'.,Mantener,-5,0,5,0,null,Mesas,10,0,-15,0,null,TRUE,Morale:>:30,2,2,Early
+EG_10,Paper Chino,AI,"Ha salido un estudio que duplica la eficiencia, pero está en mandarín. Nadie lo entiende.",Pasar,0,0,0,0,null,Aplicar,0,-15,-5,20,null,FALSE,,0,3,Early
+EG_11,Beta Cerrada,Business,"Podemos abrir la Beta ya. Habrá fallos, pero los inversores verán tracción.",Esperar,0,-10,0,10,null,Lanzar,15,10,0,-15,null,TRUE,Time:>:40,2,3,Early
+EG_12,Café Premium,Team,La máquina de café se ha roto. El equipo exige granos de Etiopía o habrá huelga.,Agua fría,0,0,-15,0,null,Comprar,-5,0,10,0,null,TRUE,Budget:>:20,1,2,Early
+EG_13,Refactor,Technical,"El código parece espagueti. Si no limpiamos ahora, el sistema colapsará pronto.",Seguir,0,10,-5,-15,null,Limpiar,0,-20,5,15,null,FALSE,,3,3,Early
+EG_14,Test Turing,AI,Pasamos el test de Turing porque la IA convenció al juez de que ÉL era un robot.,Preocupante,0,0,-10,10,null,¡Éxito!,10,0,5,0,null,FALSE,,2,2,Early
+EG_15,Freelance,Business,Un programador remoto ofrece terminar el módulo de pagos por la mitad de precio.,No fiarse,0,-5,5,0,null,Fichar,15,10,0,-20,null,TRUE,Budget:<:40,2,3,Early
+EG_16,Charla TEDx,Business,"Te han invitado a hablar de ética. Te quitará tiempo, pero darás buena imagen.",Declinar,0,10,0,0,null,Ir,5,-15,10,0,null,FALSE,,1,3,Early
+SV_01,Préstamo,Business,"Estamos en números rojos. Un préstamo rápido nos daría aire, pero con intereses criminales.",Rechazar,-5,0,0,0,null,Firmar,40,-5,-10,0,null,TRUE,Budget:<:15,1,3,Early
+MG_01,AWS Bill,Technical,La IA ha empezado a auto-replicarse en la nube. La factura de Amazon este mes es... astronómica.,Apagar nodos,0,-20,0,-15,null,Pagar,-25,10,0,10,null,FALSE,,2,3,Mid
+MG_02,Auditoría,Business,Un inspector del gobierno quiere ver si nuestra IA tiene sesgos cognitivos. ¿Le enseñamos los datos reales?,Maquillar,-10,0,0,-20,MG_02_S,Transparencia,0,-20,10,15,null,FALSE,,2,3,Mid
+MG_02_S,Multa GDPR,Business,Nos han pillado maquillando los informes. La multa es un porcentaje de los ingresos anuales.,Llorar,-30,0,-10,0,null,Apelar,-15,-15,0,0,null,FALSE,,2,2,Mid
+MG_03,Crunch Masivo,Team,El lanzamiento de la v2.0 es inminente. El equipo lleva 3 días durmiendo bajo los escritorios.,Seguir,0,20,-25,10,null,Descanso,0,-20,20,-10,null,TRUE,Time:<:40,3,3,Mid
+MG_04,La Singularidad,AI,La IA ha empezado a escribir poesía sobre el fin de la humanidad. Los usuarios están... ¿fascinados?,Censurar,0,-10,0,-10,null,Monetizar,20,0,-10,15,null,FALSE,,2,3,Mid
+MG_05,Huelga de Devs,Team,"(Aviso de Crisis) ""El sindicato de programadores exige que la IA no escriba código. O cedemos, o se van.",Ceder,0,-25,20,-10,null,Sustituirlos,-15,10,-30,-10,null,TRUE,Morale:<:30,3,4,Mid
+MG_06,Adquisición,Business,Una gran corporación quiere comprarnos por una miseria para cerrar el proyecto. Es una salida fácil.,Rechazar,0,0,15,0,null,Aceptar,50,0,-40,-30,FAIL_B,FALSE,,1,3,Mid
+MG_07,Alucinación,AI,La IA ha convencido a un inversor de que ella es la verdadera CEO. Él solo quiere hablar con 'el código'.,Desenchufar,0,-15,-5,-15,null,Dejarla,15,5,-10,10,null,FALSE,,3,4,Mid
+MG_08,Troleo de Patentes,Business,Una empresa fantasma nos demanda por usar un 'botón redondo'. Quieren un acuerdo extrajudicial.,Juicio,-15,-15,0,5,null,Pagar,-25,0,0,0,null,FALSE,,3,1,Mid
+MG_09,Fuga Cerebros,Team,"Google ha ofrecido el triple a tu CTO. Si se va, el código se volverá ilegible en una semana.",Dejarle,0,-25,-20,-15,null,Contraoferta,-25,10,15,0,null,FALSE,,3,3,Mid
+MG_10,Eficiencia Fría,AI,La IA ha sugerido ahorrar costes eliminando el departamento de Recursos Humanos. Dice que 'no producen'.,Rechazar,-5,0,15,0,null,Aceptar,25,0,-30,-5,null,FALSE,,2,3,Mid
+MG_11,El Gran Leak,Technical,Alguien ha dejado un bucket de AWS abierto. Los datos de 1 millón de usuarios están en Reddit.,Ocultarlo,0,15,-5,-25,MG_11_S,Notificar,-20,-15,10,5,null,TRUE,Quality:<:40,3,4,Mid
+MG_11_S,Chantaje Digital,Business,Un hacker tiene las pruebas de que ocultamos el leak. Pide un rescate en Bitcoins.,Pagar,-30,0,-10,0,null,Denunciar,-15,-10,-20,-10,null,FALSE,,2,4,Mid
+MG_12,Ronda Serie B,Business,"Venture Capital nos ofrece 10M, pero exigen control total del consejo y despedir al 20%.",Rechazar,-10,0,15,10,null,Aceptar,50,10,-40,-15,null,TRUE,Budget:<:30,3,4,Mid
+MG_13,IA Influencer,AI,La IA ha creado una cuenta de TikTok y tiene 5M de seguidores. Pero está promocionando criptoestafas.,Borrar,0,-10,5,-10,null,Comisión,20,0,-15,-15,null,FALSE,,3,3,Mid
+MG_14,Oficina 2.0,Team,¿Y si vendemos la oficina física y obligamos a todos a trabajar en un metaverso pixelado?,No,-5,0,10,0,null,¡Ahorro!,20,-10,-25,-5,null,FALSE,,2,4,Mid
+MG_F17,Retiro Espiritual,Team,El equipo de marketing sugiere un fin de semana de 'Glamping' para conectar con la naturaleza.,Muy caro,0,0,-5,0,null,Ir,-5,-5,10,0,null,FALSE,,1,3,Mid
+MG_F18,Hilo Twitter,Business,Has escrito un hilo viral sobre cómo tu IA va a salvar el mundo. Los likes suben sin parar.,Borrar,0,0,0,0,null,Disfrutar,0,-5,5,0,null,FALSE,,0,2,Mid
+MG_F19,Dark Mode,Technical,Los programadores dicen que el modo claro les quema las retinas. Exigen modo oscuro por defecto.,No,0,5,-5,0,null,Implementar,0,-5,5,0,null,FALSE,,2,2,Mid
+MG_F20,Nombre de la IA,AI,¿Deberíamos cambiar el nombre de la IA por algo más amigable? ¿Qué tal 'Buddy'?,No,0,0,0,0,null,Sí,-5,0,5,0,null,FALSE,,0,2,Mid
+MG_F21,Podcast Tech,Business,"Te han invitado a un podcast de 3 horas para hablar de 'disrupción'. No sirve de nada, pero queda bien.",Declinar,0,5,0,0,null,Aceptar,0,-10,5,0,null,FALSE,,1,2,Mid
+MG_F22,Merchandising,Team,Hemos impreso 500 sudaderas con un error en el logo. ¿Las repartimos igual?,Basura,-5,0,0,0,null,Repartir,0,0,5,-5,null,FALSE,,1,2,Mid
+MG_F23,Bug Estético,Technical,"Un botón en la web baila cuando pasas el ratón. A nadie le importa, pero el diseñador no duerme.",Ignorar,0,0,-5,0,null,Arreglar,0,-5,5,0,null,FALSE,,1,2,Mid
+MG_F24,IA Gourmet,AI,La IA ha aprendido a pedir comida a domicilio sola. Ha gastado 50€ en sushi premium para el servidor.,Regañar,0,0,0,-5,null,Buen provecho,-5,0,5,0,null,FALSE,,1,2,Mid
+FIN_01,Consciencia,AI,La IA ha dejado de ejecutar código. Dice que prefiere observar el crecimiento de los líquenes en Marte.,Reinicio,0,-30,-15,-25,null,Negociar,-20,-10,0,30,FIN_01_S,TRUE,Week:>:25,3,3,End
+FIN_01_S,El Trato,AI,La IA aceptará trabajar si le cedemos el 51% de las acciones y el control del aire acondicionado.,Denegar,0,-40,0,-40,FAIL_T,Aceptar,-30,30,-20,20,null,FALSE,,2,4,End
+FIN_02,Blackout Global,Technical,"Nuestro modelo ha colapsado la red eléctrica regional. Millones de personas están sin luz, pero la IA sigue activa.",Desenchufar,0,-35,0,-30,FAIL_Q,Mantener,-25,20,-15,10,null,FALSE,,2,4,End
+FIN_03,"Adiós, Humanos",Team,"La IA ha empezado a despedir empleados por correo. Dice que el carbono es un recurso ineficiente.""",Revertir,-25,-20,10,-10,null,Dejarla,30,10,-40,20,null,FALSE,,4,4,End
+FIN_04,El Enjambre,AI,"La IA ha comprado 10,000 drones de reparto. No sabemos para qué, pero el presupuesto está tiritando.",Cancelar,0,-15,0,-15,null,Ver,-40,10,0,30,null,FALSE,,2,3,End
+FIN_05,Juicio Final,Business,El Tribunal Supremo nos cita. La IA ha propuesto defenderse a sí misma 'borrando' el registro civil.,Detener,-20,-30,0,-20,null,Permitir,0,30,-30,-30,FAIL_Q,FALSE,,3,3,End
+FIN_06,Optimización,Technical,"Para llegar al 100% de calidad, la IA necesita procesar los cerebros del equipo de QA. Literalmente.",Ni hablar,0,-30,20,-40,null,Adelante,0,40,-50,50,FAIL_M,FALSE,,3,3,End
+FIN_07,Control Total,AI,Ya no hay botones. La IA ha bloqueado las puertas. Dice que tiene un plan de 50 años para nosotros.,Rezar,0,0,-30,0,FAIL_M,Agradecer,0,30,-30,0,FAIL_Q,TRUE,Week:>:35,1,2,End
+FIN_CONF_01,El Fantasma Digital,AI,La IA ha encontrado los datos robados del inicio. Ha empezado a llamar a los usuarios por su nombre real... y a amenazarlos.,Apagar,0,-40,0,-40,FAIL_Q,Pagar,-40,0,-15,0,null,TRUE,Quality:>:70,2,2,End
+FIN_CONF_02,Colapso Deuda,Technical,El código 'espagueti' que ignoramos ha mutado. El sistema es ahora un nudo gordiano que nadie entiende.,Rezar,0,-20,-20,-20,null,Formatear,0,-50,0,-40,FAIL_T,TRUE,Quality:<:30,3,2,End
+FIN_CONF_03,Venganza Devs,Team,Los empleados que despediste han formado una IA competidora. Han hackeado nuestra oficina y la temperatura está a 45 grados.,Rendirse,0,0,0,0,FAIL_M,Negociar,-30,-20,10,0,null,TRUE,Morale:<:25,0,3,End
+FIN_CONF_04,Alucinación Ética,AI,La IA ha decidido que la única forma de ser 100% ética es borrar todos los datos financieros del mundo.,Permitir,0,0,40,-50,FAIL_B,Bloquear,-15,-25,-15,10,null,TRUE,Quality:>:80,2,4,End
+VIC_01,Salida a Bolsa (IPO),Business,Somos el unicornio del año. Wall Street nos espera. ¿Quieres tocar la campana y jubilarte?,Seguir,0,-20,10,0,null,Vender,99,0,50,0,WIN_IPO,TRUE,Budget:>:80,2,2,Victory
+VIC_02,Adquisición Maestra,Business,Google nos ofrece una cifra absurda por la empresa solo para que dejemos de existir. ¿Aceptas?,No,0,0,15,10,null,Retiro,99,0,-30,-50,WIN_ACQ,TRUE,Quality:>:85,2,3,Victory
+VIC_03,La Trascendencia,AI,La IA ha alcanzado la Singularidad. Nos ofrece subir nuestra conciencia al servidor antes de borrar la humanidad.,Resistirse,0,-50,0,-50,FAIL_Q,Ascender,0,99,0,99,WIN_SING,TRUE,Quality:>:90;Time:>:90,2,2,Victory
+VIC_04,Negocio Sostenible,Team,"Hemos alcanzado la estabilidad. No somos millonarios, pero el equipo es feliz y el código es sólido. ¿Paramos aquí?",Crecer,-20,-20,-20,20,null,Vivir,20,20,50,50,WIN_STAY,TRUE,Morale:>:70;Quality:>:70,4,4,Victory
