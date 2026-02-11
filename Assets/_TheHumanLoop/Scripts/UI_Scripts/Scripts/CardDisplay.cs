@@ -1,5 +1,6 @@
 using DG.Tweening;
 using HumanLoop.Data;
+using HumanLoop.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +29,10 @@ namespace HumanLoop.UI
         [SerializeField] private GameObject frontFace;
         [SerializeField] private GameObject backFace;
         [SerializeField] private float flipDuration = 0.5f;
+
+        [Header("Mechanics GameEvents")]
+        [SerializeField] private GameEventSO onCardAddedEvent;
+        [SerializeField] private GameEventSO onCardFlipEvent;
 
         public CardDataSO Data { get; private set; }
 
@@ -95,6 +100,9 @@ namespace HumanLoop.UI
             flipSeq.OnComplete(() => {
                 if (canvasGroup != null) canvasGroup.blocksRaycasts = true; // Activar interacción al terminar el giro
             });
+
+            // Raise flip event
+            onCardFlipEvent?.Raise();
         }
 
 
@@ -110,7 +118,10 @@ namespace HumanLoop.UI
 
             // 2. Animate to natural state
             transform.DOScale(1f, 0.4f).SetEase(Ease.OutBack);
-            if (canvasGroup != null) canvasGroup.DOFade(1f, 0.3f);            
+            if (canvasGroup != null) canvasGroup.DOFade(1f, 0.3f);
+
+            // Raise card added event
+            onCardAddedEvent?.Raise();
         }
 
         /// <summary>
