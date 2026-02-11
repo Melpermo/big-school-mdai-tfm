@@ -8,7 +8,7 @@ namespace HumanLoop.Core
     {
         [Header("Settings")]
         [SerializeField] private int startingWeek = 1;
-        [SerializeField] private GameEvent onTimeAdvancedEvent;
+        [SerializeField] private GameEventSO onTimeAdvancedEvent;
 
         public int CurrentWeek { get; private set; }
 

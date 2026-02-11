@@ -34,5 +34,5 @@ MonoBehaviour:
   - stat: 3
     comparison: 1
     value: 40
-  nextCardLeft: {fileID: 11400000, guid: 326a9133b25eae949afba422cfe5e58f, type: 2}
+  nextCardLeft: {fileID: 11400000, guid: 6e6aea82ec2aec840852b4e01869c5b9, type: 2}
   nextCardRight: {fileID: 0}

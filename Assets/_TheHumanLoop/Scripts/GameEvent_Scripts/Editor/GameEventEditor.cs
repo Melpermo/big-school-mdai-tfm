@@ -8,7 +8,7 @@ namespace HumanLoop.EditorTools
     /// <summary>
     /// Adds a custom button to the GameEvent ScriptableObject inspector.
     /// </summary>
-    [CustomEditor(typeof(GameEvent))]
+    [CustomEditor(typeof(GameEventSO))]
     public class GameEventEditor : Editor
     {
         public override void OnInspectorGUI()
@@ -19,7 +19,7 @@ namespace HumanLoop.EditorTools
             // Only allow clicking the button if the game is in Play Mode
             GUI.enabled = Application.isPlaying;
 
-            GameEvent e = (GameEvent)target;
+            GameEventSO e = (GameEventSO)target;
 
             GUILayout.Space(10);
             if (GUILayout.Button("Raise Event (Debug)"))

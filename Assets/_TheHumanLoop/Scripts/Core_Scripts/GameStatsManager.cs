@@ -18,8 +18,8 @@ namespace HumanLoop.Core
         [Range(0, 100)] public float quality = 50f;
 
         [Header("Events")]
-        [SerializeField] private GameEvent onStatsChangedEvent;
-        [SerializeField] private GameEvent onGameOverEvent;
+        [SerializeField] private GameEventSO onStatsChangedEvent;
+        [SerializeField] private GameEventSO onGameOverEvent;
 
         private void Awake() => Instance = this;
 

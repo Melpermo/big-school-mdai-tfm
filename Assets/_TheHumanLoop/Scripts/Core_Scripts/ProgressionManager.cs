@@ -19,7 +19,7 @@ namespace HumanLoop.Core
 
         [Header("Phase Victory Settings")]
         [SerializeField] private int victoryWeek = 50; // Semana para ganar
-        [SerializeField] private GameEvent onVictoryEvent;
+        [SerializeField] private GameEventSO onVictoryEvent;
 
 
 

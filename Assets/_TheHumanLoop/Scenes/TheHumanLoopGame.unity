@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Core.DeckManager
   cardFactory: {fileID: 885610517}
-  currentDeck: {fileID: 11400000, guid: 4708497c0f4a5f64a9416bf586155a3c, type: 2}
+  currentDeck: {fileID: 11400000, guid: 46513a1d0fc68db4bb533990f8a593e9, type: 2}
   shuffleOnStart: 0
   infiniteLoop: 0
 --- !u!4 &1021940535
@@ -993,9 +993,9 @@ MonoBehaviour:
   deckManager: {fileID: 1021940534}
   timeManager: {fileID: 1242946914}
   midGameWeek: 10
-  midGameDeck: {fileID: 0}
+  midGameDeck: {fileID: 11400000, guid: be1c0358fdd06864b8a4703cb29ada2e, type: 2}
   endGameWeek: 25
-  endGameDeck: {fileID: 0}
+  endGameDeck: {fileID: 11400000, guid: aec1269144d579145b9542c8e5bb84a4, type: 2}
   victoryWeek: 50
   onVictoryEvent: {fileID: 11400000, guid: e1cac95e3b9da644db9485a2aa020121, type: 2}
 --- !u!114 &1862471467
@@ -1530,7 +1530,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 963910552}
   - {fileID: 2146133388}
   - {fileID: 1813122037}
   - {fileID: 708877911}
+  - {fileID: 963910552}
