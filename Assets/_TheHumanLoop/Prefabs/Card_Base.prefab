@@ -1119,6 +1119,8 @@ MonoBehaviour:
   frontFace: {fileID: 3396508612070417909}
   backFace: {fileID: 700587522213090877}
   flipDuration: 0.5
+  onCardAddedEvent: {fileID: 11400000, guid: de7b76e3f9e7e1747b5410579605672c, type: 2}
+  onCardFlipEvent: {fileID: 11400000, guid: 0f1cadcc96f8bac4fba632d396ab9c90, type: 2}
 --- !u!114 &4660286139770616286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,6 +1136,8 @@ MonoBehaviour:
   fovAngle: 15
   swipeThreshold: 150
   returnDuration: 0.3
+  onCardSwipedEvent: {fileID: 11400000, guid: 53176cd84c28a504bb90b4ad915c3adc, type: 2}
+  onCardReturnedEvent: {fileID: 11400000, guid: db0e0bfa2f43f2d43922af5e226b3937, type: 2}
 --- !u!1 &3396508612070417909
 GameObject:
   m_ObjectHideFlags: 0

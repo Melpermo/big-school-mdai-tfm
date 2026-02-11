@@ -1,6 +1,7 @@
 using DG.Tweening;
 using HumanLoop.Core;
 using HumanLoop.Data;
+using HumanLoop.Events;
 using System;
 using TMPro;
 using UnityEngine;
@@ -20,6 +21,10 @@ namespace HumanLoop.UI
         [SerializeField] private float fovAngle = 15f; // Rotation angle at max swipe
         [SerializeField] private float swipeThreshold = 150f; // Distance to trigger action
         [SerializeField] private float returnDuration = 0.3f; // DOTween duration        
+
+        [Header("Mechanics GameEvents")]
+        [SerializeField] private GameEventSO onCardSwipedEvent;
+        [SerializeField] private GameEventSO onCardReturnedEvent;        
 
         private Vector2 _startPosition;
         private RectTransform _rectTransform;
@@ -94,9 +99,12 @@ namespace HumanLoop.UI
 
             // Let Display handle clearing the UI
             _display.HideChoices();
+
+            // Trigger GameEvent for return
+            onCardReturnedEvent?.Raise();
         }
 
-        
+
         private void SwipeCard(bool isRight)
         {
             float exitDirection = isRight ? 1000f : -1000f;
@@ -114,6 +122,9 @@ namespace HumanLoop.UI
                     // Note: You might need a reference to the factory or use a Singleton
                     UnityEngine.Object.FindFirstObjectByType<CardFactory>().ReturnToPool(_display);
                 });
+
+            // Trigger GameEvent for swipe
+            onCardSwipedEvent?.Raise();
         }
 
         // Este método debe ser llamado cuando la carta sale del pool
