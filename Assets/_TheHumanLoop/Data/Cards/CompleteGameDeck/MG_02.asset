@@ -31,5 +31,5 @@ MonoBehaviour:
     quality: 15
   useConditions: 0
   conditions: []
-  nextCardLeft: {fileID: 11400000, guid: f3536494d561459428469688b8bd1ab7, type: 2}
+  nextCardLeft: {fileID: 11400000, guid: fe823266937c5854597c672dbdcc5db9, type: 2}
   nextCardRight: {fileID: 0}

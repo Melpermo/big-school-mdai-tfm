@@ -32,4 +32,4 @@ MonoBehaviour:
   useConditions: 0
   conditions: []
   nextCardLeft: {fileID: 0}
-  nextCardRight: {fileID: 11400000, guid: 4f36aafef8e04024fa248f22f41e18f0, type: 2}
+  nextCardRight: {fileID: 11400000, guid: e1eafcebe2dd6d943a26641cacb434f4, type: 2}

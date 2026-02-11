@@ -35,4 +35,4 @@ MonoBehaviour:
     comparison: 0
     value: 25
   nextCardLeft: {fileID: 0}
-  nextCardRight: {fileID: 11400000, guid: da1e1f208132791429416e0017364f49, type: 2}
+  nextCardRight: {fileID: 11400000, guid: 8804114af1871074fb6192d1a32bc5e9, type: 2}

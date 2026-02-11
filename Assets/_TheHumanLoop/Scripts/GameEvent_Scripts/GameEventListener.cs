@@ -13,7 +13,7 @@ namespace HumanLoop.Events
         /// Component that listens to a specific GameEvent ScriptableObject and triggers a UnityEvent.
         /// </summary>
 
-        [SerializeField] private GameEvent gameEvent;
+        [SerializeField] private GameEventSO gameEvent;
         [SerializeField] private UnityEvent onEventRaised;
         [SerializeField] private float delayBeforeInvoke = 0f; // Optional delay before invoking the UnityEvent
 
