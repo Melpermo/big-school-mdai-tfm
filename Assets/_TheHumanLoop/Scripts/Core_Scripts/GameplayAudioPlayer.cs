@@ -8,8 +8,7 @@ namespace HumanLoop.AudioSystem
 
     public class GameplayAudioManager : MonoBehaviour
     {
-        [Header("Card SoundEventSO elements")]
-        
+        [Header("Card SoundEventSO elements")]        
         [SerializeField] private SoundEventSO cardAddedSoundEvent;
         [SerializeField] private SoundEventSO cardFlipSoundEvent;
         [SerializeField] private SoundEventSO cardReturnedSoundEvent;
