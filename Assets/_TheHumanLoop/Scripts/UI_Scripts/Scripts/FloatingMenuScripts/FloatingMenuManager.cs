@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
+using HumanLoop.AudioSystem;
 
 namespace TheHumanLoop.UI
 {
@@ -44,7 +45,7 @@ namespace TheHumanLoop.UI
             // 3. Play a subtle global 'hit' effect or sound here if desired
 
             // 4. Open the target window
-            windows[index].Open();
+            windows[index].Open();           
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace TheHumanLoop.UI
                 {
                     window.Close();
                 }
-            }
+            }            
         }
 
         public void CloseDrimmer()
