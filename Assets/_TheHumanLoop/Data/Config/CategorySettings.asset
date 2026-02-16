@@ -15,19 +15,19 @@ MonoBehaviour:
   styles:
   - category: 0
     themeColor: {r: 0.30495724, g: 0.6084486, b: 0.8396226, a: 0.8235294}
-    categoryIcon: {fileID: 7043840031944759199, guid: f745da69dcd08f6449d6389d994d90c1, type: 3}
+    categoryIcon: {fileID: 868416852857514076, guid: 981918ff8d237284484ccdd1f9fcb9ab, type: 3}
   - category: 2
     themeColor: {r: 0.8392157, g: 0.791482, b: 0.3058824, a: 0.8235294}
-    categoryIcon: {fileID: -682641503537376952, guid: f745da69dcd08f6449d6389d994d90c1, type: 3}
+    categoryIcon: {fileID: 1409639051, guid: 9a4876b7521927945b148c857cceff55, type: 3}
   - category: 1
     themeColor: {r: 0.5764706, g: 0.4392157, b: 0.8588236, a: 1}
-    categoryIcon: {fileID: 8668956887812427368, guid: f745da69dcd08f6449d6389d994d90c1, type: 3}
+    categoryIcon: {fileID: -4189640890557896945, guid: 8134ebf373e902c4a95d1389c324c4ce, type: 3}
   - category: 3
     themeColor: {r: 0.8235295, g: 0.7058824, b: 0.5490196, a: 1}
-    categoryIcon: {fileID: -7814794411602967255, guid: f745da69dcd08f6449d6389d994d90c1, type: 3}
+    categoryIcon: {fileID: 652240306, guid: cb94e3db8bfccbd49afc657bf7892183, type: 3}
   - category: 4
     themeColor: {r: 1, g: 0.4117647, b: 0.7058824, a: 1}
-    categoryIcon: {fileID: 7781028973829114203, guid: f745da69dcd08f6449d6389d994d90c1, type: 3}
+    categoryIcon: {fileID: 868416852857514076, guid: 981918ff8d237284484ccdd1f9fcb9ab, type: 3}
   - category: 5
     themeColor: {r: 1, g: 0.8431373, b: 0, a: 1}
-    categoryIcon: {fileID: -682641503537376952, guid: f745da69dcd08f6449d6389d994d90c1, type: 3}
+    categoryIcon: {fileID: 868416852857514076, guid: 981918ff8d237284484ccdd1f9fcb9ab, type: 3}

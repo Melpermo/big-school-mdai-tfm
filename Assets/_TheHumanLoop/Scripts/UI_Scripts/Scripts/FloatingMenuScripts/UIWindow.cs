@@ -1,5 +1,6 @@
-using UnityEngine;
 using DG.Tweening;
+using HumanLoop.AudioSystem;
+using UnityEngine;
 
 namespace TheHumanLoop.UI
 {
@@ -8,6 +9,10 @@ namespace TheHumanLoop.UI
         [Header("Settings")]
         [SerializeField] private float duration = 0.5f;
         [SerializeField] private float punchStrength = 0.1f;
+
+        [Header("SoundsClips")]
+        [SerializeField] private SoundEventSO openWindowSound;
+        [SerializeField] private SoundEventSO closeWindowSound;
 
         private CanvasGroup canvasGroup;
 
@@ -43,7 +48,13 @@ namespace TheHumanLoop.UI
                      .SetDelay(duration * 0.5f); // Starts mid-animation for a smooth transition
 
             // 4. Personality rotation
-            transform.DOPunchRotation(new Vector3(0, 0, 5f), duration, 2, 0.5f);           
+            transform.DOPunchRotation(new Vector3(0, 0, 5f), duration, 2, 0.5f);
+
+            // 5. Play the open sound effect
+            if (openWindowSound != null)
+            {
+                AudioManager.Instance.PlaySound(openWindowSound);
+            }
         }
 
         public void Close()
@@ -63,9 +74,16 @@ namespace TheHumanLoop.UI
 
             transform.DOScale(0f, duration)
                 .SetEase(Ease.InBack)
-                .OnComplete(() => {
+                .OnComplete(() =>
+                {
                     gameObject.SetActive(false);
-                });           
+                });
+
+            // 4. Play the close sound effect
+            if (closeWindowSound != null)
+            {
+                AudioManager.Instance.PlaySound(closeWindowSound);
+            }
         }
     }
 }
