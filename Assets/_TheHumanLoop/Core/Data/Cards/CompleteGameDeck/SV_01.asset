@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71b7109024906d4c9a5cb9f1619ef89, type: 3}
+  m_Name: SV_01
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.SimpleCardData
+  cardName: "Pr\xE9stamo"
+  category: 2
+  description: "Estamos en n\xFAmeros rojos. Un pr\xE9stamo r\xE1pido nos dar\xEDa
+    aire, pero con intereses criminales."
+  cardArt: {fileID: 0}
+  leftChoiceText: Rechazar
+  rightChoiceText: Firmar
+  leftSwipeImpact:
+    budget: -5
+    time: 0
+    morale: 0
+    quality: 0
+  rightSwipeImpact:
+    budget: 40
+    time: -5
+    morale: -10
+    quality: 0
+  useConditions: 1
+  conditions:
+  - stat: 0
+    comparison: 1
+    value: 15
+  nextCardLeft: {fileID: 0}
+  nextCardRight: {fileID: 0}

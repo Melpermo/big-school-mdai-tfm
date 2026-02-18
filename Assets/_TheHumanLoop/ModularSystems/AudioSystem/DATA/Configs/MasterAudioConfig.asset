@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d87c2fdcd6b7c24185e44c997818968, type: 3}
+  m_Name: MasterAudioConfig
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.AudioConfigurationSO
+  OutputGroup: {fileID: 24300002, guid: 9186305a05ae28149a9e834e5e27108c, type: 2}
+  Volume: 1
+  Pitch: 1
+  PitchVariation: 0
+  Loop: 1
