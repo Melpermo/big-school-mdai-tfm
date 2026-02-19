@@ -34,6 +34,7 @@ namespace TheHumanLoop.UI
         [ContextMenu("Test Victory")] // Allows you to right-click the script in Inspector to test
         public void PlayVictorySequence()
         {
+            titleTransform.gameObject.SetActive(true);
             ResetUI();
             titleText.text = victoryString;
             titleText.color = victoryColor;
@@ -60,6 +61,7 @@ namespace TheHumanLoop.UI
         [ContextMenu("Test Defeat")]
         public void PlayDefeatSequence()
         {
+            titleTransform.gameObject.SetActive(true);
             ResetUI();
             titleText.text = defeatString;
             titleText.color = defeatColor;
@@ -81,12 +83,19 @@ namespace TheHumanLoop.UI
             dSeq.Append(titleTransform.DOShakePosition(0.5f, 10f, 10, 90, false, true));
         }
 
-        private void ResetUI()
+        [ContextMenu("HideUI")]
+        public void HideUI()
+        {
+            titleTransform.gameObject.SetActive(false);
+            if (backgroundDimmer != null) backgroundDimmer.alpha = 0;
+        }
+
+        public void ResetUI()
         {
             titleTransform.DOKill();
             titleTransform.localPosition = _originalTitlePos;
             titleTransform.localScale = Vector3.zero;
-            if (backgroundDimmer != null) backgroundDimmer.alpha = 0;
+            if (backgroundDimmer != null) backgroundDimmer.alpha = 0;            
         }
     }
 }

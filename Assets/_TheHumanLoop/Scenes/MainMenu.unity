@@ -661,7 +661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   backgroundScreen: {fileID: 730325674}
-  MainMenuGO: {fileID: 917443749}
+  gameObjectsToDeact:
+  - {fileID: 917443749}
   loadingScreen: {fileID: 771746075}
   loadingSlider: {fileID: 1123973351}
   progressText: {fileID: 1760763543}
@@ -2084,30 +2085,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1365053653}
     m_Modifications:
-    - target: {fileID: 103205371276490803, guid: af49c265e89293840918c55bd1a2e993, type: 3}
-      propertyPath: m_Color.b
-      value: 0.43712175
-      objectReference: {fileID: 0}
-    - target: {fileID: 103205371276490803, guid: af49c265e89293840918c55bd1a2e993, type: 3}
-      propertyPath: m_Color.g
-      value: 0.43712175
-      objectReference: {fileID: 0}
-    - target: {fileID: 103205371276490803, guid: af49c265e89293840918c55bd1a2e993, type: 3}
-      propertyPath: m_Color.r
-      value: 0.4433962
-      objectReference: {fileID: 0}
-    - target: {fileID: 103205371276490803, guid: af49c265e89293840918c55bd1a2e993, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 103205371276490803, guid: af49c265e89293840918c55bd1a2e993, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 2153abde7a0b50a46b31e772a326db9c, type: 3}
-    - target: {fileID: 3672743827785086159, guid: af49c265e89293840918c55bd1a2e993, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4947362634759731921, guid: af49c265e89293840918c55bd1a2e993, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2188,17 +2165,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7477306271992925692, guid: af49c265e89293840918c55bd1a2e993, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9188820671118329804, guid: af49c265e89293840918c55bd1a2e993, type: 3}
       propertyPath: m_Name
       value: LoadingScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 9188820671118329804, guid: af49c265e89293840918c55bd1a2e993, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

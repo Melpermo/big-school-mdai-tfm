@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3898137233202985707}
-  - component: {fileID: 4095635791756472265}
   - component: {fileID: 6941493429617087356}
-  - component: {fileID: 3398545256653330348}
+  - component: {fileID: 9000162833362032849}
   m_Layer: 0
   m_Name: UI_Manager
   m_TagString: Untagged
@@ -35,23 +34,6 @@ Transform:
   - {fileID: 4952367315190643865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4095635791756472265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604440020206634371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53a7eb96925b9e41bfd5512545c87a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Core.GameOverHandler
-  gameOverPanel: {fileID: 0}
-  statsSummaryText: {fileID: 0}
-  timeManager: {fileID: 0}
-  fireMessage: "\xA1Ve ha hablar con recursos humanos! \xA1No has conseguido pasar
-    el corte! Semanas en la empresa:"
 --- !u!114 &6941493429617087356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +50,7 @@ MonoBehaviour:
   timeText: {fileID: 0}
   timeManager: {fileID: 0}
   prefix: 'WEEK '
---- !u!114 &3398545256653330348
+--- !u!114 &9000162833362032849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,14 +59,171 @@ MonoBehaviour:
   m_GameObject: {fileID: 1604440020206634371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c45790a56a5f5564bb8efa2e1deaf67a, type: 3}
+  m_Script: {fileID: 11500000, guid: ae46bdc8dae389f45b6ad57058987241, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Core.VictoryHandler
-  victoryPanel: {fileID: 0}
-  statsSummaryText: {fileID: 0}
-  timeManager: {fileID: 0}
-  victoryMessage: "\xA1Has ganado! \xA1Has evoluvionado hasta CEO en Human Loop!
-    Has conseguido sobrevir en la empresa estas semanas:"
+  m_EditorClassIdentifier: Assembly-CSharp::EndGameUIHandler
+  _endGamePanel: {fileID: 0}
+  _endGameTitleTransform: {fileID: 0}
+  _endGameTitleText: {fileID: 0}
+  _endGameFeedbackMsgText: {fileID: 0}
+  _endGameBG_image: {fileID: 0}
+  _backgroundDimmer: {fileID: 0}
+  _dropDistance: 500
+--- !u!1 &6234212179630614011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7716973088016683225}
+  - component: {fileID: 5835655125358750387}
+  - component: {fileID: 5805587337875716415}
+  - component: {fileID: 1806755160515322909}
+  - component: {fileID: 8216157631064828560}
+  m_Layer: 0
+  m_Name: EndGameUI_Listeners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7716973088016683225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234212179630614011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4952367315190643865}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5835655125358750387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234212179630614011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: e1cac95e3b9da644db9485a2aa020121, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9000162833362032849}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: SelectConditionTypeToShow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b13f8fe3ea623aa42842777b683226ae, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &5805587337875716415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234212179630614011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 465834c4bcfd9a94b86da8f3ed3f63f6, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9000162833362032849}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: SelectConditionTypeToShow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b9087e1df9cd651429aa90badb1419b0, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &1806755160515322909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234212179630614011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 4d0d4f77615afa943b5320eed25246e2, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9000162833362032849}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: SelectConditionTypeToShow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 7031d0e9f78c59140a2a254246808d0d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &8216157631064828560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234212179630614011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 685a80313239c654f9a5bd950623cd97, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9000162833362032849}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: SelectConditionTypeToShow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 2e0214bbeda9eb34c9f9e7ba4e530293, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
 --- !u!1 &6804535469944617847
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,8 +233,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4952367315190643865}
-  - component: {fileID: 3599148175443323128}
-  - component: {fileID: 6762606446864293933}
   - component: {fileID: 7582888125318786533}
   - component: {fileID: 7510381543065236634}
   m_Layer: 0
@@ -117,69 +254,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7716973088016683225}
   m_Father: {fileID: 3898137233202985707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3599148175443323128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6804535469944617847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
-  gameEvent: {fileID: 11400000, guid: 465834c4bcfd9a94b86da8f3ed3f63f6, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4095635791756472265}
-        m_TargetAssemblyTypeName: HumanLoop.Core.GameOverHandler, Assembly-CSharp
-        m_MethodName: HandleGameOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delayBeforeInvoke: 0
-  usingAsyncTaskMethods: 0
---- !u!114 &6762606446864293933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6804535469944617847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
-  gameEvent: {fileID: 11400000, guid: e1cac95e3b9da644db9485a2aa020121, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3398545256653330348}
-        m_TargetAssemblyTypeName: HumanLoop.Core.VictoryHandler, Assembly-CSharp
-        m_MethodName: HandleVictory
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delayBeforeInvoke: 0
-  usingAsyncTaskMethods: 0
 --- !u!114 &7582888125318786533
 MonoBehaviour:
   m_ObjectHideFlags: 0
