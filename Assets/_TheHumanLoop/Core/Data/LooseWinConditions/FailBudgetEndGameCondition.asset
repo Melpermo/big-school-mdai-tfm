@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0a5be7365e3954893031836c603f35, type: 3}
+  m_Name: FailBudgetEndGameCondition
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.EndGameConditionSO
+  conditionName: Special Failed
+  conditionType: 3
+  budgetThreshold: 20
+  timeThreshold: 0
+  moraleThreshold: 0
+  qualityThreshold: 0
+  endGameMessage: FailEndCondition message
+  endGameBG_image: {fileID: 2208499457303467514, guid: 7cdfd204901cd3842955513228a23132, type: 3}

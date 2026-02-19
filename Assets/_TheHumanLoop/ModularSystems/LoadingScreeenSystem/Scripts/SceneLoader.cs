@@ -10,7 +10,7 @@ namespace TheHumanLoop.LoadingScreenSystem
     {
         [Header("UI Elements")]
         [SerializeField] private GameObject backgroundScreen;
-        [SerializeField] private GameObject MainMenuGO;
+        [SerializeField] private GameObject[] gameObjectsToDeact;
         [SerializeField] private GameObject loadingScreen;
         [SerializeField] private Slider loadingSlider;
         [SerializeField] private TextMeshProUGUI progressText;
@@ -66,7 +66,10 @@ namespace TheHumanLoop.LoadingScreenSystem
 
             // Setup UI
             backgroundScreen.SetActive(false);
-            MainMenuGO.SetActive(false);
+
+            DeactivateArrayOf();
+
+            //MainMenuGO.SetActive(false);
             loadingScreen.SetActive(true);
             loadingSlider.value = 0f;
 
@@ -128,13 +131,25 @@ namespace TheHumanLoop.LoadingScreenSystem
             }
         }
 
+        private void DeactivateArrayOf()
+        {
+            foreach (GameObject go in gameObjectsToDeact)
+            {
+                if (go != null)
+                {
+                    go.SetActive(false);
+                }
+            }
+        }
+
         private IEnumerator LoadAsynchronouslyByName(string sceneName)
         {
             // Fade in loading screen
             yield return StartCoroutine(FadeLoadingScreen(true));
 
             backgroundScreen.SetActive(false);
-            MainMenuGO.SetActive(false);
+            DeactivateArrayOf();
+            //MainMenuGO.SetActive(false);
             loadingScreen.SetActive(true);
             loadingSlider.value = 0f;
 

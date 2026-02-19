@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace HumanLoop.Core
 {
-    public class GameOverHandler : MonoBehaviour
+    public class GameOverUIHandler : MonoBehaviour
     {
         [SerializeField] private CanvasGroup gameOverPanel;
         [SerializeField] private TextMeshProUGUI statsSummaryText;

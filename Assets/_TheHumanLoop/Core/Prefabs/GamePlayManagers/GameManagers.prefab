@@ -132,8 +132,16 @@ MonoBehaviour:
   time: 50
   morale: 50
   quality: 50
-  onStatsChangedEvent: {fileID: 11400000, guid: 145373ab02f58504f9e041b35b585bfb, type: 2}
-  onGameOverEvent: {fileID: 11400000, guid: 465834c4bcfd9a94b86da8f3ed3f63f6, type: 2}
+  endGameConditionsList:
+  - {fileID: 11400000, guid: b9087e1df9cd651429aa90badb1419b0, type: 2}
+  - {fileID: 11400000, guid: b13f8fe3ea623aa42842777b683226ae, type: 2}
+  - {fileID: 11400000, guid: 7031d0e9f78c59140a2a254246808d0d, type: 2}
+  - {fileID: 11400000, guid: 2e0214bbeda9eb34c9f9e7ba4e530293, type: 2}
+  _onStatsChangedEvent: {fileID: 11400000, guid: 145373ab02f58504f9e041b35b585bfb, type: 2}
+  _onGameOverEvent: {fileID: 11400000, guid: 465834c4bcfd9a94b86da8f3ed3f63f6, type: 2}
+  _onVictoryEvent: {fileID: 11400000, guid: e1cac95e3b9da644db9485a2aa020121, type: 2}
+  _onSpecialConditionMetEvent: {fileID: 11400000, guid: 4d0d4f77615afa943b5320eed25246e2, type: 2}
+  _onSpecialConditionFailedEvent: {fileID: 11400000, guid: 685a80313239c654f9a5bd950623cd97, type: 2}
 --- !u!1 &4481169544479485016
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a671a3248c063d14c80d2edd4ff55d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Core.CardFactory
-  cardPrefab: {fileID: 3271866173705772828, guid: e80b7f5af480ba64da5bc59578fb233e, type: 3}
+  cardPrefab: {fileID: 3271866173705772828, guid: 07470ff17268f4c428450b114de04429, type: 3}
   cardSpawnParent: {fileID: 0}
   categorySettings: {fileID: 11400000, guid: 81e2307862d0fa84a9fa4da9b894ed2d, type: 2}
 --- !u!1 &4758597158918779714

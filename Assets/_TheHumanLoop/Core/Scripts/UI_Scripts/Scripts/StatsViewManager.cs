@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using DG.Tweening;
 using HumanLoop.Core;
 
@@ -15,22 +16,15 @@ namespace HumanLoop.UI
         [SerializeField] private Slider timeSlider;
         [SerializeField] private Slider moraleSlider;
         [SerializeField] private Slider qualitySlider;
+        
+        [Header("Progressins Texts")]
+        [SerializeField] private TextMeshProUGUI budgetProgressText;
+        [SerializeField] private TextMeshProUGUI timeProgressText;
+        [SerializeField] private TextMeshProUGUI moraleProgressText;
+        [SerializeField] private TextMeshProUGUI qualityProgressText;
 
         [Header("Animation Settings")]
-        [SerializeField] private float lerpDuration = 0.5f;
-
-        /*
-        private void OnEnable()
-        {
-            // Subscribe to the global stats event
-            GameStatsManager.OnStatsChanged += UpdateUI;
-        }
-
-        private void OnDisable()
-        {
-            // Unsubscribe to avoid memory leaks
-            GameStatsManager.OnStatsChanged -= UpdateUI;
-        }*/
+        [SerializeField] private float lerpDuration = 0.5f;      
 
 
         private void Start()
@@ -54,8 +48,9 @@ namespace HumanLoop.UI
             budgetSlider.DOValue(stats.budget, lerpDuration).SetEase(Ease.OutCubic);
             timeSlider.DOValue(stats.time, lerpDuration).SetEase(Ease.OutCubic);
             moraleSlider.DOValue(stats.morale, lerpDuration).SetEase(Ease.OutCubic);
-            qualitySlider.DOValue(stats.quality, lerpDuration).SetEase(Ease.OutCubic);           
-           
+            qualitySlider.DOValue(stats.quality, lerpDuration).SetEase(Ease.OutCubic);
+
+            UpdateProgressText(stats);
         }
 
         private void UpdateUIImmediate()
@@ -65,6 +60,16 @@ namespace HumanLoop.UI
             timeSlider.value = stats.time;
             moraleSlider.value = stats.morale;
             qualitySlider.value = stats.quality;
+
+            UpdateProgressText(stats);
+        }
+
+        private void UpdateProgressText(GameStatsManager stats)
+        {
+            budgetProgressText.text = $"{(int)(stats.budget)}%";
+            timeProgressText.text = $"{(int)(stats.time)}%";
+            moraleProgressText.text = $"{(int)(stats.morale)}%";
+            qualityProgressText.text = $"{(int)(stats.quality)}%";
         }
     }
 }
