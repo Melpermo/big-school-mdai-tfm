@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "La m\xE1quina de caf\xE9 se ha roto. El equipo exige granos de Etiop\xEDa
     o habr\xE1 huelga."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 4151854209590793370, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
   leftChoiceText: "Agua fr\xEDa"
   rightChoiceText: Comprar
   leftSwipeImpact:

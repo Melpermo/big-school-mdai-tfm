@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: "He encontrado una librer\xEDa sin licencia que escribe c\xF3digo
     sola. Es magia negra."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -1380950705436103277, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Revisar
   rightChoiceText: Usarla
   leftSwipeImpact:

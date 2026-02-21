@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: Un hacker tiene las pruebas de que ocultamos el leak. Pide un rescate
     en Bitcoins.
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 6632189703454533275, guid: 8f5da65bb09728d49be8ca7543c5b73a, type: 3}
   leftChoiceText: Pagar
   rightChoiceText: Denunciar
   leftSwipeImpact:

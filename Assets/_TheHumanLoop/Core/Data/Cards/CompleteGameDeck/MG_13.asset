@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "La IA ha creado una cuenta de TikTok y tiene 5M de seguidores. Pero
     est\xE1 promocionando criptoestafas."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 3013760152890959684, guid: 8f5da65bb09728d49be8ca7543c5b73a, type: 3}
   leftChoiceText: Borrar
   rightChoiceText: "Comisi\xF3n"
   leftSwipeImpact:

@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: Los programadores dicen que el modo claro les quema las retinas. Exigen
     modo oscuro por defecto.
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 7553390576639870653, guid: 4e7442af9de6f894dad6c6efc3200fb1, type: 3}
   leftChoiceText: No
   rightChoiceText: Implementar
   leftSwipeImpact:

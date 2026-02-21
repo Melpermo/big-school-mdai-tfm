@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Te han invitado a un podcast de 3 horas para hablar de 'disrupci\xF3n'.
     No sirve de nada, pero queda bien."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 8730253039354754013, guid: 4e7442af9de6f894dad6c6efc3200fb1, type: 3}
   leftChoiceText: Declinar
   rightChoiceText: Aceptar
   leftSwipeImpact:

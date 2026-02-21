@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "El Tribunal Supremo nos cita. La IA ha propuesto defenderse a s\xED
     misma 'borrando' el registro civil."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 7429212326304127005, guid: 6d59ae02a5a02984e931fa4976c35df3, type: 3}
   leftChoiceText: Detener
   rightChoiceText: Permitir
   leftSwipeImpact:

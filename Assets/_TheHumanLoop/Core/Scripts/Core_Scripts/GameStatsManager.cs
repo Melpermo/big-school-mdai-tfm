@@ -1,6 +1,5 @@
-using HumanLoop.Events;
+﻿using HumanLoop.Events;
 using HumanLoop.Data;   
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,40 +18,40 @@ namespace HumanLoop.Core
         [Header("Initial Values")]
         [Tooltip("Budget: Money for salaries, tools, licenses (0-100)")]
         [Range(0, 100)] public float budget = 50f;
-        
+
         [Tooltip("Time: Deadlines, delays, project margin (0-100)")]
         [Range(0, 100)] public float time = 50f;
-        
+
         [Tooltip("Morale: Motivation, mental health, trust (0-100)")]
         [Range(0, 100)] public float morale = 50f;
-        
+
         [Tooltip("Quality: Code health, technical debt (0-100)")]
         [Range(0, 100)] public float quality = 50f;
-
-        [Header("End Game Conditions")]
-        [Tooltip("List of conditions that trigger victory, defeat, or special outcomes")]
-        [SerializeField] private List<EndGameConditionSO> endGameConditionsList;
 
         [Header("Events")]
         [Tooltip("Raised whenever any stat value changes")]
         [SerializeField] private GameEventSO _onStatsChangedEvent;
-        
-        [Tooltip("Raised when a Game Over condition is met (any stat reaches 0)")]
-        [SerializeField] private GameEventSO _onGameOverEvent;
-        
-        [Tooltip("Raised when the player wins (typically 30 turns survived)")]
-        [SerializeField] private GameEventSO _onVictoryEvent;
-        
-        [Tooltip("Raised when a special positive condition is met")]
-        [SerializeField] private GameEventSO _onSpecialConditionMetEvent;
-        
-        [Tooltip("Raised when a special negative condition is met")]
-        [SerializeField] private GameEventSO _onSpecialConditionFailedEvent;
+
+        [Header("End Game Conditions")]
+        [Tooltip("List of conditions to check. Each condition contains its own event to raise.")]
+        [SerializeField] private List<EndGameConditionSO> endGameConditionsList;
+
+        // Store initial values for reset functionality
+        private float _initialBudget;
+        private float _initialTime;
+        private float _initialMorale;
+        private float _initialQuality;
 
         private void Awake()
         {
             // Initialize singleton instance
             Instance = this;
+
+            // Store initial values
+            _initialBudget = budget;
+            _initialTime = time;
+            _initialMorale = morale;
+            _initialQuality = quality;
         }
 
         /// <summary>
@@ -72,133 +71,176 @@ namespace HumanLoop.Core
             quality = Mathf.Clamp(quality + q, 0, 100);
 
             // Notify all listeners that stats have changed (updates UI, etc.)
-            _onStatsChangedEvent.Raise();
+            _onStatsChangedEvent?.Raise();
 
             // Check if any end game condition has been triggered
-            CheckConditions();
+            CheckEndGameConditions();
         }
 
         /// <summary>
-        /// Main entry point for condition checking. Called after every stat update.
+        /// Evaluates all registered end game conditions.
+        /// If any condition is met, it raises its own event and stops checking (first match wins).
         /// </summary>
-        private void CheckConditions()
+        private void CheckEndGameConditions()
         {
-            CheckConditionTypesOnList();
-        }
-
-        /// <summary>
-        /// Iterates through all registered end game conditions and evaluates them.
-        /// </summary>
-        private void CheckConditionTypesOnList()
-        { 
-            foreach (var endGameCondition in endGameConditionsList)
+            // Early exit if no conditions configured
+            if (endGameConditionsList == null || endGameConditionsList.Count == 0)
             {
-                // Use the ScriptableObject's internal CheckCondition method
-                CheckIsConditionsFit_2();
+                return;
             }
-        }
 
-        /// <summary>
-        /// Evaluates each condition using the SO's CheckCondition() method.
-        /// If a condition is met, raises the appropriate event based on condition type.
-        /// </summary>
-        private void CheckIsConditionsFit_2()
-        { 
+            // Iterate through all end game conditions
             foreach (var endGameCondition in endGameConditionsList)
             {
-                // Let the ScriptableObject determine if its condition is met
-                if (endGameCondition.CheckCondition() == true)
-                { 
-                    // Raise the appropriate event based on condition type
-                    switch(endGameCondition.conditionType)
-                    {
-                        case EndGameConditionSO.ConditionType.Victory:
-                            Debug.Log("Victory condition met! Using method on SO");
-                            _onVictoryEvent.Raise();
-                            break;
+                // Skip null references
+                if (endGameCondition == null)
+                {
+                    continue;
+                }
 
-                        case EndGameConditionSO.ConditionType.GameOver:
-                            Debug.Log("Game Over condition met! Using method on SO");
-                            _onGameOverEvent.Raise();
-                            break;
-
-                        case EndGameConditionSO.ConditionType.SpecialMet:
-                            Debug.Log("Special condition met! Using method on SO");
-                            _onSpecialConditionMetEvent.Raise();
-                            break;
-
-                        case EndGameConditionSO.ConditionType.SpecialFailed:
-                            Debug.Log("Special condition failed! Using method on SO");
-                            _onSpecialConditionFailedEvent.Raise();
-                            break;
-                    }
+                // Check if condition is met and let it raise its own event
+                if (endGameCondition.CheckCondition())
+                {
+                    //Debug.Log($"End game condition met: {endGameCondition.conditionName} ({endGameCondition.conditionType})");
+                    endGameCondition.RaiseEvent();
+                    return; // Stop checking after first match to avoid multiple triggers
                 }
             }
         }
 
-        #region Deprecated - Old Condition Checking Logic
-        
-        // NOTE: This method is deprecated. Condition logic is now encapsulated in EndGameConditionSO.CheckCondition()
-        // Kept for reference in case rollback is needed during development.
-        
+        #region Testing & Debug Methods
+
         /// <summary>
-        /// [DEPRECATED] Old method that checked conditions directly in the manager.
-        /// Now replaced by delegating to EndGameConditionSO.CheckCondition().
+        /// Logs current state of all stats.
         /// </summary>
-        private void CheckIsConditionsFit(EndGameConditionSO endGameConditionSO)
-        { 
-            switch (endGameConditionSO.conditionType)
+        [ContextMenu("Debug/Log Current Stats")]
+        private void LogCurrentStats()
+        {
+            Debug.Log($"=== CURRENT STATS ===\n" +
+                     $"Budget: {budget:F1}/100\n" +
+                     $"Time: {time:F1}/100\n" +
+                     $"Morale: {morale:F1}/100\n" +
+                     $"Quality: {quality:F1}/100");
+        }
+
+        /// <summary>
+        /// Logs all configured end game conditions and their status.
+        /// </summary>
+        [ContextMenu("Debug/Log All Conditions")]
+        private void LogAllConditions()
+        {
+            if (endGameConditionsList == null || endGameConditionsList.Count == 0)
             {
-                case EndGameConditionSO.ConditionType.Victory:
-                    // Victory: All stats must meet or exceed thresholds
-                    if (budget > endGameConditionSO.budgetThreshold && 
-                        time >= endGameConditionSO.timeThreshold && 
-                        morale >= endGameConditionSO.moraleThreshold && 
-                        quality >= endGameConditionSO.qualityThreshold)
-                    {
-                        Debug.Log("Victory condition met!");
-                        _onVictoryEvent.Raise();
-                    }                    
-                    break;
+                Debug.LogWarning("No end game conditions configured!");
+                return;
+            }
 
-                case EndGameConditionSO.ConditionType.GameOver:
-                    // Game Over: Any stat falls below threshold
-                    if (budget <= endGameConditionSO.budgetThreshold || 
-                        time <= endGameConditionSO.timeThreshold || 
-                        morale <= endGameConditionSO.moraleThreshold || 
-                        quality <= endGameConditionSO.qualityThreshold)
-                    {
-                        Debug.Log("Game Over condition met!");
-                        _onGameOverEvent.Raise();
-                    }
-                    break;
+            Debug.Log($"=== END GAME CONDITIONS ({endGameConditionsList.Count} total) ===");
+            for (int i = 0; i < endGameConditionsList.Count; i++)
+            {
+                var condition = endGameConditionsList[i];
+                if (condition == null)
+                {
+                    Debug.LogWarning($"[{i}] NULL CONDITION");
+                    continue;
+                }
 
-                case EndGameConditionSO.ConditionType.SpecialMet:
-                    // Special positive outcome: All stats exceed thresholds
-                    if (budget > endGameConditionSO.budgetThreshold && 
-                        time > endGameConditionSO.timeThreshold && 
-                        morale > endGameConditionSO.moraleThreshold && 
-                        quality > endGameConditionSO.qualityThreshold)
-                    {
-                        Debug.Log("Special condition met!");
-                        _onSpecialConditionMetEvent.Raise();
-                    }
-                    break;
-
-                case EndGameConditionSO.ConditionType.SpecialFailed:
-                    // Special negative outcome: Any stat falls below threshold
-                    if (budget < endGameConditionSO.budgetThreshold || 
-                        time < endGameConditionSO.timeThreshold || 
-                        morale < endGameConditionSO.moraleThreshold || 
-                        quality < endGameConditionSO.qualityThreshold)
-                    {
-                        Debug.Log("Special condition failed!");
-                        _onSpecialConditionFailedEvent.Raise();
-                    }
-                    break;
+                bool isMet = condition.CheckCondition();
+                string status = isMet ? "✓ MET" : "✗ NOT MET";
+                string eventName = condition.endGameConditionEvent != null 
+                    ? condition.endGameConditionEvent.name 
+                    : "NO EVENT";
+                
+                Debug.Log($"[{i}] {status} | {condition.conditionName} ({condition.conditionType}) → {eventName}");
             }
         }
-        
+
+        /// <summary>
+        /// Resets all stats to their initial values.
+        /// </summary>
+        [ContextMenu("Testing/Reset to Initial Values")]
+        private void ResetToInitialValues()
+        {
+            budget = _initialBudget;
+            time = _initialTime;
+            morale = _initialMorale;
+            quality = _initialQuality;
+
+            _onStatsChangedEvent?.Raise();
+            Debug.Log($"Stats reset to initial values: B:{budget} T:{time} M:{morale} Q:{quality}");
+        }
+
+        /// <summary>
+        /// Tests positive stat change (+10 to all).
+        /// </summary>
+        [ContextMenu("Testing/Test Positive Change (+10 All)")]
+        private void TestPositiveChange()
+        {
+            Debug.Log("Testing positive change: +10 to all stats");
+            UpdateStats(10, 10, 10, 10);
+        }
+
+        /// <summary>
+        /// Tests negative stat change (-10 to all).
+        /// </summary>
+        [ContextMenu("Testing/Test Negative Change (-10 All)")]
+        private void TestNegativeChange()
+        {
+            Debug.Log("Testing negative change: -10 to all stats");
+            UpdateStats(-10, -10, -10, -10);
+        }
+
+        /// <summary>
+        /// Forces Budget to 0 to test Game Over condition.
+        /// </summary>
+        [ContextMenu("Testing/Force Budget to 0")]
+        private void ForceBudgetGameOver()
+        {
+            Debug.Log("Forcing Budget to 0 - should trigger Game Over");
+            budget = 0;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+        [ContextMenu("Testing/Force Time to 0")]
+        private void ForceTimeGameOver()
+        {
+            Debug.Log("Forcing Time to 0 - should trigger Game Over");
+            time = 0;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+        [ContextMenu("Testing/Force Morale to 0")]
+        private void ForceMoraleGameOver()
+        {
+            Debug.Log("Forcing Morale to 0 - should trigger Game Over");
+            morale = 0;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+        [ContextMenu("Testing/Force Quality to 0")]
+        private void ForceQualityGameOver()
+        {
+            Debug.Log("Forcing Quality to 0 - should trigger Game Over");
+            quality = 0;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+        /// <summary>
+        /// Forces all stats to 100 to test Victory condition.
+        /// </summary>
+        [ContextMenu("Testing/Force All Stats to 100")]
+        private void ForceVictory()
+        {
+            Debug.Log("Forcing all stats to 100 - should trigger Victory");
+            budget = time = morale = quality = 100f;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
         #endregion
     }
 }

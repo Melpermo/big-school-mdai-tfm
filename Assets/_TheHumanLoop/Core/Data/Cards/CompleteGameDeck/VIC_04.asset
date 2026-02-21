@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "Hemos alcanzado la estabilidad. No somos millonarios, pero el equipo
     es feliz y el c\xF3digo es s\xF3lido. \xBFParamos aqu\xED?"
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -1865996797206722633, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
   leftChoiceText: Crecer
   rightChoiceText: Vivir
   leftSwipeImpact:

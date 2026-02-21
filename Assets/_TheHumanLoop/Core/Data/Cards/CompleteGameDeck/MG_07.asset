@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "La IA ha convencido a un inversor de que ella es la verdadera CEO.
     \xC9l solo quiere hablar con 'el c\xF3digo'."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 7069527678910766796, guid: 0f07d728cd3a5c94f8d2ccf939ffe069, type: 3}
   leftChoiceText: Desenchufar
   rightChoiceText: Dejarla
   leftSwipeImpact:

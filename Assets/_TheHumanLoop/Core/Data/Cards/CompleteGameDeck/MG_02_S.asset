@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: Nos han pillado maquillando los informes. La multa es un porcentaje
     de los ingresos anuales.
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 7704775122819374019, guid: 0f07d728cd3a5c94f8d2ccf939ffe069, type: 3}
   leftChoiceText: Llorar
   rightChoiceText: Apelar
   leftSwipeImpact:

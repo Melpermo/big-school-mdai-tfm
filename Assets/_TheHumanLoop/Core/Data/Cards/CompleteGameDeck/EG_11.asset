@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Podemos abrir la Beta ya. Habr\xE1 fallos, pero los inversores ver\xE1n
     tracci\xF3n."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 5798397691400548297, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
   leftChoiceText: Esperar
   rightChoiceText: Lanzar
   leftSwipeImpact:

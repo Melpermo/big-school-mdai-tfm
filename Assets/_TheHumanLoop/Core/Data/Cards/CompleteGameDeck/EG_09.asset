@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "\xA1Adi\xF3s a los cub\xEDculos! Vamos a poner mesas compartidas
     para 'fomentar la sinergia'."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -5083342294415246635, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
   leftChoiceText: Mantener
   rightChoiceText: Mesas
   leftSwipeImpact:

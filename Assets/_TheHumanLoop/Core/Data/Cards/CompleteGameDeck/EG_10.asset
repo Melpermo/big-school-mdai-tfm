@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "Ha salido un estudio que duplica la eficiencia, pero est\xE1 en mandar\xEDn.
     Nadie lo entiende."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 6564803832142844947, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
   leftChoiceText: Pasar
   rightChoiceText: Aplicar
   leftSwipeImpact:

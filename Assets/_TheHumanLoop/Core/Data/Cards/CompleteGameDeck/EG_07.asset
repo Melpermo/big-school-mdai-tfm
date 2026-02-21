@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Un influencer de LinkedIn quiere ser 'Advisor'. Pide equity y una
     silla ergon\xF3mica cara."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -4141451225097971863, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Rechazar
   rightChoiceText: Contratar
   leftSwipeImpact:

@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "Google ha ofrecido el triple a tu CTO. Si se va, el c\xF3digo se
     volver\xE1 ilegible en una semana."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -89245743681792536, guid: 8f5da65bb09728d49be8ca7543c5b73a, type: 3}
   leftChoiceText: Dejarle
   rightChoiceText: Contraoferta
   leftSwipeImpact:

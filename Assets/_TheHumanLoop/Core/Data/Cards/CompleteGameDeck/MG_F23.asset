@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: "Un bot\xF3n en la web baila cuando pasas el rat\xF3n. A nadie le
     importa, pero el dise\xF1ador no duerme."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 416162564508286087, guid: 4e7442af9de6f894dad6c6efc3200fb1, type: 3}
   leftChoiceText: Ignorar
   rightChoiceText: Arreglar
   leftSwipeImpact:

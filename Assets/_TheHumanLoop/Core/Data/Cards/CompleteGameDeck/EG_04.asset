@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: "El modelo est\xE1 sobrecalentando los servidores. Necesitamos refrigeraci\xF3n
     l\xEDquida."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 2372736877782918235, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Ventilador
   rightChoiceText: Comprar
   leftSwipeImpact:

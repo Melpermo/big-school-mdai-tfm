@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "Los empleados que despediste han formado una IA competidora. Han
     hackeado nuestra oficina y la temperatura est\xE1 a 45 grados."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 2604709043266481889, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
   leftChoiceText: Rendirse
   rightChoiceText: Negociar
   leftSwipeImpact:

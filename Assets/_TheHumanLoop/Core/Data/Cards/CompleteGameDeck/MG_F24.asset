@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "La IA ha aprendido a pedir comida a domicilio sola. Ha gastado 50\u20AC
     en sushi premium para el servidor."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -4302892504823402635, guid: 4e7442af9de6f894dad6c6efc3200fb1, type: 3}
   leftChoiceText: "Rega\xF1ar"
   rightChoiceText: Buen provecho
   leftSwipeImpact:

@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Resulta que la 'librer\xEDa m\xE1gica' era de Disney. Sus abogados
     est\xE1n en la puerta."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 7918247251894135043, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Pagar
   rightChoiceText: Ignorar
   leftSwipeImpact:

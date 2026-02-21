@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: "El c\xF3digo parece espagueti. Si no limpiamos ahora, el sistema
     colapsar\xE1 pronto."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 1961896736146609576, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
   leftChoiceText: Seguir
   rightChoiceText: Limpiar
   leftSwipeImpact:

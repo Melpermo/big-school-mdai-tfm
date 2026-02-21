@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Te han invitado a hablar de \xE9tica. Te quitar\xE1 tiempo, pero
     dar\xE1s buena imagen."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -2955554014127944699, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
   leftChoiceText: Declinar
   rightChoiceText: Ir
   leftSwipeImpact:

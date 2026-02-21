@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Somos el unicornio del a\xF1o. Wall Street nos espera. \xBFQuieres
     tocar la campana y jubilarte?"
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 1240252703462659968, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
   leftChoiceText: Seguir
   rightChoiceText: Vender
   leftSwipeImpact:

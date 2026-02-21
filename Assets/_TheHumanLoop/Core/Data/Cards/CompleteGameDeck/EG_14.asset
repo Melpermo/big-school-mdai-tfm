@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "Pasamos el test de Turing porque la IA convenci\xF3 al juez de que
     \xC9L era un robot."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 208303752999809244, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
   leftChoiceText: Preocupante
   rightChoiceText: "\xA1\xC9xito!"
   leftSwipeImpact:

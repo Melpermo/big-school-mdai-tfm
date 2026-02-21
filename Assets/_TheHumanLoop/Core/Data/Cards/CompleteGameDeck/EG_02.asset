@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "\xBFPizza gratis a cambio de trabajar el domingo? Es para crear equipo,
     no por el trabajo... obvio."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 8844620218694432836, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Pagar horas
   rightChoiceText: Obligar
   leftSwipeImpact:

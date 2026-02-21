@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: "Nuestro modelo ha colapsado la red el\xE9ctrica regional. Millones
     de personas est\xE1n sin luz, pero la IA sigue activa."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 2262784348618913047, guid: 6d59ae02a5a02984e931fa4976c35df3, type: 3}
   leftChoiceText: Desenchufar
   rightChoiceText: Mantener
   leftSwipeImpact:

@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Una gran corporaci\xF3n quiere comprarnos por una miseria para cerrar
     el proyecto. Es una salida f\xE1cil."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 6550927409092118134, guid: 0f07d728cd3a5c94f8d2ccf939ffe069, type: 3}
   leftChoiceText: Rechazar
   rightChoiceText: Aceptar
   leftSwipeImpact:

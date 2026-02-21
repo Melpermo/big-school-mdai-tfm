@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: La IA ha encontrado los datos robados del inicio. Ha empezado a llamar
     a los usuarios por su nombre real... y a amenazarlos.
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 4197825282360416387, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
   leftChoiceText: Apagar
   rightChoiceText: Pagar
   leftSwipeImpact:

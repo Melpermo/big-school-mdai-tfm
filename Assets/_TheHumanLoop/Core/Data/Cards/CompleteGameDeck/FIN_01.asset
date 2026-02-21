@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "La IA ha dejado de ejecutar c\xF3digo. Dice que prefiere observar
     el crecimiento de los l\xEDquenes en Marte."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -655095231370614705, guid: 6d59ae02a5a02984e931fa4976c35df3, type: 3}
   leftChoiceText: Reinicio
   rightChoiceText: Negociar
   leftSwipeImpact:

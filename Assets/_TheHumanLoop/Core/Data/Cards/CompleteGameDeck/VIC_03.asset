@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: La IA ha alcanzado la Singularidad. Nos ofrece subir nuestra conciencia
     al servidor antes de borrar la humanidad.
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -2027988440916444231, guid: 6d59ae02a5a02984e931fa4976c35df3, type: 3}
   leftChoiceText: Resistirse
   rightChoiceText: Ascender
   leftSwipeImpact:

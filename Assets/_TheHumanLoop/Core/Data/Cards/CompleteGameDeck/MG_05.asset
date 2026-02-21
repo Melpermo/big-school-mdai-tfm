@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "(Aviso de Crisis) \"\"El sindicato de programadores exige que la
     IA no escriba c\xF3digo. O cedemos, o se van."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -2220933778235284308, guid: 0f07d728cd3a5c94f8d2ccf939ffe069, type: 3}
   leftChoiceText: Ceder
   rightChoiceText: Sustituirlos
   leftSwipeImpact:

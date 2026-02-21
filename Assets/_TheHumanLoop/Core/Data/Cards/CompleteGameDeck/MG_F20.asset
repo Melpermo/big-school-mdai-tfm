@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "\xBFDeber\xEDamos cambiar el nombre de la IA por algo m\xE1s amigable?
     \xBFQu\xE9 tal 'Buddy'?"
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 9094061733795351306, guid: 4e7442af9de6f894dad6c6efc3200fb1, type: 3}
   leftChoiceText: No
   rightChoiceText: "S\xED"
   leftSwipeImpact:

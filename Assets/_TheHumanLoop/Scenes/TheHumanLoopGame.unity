@@ -292,6 +292,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &610208494 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9000162833362032849, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
+  m_PrefabInstance: {fileID: 4031656332401359523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae46bdc8dae389f45b6ad57058987241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndGameUIHandler
 --- !u!114 &619094416 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3536163809794297987, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
@@ -657,6 +668,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77b0f108b3cf6844b7137ebd8eef598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Core.TimeManager
+--- !u!1 &1313989014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8636098336572490777, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
+  m_PrefabInstance: {fileID: 4031656332401359523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1313989018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313989014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 1013c2cc04972b04c8794a835e0233bf, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 610208494}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: PlayDefeatSequence
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 6a7b93aeeb5e23b419d9b228d5629d60, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &1313989019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313989014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: e3ee88fda3fe9014392e550198dfe6a5, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 610208494}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: PlayDefeatSequence
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b007b246ea2bf7f46becdd1f3b6b36f2, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
 --- !u!114 &1459423438 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4200592242861784740, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
@@ -848,9 +924,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 798966543723891337, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798966543723891337, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798966543723891337, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798966543723891337, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1917695759384010258, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1189.9847
+      value: -1189.9548
       objectReference: {fileID: 0}
     - target: {fileID: 1981520056649102128, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -858,14 +950,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3034885242733255138, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1189.9846
+      value: -1189.9547
       objectReference: {fileID: 0}
     - target: {fileID: 3169645542045791424, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4200847975992180300, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200847975992180300, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200847975992180300, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4200847975992180300, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4554796615448907460, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236494833389088173, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236494833389088173, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236494833389088173, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236494833389088173, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6292298095931712766, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
@@ -898,7 +1022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6422341674438883638, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1189.9847
+      value: -1189.9548
       objectReference: {fileID: 0}
     - target: {fileID: 6836378830342121529, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -930,8 +1054,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7528517285462855155, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1189.9847
+      value: -1189.9548
       objectReference: {fileID: 0}
+    - target: {fileID: 8463588596852444667, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 634146966}
     - target: {fileID: 8590252385531801848, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -945,6 +1073,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8590252385531801848, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658406004481370717, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658406004481370717, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658406004481370717, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658406004481370717, guid: f6494e2368821ff4ca6e33cbded271f7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -1033,6 +1177,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5392364117677873200, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: e309802837f047148b4ad175fe5e866e, type: 2}
+    - target: {fileID: 5392364117677873200, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayDefeatSequence
+      objectReference: {fileID: 0}
     - target: {fileID: 6941493429617087356, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
       propertyPath: prefix
       value: SEMANA
@@ -1049,6 +1201,14 @@ PrefabInstance:
       propertyPath: timeManager
       value: 
       objectReference: {fileID: 1242946914}
+    - target: {fileID: 7447960797753242888, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: e3da0ab7be6046a409ca10edb380c9d8, type: 2}
+    - target: {fileID: 7447960797753242888, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayDefeatSequence
+      objectReference: {fileID: 0}
     - target: {fileID: 7582888125318786533, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
       propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1080,7 +1240,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8636098336572490777, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1313989019}
+    - targetCorrespondingSourceObject: {fileID: 8636098336572490777, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1313989018}
   m_SourcePrefab: {fileID: 100100000, guid: bacd16c632c16664c9de5c7e401f6d02, type: 3}
 --- !u!1001 &8004649909746699753
 PrefabInstance:
@@ -1138,6 +1304,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManagers
       objectReference: {fileID: 0}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: _onEndGameConditionMetEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f90eb9c19ac92e45bd0097e82780436, type: 2}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: endGameConditionsList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: 'endGameConditionsList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b13f8fe3ea623aa42842777b683226ae, type: 2}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: 'endGameConditionsList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 14cb186c86ec4654687b13a52778f460, type: 2}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: 'endGameConditionsList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b007b246ea2bf7f46becdd1f3b6b36f2, type: 2}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: 'endGameConditionsList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a7b93aeeb5e23b419d9b228d5629d60, type: 2}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: 'endGameConditionsList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d518691185621846a0a6e3448cf05db, type: 2}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: 'endGameConditionsList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: gameEventEndConditionsList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: gameEventEndConditionsList.Array.data[0].eventToRaise
+      value: 
+      objectReference: {fileID: 11400000, guid: 465834c4bcfd9a94b86da8f3ed3f63f6, type: 2}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: gameEventEndConditionsList.Array.data[0].conditionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278398183397359111, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: gameEventEndConditionsList.Array.data[0].endGameConditionEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f90eb9c19ac92e45bd0097e82780436, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

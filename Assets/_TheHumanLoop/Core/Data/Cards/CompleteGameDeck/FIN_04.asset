@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "La IA ha comprado 10,000 drones de reparto. No sabemos para qu\xE9,
     pero el presupuesto est\xE1 tiritando."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 7114151097621143970, guid: 6d59ae02a5a02984e931fa4976c35df3, type: 3}
   leftChoiceText: Cancelar
   rightChoiceText: Ver
   leftSwipeImpact:
