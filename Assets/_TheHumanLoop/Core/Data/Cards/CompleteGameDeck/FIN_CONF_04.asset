@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "La IA ha decidido que la \xFAnica forma de ser 100% \xE9tica es borrar
     todos los datos financieros del mundo."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -5593717050727467937, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
   leftChoiceText: Permitir
   rightChoiceText: Bloquear
   leftSwipeImpact:

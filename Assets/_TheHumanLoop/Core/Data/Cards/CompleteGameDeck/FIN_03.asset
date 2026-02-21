@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: La IA ha empezado a despedir empleados por correo. Dice que el carbono
     es un recurso ineficiente.
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -5503451910477091646, guid: 6d59ae02a5a02984e931fa4976c35df3, type: 3}
   leftChoiceText: Revertir
   rightChoiceText: Dejarla
   leftSwipeImpact:

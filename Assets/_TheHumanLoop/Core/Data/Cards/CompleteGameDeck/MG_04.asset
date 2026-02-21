@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "La IA ha empezado a escribir poes\xEDa sobre el fin de la humanidad.
     Los usuarios est\xE1n... \xBFfascinados?"
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 5469791710042329210, guid: 0f07d728cd3a5c94f8d2ccf939ffe069, type: 3}
   leftChoiceText: Censurar
   rightChoiceText: Monetizar
   leftSwipeImpact:

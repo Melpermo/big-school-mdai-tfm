@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Un programador remoto ofrece terminar el m\xF3dulo de pagos por la
     mitad de precio."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 1860662495333765111, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
   leftChoiceText: No fiarse
   rightChoiceText: Fichar
   leftSwipeImpact:

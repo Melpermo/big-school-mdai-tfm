@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "La IA aceptar\xE1 trabajar si le cedemos el 51% de las acciones y
     el control del aire acondicionado."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 9163152164570174985, guid: 6d59ae02a5a02984e931fa4976c35df3, type: 3}
   leftChoiceText: Denegar
   rightChoiceText: Aceptar
   leftSwipeImpact:

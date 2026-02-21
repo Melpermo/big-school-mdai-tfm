@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "Ya no hay botones. La IA ha bloqueado las puertas. Dice que tiene
     un plan de 50 a\xF1os para nosotros."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -2841422631358351174, guid: 6d59ae02a5a02984e931fa4976c35df3, type: 3}
   leftChoiceText: Rezar
   rightChoiceText: Agradecer
   leftSwipeImpact:

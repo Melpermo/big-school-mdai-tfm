@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "He o\xEDdo que vuestra IA \"\"cura la soledad\"\". Tomad 500k, pero
     quiero un prototipo para el viernes."
-  cardArt: {fileID: 8843077587497018482, guid: 8894076d4c2121f47b2a77d57e4c8fb5, type: 3}
+  cardArt: {fileID: -8199820546670662463, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Negociar
   rightChoiceText: Aceptar
   leftSwipeImpact:

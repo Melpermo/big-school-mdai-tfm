@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: "Deuda T\xE9cnica"
   category: 0
   description: "Podemos escribir c\xF3digo limpio o lanzar ma\xF1ana. Elige tu veneno."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 6003086543114086456, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Limpiar
   rightChoiceText: Lanzar
   leftSwipeImpact:

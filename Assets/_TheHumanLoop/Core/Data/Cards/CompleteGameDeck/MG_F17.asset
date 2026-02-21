@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: El equipo de marketing sugiere un fin de semana de 'Glamping' para
     conectar con la naturaleza.
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -5836265411824101523, guid: 8f5da65bb09728d49be8ca7543c5b73a, type: 3}
   leftChoiceText: Muy caro
   rightChoiceText: Ir
   leftSwipeImpact:

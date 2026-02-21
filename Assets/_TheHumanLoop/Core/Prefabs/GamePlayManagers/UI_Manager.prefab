@@ -69,7 +69,7 @@ MonoBehaviour:
   _endGameBG_image: {fileID: 0}
   _backgroundDimmer: {fileID: 0}
   _dropDistance: 500
---- !u!1 &6234212179630614011
+--- !u!1 &5174003459578700157
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,100 +77,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7716973088016683225}
-  - component: {fileID: 5835655125358750387}
-  - component: {fileID: 5805587337875716415}
-  - component: {fileID: 1806755160515322909}
-  - component: {fileID: 8216157631064828560}
+  - component: {fileID: 7733026952276004428}
+  - component: {fileID: 5863768369629440003}
   m_Layer: 0
-  m_Name: EndGameUI_Listeners
+  m_Name: SpecialMetEvents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7716973088016683225
+--- !u!4 &7733026952276004428
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234212179630614011}
+  m_GameObject: {fileID: 5174003459578700157}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4952367315190643865}
+  m_Father: {fileID: 7716973088016683225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5835655125358750387
+--- !u!114 &5863768369629440003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234212179630614011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
-  gameEvent: {fileID: 11400000, guid: e1cac95e3b9da644db9485a2aa020121, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
-        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
-        m_MethodName: SelectConditionTypeToShow
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: b13f8fe3ea623aa42842777b683226ae, type: 2}
-          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delayBeforeInvoke: 0
-  usingAsyncTaskMethods: 0
---- !u!114 &5805587337875716415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234212179630614011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
-  gameEvent: {fileID: 11400000, guid: 465834c4bcfd9a94b86da8f3ed3f63f6, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
-        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
-        m_MethodName: SelectConditionTypeToShow
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: b9087e1df9cd651429aa90badb1419b0, type: 2}
-          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delayBeforeInvoke: 0
-  usingAsyncTaskMethods: 0
---- !u!114 &1806755160515322909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6234212179630614011}
+  m_GameObject: {fileID: 5174003459578700157}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
@@ -194,36 +131,40 @@ MonoBehaviour:
         m_CallState: 2
   delayBeforeInvoke: 0
   usingAsyncTaskMethods: 0
---- !u!114 &8216157631064828560
-MonoBehaviour:
+--- !u!1 &6234212179630614011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7716973088016683225}
+  m_Layer: 0
+  m_Name: EndGameUI_Listeners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7716973088016683225
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6234212179630614011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
-  gameEvent: {fileID: 11400000, guid: 685a80313239c654f9a5bd950623cd97, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
-        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
-        m_MethodName: SelectConditionTypeToShow
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2e0214bbeda9eb34c9f9e7ba4e530293, type: 2}
-          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delayBeforeInvoke: 0
-  usingAsyncTaskMethods: 0
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5457988069815635355}
+  - {fileID: 7733026952276004428}
+  - {fileID: 5561275530924035754}
+  m_Father: {fileID: 4952367315190643865}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6804535469944617847
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +252,192 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!1 &7472301242308545734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5457988069815635355}
+  - component: {fileID: 6409176390078874955}
+  - component: {fileID: 8892983211640084250}
+  m_Layer: 0
+  m_Name: GlobalEndGameEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5457988069815635355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472301242308545734}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7716973088016683225}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6409176390078874955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472301242308545734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 465834c4bcfd9a94b86da8f3ed3f63f6, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9000162833362032849}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: SelectConditionTypeToShow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b9087e1df9cd651429aa90badb1419b0, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &8892983211640084250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472301242308545734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: e1cac95e3b9da644db9485a2aa020121, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9000162833362032849}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: SelectConditionTypeToShow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b13f8fe3ea623aa42842777b683226ae, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!1 &8636098336572490777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5561275530924035754}
+  - component: {fileID: 5392364117677873200}
+  - component: {fileID: 7447960797753242888}
+  m_Layer: 0
+  m_Name: SpecialFailEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5561275530924035754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636098336572490777}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7716973088016683225}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5392364117677873200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636098336572490777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 685a80313239c654f9a5bd950623cd97, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9000162833362032849}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: SelectConditionTypeToShow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 14cb186c86ec4654687b13a52778f460, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &7447960797753242888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636098336572490777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 4d0d4f77615afa943b5320eed25246e2, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9000162833362032849}
+        m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
+        m_MethodName: SelectConditionTypeToShow
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 8d518691185621846a0a6e3448cf05db, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Data.EndGameConditionSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

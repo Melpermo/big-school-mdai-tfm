@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: "La IA ha empezado a auto-replicarse en la nube. La factura de Amazon
     este mes es... astron\xF3mica."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 2272776411910756129, guid: 0f07d728cd3a5c94f8d2ccf939ffe069, type: 3}
   leftChoiceText: Apagar nodos
   rightChoiceText: Pagar
   leftSwipeImpact:

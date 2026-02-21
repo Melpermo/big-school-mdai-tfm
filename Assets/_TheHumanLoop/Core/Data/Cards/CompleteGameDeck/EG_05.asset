@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 4
   description: "\xBFUsamos los chats privados de la empresa para entrenar el filtro
     de spam? Nadie se enterar\xE1."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -6339380114163438097, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Es ilegal
   rightChoiceText: Hazlo
   leftSwipeImpact:

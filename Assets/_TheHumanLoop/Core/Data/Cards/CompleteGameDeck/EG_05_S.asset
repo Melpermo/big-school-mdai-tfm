@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "Alguien ha descubierto que la IA cita textualmente los correos del
     CEO. Hay p\xE1nico."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -2554921156880035551, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Mentir
   rightChoiceText: Despedir
   leftSwipeImpact:

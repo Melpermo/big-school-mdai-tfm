@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "Hemos impreso 500 sudaderas con un error en el logo. \xBFLas repartimos
     igual?"
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -8944171126747240155, guid: 4e7442af9de6f894dad6c6efc3200fb1, type: 3}
   leftChoiceText: Basura
   rightChoiceText: Repartir
   leftSwipeImpact:

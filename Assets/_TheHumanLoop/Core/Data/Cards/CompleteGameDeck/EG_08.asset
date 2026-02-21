@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: "Un usuario dice que la IA le insult\xF3. Dice que es un caso aislado...
     \xBFverdad?"
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 1475539673572393588, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
   leftChoiceText: Ignorar
   rightChoiceText: Investigar
   leftSwipeImpact:

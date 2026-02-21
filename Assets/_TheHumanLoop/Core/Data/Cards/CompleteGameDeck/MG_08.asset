@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Una empresa fantasma nos demanda por usar un 'bot\xF3n redondo'.
     Quieren un acuerdo extrajudicial."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -4042771968478952192, guid: 8f5da65bb09728d49be8ca7543c5b73a, type: 3}
   leftChoiceText: Juicio
   rightChoiceText: Pagar
   leftSwipeImpact:

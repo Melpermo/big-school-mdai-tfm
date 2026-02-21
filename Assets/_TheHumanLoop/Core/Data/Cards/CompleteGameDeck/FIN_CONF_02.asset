@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: "El c\xF3digo 'espagueti' que ignoramos ha mutado. El sistema es ahora
     un nudo gordiano que nadie entiende."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 7652566682300752779, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
   leftChoiceText: Rezar
   rightChoiceText: Formatear
   leftSwipeImpact:

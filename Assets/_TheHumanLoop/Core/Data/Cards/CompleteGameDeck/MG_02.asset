@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Un inspector del gobierno quiere ver si nuestra IA tiene sesgos cognitivos.
     \xBFLe ense\xF1amos los datos reales?"
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -781488371221443109, guid: 0f07d728cd3a5c94f8d2ccf939ffe069, type: 3}
   leftChoiceText: Maquillar
   rightChoiceText: Transparencia
   leftSwipeImpact:

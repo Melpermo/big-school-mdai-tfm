@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Google nos ofrece una cifra absurda por la empresa solo para que
     dejemos de existir. \xBFAceptas?"
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -3248421168088846704, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
   leftChoiceText: No
   rightChoiceText: Retiro
   leftSwipeImpact:

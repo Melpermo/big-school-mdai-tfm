@@ -18,5 +18,6 @@ MonoBehaviour:
   timeThreshold: 90
   moraleThreshold: 90
   qualityThreshold: 90
-  endGameMessage: Victory MEssage
+  endGameConditionEvent: {fileID: 11400000, guid: e1cac95e3b9da644db9485a2aa020121, type: 2}
+  endGameMessage: "Nadie daba nada por t\xED.\nHas demostrado que todos se equvocavan.  "
   endGameBG_image: {fileID: -732806593422712635, guid: 06a9ef8c2fd55b045ac9afde59e9b294, type: 3}

@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: Para llegar al 100% de calidad, la IA necesita procesar los cerebros
     del equipo de QA. Literalmente.
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 8737735378387748575, guid: 6d59ae02a5a02984e931fa4976c35df3, type: 3}
   leftChoiceText: Ni hablar
   rightChoiceText: Adelante
   leftSwipeImpact:

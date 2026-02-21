@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb0a5be7365e3954893031836c603f35, type: 3}
-  m_Name: FailBudgetEndGameCondition
+  m_Name: GameOverEndGameCondition
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.EndGameConditionSO
-  conditionName: Special Failed
-  conditionType: 3
-  budgetThreshold: 20
+  conditionName: Game Over
+  conditionType: 1
+  budgetThreshold: 0
   timeThreshold: 0
   moraleThreshold: 0
   qualityThreshold: 0
-  endGameMessage: FailEndCondition message
-  endGameBG_image: {fileID: 2208499457303467514, guid: 7cdfd204901cd3842955513228a23132, type: 3}
+  endGameConditionEvent: {fileID: 11400000, guid: 465834c4bcfd9a94b86da8f3ed3f63f6, type: 2}
+  endGameMessage: "No se puede hacer peor. Ma\xF1ana ve a recursos humanos."
+  endGameBG_image: {fileID: -2422919567074118822, guid: 135ef4653790dd4479df9ade84d0156b, type: 3}

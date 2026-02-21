@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 0
   description: "Alguien ha dejado un bucket de AWS abierto. Los datos de 1 mill\xF3n
     de usuarios est\xE1n en Reddit."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -937655609958052846, guid: 8f5da65bb09728d49be8ca7543c5b73a, type: 3}
   leftChoiceText: Ocultarlo
   rightChoiceText: Notificar
   leftSwipeImpact:

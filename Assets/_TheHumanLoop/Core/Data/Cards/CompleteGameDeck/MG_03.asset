@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "El lanzamiento de la v2.0 es inminente. El equipo lleva 3 d\xEDas
     durmiendo bajo los escritorios."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -8154463603827229340, guid: 0f07d728cd3a5c94f8d2ccf939ffe069, type: 3}
   leftChoiceText: Seguir
   rightChoiceText: Descanso
   leftSwipeImpact:

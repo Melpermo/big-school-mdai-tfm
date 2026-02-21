@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 1
   description: "\xBFY si vendemos la oficina f\xEDsica y obligamos a todos a trabajar
     en un metaverso pixelado?"
-  cardArt: {fileID: 0}
+  cardArt: {fileID: -1701823843165975332, guid: 8f5da65bb09728d49be8ca7543c5b73a, type: 3}
   leftChoiceText: No
   rightChoiceText: "\xA1Ahorro!"
   leftSwipeImpact:

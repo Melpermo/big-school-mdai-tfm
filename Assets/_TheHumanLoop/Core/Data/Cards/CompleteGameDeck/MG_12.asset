@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: Venture Capital nos ofrece 10M, pero exigen control total del consejo
     y despedir al 20%.
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 1529713280292563406, guid: 8f5da65bb09728d49be8ca7543c5b73a, type: 3}
   leftChoiceText: Rechazar
   rightChoiceText: Aceptar
   leftSwipeImpact:

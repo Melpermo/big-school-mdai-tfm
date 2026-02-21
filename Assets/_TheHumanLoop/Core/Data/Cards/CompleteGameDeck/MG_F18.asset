@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Has escrito un hilo viral sobre c\xF3mo tu IA va a salvar el mundo.
     Los likes suben sin parar."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 9111635855703329980, guid: 4e7442af9de6f894dad6c6efc3200fb1, type: 3}
   leftChoiceText: Borrar
   rightChoiceText: Disfrutar
   leftSwipeImpact:

@@ -16,7 +16,7 @@ MonoBehaviour:
   category: 2
   description: "Estamos en n\xFAmeros rojos. Un pr\xE9stamo r\xE1pido nos dar\xEDa
     aire, pero con intereses criminales."
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 1240252703462659968, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
   leftChoiceText: Rechazar
   rightChoiceText: Firmar
   leftSwipeImpact:
