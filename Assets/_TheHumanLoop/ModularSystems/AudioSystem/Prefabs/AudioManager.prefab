@@ -240,10 +240,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3444135068256974619}
-  - component: {fileID: 5853998559625537797}
-  - component: {fileID: 3111291359220846412}
-  - component: {fileID: 8051173248354793960}
-  - component: {fileID: 6793683461058922407}
   m_Layer: 0
   m_Name: EndGameListeners
   m_TagString: Untagged
@@ -263,16 +259,52 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8437184549881342611}
+  - {fileID: 4987990381685678421}
+  - {fileID: 8902190255258670657}
   m_Father: {fileID: 5883700702310380110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5853998559625537797
+--- !u!1 &3067801613610106813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8437184549881342611}
+  - component: {fileID: 8445912733255131110}
+  - component: {fileID: 5540503204291147367}
+  m_Layer: 0
+  m_Name: GlobalEndGameEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8437184549881342611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3067801613610106813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3444135068256974619}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8445912733255131110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2598142590827713561}
+  m_GameObject: {fileID: 3067801613610106813}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
@@ -296,13 +328,13 @@ MonoBehaviour:
         m_CallState: 2
   delayBeforeInvoke: 0
   usingAsyncTaskMethods: 0
---- !u!114 &3111291359220846412
+--- !u!114 &5540503204291147367
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2598142590827713561}
+  m_GameObject: {fileID: 3067801613610106813}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
@@ -318,66 +350,6 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: afaf14834d44e90408f0d048c5b3bb74, type: 2}
-          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delayBeforeInvoke: 0
-  usingAsyncTaskMethods: 0
---- !u!114 &8051173248354793960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2598142590827713561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
-  gameEvent: {fileID: 11400000, guid: 4d0d4f77615afa943b5320eed25246e2, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8272081390828434963}
-        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 535a9b088787eee4393e2145780ab54a, type: 2}
-          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delayBeforeInvoke: 0
-  usingAsyncTaskMethods: 0
---- !u!114 &6793683461058922407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2598142590827713561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
-  gameEvent: {fileID: 11400000, guid: 685a80313239c654f9a5bd950623cd97, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8272081390828434963}
-        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
           m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -515,6 +487,161 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &6808266680109670885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4987990381685678421}
+  - component: {fileID: 2959828830771441741}
+  - component: {fileID: 5234893345709563701}
+  - component: {fileID: 7373696660398302376}
+  - component: {fileID: 3437770868136394467}
+  m_Layer: 0
+  m_Name: FailEndGameEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4987990381685678421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808266680109670885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3444135068256974619}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2959828830771441741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808266680109670885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: e309802837f047148b4ad175fe5e866e, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8272081390828434963}
+        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: afaf14834d44e90408f0d048c5b3bb74, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &5234893345709563701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808266680109670885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: e3ee88fda3fe9014392e550198dfe6a5, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8272081390828434963}
+        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: afaf14834d44e90408f0d048c5b3bb74, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &7373696660398302376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808266680109670885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 1013c2cc04972b04c8794a835e0233bf, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8272081390828434963}
+        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: afaf14834d44e90408f0d048c5b3bb74, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &3437770868136394467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808266680109670885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: e3da0ab7be6046a409ca10edb380c9d8, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8272081390828434963}
+        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: afaf14834d44e90408f0d048c5b3bb74, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
 --- !u!1 &6902820094822113383
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +853,161 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: b3baa628fb8b2cb4e9db0fa8bf189c4a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!1 &8213951555035238203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8902190255258670657}
+  - component: {fileID: 8177953312167616884}
+  - component: {fileID: 5924991398591540489}
+  - component: {fileID: 3914191882610532794}
+  - component: {fileID: 78303476202179240}
+  m_Layer: 0
+  m_Name: MetEndGameEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8902190255258670657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213951555035238203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3444135068256974619}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8177953312167616884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213951555035238203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 1512b4061a2260e48ae8b16c8b4a7f3d, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8272081390828434963}
+        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 535a9b088787eee4393e2145780ab54a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &5924991398591540489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213951555035238203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 553c52cc928ac4649b3c231c73d25a49, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8272081390828434963}
+        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 535a9b088787eee4393e2145780ab54a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &3914191882610532794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213951555035238203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: c6abf5d0def53fc42aa1a02ab172d583, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8272081390828434963}
+        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 535a9b088787eee4393e2145780ab54a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &78303476202179240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213951555035238203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 4ff8d5c1ad6a3554389311e19aedbe2e, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8272081390828434963}
+        m_TargetAssemblyTypeName: HumanLoop.AudioSystem.AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 535a9b088787eee4393e2145780ab54a, type: 2}
           m_ObjectArgumentAssemblyTypeName: HumanLoop.AudioSystem.SoundEventSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

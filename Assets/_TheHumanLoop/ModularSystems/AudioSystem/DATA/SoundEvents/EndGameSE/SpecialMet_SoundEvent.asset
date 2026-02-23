@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: SpecialMet_SoundEvent
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.SoundEventSO
   _clips:
-  - {fileID: 8300000, guid: 9aeb56682df76874fa06a58c6e5dd731, type: 3}
-  - {fileID: 8300000, guid: 4fc2c643eee610540ae440cf9a767414, type: 3}
+  - {fileID: 8300000, guid: 5303ebae9cf386a488090d5f6a6618d9, type: 3}
+  - {fileID: 8300000, guid: bf2a825f4b56d8d4f8bd055a779fff7e, type: 3}
+  - {fileID: 8300000, guid: 27df216441e41ee48816bb061d3ca789, type: 3}
+  - {fileID: 8300000, guid: 6615d104569868e4aaaa1245b859a792, type: 3}
   _config: {fileID: 11400000, guid: 2e1e0acc49df6ae47aafe37adf133455, type: 2}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CardAdded
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.SoundEventSO
   _clips:
-  - {fileID: 8300000, guid: 64829f8f1085f524e96190b961b0b9e6, type: 3}
+  - {fileID: 8300000, guid: 98fab4394d2980546998c0479a1bb3bf, type: 3}
   _config: {fileID: 11400000, guid: 2e1e0acc49df6ae47aafe37adf133455, type: 2}

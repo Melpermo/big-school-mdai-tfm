@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MisteryMusic_SoundEventt
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.SoundEventSO
   _clips:
-  - {fileID: 8300000, guid: 1816e8a51096d944db7e9282ed3d1ca3, type: 3}
+  - {fileID: 8300000, guid: e9dc5e058d0f0cf4097c73cc09f78f1b, type: 3}
   _config: {fileID: 11400000, guid: 84136ed5283517a4197844cfdf90a249, type: 2}

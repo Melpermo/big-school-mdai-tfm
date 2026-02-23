@@ -36,3 +36,7 @@ MonoBehaviour:
     value: 35
   nextCardLeft: {fileID: 0}
   nextCardRight: {fileID: 0}
+  titleID: 185
+  descriptionID: 104
+  leftChoiceID: 34
+  rightChoiceID: 186

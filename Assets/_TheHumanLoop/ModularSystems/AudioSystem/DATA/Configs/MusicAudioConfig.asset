@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MusicAudioConfig
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.AudioConfigurationSO
   OutputGroup: {fileID: -8722124965332386260, guid: 9186305a05ae28149a9e834e5e27108c, type: 2}
-  Volume: 1
+  Volume: 0.6
   Pitch: 1
   PitchVariation: 0
   Loop: 1

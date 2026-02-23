@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AmbientAudioConfig
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.AudioConfigurationSO
   OutputGroup: {fileID: -1948960664349581709, guid: 9186305a05ae28149a9e834e5e27108c, type: 2}
-  Volume: 1
+  Volume: 0.9
   Pitch: 1
   PitchVariation: 0
   Loop: 0

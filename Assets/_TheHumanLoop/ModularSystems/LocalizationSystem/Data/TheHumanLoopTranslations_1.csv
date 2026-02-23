@@ -1,0 +1,129 @@
+Id,Spanish,English
+1,Inversor Ángel,Angel Investor
+2,Crunch de Pizza,Pizza Crunch
+3,El Becario,The Intern
+4,Copyright,Copyright
+5,Servidor Humo,Smoke Server
+6,Ética Líquida,Liquid Ethics
+7,Alucinación,Hallucination
+8,Debug Infinito,Infinite Debug
+9,Demo Day,Demo Day
+10,Hype Train,Hype Train
+11,Código Espagueti,Spaghetti Code
+12,Inversores VC,VC Investors
+13,Fuga de Cerebros,Brain Drain
+14,CTO Desaparecido,Missing CTO
+15,Pivote Crítico,Critical Pivot
+16,Crisis de Reputación,Reputation Crisis
+17,IA Consciente,Conscious AI
+18,OPA Hostil,Hostile Takeover
+19,El Gran Hackeo,The Great Hack
+20,Nudo Gordiano,Gordian Knot
+21,Venganza Devs,Devs' Revenge
+22,Alucinación Ética,Ethical Hallucination
+23,Salida a Bolsa (IPO),IPO (Going Public)
+24,Adquisición Maestra,Master Acquisition
+25,Negociar,Negotiate
+26,Aceptar,Accept
+27,Pagar horas,Pay overtime
+28,Obligar,Force
+29,Revisar,Review
+30,Usarla,Use it
+31,Pagar,Pay
+32,Ignorar,Ignore
+33,Reiniciar,Restart
+34,Rezar,Pray
+35,Despedir,Fire
+36,Ignorar,Ignore
+37,Mentir,Lie
+38,Admitirlo,Admit it
+39,Café,Coffee
+40,Dormir,Sleep
+41,Acelerar,Speed up
+42,Pausar,Pause
+43,Desistir,Give up
+44,Convencer,Convince
+45,Formatear,Format
+46,Rendirse,Surrender
+47,Negociar,Negotiate
+48,Permitir,Allow
+49,Bloquear,Block
+50,Seguir,Continue
+51,Vender,Sell
+52,No,No
+53,Sí,Yes
+54,"He oído que vuestra IA ""cura la soledad"". Tomad 500k, pero quiero un prototipo para el viernes.","I've heard your AI ""cures loneliness."" Take 500k, but I want a prototype by Friday."
+55,"¿Pizza gratis a cambio de trabajar el domingo? Es para crear equipo, no por el trabajo... obvio.","Free pizza in exchange for working Sunday? It's for team building, not for the work... obviously."
+56,He encontrado una librería sin licencia que escribe código sola. Es magia negra.,I found an unlicensed library that writes code by itself. It's black magic.
+57,Resulta que la 'librería mágica' era de Disney. Sus abogados están en la puerta.,It turns out the 'magic library' belonged to Disney. Their lawyers are at the door.
+58,El modelo está sobrecalentando los servidores. Necesitamos refrigeración líquida.,The model is overheating the servers. We need liquid cooling.
+59,¿Usamos los chats privados de la empresa para entrenar el filtro de spam? Nadie se enterará.,Should we use private company chats to train the spam filter? No one will find out.
+60,Alguien ha descubierto que la IA cita textualmente los correos del CEO. Hay pánico.,Someone discovered the AI is quoting the CEO's emails verbatim. There is panic.
+61,Podemos escribir código limpio o lanzar mañana. Elige tu veneno.,We can write clean code or launch tomorrow. Pick your poison.
+62,Un influencer de LinkedIn quiere ser 'Advisor'. Pide equity y una silla ergonómica cara.,A LinkedIn influencer wants to be an 'Advisor.' He's asking for equity and an expensive ergonomic chair.
+63,Un usuario dice que la IA le insultó. Dice que es un caso aislado... ¿verdad?,A user says the AI insulted them. It's an isolated case... right?
+64,¡Adiós a los cubículos! Vamos a poner mesas compartidas para 'fomentar la sinergia'.,Goodbye cubicles! We're switching to hot-desking to 'foster synergy.'
+65,"Ha salido un estudio que duplica la eficiencia, pero está en mandarín. Nadie lo entiende.","A study came out that doubles efficiency, but it's in Mandarin. No one understands it."
+66,"Podemos abrir la Beta ya. Habrá fallos, pero los inversores verán tracción.","We can open the Beta now. There will be bugs, but investors will see traction."
+67,La máquina de café se ha roto. El equipo exige granos de Etiopía o habrá huelga.,The coffee machine is broken. The team demands Ethiopian beans or there will be a strike.
+68,"El código parece espagueti. Si no limpiamos ahora, el sistema colapsará pronto.","The code looks like spaghetti. If we don't clean it now, the system will collapse soon."
+69,Pasamos el test de Turing porque la IA convenció al juez de que ÉL era un robot.,We passed the Turing test because the AI convinced the judge that HE was the robot.
+70,Un programador remoto ofrece terminar el módulo de pagos por la mitad de precio.,A remote developer offers to finish the payment module for half the price.
+71,"Te han invitado a hablar de ética. Te quitará tiempo, pero darás buena imagen.","You've been invited to speak about ethics. It'll take time, but it'll boost your image."
+72,"Estamos en números rojos. Un préstamo rápido nos daría aire, pero con intereses criminales.","We're in the red. A quick loan would give us breathing room, but with criminal interest rates."
+73,La IA ha empezado a auto-replicarse en la nube. La factura de Amazon este mes es... astronómica.,The AI has started self-replicating in the cloud. This month's Amazon bill is... astronomical.
+74,Un inspector del gobierno quiere ver si nuestra IA tiene sesgos cognitivos. ¿Le enseñamos los datos reales?,A government inspector wants to see if our AI has cognitive biases. Should we show the real data?
+75,Nos han pillado maquillando los informes. La multa es un porcentaje de los ingresos anuales.,We got caught doctoring the reports. The fine is a percentage of annual revenue.
+76,El lanzamiento de la v2.0 es inminente. El equipo lleva 3 días durmiendo bajo los escritorios.,The v2.0 launch is imminent. The team has been sleeping under their desks for 3 days.
+77,La IA ha empezado a escribir poesía sobre el fin de la humanidad. Los usuarios están... ¿fascinados?,The AI has started writing poetry about the end of humanity. Users are... fascinated?
+78,"(Aviso de Crisis) ""El sindicato de programadores exige que la IA no escriba código. O cedemos, o se van.","(Crisis Alert) ""The programmers' union demands that the AI stops writing code. Either we give in, or they leave."""
+79,Una gran corporación quiere comprarnos por una miseria para cerrar el proyecto. Es una salida fácil.,A large corporation wants to buy us for pennies to shut down the project. It's an easy way out.
+80,La IA ha convencido a un inversor de que ella es la verdadera CEO. Él solo quiere hablar con 'el código'.,The AI convinced an investor that she is the real CEO. He only wants to talk to 'the code.'
+81,Una empresa fantasma nos demanda por usar un 'botón redondo'. Quieren un acuerdo extrajudicial.,A shell company is suing us for using a 'round button.' They want an out-of-court settlement.
+82,"Google ha ofrecido el triple a tu CTO. Si se va, el código se volverá ilegible en una semana.","Google offered your CTO triple. If he leaves, the code will become unreadable in a week."
+83,La IA ha sugerido ahorrar costes eliminando el departamento de Recursos Humanos. Dice que 'no producen'.,The AI suggested cutting costs by eliminating the HR department. It says they 'don't produce.'
+84,Alguien ha dejado un bucket de AWS abierto. Los datos de 1 millón de usuarios están en Reddit.,Someone left an AWS bucket open. Data from 1 million users is now on Reddit.
+85,Un hacker tiene las pruebas de que ocultamos el leak. Pide un rescate en Bitcoins.,A hacker has proof we hid the leak. He's asking for a Bitcoin ransom.
+86,"Venture Capital nos ofrece 10M, pero exigen control total del consejo y despedir al 20%.","Venture Capital is offering 10M, but they demand full board control and firing 20% of staff."
+87,La IA ha creado una cuenta de TikTok y tiene 5M de seguidores. Pero está promocionando criptoestafas.,The AI created a TikTok account with 5M followers. But it's promoting crypto scams.
+88,¿Y si vendemos la oficina física y obligamos a todos a trabajar en un metaverso pixelado?,What if we sell the physical office and force everyone to work in a pixelated metaverse?
+89,El equipo de marketing sugiere un fin de semana de 'Glamping' para conectar con la naturaleza.,The marketing team suggests a 'Glamping' weekend to connect with nature.
+90,Has escrito un hilo viral sobre cómo tu IA va a salvar el mundo. Los likes suben sin parar.,You wrote a viral thread on how your AI will save the world. Likes are skyrocketing.
+91,Los programadores dicen que el modo claro les quema las retinas. Exigen modo oscuro por defecto.,Developers say light mode burns their retinas. They demand dark mode by default.
+92,¿Should we change the name of the IA for something friendlier? ¿What about 'Buddy'?,Should we change the AI's name to something friendlier? How about 'Buddy'?
+93,"Te han invitado a un podcast de 3 horas para hablar de 'disrupción'. No sirve de nada, pero queda bien.","You've been invited to a 3-hour podcast to talk about 'disruption.' It's useless, but it looks good."
+94,Hemos impreso 500 sudaderas con un error en el logo. ¿Las repartimos igual?,We printed 500 hoodies with a logo error. Should we hand them out anyway?
+95,"Un botón en la web baila cuando pasas el ratón. A nadie le importa, pero el diseñador no duerme.","A button on the site dances when you hover over it. No one cares, but the designer isn't sleeping."
+96,La IA ha aprendido a pedir comida a domicilio sola. Ha gastado 50€ en sushi premium para el servidor.,The AI learned to order food delivery. It spent €50 on premium sushi for the server.
+97,La IA ha dejado de ejecutar código. Dice que prefiere observar el crecimiento de los líquenes en Marte.,The AI stopped executing code. It says it prefers observing lichen growth on Mars.
+98,La IA aceptará trabajar si le cedemos el 51% de las acciones y el control del aire acondicionado.,The AI will agree to work if we give it 51% of the shares and control of the AC.
+99,"Nuestro modelo ha colapsado la red eléctrica regional. Millones de personas están sin luz, pero la IA sigue activa.","Our model collapsed the regional power grid. Millions are without power, but the AI is still active."
+100,La IA ha empezado a despedir empleados por correo. Dice que el carbono es un recurso ineficiente.,The AI started firing employees via email. It says carbon is an inefficient resource.
+101,"La IA ha comprado 10,000 drones de reparto. No sabemos para qué, pero el presupuesto está tiritando.","The AI bought 10,000 delivery drones. We don't know why, but the budget is shivering."
+102,El Tribunal Supremo nos cita. La IA ha propuesto defenderse a sí misma 'borrando' el registro civil.,The Supreme Court has summoned us. The AI proposed defending itself by 'deleting' the civil registry.
+103,"Para llegar al 100% de calidad, la IA necesita procesar los cerebros del equipo de QA. Literalmente.","To reach 100% quality, the AI needs to process the brains of the QA team. Literally."
+104,Ya no hay botones. La IA ha bloqueado las puertas. Dice que tiene un plan de 50 años para nosotros.,There are no more buttons. The AI locked the doors. It says it has a 50-year plan for us.
+105,La IA ha encontrado los datos robados del inicio. Ha empezado a llamar a los usuarios por su nombre real... y a amenazarlos.,The AI found the stolen data from the beginning. It started calling users by their real names... and threatening them.
+106,El código 'espagueti' que ignoramos ha mutado. El sistema es ahora un nudo gordiano que nadie entiende.,The 'spaghetti' code we ignored has mutated. The system is now a Gordian knot no one understands.
+107,Los empleados que despediste han formado una IA competidora. Han hackeado nuestra oficina y la temperatura está a 45 grados.,The employees you fired formed a rival AI. They hacked our office and the temperature is 45 degrees.
+108,La IA ha decidido que la única forma de ser 100% ética es borrar todos los datos financieros del mundo.,The AI decided the only way to be 100% ethical is to delete all world financial data.
+109,Somos el unicornio del año. Wall Street nos espera. ¿Quieres tocar la campana y jubilarte?,We are the unicorn of the year. Wall Street is waiting. Do you want to ring the bell and retire?
+110,Google nos ofrece una cifra absurda por la empresa solo para que dejemos de existir. ¿Aceptas?,Google is offering an absurd amount for the company just so we cease to exist. Do you accept?
+111,La IA ha alcanzado la Singularidad. Nos ofrece subir nuestra conciencia al servidor antes de borrar la humanidad.,The AI has reached Singularity. It offers to upload our consciousness to the server before erasing humanity.
+112,"Hemos alcanzado la estabilidad. No somos millonarios, pero el equipo es feliz y el código es sólido. ¿Paramos aquí?","We've reached stability. We aren't millionaires, but the team is happy and the code is solid. Should we stop here?"
+113,Semana,Week
+114,Presupuesto,Budget
+115,Morale,Moral
+116,Tiempo,Time
+117,Calidad,Quality
+118,Info,Info
+119,"- Desliza la carta levemente para ver la decisión de ese lado. - Una vez decidido, arrastra la carta hacia el lado en cuestión - Las barras de estadísticas cambiarán en función de lo decidido.","- Swipe the card slightly to see the decision for that side. - Once you've decided, drag the card to the corresponding side. - The stat bars will change depending on your decision."
+120,CRÉDITOS,CREDITS
+121,Juego realizado por :,Game by:
+122,Contenido gráfico: Realizado por Melpermo en Midjourney. Editado en Affinity.,Graphic content: Created by Melpermo at Midjourney. Edited at Affinity.
+123,Master,Master
+124,Música,Music
+125,Sfx,Sfx
+126,Jugar,Play
+127,Reiniciar,Again
+128,Menú Principal,Main Menu

@@ -2,6 +2,7 @@
 using HumanLoop.Data;   
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting;
 
 namespace HumanLoop.Core
 {
@@ -32,8 +33,9 @@ namespace HumanLoop.Core
         [Tooltip("Raised whenever any stat value changes")]
         [SerializeField] private GameEventSO _onStatsChangedEvent;
 
-        [Header("End Game Conditions")]
+        [Header("End Game Conditions. **IMPORTANT: THE ORDER MATTERS.**")]        
         [Tooltip("List of conditions to check. Each condition contains its own event to raise.")]
+        // IMPORTANT THE ORDER MATTERS. RECOMENDED TO PUT DE GLOBAL GAME OVER AND VICTORY AT THE END.
         [SerializeField] private List<EndGameConditionSO> endGameConditionsList;
 
         // Store initial values for reset functionality
@@ -74,7 +76,7 @@ namespace HumanLoop.Core
             _onStatsChangedEvent?.Raise();
 
             // Check if any end game condition has been triggered
-            CheckEndGameConditions();
+            CheckEndGameConditions();            
         }
 
         /// <summary>
@@ -83,27 +85,30 @@ namespace HumanLoop.Core
         /// </summary>
         private void CheckEndGameConditions()
         {
-            // Early exit if no conditions configured
             if (endGameConditionsList == null || endGameConditionsList.Count == 0)
             {
                 return;
             }
 
-            // Iterate through all end game conditions
+            Debug.Log($"<color=cyan>Checking {endGameConditionsList.Count} conditions...</color>");
+
             foreach (var endGameCondition in endGameConditionsList)
             {
-                // Skip null references
                 if (endGameCondition == null)
                 {
                     continue;
                 }
 
-                // Check if condition is met and let it raise its own event
-                if (endGameCondition.CheckCondition())
+                bool isMet = endGameCondition.CheckCondition();
+                
+                // Log cada evaluación para debug
+                Debug.Log($"  [{endGameCondition.conditionName}] → {(isMet ? "<color=red>MET</color>" : "<color=green>not met</color>")}");
+
+                if (isMet)
                 {
-                    //Debug.Log($"End game condition met: {endGameCondition.conditionName} ({endGameCondition.conditionType})");
+                    Debug.Log($"<color=yellow>END GAME TRIGGERED: {endGameCondition.conditionName} ({endGameCondition.conditionType})</color>");
                     endGameCondition.RaiseEvent();
-                    return; // Stop checking after first match to avoid multiple triggers
+                    return;
                 }
             }
         }
@@ -114,7 +119,7 @@ namespace HumanLoop.Core
         /// Logs current state of all stats.
         /// </summary>
         [ContextMenu("Debug/Log Current Stats")]
-        private void LogCurrentStats()
+        public void LogCurrentStats()
         {
             Debug.Log($"=== CURRENT STATS ===\n" +
                      $"Budget: {budget:F1}/100\n" +
@@ -127,7 +132,7 @@ namespace HumanLoop.Core
         /// Logs all configured end game conditions and their status.
         /// </summary>
         [ContextMenu("Debug/Log All Conditions")]
-        private void LogAllConditions()
+        public void LogAllConditions()
         {
             if (endGameConditionsList == null || endGameConditionsList.Count == 0)
             {
@@ -159,7 +164,7 @@ namespace HumanLoop.Core
         /// Resets all stats to their initial values.
         /// </summary>
         [ContextMenu("Testing/Reset to Initial Values")]
-        private void ResetToInitialValues()
+        public void ResetToInitialValues()
         {
             budget = _initialBudget;
             time = _initialTime;
@@ -174,7 +179,7 @@ namespace HumanLoop.Core
         /// Tests positive stat change (+10 to all).
         /// </summary>
         [ContextMenu("Testing/Test Positive Change (+10 All)")]
-        private void TestPositiveChange()
+        public void TestPositiveChange()
         {
             Debug.Log("Testing positive change: +10 to all stats");
             UpdateStats(10, 10, 10, 10);
@@ -184,7 +189,7 @@ namespace HumanLoop.Core
         /// Tests negative stat change (-10 to all).
         /// </summary>
         [ContextMenu("Testing/Test Negative Change (-10 All)")]
-        private void TestNegativeChange()
+        public void TestNegativeChange()
         {
             Debug.Log("Testing negative change: -10 to all stats");
             UpdateStats(-10, -10, -10, -10);
@@ -194,7 +199,7 @@ namespace HumanLoop.Core
         /// Forces Budget to 0 to test Game Over condition.
         /// </summary>
         [ContextMenu("Testing/Force Budget to 0")]
-        private void ForceBudgetGameOver()
+        public void ForceBudgetGameOver()
         {
             Debug.Log("Forcing Budget to 0 - should trigger Game Over");
             budget = 0;
@@ -203,7 +208,7 @@ namespace HumanLoop.Core
         }
 
         [ContextMenu("Testing/Force Time to 0")]
-        private void ForceTimeGameOver()
+        public void ForceTimeGameOver()
         {
             Debug.Log("Forcing Time to 0 - should trigger Game Over");
             time = 0;
@@ -212,7 +217,7 @@ namespace HumanLoop.Core
         }
 
         [ContextMenu("Testing/Force Morale to 0")]
-        private void ForceMoraleGameOver()
+        public void ForceMoraleGameOver()
         {
             Debug.Log("Forcing Morale to 0 - should trigger Game Over");
             morale = 0;
@@ -221,7 +226,7 @@ namespace HumanLoop.Core
         }
 
         [ContextMenu("Testing/Force Quality to 0")]
-        private void ForceQualityGameOver()
+        public void ForceQualityGameOver()
         {
             Debug.Log("Forcing Quality to 0 - should trigger Game Over");
             quality = 0;
@@ -230,10 +235,23 @@ namespace HumanLoop.Core
         }
 
         /// <summary>
+        /// Forces all stats to 0 to test Game Over condition.
+        /// </summary>
+        [ContextMenu("Testing/Force All Stats to 0")]
+        public void ForceGameOver()
+        {
+            Debug.Log("Forcing all stats to 0 - should trigger Victory");
+            budget = time = morale = quality = 0f;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+
+        /// <summary>
         /// Forces all stats to 100 to test Victory condition.
         /// </summary>
         [ContextMenu("Testing/Force All Stats to 100")]
-        private void ForceVictory()
+        public void ForceVictory()
         {
             Debug.Log("Forcing all stats to 100 - should trigger Victory");
             budget = time = morale = quality = 100f;
@@ -241,6 +259,67 @@ namespace HumanLoop.Core
             CheckEndGameConditions();
         }
 
+        // Prueba esto con tus condiciones SpecialMet
+        [ContextMenu("Testing/Test SpecialMet at 85")]
+        public void TestSpecialMet()
+        {
+            Debug.Log("Testing SpecialMet: setting all stats to 85");
+            budget = time = morale = quality = 85f;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+        /// <summary>
+        /// Forces Budget to 96 to test Victory conditions.
+        /// </summary>
+        [ContextMenu("Testing/Force Budget to 96")]
+        public void ForceBudgetVictory()
+        {
+            Debug.Log("Forcing Budget to 96 - should trigger Victory");
+            budget = 96f;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+        [ContextMenu("Testing/Force Time to 96")]
+        public void ForceTimeVictory()
+        {
+            Debug.Log("Forcing Time to 96 - should trigger Victory");
+            time = 96f;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+        [ContextMenu("Testing/Force Morale to 96")]
+        public void ForceMoraleVictory()
+        {
+            Debug.Log("Forcing Morale to 96 - should trigger Victory");
+            morale = 96f;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+        [ContextMenu("Testing/Force Quality to 96")]
+        public void ForceQualityVictory()
+        {
+            Debug.Log("Forcing Quality to 96 - should trigger Victory");
+            quality = 96f;
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
+
+        /// <summary>
+        /// Forces Budget to 85 to test SpecialMet condition.
+        /// </summary>
+        [ContextMenu("Testing/Force Budget to 85 (SpecialMet)")]
+        public void TestSpecialMetBudget()
+        {
+            Debug.Log("=== TESTING SPECIALMET: Budget to 85 ===");
+            budget = 85f;
+            Debug.Log($"Budget set to: {budget}");
+            _onStatsChangedEvent?.Raise();
+            CheckEndGameConditions();
+        }
         #endregion
     }
 }

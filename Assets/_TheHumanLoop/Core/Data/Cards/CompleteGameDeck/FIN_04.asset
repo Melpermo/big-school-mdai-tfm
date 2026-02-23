@@ -33,3 +33,7 @@ MonoBehaviour:
   conditions: []
   nextCardLeft: {fileID: 0}
   nextCardRight: {fileID: 0}
+  titleID: 177
+  descriptionID: 101
+  leftChoiceID: 178
+  rightChoiceID: 179
