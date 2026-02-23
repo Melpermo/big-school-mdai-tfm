@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.SimpleCardData
   cardName: "Inversor \xC1ngel"
   category: 2
-  description: "He o\xEDdo que vuestra IA \"\"cura la soledad\"\". Tomad 500k, pero
-    quiero un prototipo para el viernes."
+  description: "\"He o\xEDdo que vuestra IA 'cura la soledad'\". \"Tomad 500k, pero
+    quiero un prototipo para el viernes\"."
   cardArt: {fileID: -8199820546670662463, guid: 8fe6193ca240a9249b23cad4ad577d6b, type: 3}
   leftChoiceText: Negociar
   rightChoiceText: Aceptar
@@ -33,3 +33,7 @@ MonoBehaviour:
   conditions: []
   nextCardLeft: {fileID: 0}
   nextCardRight: {fileID: 0}
+  titleID: 1
+  descriptionID: 54
+  leftChoiceID: 25
+  rightChoiceID: 26

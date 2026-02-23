@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: PopUpWindowOpen
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.SoundEventSO
   _clips:
-  - {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
-  - {fileID: 8300000, guid: 3becec1909f194046945d85ac1077772, type: 3}
-  - {fileID: 8300000, guid: 81652031b64c342cc8dbc59c138d77c5, type: 3}
+  - {fileID: 8300000, guid: 630d5751a5e065c42bcf20146f235585, type: 3}
   _config: {fileID: 11400000, guid: 2e1e0acc49df6ae47aafe37adf133455, type: 2}

@@ -44,6 +44,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b352173e089a8cd4ba9f4fab51646b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TheHumanLoop.Tools.DOTweenInitializer
+--- !u!1 &4994839056079103400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5995028511239427025}
+  - component: {fileID: 513456571653706665}
+  m_Layer: 0
+  m_Name: Localization
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5995028511239427025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994839056079103400}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6340331377296736307}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &513456571653706665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994839056079103400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c5f8a7b75d8a143b79211f834f4270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizationBootstrap
+  _table: {fileID: 11400000, guid: ae7a484ff38c9ba47b3b09f23c01b328, type: 2}
+  _defaultLanguage: 1
+  _currentLanguage: 1
 --- !u!1 &8416012183864791345
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +122,7 @@ Transform:
   m_Children:
   - {fileID: 5768173844549659817}
   - {fileID: 4903396970667383984}
+  - {fileID: 5995028511239427025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6708052357252430426
@@ -133,6 +181,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2959828830771441741, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
+    - target: {fileID: 3437770868136394467, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
+    - target: {fileID: 5234893345709563701, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
+    - target: {fileID: 7373696660398302376, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: usingAsyncTaskMethods
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373696660398302376, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

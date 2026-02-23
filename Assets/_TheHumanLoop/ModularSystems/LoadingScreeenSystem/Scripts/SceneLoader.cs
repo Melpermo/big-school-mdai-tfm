@@ -1,8 +1,10 @@
+using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 using UnityEngine.UI;
-using TMPro;
 
 namespace TheHumanLoop.LoadingScreenSystem
 {
@@ -13,8 +15,7 @@ namespace TheHumanLoop.LoadingScreenSystem
         [SerializeField] private GameObject[] gameObjectsToDeact;
         [SerializeField] private GameObject loadingScreen;
         [SerializeField] private Slider loadingSlider;
-        [SerializeField] private TextMeshProUGUI progressText;
-        [SerializeField] private TextMeshProUGUI loadingTipText;
+        [SerializeField] private TextMeshProUGUI progressText;        
         [SerializeField] private CanvasGroup loadingCanvasGroup;
 
         [Header("Animation Elements")]
@@ -34,16 +35,8 @@ namespace TheHumanLoop.LoadingScreenSystem
         //[SerializeField] private float scalePulseSpeed = 1f;
         [SerializeField] private float dotsAnimationSpeed = 0.5f;
 
-        [Header("Loading Tips")]
-        [SerializeField]
-        private string[] loadingTips = new string[]
-        {
-            "Tip: Stay hydrated!",
-            "Tip: Take breaks regularly",
-            "Tip: Explore every corner",
-            "Loading assets...",
-            "Preparing your experience..."
-        };
+        [Header("Loading Tips Text")]
+        [SerializeField] private List<TextMeshProUGUI> tipTextTMP_List;
 
         private Coroutine iconAnimationCoroutine;
         private Coroutine pulseAnimationCoroutine;
@@ -72,11 +65,8 @@ namespace TheHumanLoop.LoadingScreenSystem
             //MainMenuGO.SetActive(false);
             loadingScreen.SetActive(true);
             loadingSlider.value = 0f;
+            ShowRandomTipsTMP();
 
-            if (loadingTipText != null && loadingTips.Length > 0)
-            {
-                loadingTipText.text = loadingTips[Random.Range(0, loadingTips.Length)];
-            }
 
             // Start animations
             StartLoadingAnimations();
@@ -130,6 +120,7 @@ namespace TheHumanLoop.LoadingScreenSystem
                 yield return null;
             }
         }
+        
 
         private void DeactivateArrayOf()
         {
@@ -153,10 +144,7 @@ namespace TheHumanLoop.LoadingScreenSystem
             loadingScreen.SetActive(true);
             loadingSlider.value = 0f;
 
-            if (loadingTipText != null && loadingTips.Length > 0)
-            {
-                loadingTipText.text = loadingTips[Random.Range(0, loadingTips.Length)];
-            }
+            ShowRandomTipsTMP();
 
             // Start animations
             StartLoadingAnimations();
@@ -317,6 +305,26 @@ namespace TheHumanLoop.LoadingScreenSystem
                 dotCount = (dotCount + 1) % 4;
                 loadingText.text = baseText + new string('.', dotCount);
                 yield return new WaitForSeconds(dotsAnimationSpeed);
+            }
+        }
+
+        private void ShowRandomTipsTMP()
+        {
+            if (tipTextTMP_List != null && tipTextTMP_List.Count > 0)
+            {
+                int tipToShowIndex = Random.Range(0, tipTextTMP_List.Count);
+
+                for (int i = 0; i < tipTextTMP_List.Count; i++)
+                {
+                    if (i == tipToShowIndex)
+                    {
+                        tipTextTMP_List[i].alpha = 1;
+                    }
+                    else
+                    {
+                        tipTextTMP_List[i].alpha = 0;
+                    }
+                }
             }
         }
 

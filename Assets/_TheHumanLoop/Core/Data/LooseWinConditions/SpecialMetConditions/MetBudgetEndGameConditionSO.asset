@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0a5be7365e3954893031836c603f35, type: 3}
+  m_Name: MetBudgetEndGameConditionSO
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.EndGameConditionSO
+  conditionName: IPO (El Lobo de Silicon Valley)
+  conditionType: 2
+  statToCheck: 1
+  threshold: 95
+  budgetThreshold: 95
+  timeThreshold: 0
+  moraleThreshold: 0
+  qualityThreshold: 0
+  endGameConditionEvent: {fileID: 11400000, guid: 1512b4061a2260e48ae8b16c8b4a7f3d, type: 2}
+  endGameMessage: " \xA1Enhorabuena! Has tocado la campana en el NASDAQ. Tu IA es
+    \xE9ticamente dudosa, pero financieramente imparable. Eres tan rico que las leyes
+    son ahora solo sugerencias para ti.\r\n\"No es un monopolio si el algoritmo dice
+    que es libertad de mercado\"."
+  endGameBG_image: {fileID: 1240252703462659968, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
+  conditionNameID: 263
+  endGameMessageID: 264

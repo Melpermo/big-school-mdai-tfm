@@ -342,7 +342,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -0.000030517578, y: 0}
-  m_SizeDelta: {x: 0, y: 162.8139}
+  m_SizeDelta: {x: 89.5991, y: 162.8139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1291616699546754361
 CanvasRenderer:
@@ -400,7 +400,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 150
+  m_Spacing: 300
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1054,6 +1054,7 @@ GameObject:
   - component: {fileID: 479596498236002318}
   - component: {fileID: 6932031840607030181}
   - component: {fileID: 4660286139770616286}
+  - component: {fileID: 2129545599166981121}
   m_Layer: 5
   m_Name: HumanLoopCard_Base - 1
   m_TagString: Untagged
@@ -1137,6 +1138,22 @@ MonoBehaviour:
   returnDuration: 0.3
   onCardSwipedEvent: {fileID: 11400000, guid: 53176cd84c28a504bb90b4ad915c3adc, type: 2}
   onCardReturnedEvent: {fileID: 11400000, guid: db0e0bfa2f43f2d43922af5e226b3937, type: 2}
+--- !u!114 &2129545599166981121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3271866173705772828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d7561810d62bf4ebfee06cb48f3c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.CardLocalizedView
+  m_titleText: {fileID: 958202188588849121}
+  m_descriptionText: {fileID: 2066634404102397287}
+  m_leftChoiceText: {fileID: 3373440410328419320}
+  m_rightChoiceText: {fileID: 8525713127892234496}
 --- !u!1 &3396508612070417909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1393,7 +1410,7 @@ MonoBehaviour:
   m_fontSizeMin: 1
   m_fontSizeMax: 40
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2148,7 +2165,7 @@ MonoBehaviour:
   m_fontSizeMin: 1
   m_fontSizeMax: 40
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

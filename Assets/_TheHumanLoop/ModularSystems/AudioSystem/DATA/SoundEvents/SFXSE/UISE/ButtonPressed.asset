@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ButtonPressed
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.SoundEventSO
   _clips:
-  - {fileID: 8300000, guid: 099bae1bf82962b4dae4d66c571d7eb3, type: 3}
+  - {fileID: 8300000, guid: bf2a825f4b56d8d4f8bd055a779fff7e, type: 3}
   _config: {fileID: 11400000, guid: 2e1e0acc49df6ae47aafe37adf133455, type: 2}

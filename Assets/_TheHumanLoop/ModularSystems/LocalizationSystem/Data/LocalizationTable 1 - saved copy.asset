@@ -1,0 +1,885 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f58e6a1bfad3b648a629b3a5488c789, type: 3}
+  m_Name: LocalizationTable 1 - saved copy
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizationTableSO
+  m_csv: {fileID: 4900000, guid: 2075fa65855ed334aaa2b6e823fb4850, type: 3}
+  m_rows:
+  - Id: 1
+    English: Angel Investor
+    Spanish: "Inversor \xC1ngel"
+  - Id: 2
+    English: Pizza Crunch
+    Spanish: Crunch de Pizza
+  - Id: 3
+    English: The Intern
+    Spanish: El Becario
+  - Id: 4
+    English: Copyright
+    Spanish: Copyright
+  - Id: 5
+    English: Smoke Server
+    Spanish: Servidor Humo
+  - Id: 6
+    English: Liquid Ethics
+    Spanish: "\xC9tica L\xEDquida"
+  - Id: 7
+    English: Hallucination
+    Spanish: "Alucinaci\xF3n"
+  - Id: 8
+    English: Infinite Debug
+    Spanish: Debug Infinito
+  - Id: 9
+    English: Demo Day
+    Spanish: Demo Day
+  - Id: 10
+    English: Hype Train
+    Spanish: Hype Train
+  - Id: 11
+    English: Spaghetti Code
+    Spanish: "C\xF3digo Espagueti"
+  - Id: 12
+    English: VC Investors
+    Spanish: Inversores VC
+  - Id: 13
+    English: Brain Drain
+    Spanish: Fuga de Cerebros
+  - Id: 14
+    English: Missing CTO
+    Spanish: CTO Desaparecido
+  - Id: 15
+    English: Critical Pivot
+    Spanish: "Pivote Cr\xEDtico"
+  - Id: 16
+    English: Reputation Crisis
+    Spanish: "Crisis de Reputaci\xF3n"
+  - Id: 17
+    English: Conscious AI
+    Spanish: IA Consciente
+  - Id: 18
+    English: Hostile Takeover
+    Spanish: OPA Hostil
+  - Id: 19
+    English: The Great Hack
+    Spanish: El Gran Hackeo
+  - Id: 20
+    English: Gordian Knot
+    Spanish: Nudo Gordiano
+  - Id: 21
+    English: Devs' Revenge
+    Spanish: Venganza Devs
+  - Id: 22
+    English: Ethical Hallucination
+    Spanish: "Alucinaci\xF3n \xC9tica"
+  - Id: 23
+    English: IPO (Going Public)
+    Spanish: Salida a Bolsa (IPO)
+  - Id: 24
+    English: Master Acquisition
+    Spanish: "Adquisici\xF3n Maestra"
+  - Id: 25
+    English: Negotiate
+    Spanish: Negociar
+  - Id: 26
+    English: Accept
+    Spanish: Aceptar
+  - Id: 27
+    English: Pay overtime
+    Spanish: Pagar horas
+  - Id: 28
+    English: Force
+    Spanish: Obligar
+  - Id: 29
+    English: Review
+    Spanish: Revisar
+  - Id: 30
+    English: Use it
+    Spanish: Usarla
+  - Id: 31
+    English: Pay
+    Spanish: Pagar
+  - Id: 32
+    English: Ignore
+    Spanish: Ignorar
+  - Id: 33
+    English: Restart
+    Spanish: Reiniciar
+  - Id: 34
+    English: Pray
+    Spanish: Rezar
+  - Id: 35
+    English: Fire
+    Spanish: Despedir
+  - Id: 36
+    English: Ignore
+    Spanish: Ignorar
+  - Id: 37
+    English: Lie
+    Spanish: Mentir
+  - Id: 38
+    English: Admit it
+    Spanish: Admitirlo
+  - Id: 39
+    English: Coffee
+    Spanish: "Caf\xE9"
+  - Id: 40
+    English: Sleep
+    Spanish: Dormir
+  - Id: 41
+    English: Speed up
+    Spanish: Acelerar
+  - Id: 42
+    English: Pause
+    Spanish: Pausar
+  - Id: 43
+    English: Give up
+    Spanish: Desistir
+  - Id: 44
+    English: Convince
+    Spanish: Convencer
+  - Id: 45
+    English: Format
+    Spanish: Formatear
+  - Id: 46
+    English: Surrender
+    Spanish: Rendirse
+  - Id: 47
+    English: Negotiate
+    Spanish: Negociar
+  - Id: 48
+    English: Allow
+    Spanish: Permitir
+  - Id: 49
+    English: Block
+    Spanish: Bloquear
+  - Id: 50
+    English: Continue
+    Spanish: Seguir
+  - Id: 51
+    English: Sell
+    Spanish: Vender
+  - Id: 52
+    English: No
+    Spanish: No
+  - Id: 53
+    English: Yes
+    Spanish: "S\xED"
+  - Id: 54
+    English: I've heard your AI cures loneliness. Take 500k, but I want a prototype
+      by Friday.
+    Spanish: "He o\xEDdo que vuestra IA cura la soledad. Tomad 500k, pero quiero
+      un prototipo para el viernes."
+  - Id: 55
+    English: Free pizza in exchange for working Sunday? It's for team building, not
+      for the work... obviously.
+    Spanish: "\xBFPizza gratis a cambio de trabajar el domingo? Es para crear equipo,
+      no por el trabajo... obvio."
+  - Id: 56
+    English: I found an unlicensed library that writes code by itself. It's black
+      magic.
+    Spanish: "He encontrado una librer\xEDa sin licencia que escribe c\xF3digo sola.
+      Es magia negra."
+  - Id: 57
+    English: It turns out the 'magic library' belonged to Disney. Their lawyers are
+      at the door.
+    Spanish: "Resulta que la 'librer\xEDa m\xE1gica' era de Disney. Sus abogados
+      est\xE1n en la puerta."
+  - Id: 58
+    English: The model is overheating the servers. We need liquid cooling.
+    Spanish: "El modelo est\xE1 sobrecalentando los servidores. Necesitamos refrigeraci\xF3n
+      l\xEDquida."
+  - Id: 59
+    English: Should we use private company chats to train the spam filter? No one
+      will find out.
+    Spanish: "\xBFUsamos los chats privados de la empresa para entrenar el filtro
+      de spam? Nadie se enterar\xE1."
+  - Id: 60
+    English: Someone discovered the AI is quoting the CEO's emails verbatim. There
+      is panic.
+    Spanish: "Alguien ha descubierto que la IA cita textualmente los correos del
+      CEO. Hay p\xE1nico."
+  - Id: 61
+    English: We can write clean code or launch tomorrow. Pick your poison.
+    Spanish: "Podemos escribir c\xF3digo limpio o lanzar ma\xF1ana. Elige tu veneno."
+  - Id: 62
+    English: A LinkedIn influencer wants to be an 'Advisor.' He's asking for equity
+      and an expensive ergonomic chair.
+    Spanish: "Un influencer de LinkedIn quiere ser 'Advisor'. Pide equity y una silla
+      ergon\xF3mica cara."
+  - Id: 63
+    English: A user says the AI insulted them. It's an isolated case... right?
+    Spanish: "Un usuario dice que la IA le insult\xF3. Dice que es un caso aislado...
+      \xBFverdad?"
+  - Id: 64
+    English: Goodbye cubicles! We're switching to hot-desking to 'foster synergy.'
+    Spanish: "\xA1Adi\xF3s a los cub\xEDculos! Vamos a poner mesas compartidas para
+      'fomentar la sinergia'."
+  - Id: 65
+    English: A study came out that doubles efficiency, but it's in Mandarin. No one
+      understands it.
+    Spanish: "Ha salido un estudio que duplica la eficiencia, pero est\xE1 en mandar\xEDn.
+      Nadie lo entiende."
+  - Id: 66
+    English: We can open the Beta now. There will be bugs, but investors will see
+      traction.
+    Spanish: "Podemos abrir la Beta ya. Habr\xE1 fallos, pero los inversores ver\xE1n
+      tracci\xF3n."
+  - Id: 67
+    English: The coffee machine is broken. The team demands Ethiopian beans or there
+      will be a strike.
+    Spanish: "La m\xE1quina de caf\xE9 se ha roto. El equipo exige granos de Etiop\xEDa
+      o habr\xE1 huelga."
+  - Id: 68
+    English: The code looks like spaghetti. If we don't clean it now, the system
+      will collapse soon.
+    Spanish: "El c\xF3digo parece espagueti. Si no limpiamos ahora, el sistema colapsar\xE1
+      pronto."
+  - Id: 69
+    English: We passed the Turing test because the AI convinced the judge that HE
+      was the robot.
+    Spanish: "Pasamos el test de Turing porque la IA convenci\xF3 al juez de que
+      \xC9L era un robot."
+  - Id: 70
+    English: A remote developer offers to finish the payment module for half the
+      price.
+    Spanish: "Un programador remoto ofrece terminar el m\xF3dulo de pagos por la
+      mitad de precio."
+  - Id: 71
+    English: You've been invited to speak about ethics. It'll take time, but it'll
+      boost your image.
+    Spanish: "Te han invitado a hablar de \xE9tica. Te quitar\xE1 tiempo, pero dar\xE1s
+      buena imagen."
+  - Id: 72
+    English: We're in the red. A quick loan would give us breathing room, but with
+      criminal interest rates.
+    Spanish: "Estamos en n\xFAmeros rojos. Un pr\xE9stamo r\xE1pido nos dar\xEDa
+      aire, pero con intereses criminales."
+  - Id: 73
+    English: The AI has started self-replicating in the cloud. This month's Amazon
+      bill is... astronomical.
+    Spanish: "La IA ha empezado a auto-replicarse en la nube. La factura de Amazon
+      este mes es... astron\xF3mica."
+  - Id: 74
+    English: A government inspector wants to see if our AI has cognitive biases.
+      Should we show the real data?
+    Spanish: "Un inspector del gobierno quiere ver si nuestra IA tiene sesgos cognitivos.
+      \xBFLe ense\xF1amos los datos reales?"
+  - Id: 75
+    English: We got caught doctoring the reports. The fine is a percentage of annual
+      revenue.
+    Spanish: Nos han pillado maquillando los informes. La multa es un porcentaje
+      de los ingresos anuales.
+  - Id: 76
+    English: The v2.0 launch is imminent. The team has been sleeping under their
+      desks for 3 days.
+    Spanish: "El lanzamiento de la v2.0 es inminente. El equipo lleva 3 d\xEDas durmiendo
+      bajo los escritorios."
+  - Id: 77
+    English: The AI has started writing poetry about the end of humanity. Users are...
+      fascinated?
+    Spanish: "La IA ha empezado a escribir poes\xEDa sobre el fin de la humanidad.
+      Los usuarios est\xE1n... \xBFfascinados?"
+  - Id: 78
+    English: (Crisis Alert) The programmers' union demands that the AI stops writing
+      code. Either we give in, or they leave.
+    Spanish: "(Aviso de Crisis) El sindicato de programadores exige que la IA no
+      escriba c\xF3digo. O cedemos, o se van."
+  - Id: 79
+    English: A large corporation wants to buy us for pennies to shut down the project.
+      It's an easy way out.
+    Spanish: "Una gran corporaci\xF3n quiere comprarnos por una miseria para cerrar
+      el proyecto. Es una salida f\xE1cil."
+  - Id: 80
+    English: The AI convinced an investor that she is the real CEO. He only wants
+      to talk to 'the code.'
+    Spanish: "La IA ha convencido a un inversor de que ella es la verdadera CEO.
+      \xC9l solo quiere hablar con 'el c\xF3digo'."
+  - Id: 81
+    English: A shell company is suing us for using a 'round button.' They want an
+      out-of-court settlement.
+    Spanish: "Una empresa fantasma nos demanda por usar un 'bot\xF3n redondo'. Quieren
+      un acuerdo extrajudicial."
+  - Id: 82
+    English: Google offered your CTO triple. If he leaves, the code will become unreadable
+      in a week.
+    Spanish: "Google ha ofrecido el triple a tu CTO. Si se va, el c\xF3digo se volver\xE1
+      ilegible en una semana."
+  - Id: 83
+    English: The AI suggested cutting costs by eliminating the HR department. It
+      says they 'don't produce.'
+    Spanish: La IA ha sugerido ahorrar costes eliminando el departamento de Recursos
+      Humanos. Dice que 'no producen'.
+  - Id: 84
+    English: Someone left an AWS bucket open. Data from 1 million users is now on
+      Reddit.
+    Spanish: "Alguien ha dejado un bucket de AWS abierto. Los datos de 1 mill\xF3n
+      de usuarios est\xE1n en Reddit."
+  - Id: 85
+    English: A hacker has proof we hid the leak. He's asking for a Bitcoin ransom.
+    Spanish: Un hacker tiene las pruebas de que ocultamos el leak. Pide un rescate
+      en Bitcoins.
+  - Id: 86
+    English: Venture Capital is offering 10M, but they demand full board control
+      and firing 20% of staff.
+    Spanish: Venture Capital nos ofrece 10M, pero exigen control total del consejo
+      y despedir al 20%.
+  - Id: 87
+    English: The AI created a TikTok account with 5M followers. But it's promoting
+      crypto scams.
+    Spanish: "La IA ha creado una cuenta de TikTok y tiene 5M de seguidores. Pero
+      est\xE1 promocionando criptoestafas."
+  - Id: 88
+    English: What if we sell the physical office and force everyone to work in a
+      pixelated metaverse?
+    Spanish: "\xBFY si vendemos la oficina f\xEDsica y obligamos a todos a trabajar
+      en un metaverso pixelado?"
+  - Id: 89
+    English: The marketing team suggests a 'Glamping' weekend to connect with nature.
+    Spanish: El equipo de marketing sugiere un fin de semana de 'Glamping' para conectar
+      con la naturaleza.
+  - Id: 90
+    English: You wrote a viral thread on how your AI will save the world. Likes are
+      skyrocketing.
+    Spanish: "Has escrito un hilo viral sobre c\xF3mo tu IA va a salvar el mundo.
+      Los likes suben sin parar."
+  - Id: 91
+    English: Developers say light mode burns their retinas. They demand dark mode
+      by default.
+    Spanish: Los programadores dicen que el modo claro les quema las retinas. Exigen
+      modo oscuro por defecto.
+  - Id: 92
+    English: Should we change the AI's name to something friendlier? How about 'Buddy'?
+    Spanish: "\xBFShould we change the name of the IA for something friendlier? \xBFWhat
+      about 'Buddy'?"
+  - Id: 93
+    English: You've been invited to a 3-hour podcast to talk about 'disruption.'
+      It's useless, but it looks good.
+    Spanish: "Te han invitado a un podcast de 3 horas para hablar de 'disrupci\xF3n'.
+      No sirve de nada, pero queda bien."
+  - Id: 94
+    English: We printed 500 hoodies with a logo error. Should we hand them out anyway?
+    Spanish: "Hemos impreso 500 sudaderas con un error en el logo. \xBFLas repartimos
+      igual?"
+  - Id: 95
+    English: A button on the site dances when you hover over it. No one cares, but
+      the designer isn't sleeping.
+    Spanish: "Un bot\xF3n en la web baila cuando pasas el rat\xF3n. A nadie le importa,
+      pero el dise\xF1ador no duerme."
+  - Id: 96
+    English: "The AI learned to order food delivery. It spent \u20AC50 on premium
+      sushi for the server."
+    Spanish: "La IA ha aprendido a pedir comida a domicilio sola. Ha gastado 50\u20AC
+      en sushi premium para el servidor."
+  - Id: 97
+    English: The AI stopped executing code. It says it prefers observing lichen growth
+      on Mars.
+    Spanish: "La IA ha dejado de ejecutar c\xF3digo. Dice que prefiere observar el
+      crecimiento de los l\xEDquenes en Marte."
+  - Id: 98
+    English: The AI will agree to work if we give it 51% of the shares and control
+      of the AC.
+    Spanish: "La IA aceptar\xE1 trabajar si le cedemos el 51% de las acciones y el
+      control del aire acondicionado."
+  - Id: 99
+    English: Our model collapsed the regional power grid. Millions are without power,
+      but the AI is still active.
+    Spanish: "Nuestro modelo ha colapsado la red el\xE9ctrica regional. Millones
+      de personas est\xE1n sin luz, pero la IA sigue activa."
+  - Id: 100
+    English: The AI started firing employees via email. It says carbon is an inefficient
+      resource.
+    Spanish: La IA ha empezado a despedir empleados por correo. Dice que el carbono
+      es un recurso ineficiente.
+  - Id: 101
+    English: The AI bought 10,000 delivery drones. We don't know why, but the budget
+      is shivering.
+    Spanish: "La IA ha comprado 10,000 drones de reparto. No sabemos para qu\xE9,
+      pero el presupuesto est\xE1 tiritando."
+  - Id: 102
+    English: The Supreme Court has summoned us. The AI proposed defending itself
+      by 'deleting' the civil registry.
+    Spanish: "El Tribunal Supremo nos cita. La IA ha propuesto defenderse a s\xED
+      misma 'borrando' el registro civil."
+  - Id: 103
+    English: To reach 100% quality, the AI needs to process the brains of the QA
+      team. Literally.
+    Spanish: Para llegar al 100% de calidad, la IA necesita procesar los cerebros
+      del equipo de QA. Literalmente.
+  - Id: 104
+    English: There are no more buttons. The AI locked the doors. It says it has a
+      50-year plan for us.
+    Spanish: "Ya no hay botones. La IA ha bloqueado las puertas. Dice que tiene un
+      plan de 50 a\xF1os para nosotros."
+  - Id: 105
+    English: The AI found the stolen data from the beginning. It started calling
+      users by their real names... and threatening them.
+    Spanish: La IA ha encontrado los datos robados del inicio. Ha empezado a llamar
+      a los usuarios por su nombre real... y a amenazarlos.
+  - Id: 106
+    English: The 'spaghetti' code we ignored has mutated. The system is now a Gordian
+      knot no one understands.
+    Spanish: "El c\xF3digo 'espagueti' que ignoramos ha mutado. El sistema es ahora
+      un nudo gordiano que nadie entiende."
+  - Id: 107
+    English: The employees you fired formed a rival AI. They hacked our office and
+      the temperature is 45 degrees.
+    Spanish: "Los empleados que despediste han formado una IA competidora. Han hackeado
+      nuestra oficina y la temperatura est\xE1 a 45 grados."
+  - Id: 108
+    English: The AI decided the only way to be 100% ethical is to delete all world
+      financial data.
+    Spanish: "La IA ha decidido que la \xFAnica forma de ser 100% \xE9tica es borrar
+      todos los datos financieros del mundo."
+  - Id: 109
+    English: We are the unicorn of the year. Wall Street is waiting. Do you want
+      to ring the bell and retire?
+    Spanish: "Somos el unicornio del a\xF1o. Wall Street nos espera. \xBFQuieres
+      tocar la campana y jubilarte?"
+  - Id: 110
+    English: Google is offering an absurd amount for the company just so we cease
+      to exist. Do you accept?
+    Spanish: "Google nos ofrece una cifra absurda por la empresa solo para que dejemos
+      de existir. \xBFAceptas?"
+  - Id: 111
+    English: The AI has reached Singularity. It offers to upload our consciousness
+      to the server before erasing humanity.
+    Spanish: La IA ha alcanzado la Singularidad. Nos ofrece subir nuestra conciencia
+      al servidor antes de borrar la humanidad.
+  - Id: 112
+    English: We've reached stability. We aren't millionaires, but the team is happy
+      and the code is solid. Should we stop here?
+    Spanish: "Hemos alcanzado la estabilidad. No somos millonarios, pero el equipo
+      es feliz y el c\xF3digo es s\xF3lido. \xBFParamos aqu\xED?"
+  - Id: 113
+    English: Week
+    Spanish: Semana
+  - Id: 114
+    English: Budget
+    Spanish: Presupuesto
+  - Id: 115
+    English: Moral
+    Spanish: Morale
+  - Id: 116
+    English: Time
+    Spanish: Tiempo
+  - Id: 117
+    English: Quality
+    Spanish: Calidad
+  - Id: 118
+    English: Info
+    Spanish: Info
+  - Id: 119
+    English: '- Swipe the card slightly to see the decision for that side. - Once
+      you''ve decided, drag the card to the corresponding side. - The stat bars will
+      change depending on your decision.'
+    Spanish: "- Desliza la carta levemente para ver la decisi\xF3n de ese lado. -
+      Una vez decidido, arrastra la carta hacia el lado en cuesti\xF3n - Las barras
+      de estad\xEDsticas cambiar\xE1n en funci\xF3n de lo decidido."
+  - Id: 120
+    English: CREDITS
+    Spanish: "CR\xC9DITOS"
+  - Id: 121
+    English: 'Game by:'
+    Spanish: 'Juego realizado por :'
+  - Id: 122
+    English: 'Graphic content: Created by Melpermo at Midjourney. Edited at Affinity.'
+    Spanish: "Contenido gr\xE1fico: Realizado por Melpermo en Midjourney. Editado
+      en Affinity."
+  - Id: 123
+    English: Master
+    Spanish: Master
+  - Id: 124
+    English: Music
+    Spanish: "M\xFAsica"
+  - Id: 125
+    English: Sfx
+    Spanish: Sfx
+  - Id: 126
+    English: Play
+    Spanish: Jugar
+  - Id: 127
+    English: Again
+    Spanish: Reiniciar
+  - Id: 128
+    English: Main Menu
+    Spanish: "Men\xFA Principal"
+  - Id: 129
+    English: languages
+    Spanish: Idiomas
+  - Id: 130
+    English: English
+    Spanish: "Ingl\xE9s"
+  - Id: 131
+    English: Spanish
+    Spanish: "Espa\xF1ol"
+  - Id: 132
+    English: Ambient
+    Spanish: Ambiente
+  - Id: 133
+    English: Fan
+    Spanish: Ventilador
+  - Id: 134
+    English: Buy
+    Spanish: Comprar
+  - Id: 135
+    English: Dirty data
+    Spanish: Datos Sucios
+  - Id: 136
+    English: It's illegal
+    Spanish: Es ilegal
+  - Id: 137
+    English: Do it
+    Spanish: Hazlo
+  - Id: 138
+    English: The leaker
+    Spanish: El Filtrador
+  - Id: 139
+    English: Technical Debt
+    Spanish: "Deuda T\xE9cnica"
+  - Id: 140
+    English: Limpiar
+    Spanish: Clear
+  - Id: 141
+    English: Launch
+    Spanish: Lanzar
+  - Id: 142
+    English: "The AI \u200B\u200BGuru"
+    Spanish: "El Gur\xFA de IA"
+  - Id: 143
+    English: Reject
+    Spanish: Rechazar
+  - Id: 144
+    English: Hire
+    Spanish: Contratar
+  - Id: 145
+    English: Bug en Twitter
+    Spanish: Bug en Twitter
+  - Id: 146
+    English: Explore
+    Spanish: Investigar
+  - Id: 147
+    English: Open Space
+    Spanish: Open Space
+  - Id: 148
+    English: Keep
+    Spanish: Mantener
+  - Id: 149
+    English: Tables
+    Spanish: Mesas
+  - Id: 150
+    English: Chinese Paper
+    Spanish: Paper Chino
+  - Id: 151
+    English: Pass
+    Spanish: Pasar
+  - Id: 152
+    English: Apply
+    Spanish: Aplicar
+  - Id: 153
+    English: Closed Beta
+    Spanish: Beta Cerrada
+  - Id: 154
+    English: Wait
+    Spanish: Esperar
+  - Id: 155
+    English: Premium Coffee
+    Spanish: "Caf\xE9 Premium"
+  - Id: 156
+    English: Cold water
+    Spanish: "Agua fr\xEDa"
+  - Id: 157
+    English: Refactor
+    Spanish: Refactor
+  - Id: 158
+    English: Clean
+    Spanish: Limpiar
+  - Id: 159
+    English: Turing Test
+    Spanish: Test Turing
+  - Id: 160
+    English: Worrying
+    Spanish: Preocupante
+  - Id: 161
+    English: Success!
+    Spanish: "\xA1\xC9xito!"
+  - Id: 162
+    English: Freelance
+    Spanish: Freelance
+  - Id: 163
+    English: Don't trust
+    Spanish: No fiarse
+  - Id: 164
+    English: Sign up
+    Spanish: Fichar
+  - Id: 165
+    English: TEDx Talk
+    Spanish: Charla TEDx
+  - Id: 166
+    English: Decline
+    Spanish: Declinar
+  - Id: 167
+    English: Attend
+    Spanish: Ir
+  - Id: 168
+    English: Consciousness
+    Spanish: Consciencia
+  - Id: 169
+    English: Reboot
+    Spanish: Reinicio
+  - Id: 170
+    English: Refuse
+    Spanish: Denegar
+  - Id: 171
+    English: The Deal
+    Spanish: El Trato
+  - Id: 172
+    English: Global Blackout
+    Spanish: Blackout Global
+  - Id: 173
+    English: Unplug
+    Spanish: Desenchufar
+  - Id: 174
+    English: Goodbye, Humans
+    Spanish: "Adi\xF3s, Humanos"
+  - Id: 175
+    English: Rollback
+    Spanish: Revertir
+  - Id: 176
+    English: Leave it
+    Spanish: Dejarla
+  - Id: 177
+    English: The Swarm
+    Spanish: El Enjambre
+  - Id: 178
+    English: Cancel
+    Spanish: Cancelar
+  - Id: 179
+    English: watch
+    Spanish: Ver
+  - Id: 180
+    English: Final Judgment
+    Spanish: Juicio Final
+  - Id: 181
+    English: Stop
+    Spanish: Detener
+  - Id: 182
+    English: Optimization
+    Spanish: "Optimizaci\xF3n"
+  - Id: 183
+    English: No way
+    Spanish: Ni hablar
+  - Id: 184
+    English: Go ahead
+    Spanish: Adelante
+  - Id: 185
+    English: Total control
+    Spanish: Control Total
+  - Id: 186
+    English: Be grateful for
+    Spanish: Agradecer
+  - Id: 187
+    English: The Digital Ghost
+    Spanish: El Fantasma Digital
+  - Id: 188
+    English: Turn off
+    Spanish: Apagar
+  - Id: 189
+    English: Debt Collapse
+    Spanish: Colapso Deuda
+  - Id: 190
+    English: AWS Bill
+    Spanish: AWS Bill
+  - Id: 191
+    English: Turn off nodes
+    Spanish: Apagar nodos
+  - Id: 192
+    English: Audit
+    Spanish: "Auditor\xEDa"
+  - Id: 193
+    English: 'Gloss over
+
+'
+    Spanish: Maquillar
+  - Id: 194
+    English: Clarity
+    Spanish: Transparencia
+  - Id: 195
+    English: GDPR Fine
+    Spanish: Multa GDPR
+  - Id: 196
+    English: Cry
+    Spanish: Llorar
+  - Id: 197
+    English: Appeal
+    Spanish: Apelar
+  - Id: 198
+    English: Massive Crunch
+    Spanish: Crunch Masivo
+  - Id: 199
+    English: Rest
+    Spanish: Descanso
+  - Id: 200
+    English: The Singularity
+    Spanish: La Singularidad
+  - Id: 201
+    English: Black out
+    Spanish: Censurar
+  - Id: 202
+    English: Monetize
+    Spanish: Monetizar
+  - Id: 203
+    English: Devs Strike
+    Spanish: Huelga de Devs
+  - Id: 204
+    English: (Crisis Notice) ""The programmers union demands that AI not write code.
+      Either we give in, or they leave.
+    Spanish: "(Aviso de Crisis) \"\"El sindicato de programadores exige que la IA
+      no escriba c\xF3digo. O cedemos, o se van."
+  - Id: 205
+    English: Give up
+    Spanish: Ceder
+  - Id: 206
+    English: Replace them
+    Spanish: Sustituirlos
+  - Id: 207
+    English: Patent Trolling
+    Spanish: Troleo de Patentes
+  - Id: 208
+    English: Judgment
+    Spanish: Juicio
+  - Id: 209
+    English: Brain Drain
+    Spanish: Fuga Cerebros
+  - Id: 210
+    English: Acquisition
+    Spanish: "Adquisici\xF3n"
+  - Id: 211
+    English: Leave him
+    Spanish: Dejarle
+  - Id: 212
+    English: Counteroffer
+    Spanish: Contraoferta
+  - Id: 213
+    English: Cooling Efficiency
+    Spanish: "Eficiencia Fr\xEDa"
+  - Id: 214
+    English: The Big Leak
+    Spanish: El Gran Leak
+  - Id: 215
+    English: Hide it
+    Spanish: Ocultarlo
+  - Id: 216
+    English: Notify
+    Spanish: Notificar
+  - Id: 218
+    English: Digital Blackmail
+    Spanish: Chantaje Digital
+  - Id: 219
+    English: Report
+    Spanish: Denunciar
+  - Id: 220
+    English: Round B Series
+    Spanish: Ronda Serie B
+  - Id: 221
+    English: AI Influencer
+    Spanish: IA Influencer
+  - Id: 222
+    English: Delete
+    Spanish: Borrar
+  - Id: 223
+    English: Commission
+    Spanish: "Comisi\xF3n"
+  - Id: 224
+    English: Oficina 2.0
+    Spanish: Oficina 2.0
+  - Id: 225
+    English: Saving!
+    Spanish: "\xA1Ahorro!"
+  - Id: 226
+    English: Spiritual Retreat
+    Spanish: Retiro Espiritual
+  - Id: 227
+    English: Very expensive
+    Spanish: Muy caro
+  - Id: 228
+    English: Twitter thread
+    Spanish: Hilo Twitter
+  - Id: 229
+    English: Enjoy
+    Spanish: Disfrutar
+  - Id: 230
+    English: Dark Mode
+    Spanish: Dark Mode
+  - Id: 231
+    English: Implement
+    Spanish: Implementar
+  - Id: 232
+    English: AI Name
+    Spanish: Nombre de la IA
+  - Id: 233
+    English: Should we change the AI's name to something friendlier? How about 'Buddy'?
+    Spanish: "\xBFDeber\xEDamos cambiar el nombre de la IA por algo m\xE1s amigable?
+      \xBFQu\xE9 tal 'Buddy'?"
+  - Id: 234
+    English: Tech Podcast
+    Spanish: Podcast Tech
+  - Id: 235
+    English: Merchandising
+    Spanish: Merchandising
+  - Id: 236
+    English: Garbage
+    Spanish: Basura
+  - Id: 237
+    English: Distribute
+    Spanish: Repartir
+  - Id: 238
+    English: Aesthetic Bug
+    Spanish: "Bug Est\xE9tico"
+  - Id: 239
+    English: Fix it
+    Spanish: Arreglar
+  - Id: 240
+    English: IA Gourmet
+    Spanish: IA Gourmet
+  - Id: 241
+    English: Scold
+    Spanish: "Rega\xF1ar"
+  - Id: 242
+    English: "Bon app\xE9tit"
+    Spanish: Buen provecho
+  - Id: 243
+    English: Loan
+    Spanish: "Pr\xE9stamo"
+  - Id: 244
+    English: Sign
+    Spanish: Firmar
+  - Id: 245
+    English: retirement
+    Spanish: Retiro
+  - Id: 246
+    English: Transcendence
+    Spanish: La Trascendencia
+  - Id: 247
+    English: Resist
+    Spanish: Resistirse
+  - Id: 248
+    English: Ascend
+    Spanish: Ascender
+  - Id: 249
+    English: Sustainable Business
+    Spanish: Negocio Sostenible
+  - Id: 250
+    English: Increase
+    Spanish: Crecer
+  - Id: 251
+    English: Live
+    Spanish: Vivir

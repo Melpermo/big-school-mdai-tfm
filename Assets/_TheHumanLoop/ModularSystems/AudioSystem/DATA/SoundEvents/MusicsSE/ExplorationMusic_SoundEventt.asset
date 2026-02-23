@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ExplorationMusic_SoundEventt
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.SoundEventSO
   _clips:
-  - {fileID: 8300000, guid: ce2bdc71de8221046b5109f02c551f46, type: 3}
+  - {fileID: 8300000, guid: ba76becdbb125e24c881ba25998e0f65, type: 3}
   _config: {fileID: 11400000, guid: 84136ed5283517a4197844cfdf90a249, type: 2}
