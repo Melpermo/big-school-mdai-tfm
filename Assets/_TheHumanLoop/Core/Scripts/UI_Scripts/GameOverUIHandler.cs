@@ -26,7 +26,7 @@ namespace HumanLoop.Core
         ///       
         public void HandleGameOver()
         {
-            Debug.Log("GAME OVER: Displaying UI...");
+            //Debug.Log("GAME OVER: Displaying UI...");
 
             gameOverPanel.gameObject.SetActive(true);
             gameOverPanel.DOFade(1f, 1f).SetUpdate(true); // SetUpdate(true) allows animation even if timeScale is 0

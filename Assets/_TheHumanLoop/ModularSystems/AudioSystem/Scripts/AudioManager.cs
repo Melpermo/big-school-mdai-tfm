@@ -32,7 +32,7 @@ namespace HumanLoop.AudioSystem
             }
             else
             {
-                //Destroy(gameObject);
+                Destroy(gameObject);
             }
         }
 

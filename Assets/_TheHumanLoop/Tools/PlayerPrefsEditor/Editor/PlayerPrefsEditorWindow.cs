@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace TheHumanLoop.Tools.PlayerPrefsEditor
 {
+#if UNITY_EDITOR
     public class PlayerPrefsEditorWindow : EditorWindow
     {
         private const string k_IndexKey = "__pp_index_v1";
@@ -393,3 +394,4 @@ namespace TheHumanLoop.Tools.PlayerPrefsEditor
         }
     }
 }
+#endif

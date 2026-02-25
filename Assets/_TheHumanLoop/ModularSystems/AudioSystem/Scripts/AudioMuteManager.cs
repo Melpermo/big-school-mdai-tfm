@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
 
 namespace HumanLoop.AudioSystem
 {
@@ -19,12 +18,13 @@ namespace HumanLoop.AudioSystem
         [SerializeField] private float _onVolumeDB = 0f;    // Volume when active
         [SerializeField] private float _offVolumeDB = -80f; // Volume when muted
 
-        bool isMasterMuted = false;
-        bool isMusicMuted = false;
-        bool isAmbientMuted = false;
-        bool isSoundMuted = false;
+        // These are used to track the current mute state of each category
+        private bool isMasterMuted = false;
+        private bool isMusicMuted = false;
+        private bool isAmbientMuted = false;
+        private bool isSoundMuted = false;
 
-
+        // These are used to store the current state of the toggles for saving/loading purposes
         private int prefMaster;
         private int prefMusic;
         private int prefSound;
@@ -48,16 +48,19 @@ namespace HumanLoop.AudioSystem
             InitializeAudioSettings();
         }
 
+        // This method can be called to set all audio categories to their default state (ON) and save that state in PlayerPrefs.
         public void InitializeAudioSettings()
         {
-            PlayerPrefs.SetInt(_masterexposedParamName + "_Toggle", 1);
-            PlayerPrefs.SetInt(_musicexposedParamName + "_Toggle", 1);
-            PlayerPrefs.SetInt(_ambientexposedParamName + "_Toggle", 1);
-            PlayerPrefs.SetInt(_soundexposedParamName + "_Toggle", 1);
+            PlayerPrefs.SetInt(AudioPrefsConstants.MasterVolume_toggle_Key, 1);
+            PlayerPrefs.SetInt(AudioPrefsConstants.MusicVolume_toggle_Key, 1);
+            PlayerPrefs.SetInt(AudioPrefsConstants.AmbientVolume_toggle_Key, 1);
+            PlayerPrefs.SetInt(AudioPrefsConstants.SFXVolume_toggle_Key, 1);
 
             //LoadPrefsMuteState();
         }
 
+        // This method applies the current mute states to the AudioMixer.
+        // It can be called after loading settings or when toggles are changed.
         public void ApplyAudioSettings()
         {
             ApplyMuteState(_masterexposedParamName, !isMasterMuted);
@@ -66,37 +69,19 @@ namespace HumanLoop.AudioSystem
             ApplyMuteState(_soundexposedParamName, !isSoundMuted);
         }
 
+        // This method saves the current mute states to PlayerPrefs.
+        // It should be called whenever a toggle is changed to ensure settings persist.
         public void SaveAudioSettings()
         {
-            PlayerPrefs.SetInt(_masterexposedParamName + "_Toggle", isMasterMuted ? 0 : 1);
-            PlayerPrefs.SetInt(_musicexposedParamName + "_Toggle", isMusicMuted ? 0 : 1);
-            PlayerPrefs.SetInt(_ambientexposedParamName + "_Toggle", isAmbientMuted ? 0 : 1);
-            PlayerPrefs.SetInt(_soundexposedParamName + "_Toggle", isSoundMuted ? 0 : 1);
+            PlayerPrefs.SetInt(AudioPrefsConstants.MasterVolume_toggle_Key, isMasterMuted ? 0 : 1);
+            PlayerPrefs.SetInt(AudioPrefsConstants.MusicVolume_toggle_Key, isMusicMuted ? 0 : 1);
+            PlayerPrefs.SetInt(AudioPrefsConstants.AmbientVolume_toggle_Key, isAmbientMuted ? 0 : 1);
+            PlayerPrefs.SetInt(AudioPrefsConstants.SFXVolume_toggle_Key, isSoundMuted ? 0 : 1);
             PlayerPrefs.Save();
-            Debug.Log("Audio settings saved.");
+            //Debug.Log("Audio settings saved.");
         }
 
-        [ContextMenu("ResetAudioSettings")]
-        public void ResetAudioSettings()
-        {
-            // Clear saved preferences
-            PlayerPrefs.DeleteKey(_masterexposedParamName + "_Toggle");
-            PlayerPrefs.DeleteKey(_musicexposedParamName + "_Toggle");
-            PlayerPrefs.DeleteKey(_ambientexposedParamName + "_Toggle");
-            PlayerPrefs.DeleteKey(_soundexposedParamName + "_Toggle");
-            PlayerPrefs.Save();
-            // Reset UI and Mixer to default (ON)
-            isMasterMuted = false;
-            isMusicMuted = false;
-            isAmbientMuted = false;
-            isSoundMuted = false;
-            ApplyMuteState(_masterexposedParamName, true);
-            ApplyMuteState(_musicexposedParamName, true);
-            ApplyMuteState(_ambientexposedParamName, true);
-            ApplyMuteState(_soundexposedParamName, true);
-            Debug.Log("Audio settings reset to default (ON).");
-        }
-
+        // These methods are called by the UI toggles to update the mute state and apply it immediately.
         public void MasterMuteToggled()
         {
             isMasterMuted = !isMasterMuted;
@@ -104,6 +89,7 @@ namespace HumanLoop.AudioSystem
             GetPrefsAudioValues();
         }
 
+        // Similar methods for Music, Ambient, and Sound toggles
         public void MusicMuteToggled()
         {
             isMusicMuted = !isMusicMuted;
@@ -111,22 +97,25 @@ namespace HumanLoop.AudioSystem
             GetPrefsAudioValues();
         }
 
+        // Similar methods for Music, Ambient, and Sound toggles
         public void AmbientMuteToggled()
         {
             isAmbientMuted = !isAmbientMuted;
             ApplyMuteState(_ambientexposedParamName, !isAmbientMuted);
             GetPrefsAudioValues();
-        }   
+        }
 
+        // Similar methods for Music, Ambient, and Sound toggles
         public void SoundMuteToggled()
         {
             isSoundMuted = !isSoundMuted;
             ApplyMuteState(_soundexposedParamName, !isSoundMuted);
             GetPrefsAudioValues();
-        }    
-        
-       
+        }
 
+
+
+        // This helper method applies the mute state to the AudioMixer and saves it to PlayerPrefs.
         private void ApplyMuteState(string exposedParamName, bool isOn)
         {
             float targetVolume = isOn ? _onVolumeDB : _offVolumeDB;
@@ -138,7 +127,7 @@ namespace HumanLoop.AudioSystem
         }
 
 
-        [ContextMenu("GetPrefsAudioValues")]
+        //[ContextMenu("GetPrefsAudioValues")]
         private void GetPrefsAudioValues()
         {
             prefMaster = PlayerPrefs.GetInt(_masterexposedParamName, 1);
@@ -146,16 +135,16 @@ namespace HumanLoop.AudioSystem
             prefAmbient = PlayerPrefs.GetInt(_ambientexposedParamName, 1);
             prefSound = PlayerPrefs.GetInt(_soundexposedParamName, 1);
 
-            Debug.Log($"AudioManager: GetPrefsudioValues called. Master: {prefMaster}, Music: {prefMusic}, SFX: {prefSound}, Ambient: {prefAmbient}");
+            //Debug.Log($"AudioManager: GetPrefsudioValues called. Master: {prefMaster}, Music: {prefMusic}, SFX: {prefSound}, Ambient: {prefAmbient}");
         }
 
         public void LoadPrefsMuteState()
         {
             // 1. Load saved state (1 for ON, 0 for OFF). Default to ON (1).
-            bool masterSavedState = PlayerPrefs.GetInt(_masterexposedParamName + "_Toggle", 1) == 1;
-            bool musicSavedState = PlayerPrefs.GetInt(_musicexposedParamName + "_Toggle", 1) == 1;
-            bool ambientSavedState = PlayerPrefs.GetInt(_ambientexposedParamName + "_Toggle", 1) == 1;
-            bool soundSavedState = PlayerPrefs.GetInt(_soundexposedParamName + "_Toggle", 1) == 1;
+            bool masterSavedState = PlayerPrefs.GetInt(AudioPrefsConstants.MasterVolume_toggle_Key, 1) == 1;
+            bool musicSavedState = PlayerPrefs.GetInt(AudioPrefsConstants.MusicVolume_toggle_Key, 1) == 1;
+            bool ambientSavedState = PlayerPrefs.GetInt(AudioPrefsConstants.AmbientVolume_toggle_Key, 1) == 1;
+            bool soundSavedState = PlayerPrefs.GetInt(AudioPrefsConstants.SFXVolume_toggle_Key, 1) == 1;
 
             // 2. Sync UI without triggering the event yet
             isMasterMuted = masterSavedState;
@@ -192,6 +181,32 @@ namespace HumanLoop.AudioSystem
         {
             isSoundMuted = !isOn;
             ApplyMuteState(_soundexposedParamName, isOn);
-        }        
+        }
+
+
+#if (UNITY_EDITOR)
+        #region Testing Context Menu Methods
+        [ContextMenu("ResetAudioSettings")]
+        public void ResetAudioSettings()
+        {
+            // Clear saved preferences
+            PlayerPrefs.DeleteKey(AudioPrefsConstants.MasterVolume_toggle_Key);
+            PlayerPrefs.DeleteKey(AudioPrefsConstants.MusicVolume_toggle_Key);
+            PlayerPrefs.DeleteKey(AudioPrefsConstants.AmbientVolume_toggle_Key);
+            PlayerPrefs.DeleteKey(AudioPrefsConstants.SFXVolume_toggle_Key);
+            PlayerPrefs.Save();
+            // Reset UI and Mixer to default (ON)
+            isMasterMuted = false;
+            isMusicMuted = false;
+            isAmbientMuted = false;
+            isSoundMuted = false;
+            ApplyMuteState(_masterexposedParamName, true);
+            ApplyMuteState(_musicexposedParamName, true);
+            ApplyMuteState(_ambientexposedParamName, true);
+            ApplyMuteState(_soundexposedParamName, true);
+            //Debug.Log("Audio settings reset to default (ON).");
+        }
+        #endregion
+#endif
     }
 }

@@ -3,140 +3,208 @@ using HumanLoop.Core;
 using HumanLoop.Data;
 using HumanLoop.Events;
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace HumanLoop.UI
 {
-    /// <summary>
-    /// Handles the physical drag, rotation, and swipe logic using DOTween.
-    /// </summary>
+    [RequireComponent(typeof(RectTransform))]
+    [RequireComponent(typeof(CanvasGroup))]
+    [RequireComponent(typeof(CardDisplay))]
     public class CardController : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
         public static event Action OnCardRemoved;
         public static event Action<CardDataSO, bool> OnCardRemovedWithDecision;
 
         [Header("Settings")]
-        [SerializeField] private float fovAngle = 15f; // Rotation angle at max swipe
-        [SerializeField] private float swipeThreshold = 150f; // Distance to trigger action
-        [SerializeField] private float returnDuration = 0.3f; // DOTween duration        
+        [SerializeField] private float fovAngle = 15f;
+        [SerializeField] private float swipeThreshold = 150f;
+        [SerializeField] private float returnDuration = 0.3f;
+        [SerializeField] private float swipeExitX = 1000f;
+        [SerializeField] private float swipeDuration = 0.4f;
+
+        [Header("Dependencies")]
+        [SerializeField] private CardFactory cardFactory;
 
         [Header("Mechanics GameEvents")]
         [SerializeField] private GameEventSO onCardSwipedEvent;
-        [SerializeField] private GameEventSO onCardReturnedEvent;        
+        [SerializeField] private GameEventSO onCardReturnedEvent;
 
-        private Vector2 _startPosition;
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
         private CardDisplay _display;
 
+        private Vector2 _startPosition;
 
+        private Tween _moveTween;
+        private Tween _rotateTween;
+
+        private bool _isBusy;
 
         private void Awake()
         {
             _rectTransform = GetComponent<RectTransform>();
             _canvasGroup = GetComponent<CanvasGroup>();
             _display = GetComponent<CardDisplay>();
+
+            // Start position should be "center" for your gameplay (usually 0,0 on anchoredPosition).
+            // We still cache it, but we also refresh it on ResetCardController().
             _startPosition = _rectTransform.anchoredPosition;
         }
 
-        void Start()
+        private void OnEnable()
         {
-            // Ensure starting position is recorded
-            _startPosition = _rectTransform.anchoredPosition;
-            _display.HideChoices();
-            ResetCardController();
+            KillTweens();
+            _isBusy = false;
+            SetRaycast(true);
         }
 
+        private void OnDisable()
+        {
+            KillTweens();
+        }
+
+        public void SetFactory(CardFactory factory)
+        {
+            cardFactory = factory;
+        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            // Optional: Reset scale or trigger feedback when starting drag
-            DOTween.Kill(_rectTransform);
+            if (_isBusy) return;
+            KillTweens();
         }
 
-        // Inside OnDrag(PointerEventData eventData)
         public void OnDrag(PointerEventData eventData)
         {
+            if (_isBusy) return;
+
             _rectTransform.anchoredPosition += eventData.delta;
 
             float xOffset = _rectTransform.anchoredPosition.x - _startPosition.x;
 
-            // Calculate rotation
-            float rotationZ = -(xOffset / swipeThreshold) * fovAngle;
-            _rectTransform.localEulerAngles = new Vector3(0, 0, rotationZ);
-
-            // Normalize offset: 0 is center, 1 (or -1) is threshold reached
             float normalizedOffset = Mathf.Clamp(xOffset / swipeThreshold, -1f, 1f);
 
-            float rotationAmount = _rectTransform.anchoredPosition.x * -0.05f; // Ajusta el 0.05f a tu gusto
-            _rectTransform.localRotation = Quaternion.Euler(0, 0, rotationAmount);
+            float rotationZ = -(normalizedOffset) * fovAngle;
+            _rectTransform.localEulerAngles = new Vector3(0f, 0f, rotationZ);
 
-            // Delegate visual update to Display
             _display.UpdateChoiceVisuals(normalizedOffset);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (_isBusy) return;
+
             float xOffset = _rectTransform.anchoredPosition.x - _startPosition.x;
 
             if (Mathf.Abs(xOffset) > swipeThreshold)
-            {
                 SwipeCard(xOffset > 0);
-            }
             else
-            {
                 ReturnToCenter();
-            }
         }
 
-        // Don't forget to reset alphas in ReturnToCenter()
         private void ReturnToCenter()
         {
-            _rectTransform.DOAnchorPos(_startPosition, returnDuration).SetEase(Ease.OutBack);
-            _rectTransform.DORotate(Vector3.zero, returnDuration).SetEase(Ease.OutBack);
+            _isBusy = true;
+            SetRaycast(false);
+            KillTweens();
 
-            // Let Display handle clearing the UI
+            int completed = 0;
+
+            _moveTween = _rectTransform
+                .DOAnchorPos(_startPosition, returnDuration)
+                .SetEase(Ease.OutBack)
+                .SetTarget(this)
+                .OnComplete(() =>
+                {
+                    completed++;
+                    if (completed >= 2) FinishBusy();
+                });
+
+            _rotateTween = _rectTransform
+                .DORotate(Vector3.zero, returnDuration)
+                .SetEase(Ease.OutBack)
+                .SetTarget(this)
+                .OnComplete(() =>
+                {
+                    completed++;
+                    if (completed >= 2) FinishBusy();
+                });
+
             _display.HideChoices();
-
-            // Trigger GameEvent for return
             onCardReturnedEvent?.Raise();
         }
 
-
         private void SwipeCard(bool isRight)
         {
-            float exitDirection = isRight ? 1000f : -1000f;
+            _isBusy = true;
+            SetRaycast(false);
+            KillTweens();
+
+            float exitX = isRight ? swipeExitX : -swipeExitX;
             CardDataSO dataToApply = _display.Data;
 
-            _rectTransform.DOAnchorPosX(exitDirection, 0.4f)
+            _moveTween = _rectTransform
+                .DOAnchorPosX(exitX, swipeDuration)
                 .SetEase(Ease.InBack)
+                .SetTarget(this)
                 .OnComplete(() =>
                 {
-                    dataToApply.ApplyEffect(isRight);
+                    dataToApply?.ApplyEffect(isRight);
+
                     OnCardRemovedWithDecision?.Invoke(dataToApply, isRight);
                     OnCardRemoved?.Invoke();
 
-                    // INSTEAD OF DESTROY: Return to pool via Factory
-                    // Note: You might need a reference to the factory or use a Singleton
-                    UnityEngine.Object.FindFirstObjectByType<CardFactory>().ReturnToPool(_display);
+                    if (cardFactory != null)
+                        cardFactory.ReturnToPool(_display);
+
+                    FinishBusy();
                 });
 
-            // Trigger GameEvent for swipe
             onCardSwipedEvent?.Raise();
         }
 
-        // Este método debe ser llamado cuando la carta sale del pool
         public void ResetCardController()
         {
-            _rectTransform = GetComponent<RectTransform>();
-            _canvasGroup = GetComponent<CanvasGroup>();
+            KillTweens();
 
-            _rectTransform.anchoredPosition = Vector2.zero;
+            // In your gameplay the "center" is typically anchoredPosition = 0.
+            // But if you want a different start offset, set it from outside before calling reset.
+            _startPosition = Vector2.zero;
+
+            _rectTransform.anchoredPosition = _startPosition;
             _rectTransform.localRotation = Quaternion.identity;
-            _canvasGroup.alpha = 1;
-            _canvasGroup.blocksRaycasts = false; // Empezamos sin raycast hasta que el Flip termine
+
+            _canvasGroup.alpha = 1f;
+            _canvasGroup.blocksRaycasts = false; // CardDisplay enables after flip completes
+
+            _display.HideChoices();
+
+            _isBusy = false;
+            SetRaycast(true);
+        }
+
+        private void FinishBusy()
+        {
+            _isBusy = false;
+            SetRaycast(true);
+        }
+
+        private void SetRaycast(bool enabled)
+        {
+            if (_canvasGroup != null)
+                _canvasGroup.blocksRaycasts = enabled;
+        }
+
+        private void KillTweens()
+        {
+            DOTween.Kill(this, true);
+
+            if (_rectTransform != null)
+                _rectTransform.DOKill(true);
+
+            _moveTween = null;
+            _rotateTween = null;
         }
     }
 }

@@ -7,67 +7,80 @@ namespace HumanLoop.Core
     public class ProgressionManager : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private DeckManager deckManager;
-        [SerializeField] private TimeManager timeManager;
+        [SerializeField] private DeckManager _deckManager;
+        [SerializeField] private TimeManager _timeManager;
 
         [Header("Progression Milestones")]
-        [SerializeField] private int midGameWeek = 10;
-        [SerializeField] private DeckSO midGameDeck;
+        [SerializeField] private int _midGameWeek = 10;
+        [SerializeField] private DeckSO _midGameDeck;
 
-        [SerializeField] private int endGameWeek = 25;
-        [SerializeField] private DeckSO endGameDeck;
+        [SerializeField] private int _endGameWeek = 25;
+        [SerializeField] private DeckSO _endGameDeck;
 
         [Header("Phase Victory Settings")]
-        [SerializeField] private int victoryWeek = 50; // Semana para ganar
-        [SerializeField] private GameEventSO onVictoryEvent;
+        [SerializeField] private int _victoryWeek = 50; // Week to win
+                [SerializeField] private GameEventSO _onVictoryEvent;
+        [SerializeField] private GameEventSO _onMidGameReachedEvent;
+        [SerializeField] private GameEventSO _onEndGameReachedEvent;
 
 
 
-        private bool _midGameReached = false;
-        private bool _endGameReached = false;
-        private bool _victoryReached = false;
+        private bool midGameReached = false;
+        private bool endGameReached = false;
+        private bool victoryReached = false;
 
         public void CheckProgression()
         {
-            if (_victoryReached) return;
+            if (victoryReached) return;
 
-            int currentWeek = timeManager.CurrentWeek;
+            int currentWeek = _timeManager.CurrentWeek;
 
             // Condición de Victoria
-            if (currentWeek >= victoryWeek && !_victoryReached)
+            if (currentWeek >= _victoryWeek && !victoryReached)
             {
-                _victoryReached = true;
+                victoryReached = true;
                 WinGame();
                 return;
             }
 
             // Progresión de mazos
-            if (currentWeek >= endGameWeek && !_endGameReached)
+            if (currentWeek >= _endGameWeek && !endGameReached)
             {
-                _endGameReached = true;
-                deckManager.LoadNewDeck(endGameDeck);
-                ChangeToDeck(endGameDeck, "End Game Deck");
+                endGameReached = true;
+                _deckManager.LoadNewDeck(_endGameDeck);
+                ChangeToDeck(_endGameDeck, "End Game Deck");
+
             }
-            else if (currentWeek >= midGameWeek && !_midGameReached)
+            else if (currentWeek >= _midGameWeek && !midGameReached)
             {
-                _midGameReached = true;
-                deckManager.LoadNewDeck(midGameDeck);
-                ChangeToDeck(midGameDeck, "Mid Game Deck");
+                midGameReached = true;
+                _deckManager.LoadNewDeck(_midGameDeck);
+                ChangeToDeck(_midGameDeck, "Mid Game Deck");
             }
         }
 
         private void ChangeToDeck(DeckSO newDeck, string phaseName)
         {
-            Debug.Log($"<color=cyan>Progression:</color> Entering {phaseName} phase!");
-            deckManager.LoadNewDeck(newDeck);
+            //Debug.Log($"<color=cyan>Progression:</color> Entering {phaseName} phase!");
+            _deckManager.LoadNewDeck(newDeck);
+
+            // Raise the appropriate event based on the phase
+            if (phaseName == "Mid Game Deck" && _onMidGameReachedEvent != null)
+            {
+                _onMidGameReachedEvent.Raise();
+            }
+            else if (phaseName == "End Game Deck" && _onEndGameReachedEvent != null)
+            {
+                _onEndGameReachedEvent.Raise();
+            }
         }
 
         private void WinGame()
         {
-            Debug.Log("<color=gold>VICTORIA: El bucle se ha completado con éxito.</color>");
-            if (onVictoryEvent != null)
+            //Debug.Log("<color=gold>VICTORY: The loop has been successfully completed.</color>");
+            if (_onVictoryEvent != null)
             {
-                onVictoryEvent.Raise();
+                _onVictoryEvent.Raise();
             }
         }        
     }

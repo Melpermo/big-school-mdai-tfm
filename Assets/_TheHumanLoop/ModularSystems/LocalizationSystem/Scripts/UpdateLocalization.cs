@@ -1,8 +1,5 @@
 using TMPro;
-using Unity.Android.Gradle.Manifest;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace HumanLoop.LocalizationSystem
 {
@@ -28,8 +25,8 @@ namespace HumanLoop.LocalizationSystem
 
             languageDropdown.value = LocalizationBootstrap.Instance.GetCurrentLanguaje(); //_service.CurrentLanguage == LanguageId.Spanish ? 1 : 0;
             languageDropdown.RefreshShownValue();
-            Debug.Log($"Bootstrap: {LocalizationBootstrap.Instance.GetCurrentLanguaje()}");
-            Debug.Log("Dropdown initial value set to: " + languageDropdown.value);
+            //Debug.Log($"Bootstrap: {LocalizationBootstrap.Instance.GetCurrentLanguaje()}");
+            //Debug.Log("Dropdown initial value set to: " + languageDropdown.value);
         }
 
         // This method can be called directly from the dropdown's OnValueChanged event, passing the selected index.

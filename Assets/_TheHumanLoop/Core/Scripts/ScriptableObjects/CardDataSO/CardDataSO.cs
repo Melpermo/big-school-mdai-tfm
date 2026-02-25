@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using HumanLoop.Core;
 
 namespace HumanLoop.Data
 {
@@ -72,7 +71,8 @@ namespace HumanLoop.Data
             }
             else
             {
-                Debug.LogError("ApplyEffect: GameStatsManager.Instance is missing in the scene!");
+                //Debug.LogError("ApplyEffect: GameStatsManager.Instance is missing in the scene!");
+                return;
             }
         }
 

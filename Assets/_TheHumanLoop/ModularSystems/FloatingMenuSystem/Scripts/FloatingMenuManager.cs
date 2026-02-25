@@ -27,7 +27,7 @@ namespace TheHumanLoop.UI
         {
             if (index < 0 || index >= windows.Count)
             {
-                Debug.LogWarning($"FloatingMenuManager: Window index {index} out of bounds.");
+                //Debug.LogWarning($"FloatingMenuManager: Window index {index} out of bounds.");
                 return;
             }
 

@@ -44,7 +44,7 @@ namespace HumanLoop.Tools.CardCSVImporter
             string actualPath = AssetDatabase.GetAssetPath(csvFile);
             if (!File.Exists(actualPath))
             {
-                Debug.LogError("CSV not found at Unity path.");
+                //Debug.LogError("CSV not found at Unity path.");
                 return;
             }
 
@@ -100,7 +100,7 @@ namespace HumanLoop.Tools.CardCSVImporter
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            Debug.Log($"Database Sync Complete. {allCards.Count} assets are up to date.");
+            //Debug.Log($"Database Sync Complete. {allCards.Count} assets are up to date.");
         }
 
         private void FillCardData(SimpleCardData card, string[] data, string[] headers)

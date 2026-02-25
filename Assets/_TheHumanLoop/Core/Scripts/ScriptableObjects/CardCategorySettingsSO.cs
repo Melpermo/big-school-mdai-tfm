@@ -13,7 +13,7 @@ namespace HumanLoop.Visuals
     }
 
     [CreateAssetMenu(fileName = "CategorySettings", menuName = "The Human Loop/UI/Category Settings")]
-    public class CardCategorySettings : ScriptableObject
+    public class CardCategorySettingsSO : ScriptableObject
     {
         public List<CategoryStyle> styles;
 

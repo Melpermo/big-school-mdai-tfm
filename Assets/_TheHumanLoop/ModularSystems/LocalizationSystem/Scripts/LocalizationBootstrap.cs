@@ -1,5 +1,4 @@
-﻿using HumanLoop.LocalizationSystem;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace HumanLoop.LocalizationSystem
 {
@@ -21,16 +20,14 @@ namespace HumanLoop.LocalizationSystem
 
         private void Awake()
         {
-            lock (this)
+            if (Instance != null && Instance != this)
             {
-                if (Instance != null && Instance != this)
-                {
-                    //Destroy(gameObject);
-                    return;
-                }
-                Instance = this;
-                //DontDestroyOnLoad(gameObject);
+                //Destroy(gameObject);
+                return;
             }
+
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
 
             m_service = new LocalizationService(_table, _defaultLanguage);
             LocalizedTextTMP.Service = m_service;
@@ -39,7 +36,7 @@ namespace HumanLoop.LocalizationSystem
         // This method can be used to get the current language as an integer (0 for English, 1 for Spanish, etc.)
         // for use in UI elements like dropdowns.
         public int GetCurrentLanguaje()
-        { 
+        {
             _currentLanguage = m_service.CurrentLanguage;
             return (int)m_service.CurrentLanguage;
         }
@@ -70,8 +67,8 @@ namespace HumanLoop.LocalizationSystem
         {
             m_service.SetLanguage(LanguageId.English);
             GetCurrentLanguaje();
-            Debug.Log("Language set to English");
-            Debug.Log($"Current language: {GetCurrentLanguaje()}");
+            //Debug.Log("Language set to English");
+            //Debug.Log($"Current language: {GetCurrentLanguaje()}");
         }
 
         [ContextMenu("Test/Set Spanish")]
@@ -79,9 +76,9 @@ namespace HumanLoop.LocalizationSystem
         {
             m_service.SetLanguage(LanguageId.Spanish);
             GetCurrentLanguaje();
-            Debug.Log("Language set to Spanish");
-            Debug.Log($"Current language: {GetCurrentLanguaje()}");
+            //Debug.Log("Language set to Spanish");
+            //Debug.Log($"Current language: {GetCurrentLanguaje()}");
         }
-       
+
     }
 }

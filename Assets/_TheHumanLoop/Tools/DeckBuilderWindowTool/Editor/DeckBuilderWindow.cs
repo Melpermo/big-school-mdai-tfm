@@ -116,7 +116,7 @@ namespace HumanLoop.Tools.DeckBuilder
 
             if (idIndex == -1)
             {
-                Debug.LogError("Critical Error: 'ID' column not found in CSV header.");
+                //Debug.LogError("Critical Error: 'ID' column not found in CSV header.");
                 return;
             }
 
@@ -139,7 +139,7 @@ namespace HumanLoop.Tools.DeckBuilder
                 }
                 else
                 {
-                    Debug.LogError($"Filter Error: Column '{rule.columnName}' not found in CSV. Check for typos!");
+                    //Debug.LogError($"Filter Error: Column '{rule.columnName}' not found in CSV. Check for typos!");
                     return; // Stop execution to prevent adding all cards by mistake
                 }
             }
@@ -180,7 +180,7 @@ namespace HumanLoop.Tools.DeckBuilder
             EditorUtility.SetDirty(targetDeck);
             AssetDatabase.SaveAssets();
 
-            Debug.Log($"SUCCESS: {filteredCards.Count} cards added to '{targetDeck.name}'. Filter: {string.Join(", ", filterRules.Select(r => r.columnName + "=" + r.value))}");
+            //Debug.Log($"SUCCESS: {filteredCards.Count} cards added to '{targetDeck.name}'. Filter: {string.Join(", ", filterRules.Select(r => r.columnName + "=" + r.value))}");
             Selection.activeObject = targetDeck;
         }
 

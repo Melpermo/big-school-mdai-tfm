@@ -90,7 +90,7 @@ namespace HumanLoop.Core
                 return;
             }
 
-            Debug.Log($"<color=cyan>Checking {endGameConditionsList.Count} conditions...</color>");
+            //Debug.Log($"<color=cyan>Checking {endGameConditionsList.Count} conditions...</color>");
 
             foreach (var endGameCondition in endGameConditionsList)
             {
@@ -102,22 +102,25 @@ namespace HumanLoop.Core
                 bool isMet = endGameCondition.CheckCondition();
                 
                 // Log cada evaluación para debug
-                Debug.Log($"  [{endGameCondition.conditionName}] → {(isMet ? "<color=red>MET</color>" : "<color=green>not met</color>")}");
+                //Debug.Log($"  [{endGameCondition.conditionName}] → {(isMet ? "<color=red>MET</color>" : "<color=green>not met</color>")}");
 
                 if (isMet)
                 {
-                    Debug.Log($"<color=yellow>END GAME TRIGGERED: {endGameCondition.conditionName} ({endGameCondition.conditionType})</color>");
+                    //Debug.Log($"<color=yellow>END GAME TRIGGERED: {endGameCondition.conditionName} ({endGameCondition.conditionType})</color>");
                     endGameCondition.RaiseEvent();
                     return;
                 }
             }
         }
 
+
+#if (UNITY_EDITOR)
         #region Testing & Debug Methods
 
         /// <summary>
         /// Logs current state of all stats.
         /// </summary>
+
         [ContextMenu("Debug/Log Current Stats")]
         public void LogCurrentStats()
         {
@@ -321,5 +324,6 @@ namespace HumanLoop.Core
             CheckEndGameConditions();
         }
         #endregion
+#endif
     }
 }

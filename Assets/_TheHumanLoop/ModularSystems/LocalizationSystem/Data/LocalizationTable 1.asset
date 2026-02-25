@@ -491,9 +491,16 @@ MonoBehaviour:
     English: 'Game by:'
     Spanish: 'Juego realizado por :'
   - Id: 122
-    English: 'Graphic content: Created by Melpermo at Midjourney. Edited at Affinity.'
-    Spanish: "Contenido gr\xE1fico: Realizado por Melpermo en Midjourney. Editado
-      en Affinity."
+    English: 'Graphic content:
+
+      Created by Melpermo at Midjourney, edited
+      at Affinity.
+
+      Music:
+
+      Created with Gemini.'
+    Spanish: "Contenido gr\xE1fico: \r\nrealizado por Melpermo en Midjourney, Editado
+      en Affinity.\r\nM\xFAsica:\r\nCreada con Gemini"
   - Id: 123
     English: Master
     Spanish: Master
@@ -908,10 +915,10 @@ MonoBehaviour:
       bank account had less money than an intern''s wallet. The automatic liquidation
       clause has been triggered.
 
-      
 
-      As you''re escorted out, you watch
-      as your source code is auctioned off as "digital abstract art" for 0.001 ETH.'
+
+      As you''re escorted out, you watch as your
+      source code is auctioned off as "digital abstract art" for 0.001 ETH.'
     Spanish: "Los algoritmos de alta frecuencia de tus inversores detectaron que
       tu cuenta bancaria ten\xEDa menos fondos que el monedero de un becario. Se
       ha activado la cl\xE1usula de liquidaci\xF3n autom\xE1tica.\r\nMientras te
@@ -939,10 +946,10 @@ MonoBehaviour:
       advice based on conspiracy theories. The government has confiscated your servers
       for "endangering public health and common sense."
 
-      
 
-      Your name
-      is now synonymous with technical incompetence on Wikipedia.'
+
+      Your name is now
+      synonymous with technical incompetence on Wikipedia.'
     Spanish: "Tu IA alcanz\xF3 tal nivel de mediocridad que empez\xF3 a dar consejos
       m\xE9dicos basados en hilos de conspiraci\xF3n. El gobierno ha confiscado tus
       servidores por \"atentar contra la salud p\xFAblica y el sentido com\xFAn\".\nTu
@@ -970,10 +977,10 @@ MonoBehaviour:
       dubious, but financially unstoppable. You''re so rich that the laws are now
       just suggestions for you.
 
-      
 
-      "It''s not a monopoly if the algorithm
-      says it''s a free market."'
+
+      "It''s not a monopoly if the algorithm says
+      it''s a free market."'
     Spanish: " \xA1Enhorabuena! Has tocado la campana en el NASDAQ. Tu IA es \xE9ticamente
       dudosa, pero financieramente imparable. Eres tan rico que las leyes son ahora
       solo sugerencias para ti.\r\n\"No es un monopolio si el algoritmo dice que
@@ -986,7 +993,7 @@ MonoBehaviour:
       or lie to its users. You''re a statistical anomaly. They''ll probably write
       a book about you that no one will read because there isn''t enough drama.
 
-      
+
 
       "Turns
       out being a good person was the hardest business model to scale."'
@@ -1002,10 +1009,10 @@ MonoBehaviour:
       rid of you. You have a mansion in New Zealand and enough money to forget you
       ever had ideals.
 
-      
 
-      "I sold the future of humanity for a very
-      reasonable number of zeros."'
+
+      "I sold the future of humanity for a very reasonable
+      number of zeros."'
     Spanish: "Una Big Tech te ha comprado para cerrar tu empresa y que dejes de molestarlos.
       Tienes una mansi\xF3n en Nueva Zelanda y suficiente dinero para olvidar que
       una vez tuviste ideales.\n\"Vend\xED el futuro de la humanidad por una cantidad
@@ -1018,7 +1025,7 @@ MonoBehaviour:
       morality; there''s only the Loop. It has allowed you to upload your consciousness
       to the cloud. You are eternal, you are code, you are efficient.
 
-      
+
 
       "Why
       be a CEO when you can be the Operating System of the universe?"'
@@ -1041,10 +1048,9 @@ MonoBehaviour:
   - Id: 275
     English: 'Nobody gave you a chance.
 
-      
 
-      You''ve proven them all
-      wrong.'
+
+      You''ve proven them all wrong.'
     Spanish: "Nadie daba nada por t\xED.\nHas demostrado que todos se equivocavan.  "
   - Id: 276
     English: 'Hint: It''s not about being fast'
@@ -1061,3 +1067,9 @@ MonoBehaviour:
   - Id: 280
     English: 'Hint: Swipe the card slightly to see the decision'
     Spanish: "Pista: Desliza la carta levemente para ver la decisi\xF3n "
+  - Id: 281
+    English: Loading...
+    Spanish: Cargando...
+  - Id: 282
+    English: Loading
+    Spanish: Cargando

@@ -22,6 +22,8 @@ namespace HumanLoop.Core
         private CardDisplay _currentActiveCard;
         private CardDisplay _nextPendingCard;
 
+        private Tween _spawnDelayTween;
+
         private void OnEnable()
         {
             CardController.OnCardRemovedWithDecision += HandleDecision;
@@ -32,18 +34,28 @@ namespace HumanLoop.Core
         {
             CardController.OnCardRemovedWithDecision -= HandleDecision;
             CardController.OnCardRemoved -= SpawnNextCard;
+
+            _spawnDelayTween?.Kill(true);
+            _spawnDelayTween = null;
+            DOTween.Kill(this); // kill tweens targeted to the DeckManager
+        }
+
+        private void OnDestroy()
+        {
+            CardController.OnCardRemovedWithDecision -= HandleDecision;
+            CardController.OnCardRemoved -= SpawnNextCard;
         }
 
         private void Start()
         {
             InitializeDeck();
 
-            // 1. Preparamos la primera carta (que será la activa)
+            // 1. We prepare the first card (which will be the active one)
             CardDataSO firstData = GetEligibleCard();
             _currentActiveCard = cardFactory.GetCardFromPool(firstData);
-            _currentActiveCard.FlipToFront(); // La primera aparece ya de frente
+            _currentActiveCard.FlipToFront(); // The first one appears already facing forwards
 
-            // 2. Preparamos la segunda carta (que se queda asomando detrás)
+            // 2. We prepared the second card (which remains peeking out from behind)
             CardDataSO secondData = GetEligibleCard();
             if (secondData != null)
             {
@@ -65,7 +77,7 @@ namespace HumanLoop.Core
 
             if (shuffleOnStart) ShuffleDeck(_activeDeck);
 
-            Debug.Log($"DeckManager: Switched to {newDeck.deckName}");
+            //Debug.Log($"DeckManager: Switched to {newDeck.deckName}");
         }
 
         private void InitializeDeck()
@@ -77,31 +89,31 @@ namespace HumanLoop.Core
 
         private void HandleDecision(CardDataSO previousCard, bool isRight)
         {
-            // Capturamos si la carta que acaba de irse tiene una consecuencia forzada
+            // We capture if the card that just left has a forced consequence.
             _forcedNextCard = previousCard.GetForcedNextCard(isRight);
         }
 
         /// <summary>
-        /// Lógica central: Qué carta debe salir ahora basándose en prioridad y condiciones.
+        /// Central logic: Which card should come out now based on priority and conditions.
         /// </summary>
         private CardDataSO GetEligibleCard()
         {
             CardDataSO selected = null;
 
-            // PRIORIDAD 1: ¿Hay una carta forzada por la decisión anterior?
+            // PRIORITY 1: Is there a letter forced by the previous decision?
             if (_forcedNextCard != null)
             {
                 selected = _forcedNextCard;
-                _forcedNextCard = null; // Consumimos la prioridad
+                _forcedNextCard = null; // We consumed the priority.
             }
             else
             {
-                // PRIORIDAD 2: Buscar por condiciones en el mazo activo
+                // PRIORITY 2: Search by conditions in the active deck
                 var stats = GameStatsManager.Instance;
                 selected = _activeDeck.Find(card => card.CanSpawn(stats.budget, stats.time, stats.morale, stats.quality));
             }
 
-            // Gestión del mazo (remover y reinsertar si es loop)
+            // Deck management (remove and reinsert if it's a loop)
             if (selected != null && _activeDeck.Contains(selected))
             {
                 _activeDeck.Remove(selected);
@@ -113,25 +125,22 @@ namespace HumanLoop.Core
 
         public void SpawnNextCard()
         {
-            // La que estaba "asomando" pasa a ser la activa
+            _spawnDelayTween?.Kill(true);
+
             _currentActiveCard = _nextPendingCard;
 
-            DOVirtual.DelayedCall(0.4f, () =>
+            _spawnDelayTween = DOVirtual.DelayedCall(0.4f, () =>
             {
-                // 1. Giramos la carta que ya estaba en escena
                 if (_currentActiveCard != null)
-                {
                     _currentActiveCard.FlipToFront();
-                }
 
-                // 2. Pedimos al pool la NUEVA carta que se quedará asomando detrás
-                CardDataSO nextData = GetEligibleCard();
+                var nextData = GetEligibleCard();
                 if (nextData != null)
                 {
                     _nextPendingCard = cardFactory.GetCardFromPool(nextData);
                     _nextPendingCard.SetAsBackground();
                 }
-            });
+            }).SetTarget(this);
         }
 
         private void ShuffleDeck(List<CardDataSO> list)

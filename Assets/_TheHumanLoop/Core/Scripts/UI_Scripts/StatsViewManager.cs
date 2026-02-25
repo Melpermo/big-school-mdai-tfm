@@ -43,7 +43,7 @@ namespace HumanLoop.UI
         {
             var stats = GameStatsManager.Instance;
 
-            Debug.Log("StatsViewManager: I received the signal! Animating bars...");
+            //Debug.Log("StatsViewManager: I received the signal! Animating bars...");
 
             budgetSlider.DOValue(stats.budget, lerpDuration).SetEase(Ease.OutCubic);
             timeSlider.DOValue(stats.time, lerpDuration).SetEase(Ease.OutCubic);

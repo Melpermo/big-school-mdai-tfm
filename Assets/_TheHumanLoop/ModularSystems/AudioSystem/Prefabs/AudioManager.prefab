@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 944455856350844659}
   - component: {fileID: 8272081390828434963}
   - component: {fileID: 4878263179762579407}
-  - component: {fileID: 2229297106138620427}
   - component: {fileID: 1528648171582165649}
   m_Layer: 0
   m_Name: AudioManager
@@ -196,22 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.AudioSettings
   _mainMixer: {fileID: 24100000, guid: 9186305a05ae28149a9e834e5e27108c, type: 2}
---- !u!114 &2229297106138620427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837610089178451919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ccc962b1ded4d342aa5d0888c7ed28d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.AudioSnapshotController
-  _mixer: {fileID: 24100000, guid: 9186305a05ae28149a9e834e5e27108c, type: 2}
-  _defaultSnapshot: {fileID: 24500006, guid: 9186305a05ae28149a9e834e5e27108c, type: 2}
-  _narrativeSnapshot: {fileID: 0}
-  _transitionTime: 1.5
 --- !u!114 &1528648171582165649
 MonoBehaviour:
   m_ObjectHideFlags: 0

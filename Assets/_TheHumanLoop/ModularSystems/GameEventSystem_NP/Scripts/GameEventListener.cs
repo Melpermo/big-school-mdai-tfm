@@ -1,4 +1,3 @@
-using HumanLoop.Events;
 using System;
 using System.Collections;
 using System.Threading.Tasks;
@@ -28,16 +27,12 @@ namespace HumanLoop.Events
 
         public void OnEventRaised()
         {
-            EventResponseHandler();           
+            EventResponseHandler();
         }
 
         private void EventResponseHandler()
         {
-            if (gameEvent == null)
-            {
-                Debug.LogWarning("GameEventListener: No GameEvent assigned to " + gameObject.name);
-            }
-            else
+            if (gameEvent != null)
             {
                 if (!usingAsyncTaskMethods)
                 {
@@ -46,7 +41,12 @@ namespace HumanLoop.Events
                 else
                 {
                     using var _ = InvokeWithDelayAsync(delayBeforeInvoke);
-                }
+                }                
+            }
+            else
+            {
+                //Debug.LogWarning("GameEventListener: No GameEvent assigned to " + gameObject.name);
+                return;
             }
         }
 

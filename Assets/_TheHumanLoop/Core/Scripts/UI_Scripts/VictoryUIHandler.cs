@@ -10,7 +10,7 @@ namespace HumanLoop.Core
         [SerializeField] private CanvasGroup victoryPanel;
         [SerializeField] private TextMeshProUGUI statsSummaryText;
         [SerializeField] private TimeManager timeManager;
-        [SerializeField] private string victoryMessage = "¡Has ganado! ¡Has evoluvionado hasta CEO en Human Loop! Has conseguido sobrevir en la empresa estas semanas:";
+        [SerializeField] private string victoryMessage = "¡You've won! You've evolved into CEO at Human Loop! You've managed to survive these past few weeks at the company!";
 
         
 

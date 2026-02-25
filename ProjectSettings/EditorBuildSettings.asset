@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_TheHumanLoop/Scenes/InitScene.unity
-    guid: 128f4628cbbe120408fec2b84c59753b
-  - enabled: 1
     path: Assets/_TheHumanLoop/Scenes/MainMenu.unity
     guid: 28d68111464bb544ca321ccc0a8a696a
   - enabled: 1

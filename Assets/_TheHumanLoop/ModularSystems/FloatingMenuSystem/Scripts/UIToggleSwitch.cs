@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -16,19 +17,25 @@ namespace TheHumanLoop.UI
 
         [Header("Colors")]
         [SerializeField] private Color onColor = new Color(0.2f, 0.8f, 0.2f); // Greenish
-        [SerializeField] private Color offColor = new Color(0.7f, 0.7f, 0.7f); // Grayish
+        [SerializeField] private Color offColor = new Color(0.7f, 0.7f, 0.7f); // Grayish                                                                               
+        
 
+        // Internal state
+        // We keep track of the current state and the positions for ON and OFF states.
         private bool _isOn = true;
         private float _onXPosition;
         private float _offXPosition;
 
+        // Public property to access the current state of the switch.
         public bool IsOn => _isOn;
-        public System.Action<bool> OnToggleChanged;
+        public Action<bool> OnToggleChanged;
 
-        private void Awake()
+        
+
+        private void Start()
         {
             CalculatePositions();
-            Setup(!_isOn); // Initialize the switch state
+            //Setup(!_isOn); // Initialize the switch state
         }
 
         /// <summary>
@@ -45,6 +52,8 @@ namespace TheHumanLoop.UI
             _offXPosition = -_onXPosition;
         }
 
+        // This method allows external scripts to set the initial state of the switch and
+        // ensures the visual elements are updated accordingly.
         public void Setup(bool initialState)
         {
             _isOn = initialState;
@@ -55,13 +64,16 @@ namespace TheHumanLoop.UI
             backgroundImage.color = _isOn ? onColor : offColor;
         }
 
+        // This method toggles the state of the switch, animates the transition, and invokes the OnToggleChanged event.
         public void Toggle()
         {
             _isOn = !_isOn;
-            AnimateSwitch();
-            OnToggleChanged?.Invoke(_isOn);
+            AnimateSwitch();          
+            
+            OnToggleChanged?.Invoke(_isOn);            
         }
 
+        // This method handles the animation of the handle and background color when the switch is toggled.
         private void AnimateSwitch()
         {
             handle.DOKill();
@@ -78,6 +90,7 @@ namespace TheHumanLoop.UI
             handle.DOPunchScale(Vector3.one * 0.15f, 0.2f);
         }
 
+        // This method can be called to play a "locked" effect, indicating that the switch cannot be toggled.
         public void PlayLockedEffect()
         {
             transform.DOKill(true);
@@ -88,5 +101,7 @@ namespace TheHumanLoop.UI
             backgroundImage.DOColor(Color.red, 0.1f).SetLoops(2, LoopType.Yoyo)
                 .OnComplete(() => backgroundImage.DOColor(_isOn ? onColor : offColor, 0.1f));
         }
+        
+        
     }
 }

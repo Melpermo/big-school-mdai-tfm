@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,7 +14,7 @@ namespace TheHumanLoop.LoadingScreenSystem
         [SerializeField] private GameObject[] gameObjectsToDeact;
         [SerializeField] private GameObject loadingScreen;
         [SerializeField] private Slider loadingSlider;
-        [SerializeField] private TextMeshProUGUI progressText;        
+        [SerializeField] private TextMeshProUGUI progressText;
         [SerializeField] private CanvasGroup loadingCanvasGroup;
 
         [Header("Animation Elements")]
@@ -118,9 +117,10 @@ namespace TheHumanLoop.LoadingScreenSystem
                 }
 
                 yield return null;
+               
             }
         }
-        
+
 
         private void DeactivateArrayOf()
         {

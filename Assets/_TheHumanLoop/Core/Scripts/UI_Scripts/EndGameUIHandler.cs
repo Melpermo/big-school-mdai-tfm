@@ -2,7 +2,6 @@ using DG.Tweening;
 using HumanLoop.Data;
 using HumanLoop.LocalizationSystem;
 using TMPro;
-using UnityEditor.Localization.Editor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +43,7 @@ namespace HumanLoop.UI
         {
             if (endGameCondition == null)
             {
-                Debug.LogError("EndGameConditionSO is null!");
+                //Debug.LogError("EndGameConditionSO is null!");
                 return;
             }
 
@@ -60,7 +59,7 @@ namespace HumanLoop.UI
                 PlayDefeatSequence(endGameCondition);
             }
 
-            Debug.Log($"{endGameCondition.conditionType} condition met: {endGameCondition.conditionName}");
+            //Debug.Log($"{endGameCondition.conditionType} condition met: {endGameCondition.conditionName}");
         }
 
         /// <summary>

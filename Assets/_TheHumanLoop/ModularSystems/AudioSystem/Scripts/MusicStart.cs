@@ -11,6 +11,8 @@ namespace HumanLoop.AudioSystem
             PlayMusic();
         }
 
+#if (UNITY_EDITOR)
+        #region Editor Testing
         [ContextMenu("ExplorationMusicEvent")]
         public void PlayMusic()
         {
@@ -18,4 +20,6 @@ namespace HumanLoop.AudioSystem
             AudioManager.Instance.PlayMusic(_explorationMusicEvent, 3.0f); // 3 seconds fade
         }
     }
+    #endregion
+#endif
 }

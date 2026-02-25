@@ -101,11 +101,12 @@ namespace HumanLoop.Data
         private bool CheckVictoryCondition(GameStatsManager stats)
         {
                       
+            /*
             // Log detallado ANTES de evaluar
             Debug.Log($"<color=magenta>[CheckVictoryCondition] Evaluating: {conditionName}</color>");
             Debug.Log($"  ConditionType: {conditionType}");
             Debug.Log($"  StatToCheck: {statToCheck}");
-            Debug.Log($"  Threshold: {threshold}");
+            Debug.Log($"  Threshold: {threshold}");*/
 
             switch (statToCheck)
             {
@@ -129,7 +130,7 @@ namespace HumanLoop.Data
                     return b && t && m && q;
 
                 default:
-                    Debug.LogWarning($"Unknown StatToCheck: {statToCheck}");
+                    //Debug.LogWarning($"Unknown StatToCheck: {statToCheck}");
                     return false;
             }
         }
@@ -161,7 +162,7 @@ namespace HumanLoop.Data
                            stats.quality <= threshold;
 
                 default:
-                    Debug.LogWarning($"Unknown StatToCheck: {statToCheck}");
+                    //Debug.LogWarning($"Unknown StatToCheck: {statToCheck}");
                     return false;
             }
         }
@@ -174,15 +175,17 @@ namespace HumanLoop.Data
         {
             if (endGameConditionEvent != null)
             {
-                Debug.Log($"Raising event for condition: {conditionName} ({conditionType})");
+                //Debug.Log($"Raising event for condition: {conditionName} ({conditionType})");
                 endGameConditionEvent.Raise();
             }
             else
             {
-                Debug.LogWarning($"No event assigned for condition: {conditionName}");
+                //Debug.LogWarning($"No event assigned for condition: {conditionName}");
+                return;
             }
         }
 
+#if (UNITY_EDITOR)
         #region Validation
 
         /// <summary>
@@ -236,8 +239,9 @@ namespace HumanLoop.Data
             }
 
             Debug.Log($"✓ Condition '{conditionName}' validated", this);
-        }       
+        }
 
         #endregion
+#endif
     }
 }

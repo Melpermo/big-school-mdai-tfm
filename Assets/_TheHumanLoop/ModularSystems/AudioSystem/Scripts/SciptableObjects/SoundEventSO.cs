@@ -16,13 +16,13 @@ namespace HumanLoop.AudioSystem
         {
             if (_clips == null || _clips.Length == 0)
             {
-                Debug.LogWarning($"SoundEvent: {name} has no clips assigned.");
+                //Debug.LogWarning($"SoundEvent: {name} has no clips assigned.");
                 return;
             }
 
             if (_config == null)
             {
-                Debug.LogError($"SoundEvent: {name} is missing an AudioConfiguration.");
+                //Debug.LogError($"SoundEvent: {name} is missing an AudioConfiguration.");
                 return;
             }
 

@@ -1,9 +1,9 @@
 using HumanLoop.Core;
 using UnityEditor;
-using UnityEngine;
 
 namespace HumanLoop.Tools
 {
+#if (UNITY_EDITOR)
     // This class defines a cheat menu in the Unity Editor to force game over or victory conditions for testing purposes.
     public static class CheatMenu
     {
@@ -65,4 +65,5 @@ namespace HumanLoop.Tools
             GameStatsManager.Instance.ForceQualityVictory();
         }
     }
+#endif
 }

@@ -21,7 +21,7 @@ namespace TheHumanLoop.Core
             }
             else
             {
-                Debug.Log("GameEventsLauncher is set to not launch on start. Use LaunchAllGameEvents() or LaunchGameEvents(GameEventSO) to launch events.");
+                //Debug.Log("GameEventsLauncher is set to not launch on start. Use LaunchAllGameEvents() or LaunchGameEvents(GameEventSO) to launch events.");
             }
 
         }
@@ -31,7 +31,7 @@ namespace TheHumanLoop.Core
            foreach (var gameEvent in gameEventsToLaunch)
             {
                 gameEvent?.Raise();
-                Debug.Log($"Launched Game Event: {gameEvent.name}");
+                //Debug.Log($"Launched Game Event: {gameEvent.name}");
             }
         }
 
@@ -42,7 +42,7 @@ namespace TheHumanLoop.Core
                 if (gameEvent == gameEventSO)
                 {
                     gameEvent?.Raise();
-                    Debug.Log($"Launched Game Event: {gameEvent.name}");
+                    //Debug.Log($"Launched Game Event: {gameEvent.name}");
                 }
                     
             }

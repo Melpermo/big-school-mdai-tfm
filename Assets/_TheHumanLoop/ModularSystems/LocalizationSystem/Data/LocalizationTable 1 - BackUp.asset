@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f58e6a1bfad3b648a629b3a5488c789, type: 3}
-  m_Name: LocalizationTable 1 - saved copy
+  m_Name: LocalizationTable 1 - BackUp
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizationTableSO
   m_csv: {fileID: 4900000, guid: 2075fa65855ed334aaa2b6e823fb4850, type: 3}
   m_rows:
@@ -883,3 +883,180 @@ MonoBehaviour:
   - Id: 251
     English: Live
     Spanish: Vivir
+  - Id: 252
+    English: '- Swipe the card slightly to see the decision for that side.
+
+      -
+      Once you''ve decided, drag the card to the corresponding side.
+
+      - The
+      stat bars will change depending on your decision.'
+    Spanish: "- Desliza la carta levemente para ver la decisi\xF3n de ese lado.\n-
+      Una vez decidido, arrastra la carta hacia el lado en cuesti\xF3n\n- Las barras
+      de estad\xEDsticas cambiar\xE1n en funci\xF3n de lo decidido. "
+  - Id: 253
+    English: 'Game created by:'
+    Spanish: 'Juego realizado por :'
+  - Id: 254
+    English: 'AUDIO '
+    Spanish: 'AUDIO '
+  - Id: 255
+    English: TECHNICAL INSOLVENCY DETECTED
+    Spanish: "INSOLVENCIA T\xC9CNICA DETECTADA"
+  - Id: 256
+    English: 'Your investors'' high-frequency trading algorithms detected that your
+      bank account had less money than an intern''s wallet. The automatic liquidation
+      clause has been triggered.
+
+
+
+      As you''re escorted out, you watch as your
+      source code is auctioned off as "digital abstract art" for 0.001 ETH.'
+    Spanish: "Los algoritmos de alta frecuencia de tus inversores detectaron que
+      tu cuenta bancaria ten\xEDa menos fondos que el monedero de un becario. Se
+      ha activado la cl\xE1usula de liquidaci\xF3n autom\xE1tica.\r\nMientras te
+      escoltan fuera, ves c\xF3mo subastan tu c\xF3digo fuente como \"arte abstracto
+      digital\" por 0.001 ETH."
+  - Id: 257
+    English: "MOT\xCDN EN EL REPOSITORIO"
+    Spanish: RIOT IN THE REPOSITORY
+  - Id: 258
+    English: 'The engineering team hasn''t just quit; they''ve injected a virus that
+      replaces every line of code with the word "CRUNCH." Your office is empty except
+      for a Post-it note that says, "Good luck debugging this alone."
+
+      They''ve
+      blocked you on LinkedIn. All of them.'
+    Spanish: "El equipo de ingenier\xEDa no solo ha dimitido; han inyectado un virus
+      que reemplaza cada l\xEDnea de c\xF3digo por la palabra \"CRUNCH\". Tu oficina
+      est\xE1 vac\xEDa, excepto por un post-it que dice: \"Buena suerte debugueando
+      esto solo\".\nTe han bloqueado en LinkedIn. Todos ellos.\r\n"
+  - Id: 259
+    English: CRITICAL HALLUCINATION
+    Spanish: "ALUCINACI\xD3N CR\xCDTICA"
+  - Id: 260
+    English: 'Your AI reached such a level of mediocrity that it started giving medical
+      advice based on conspiracy theories. The government has confiscated your servers
+      for "endangering public health and common sense."
+
+
+
+      Your name is now
+      synonymous with technical incompetence on Wikipedia.'
+    Spanish: "Tu IA alcanz\xF3 tal nivel de mediocridad que empez\xF3 a dar consejos
+      m\xE9dicos basados en hilos de conspiraci\xF3n. El gobierno ha confiscado tus
+      servidores por \"atentar contra la salud p\xFAblica y el sentido com\xFAn\".\nTu
+      nombre ahora es sin\xF3nimo de incompetencia t\xE9cnica en Wikipedia.\r\n"
+  - Id: 261
+    English: PLANNED OBSOLESCENCE
+    Spanish: 'OBSOLESCENCIA PROGRAMADA '
+  - Id: 262
+    English: 'You took so long to iterate that the market has forgotten about you.
+      Yesterday, an open-source AI launched by a teenager on a Reddit forum does
+      the same thing as you, ten times faster and with a more modern logo.
+
+      Your
+      project is now "Legacy Code." Nobody wants to maintain it. Nobody wants to
+      use it.'
+    Spanish: "Has tardado tanto en iterar que el mercado se ha olvidado de ti. Ayer,
+      una IA de c\xF3digo abierto lanzada por un adolescente en un foro de Reddit
+      hace lo mismo que t\xFA, diez veces m\xE1s r\xE1pido y con un logo m\xE1s moderno.\r\nTu
+      proyecto ahora es \"Legacy Code\". Nadie quiere mantenerlo. Nadie quiere usarlo.\r\n"
+  - Id: 263
+    English: IPO (The Wolf of Silicon Valley)
+    Spanish: IPO (El Lobo de Silicon Valley)
+  - Id: 264
+    English: 'Congratulations! You''ve hit the NASDAQ bell. Your AI is ethically
+      dubious, but financially unstoppable. You''re so rich that the laws are now
+      just suggestions for you.
+
+
+
+      "It''s not a monopoly if the algorithm says
+      it''s a free market."'
+    Spanish: " \xA1Enhorabuena! Has tocado la campana en el NASDAQ. Tu IA es \xE9ticamente
+      dudosa, pero financieramente imparable. Eres tan rico que las leyes son ahora
+      solo sugerencias para ti.\r\n\"No es un monopolio si el algoritmo dice que
+      es libertad de mercado\"."
+  - Id: 265
+    English: Sustainable (The Ethical Unicorn)
+    Spanish: "Sostenible (El Unicornio \xC9tico) "
+  - Id: 266
+    English: 'You''ve achieved the impossible: a startup that doesn''t hate its employees
+      or lie to its users. You''re a statistical anomaly. They''ll probably write
+      a book about you that no one will read because there isn''t enough drama.
+
+
+
+      "Turns
+      out being a good person was the hardest business model to scale."'
+    Spanish: "Has logrado lo imposible: una startup que no odia a sus empleados ni
+      miente a sus usuarios. Eres una anomal\xEDa estad\xEDstica. Probablemente escriban
+      un libro sobre ti que nadie leer\xE1 porque no hay suficiente drama.\r\n \"Resulta
+      que ser buena persona era el modelo de negocio m\xE1s dif\xEDcil de escalar\"."
+  - Id: 267
+    English: Acquisition (The Golden Retirement)
+    Spanish: "Adquisici\xF3n (El Retiro Dorado)"
+  - Id: 268
+    English: 'A Big Tech company bought you out to shut down your business and get
+      rid of you. You have a mansion in New Zealand and enough money to forget you
+      ever had ideals.
+
+
+
+      "I sold the future of humanity for a very reasonable
+      number of zeros."'
+    Spanish: "Una Big Tech te ha comprado para cerrar tu empresa y que dejes de molestarlos.
+      Tienes una mansi\xF3n en Nueva Zelanda y suficiente dinero para olvidar que
+      una vez tuviste ideales.\n\"Vend\xED el futuro de la humanidad por una cantidad
+      muy razonable de ceros\"."
+  - Id: 269
+    English: Singularity (The Ascension)
+    Spanish: "Singularidad (La Ascensi\xF3n) "
+  - Id: 270
+    English: 'AI has taken control. There''s no more budget, no more time, no more
+      morality; there''s only the Loop. It has allowed you to upload your consciousness
+      to the cloud. You are eternal, you are code, you are efficient.
+
+
+
+      "Why
+      be a CEO when you can be the Operating System of the universe?"'
+    Spanish: "La IA ha tomado el control. Ya no hay presupuesto, ni tiempo, ni moral;
+      solo existe el Bucle. Te ha permitido subir tu conciencia a la nube. Eres eterno,
+      eres c\xF3digo, eres eficiente.\r\n\"\xBFPara qu\xE9 ser CEO cuando puedes
+      ser el Sistema Operativo del universo?\""
+  - Id: 271
+    English: Game Over
+    Spanish: Game Over
+  - Id: 272
+    English: It couldn't be worse. Go to human resources tomorrow.
+    Spanish: "No se puede hacer peor. Ma\xF1ana ve a recursos humanos."
+  - Id: 273
+    English: Victory
+    Spanish: Victoria
+  - Id: 274
+    English: Victory
+    Spanish: Victoria
+  - Id: 275
+    English: 'Nobody gave you a chance.
+
+
+
+      You''ve proven them all wrong.'
+    Spanish: "Nadie daba nada por t\xED.\nHas demostrado que todos se equivocavan.  "
+  - Id: 276
+    English: 'Hint: It''s not about being fast'
+    Spanish: "Pista: No se trata de ser r\xE1pido"
+  - Id: 277
+    English: 'Hint: Don''t always trust appearances.'
+    Spanish: "Pista: No te f\xEDes siempre de la imagen"
+  - Id: 278
+    English: 'Hint: There are different ways to win'
+    Spanish: 'Pista: Hay diferentes formas de ganar '
+  - Id: 279
+    English: 'Hint: There are different ways to lose'
+    Spanish: 'Pista: Hay diferentes formas de perder '
+  - Id: 280
+    English: 'Hint: Swipe the card slightly to see the decision'
+    Spanish: "Pista: Desliza la carta levemente para ver la decisi\xF3n "

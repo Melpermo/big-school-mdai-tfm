@@ -16,7 +16,7 @@ namespace TheHumanLoop.UI
                 transform.DOScale(1f, 0.1f);
             });
 
-            Debug.Log("UIButtonFeedback: Button clicked! Playing sound effect...");
+            //Debug.Log("UIButtonFeedback: Button clicked! Playing sound effect...");
             // Play click sound effect
             if (_buttonPressedSoundEvent != null)
             {
