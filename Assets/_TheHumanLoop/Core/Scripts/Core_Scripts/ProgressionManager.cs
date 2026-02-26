@@ -10,6 +10,11 @@ namespace HumanLoop.Core
         [SerializeField] private DeckManager _deckManager;
         [SerializeField] private TimeManager _timeManager;
 
+        // This toggle allows you to decide whether reaching progression milestones should automatically load new decks.
+        // If false, the decks will not change, but the appropriate events will still be raised.
+        [Tooltip("This toggle allows you to decide whether reaching progression milestones should automatically load new decks.")]
+        [SerializeField] private bool _useDecksForProgression = false;
+
         [Header("Progression Milestones")]
         [SerializeField] private int _midGameWeek = 10;
         [SerializeField] private DeckSO _midGameDeck;
@@ -19,16 +24,17 @@ namespace HumanLoop.Core
 
         [Header("Phase Victory Settings")]
         [SerializeField] private int _victoryWeek = 50; // Week to win
-                [SerializeField] private GameEventSO _onVictoryEvent;
+        [SerializeField] private GameEventSO _onVictoryEvent;
         [SerializeField] private GameEventSO _onMidGameReachedEvent;
         [SerializeField] private GameEventSO _onEndGameReachedEvent;
 
 
-
+        // Internal state to track progression milestones
         private bool midGameReached = false;
         private bool endGameReached = false;
         private bool victoryReached = false;
 
+        // This method should be called whenever the week changes to check if any progression milestones have been reached.
         public void CheckProgression()
         {
             if (victoryReached) return;
@@ -62,7 +68,10 @@ namespace HumanLoop.Core
         private void ChangeToDeck(DeckSO newDeck, string phaseName)
         {
             //Debug.Log($"<color=cyan>Progression:</color> Entering {phaseName} phase!");
-            _deckManager.LoadNewDeck(newDeck);
+            if (_useDecksForProgression)
+            {
+                _deckManager.LoadNewDeck(newDeck);
+            }               
 
             // Raise the appropriate event based on the phase
             if (phaseName == "Mid Game Deck" && _onMidGameReachedEvent != null)

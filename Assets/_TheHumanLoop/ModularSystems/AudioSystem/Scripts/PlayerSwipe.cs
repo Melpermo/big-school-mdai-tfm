@@ -11,15 +11,12 @@ namespace HumanLoop.AudioSystem
             // Play the sound using the modular system
             AudioManager.Instance.PlaySound(playerSwipeEvent);
         }
-
-#if(UNITY_EDITOR)
-        #region Context Menu Testing
-        [ContextMenu("Player Swipe Event")]
+        
+        //[ContextMenu("Player Swipe Event")]
         private void TestSwipe()
         {
             Swipe();
-        }
-        #endregion
+        }        
     }
-#endif
+
 }

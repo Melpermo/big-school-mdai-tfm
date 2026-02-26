@@ -62,7 +62,8 @@ namespace HumanLoop.LocalizationSystem
             // settings.Save();
         }
 
-        [ContextMenu("Test/Set English")]
+        
+        //[ContextMenu("Test/Set English")]
         public void SetEnglish()
         {
             m_service.SetLanguage(LanguageId.English);
@@ -71,7 +72,7 @@ namespace HumanLoop.LocalizationSystem
             //Debug.Log($"Current language: {GetCurrentLanguaje()}");
         }
 
-        [ContextMenu("Test/Set Spanish")]
+        //[ContextMenu("Test/Set Spanish")]
         public void SetSpanish()
         {
             m_service.SetLanguage(LanguageId.Spanish);
