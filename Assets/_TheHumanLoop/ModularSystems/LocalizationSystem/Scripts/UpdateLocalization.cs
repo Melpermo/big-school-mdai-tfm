@@ -13,9 +13,7 @@ namespace HumanLoop.LocalizationSystem
 
         void Start()
         {
-            languageDropdown = GetComponent<TMP_Dropdown>();
-            //Debug.Log("Current language index: " + languageDropdown.value);
-            //Debug.Log("Current language from LocalizationBootstrap: " + LocalizationBootstrap.Instance.GetCurrentLanguaje());
+            languageDropdown = GetComponent<TMP_Dropdown>();            
             SetDropdownInitialValue();
         }
 
@@ -24,9 +22,7 @@ namespace HumanLoop.LocalizationSystem
             if (languageDropdown == null) return;
 
             languageDropdown.value = LocalizationBootstrap.Instance.GetCurrentLanguaje(); //_service.CurrentLanguage == LanguageId.Spanish ? 1 : 0;
-            languageDropdown.RefreshShownValue();
-            //Debug.Log($"Bootstrap: {LocalizationBootstrap.Instance.GetCurrentLanguaje()}");
-            //Debug.Log("Dropdown initial value set to: " + languageDropdown.value);
+            languageDropdown.RefreshShownValue();            
         }
 
         // This method can be called directly from the dropdown's OnValueChanged event, passing the selected index.
@@ -34,7 +30,7 @@ namespace HumanLoop.LocalizationSystem
         {
             languageDropdown = GetComponent<TMP_Dropdown>();
             LanguageId language = (LanguageId)languageIndex;
-            LocalizationBootstrap.Instance.SetLanguage(languageIndex);
+            LocalizationBootstrap.Instance.SetLanguage(languageIndex);            
         }
 
         // This method can be called from the dropdown's OnValueChanged event without parameters,
@@ -42,7 +38,7 @@ namespace HumanLoop.LocalizationSystem
         public void UpdateLanguage()
         { 
             languageIndex = languageDropdown.value;
-            SetLanguage(languageIndex);
+            SetLanguage(languageIndex);            
         }
     }
 }
