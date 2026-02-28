@@ -53,7 +53,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5995028511239427025}
-  - component: {fileID: 513456571653706665}
   m_Layer: 0
   m_Name: Localization
   m_TagString: Untagged
@@ -76,21 +75,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6340331377296736307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &513456571653706665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4994839056079103400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95c5f8a7b75d8a143b79211f834f4270, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizationBootstrap
-  _table: {fileID: 11400000, guid: ae7a484ff38c9ba47b3b09f23c01b328, type: 2}
-  _defaultLanguage: 1
-  _currentLanguage: 1
 --- !u!1 &8416012183864791345
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6340331377296736307}
+  - component: {fileID: 4130230667260314135}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -125,6 +110,18 @@ Transform:
   - {fileID: 5995028511239427025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4130230667260314135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416012183864791345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ae96effa9809a4f8e4ac151ae79623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SystemsRoot
 --- !u!1001 &6708052357252430426
 PrefabInstance:
   m_ObjectHideFlags: 0

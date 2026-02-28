@@ -1054,7 +1054,6 @@ GameObject:
   - component: {fileID: 479596498236002318}
   - component: {fileID: 6932031840607030181}
   - component: {fileID: 4660286139770616286}
-  - component: {fileID: 2129545599166981121}
   m_Layer: 5
   m_Name: HumanLoopCard_Base - 1
   m_TagString: Untagged
@@ -1115,12 +1114,8 @@ MonoBehaviour:
   colorRight: {r: 0, g: 1, b: 0, a: 1}
   frameImage: {fileID: 1544961741434710789}
   categoryIconImage: {fileID: 486520776896638507}
-  canvasGroup: {fileID: 479596498236002318}
   frontFace: {fileID: 3396508612070417909}
   backFace: {fileID: 700587522213090877}
-  flipDuration: 0.5
-  onCardAddedEvent: {fileID: 11400000, guid: de7b76e3f9e7e1747b5410579605672c, type: 2}
-  onCardFlipEvent: {fileID: 11400000, guid: 0f1cadcc96f8bac4fba632d396ab9c90, type: 2}
 --- !u!114 &4660286139770616286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1135,28 +1130,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.UI.CardController
   fovAngle: 15
   swipeThreshold: 150
-  returnDuration: 0.3
   swipeExitX: 1000
+  returnDuration: 0.3
   swipeDuration: 0.4
+  flipDuration: 0.5
+  appearDuration: 0.4
   cardFactory: {fileID: 0}
   onCardSwipedEvent: {fileID: 11400000, guid: 53176cd84c28a504bb90b4ad915c3adc, type: 2}
   onCardReturnedEvent: {fileID: 11400000, guid: db0e0bfa2f43f2d43922af5e226b3937, type: 2}
---- !u!114 &2129545599166981121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3271866173705772828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14d7561810d62bf4ebfee06cb48f3c75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.CardLocalizedView
-  m_titleText: {fileID: 958202188588849121}
-  m_descriptionText: {fileID: 2066634404102397287}
-  m_leftChoiceText: {fileID: 3373440410328419320}
-  m_rightChoiceText: {fileID: 8525713127892234496}
+  onCardFlipEvent: {fileID: 0}
+  onCardAddedEvent: {fileID: 0}
+  showDebugLogs: 0
 --- !u!1 &3396508612070417909
 GameObject:
   m_ObjectHideFlags: 0

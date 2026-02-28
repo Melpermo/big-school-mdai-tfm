@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71b7109024906d4c9a5cb9f1619ef89, type: 3}
+  m_Name: EG_16_EN
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.SimpleCardData
+  cardName: TEDx Talk
+  category: 2
+  description: You've been invited to speak about ethics. It'll take time, but it'll
+    boost your image.
+  cardArt: {fileID: -2955554014127944699, guid: 971320fecdad2cb45b5c94f161fcf2c0, type: 3}
+  leftChoiceText: Decline
+  rightChoiceText: Attend
+  leftSwipeImpact:
+    budget: 0
+    time: 10
+    morale: 0
+    quality: 0
+  rightSwipeImpact:
+    budget: 5
+    time: -15
+    morale: 10
+    quality: 0
+  useConditions: 0
+  conditions: []
+  nextCardLeft: {fileID: 0}
+  nextCardRight: {fileID: 0}
+  titleID: 
+  descriptionID: 
+  leftChoiceID: 
+  rightChoiceID: 

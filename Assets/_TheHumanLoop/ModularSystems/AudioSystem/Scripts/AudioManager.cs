@@ -27,7 +27,7 @@ namespace HumanLoop.AudioSystem
             if (Instance == null)
             {
                 Instance = this;
-                //DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(gameObject);
                 InitializePool();
             }
             else

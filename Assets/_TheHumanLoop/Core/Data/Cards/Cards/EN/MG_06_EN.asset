@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71b7109024906d4c9a5cb9f1619ef89, type: 3}
+  m_Name: MG_06_EN
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.SimpleCardData
+  cardName: Brain Drain
+  category: 2
+  description: A large corporation wants to buy us for pennies to shut down the project.
+    It's an easy way out.
+  cardArt: {fileID: 6550927409092118134, guid: 0f07d728cd3a5c94f8d2ccf939ffe069, type: 3}
+  leftChoiceText: Reject
+  rightChoiceText: Accept
+  leftSwipeImpact:
+    budget: 0
+    time: 0
+    morale: 15
+    quality: 0
+  rightSwipeImpact:
+    budget: 50
+    time: 0
+    morale: -40
+    quality: -30
+  useConditions: 0
+  conditions: []
+  nextCardLeft: {fileID: 0}
+  nextCardRight: {fileID: 0}
+  titleID: 
+  descriptionID: 
+  leftChoiceID: 
+  rightChoiceID: 
