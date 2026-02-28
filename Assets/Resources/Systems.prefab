@@ -1,80 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4777129299075536589
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4903396970667383984}
-  - component: {fileID: 6422955912633499080}
-  m_Layer: 0
-  m_Name: DOTweenInitializer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4903396970667383984
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4777129299075536589}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6340331377296736307}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6422955912633499080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4777129299075536589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b352173e089a8cd4ba9f4fab51646b59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TheHumanLoop.Tools.DOTweenInitializer
---- !u!1 &4994839056079103400
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5995028511239427025}
-  m_Layer: 0
-  m_Name: Localization
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5995028511239427025
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4994839056079103400}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6340331377296736307}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8416012183864791345
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,8 +31,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5768173844549659817}
-  - {fileID: 4903396970667383984}
-  - {fileID: 5995028511239427025}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4130230667260314135
@@ -170,65 +93,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1394233709559207864, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
-      propertyPath: m_Name
-      value: MisteryMusic
-      objectReference: {fileID: 0}
     - target: {fileID: 1837610089178451919, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2959828830771441741, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
-      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
-    - target: {fileID: 3437770868136394467, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
-      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
-    - target: {fileID: 5234893345709563701, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
-      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
-    - target: {fileID: 7373696660398302376, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
-      propertyPath: usingAsyncTaskMethods
-      value: 0
+    - target: {fileID: 2067593665879822611, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: clearOnSceneLoad
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7373696660398302376, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
-      propertyPath: onEventRaised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
-    - target: {fileID: 8272081390828434963, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
-      propertyPath: _poolSize
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2229297106138620427, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1837610089178451919, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6360614270781513192}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
---- !u!1 &4942501269557704085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1837610089178451919, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
-  m_PrefabInstance: {fileID: 6708052357252430426}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6360614270781513192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4942501269557704085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56f570ccda9265d48a1a84f2fa3c4a71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.AudioSystem.MusicStart
-  _explorationMusicEvent: {fileID: 11400000, guid: 7db2d75310631ff4c896d8d2f0a349cc, type: 2}
 --- !u!4 &5768173844549659817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 944455856350844659, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}

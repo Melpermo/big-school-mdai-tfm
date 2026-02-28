@@ -203,44 +203,76 @@ namespace TheHumanLoop.Tools
         }
 
         [ContextMenu("Test/Game Over Stress Test")]
-private void TestGameOverStress()
-{
-    StartCoroutine(TestGameOverStressCoroutine());
-}
+        private void TestGameOverStress()
+        {
+            StartCoroutine(TestGameOverStressCoroutine());
+        }
 
-private IEnumerator TestGameOverStressCoroutine()
-{
-    var handler = FindObjectOfType<GameOverUIHandler>();
-    if (handler == null)
-    {
-        Debug.LogError("GameOverUIHandler not found!");
-        yield break;
-    }
+        private IEnumerator TestGameOverStressCoroutine()
+        {
+            var handler = FindObjectOfType<GameOverUIHandler>();
+            if (handler == null)
+            {
+                Debug.LogError("GameOverUIHandler not found!");
+                yield break;
+            }
 
-    // Show/Hide repeatedly
-    for (int i = 0; i < 10; i++)
-    {
-        Debug.Log($"=== Cycle {i + 1}/10 ===");
-        
-        // Show
-        handler.HandleGameOver();
-        yield return new WaitForSecondsRealtime(1f);
-        
-        int tweensAfterShow = DOTween.TotalPlayingTweens();
-        Debug.Log($"Tweens after show: {tweensAfterShow}");
-        
-        // Hide (simulate)
-        handler.gameObject.SetActive(false);
-        yield return new WaitForSecondsRealtime(0.2f);
-        
-        int tweensAfterHide = DOTween.TotalPlayingTweens();
-        Debug.Log($"Tweens after hide: {tweensAfterHide}");
-        
-        handler.gameObject.SetActive(true);
-        yield return new WaitForSecondsRealtime(0.3f);
-    }
-    
-    Debug.Log("<color=green>✓ Game Over stress test complete</color>");
-}
+            // Show/Hide repeatedly
+            for (int i = 0; i < 10; i++)
+            {
+                Debug.Log($"=== Cycle {i + 1}/10 ===");
+
+                // Show
+                handler.HandleGameOver();
+                yield return new WaitForSecondsRealtime(1f);
+
+                int tweensAfterShow = DOTween.TotalPlayingTweens();
+                Debug.Log($"Tweens after show: {tweensAfterShow}");
+
+                // Hide (simulate)
+                handler.gameObject.SetActive(false);
+                yield return new WaitForSecondsRealtime(0.2f);
+
+                int tweensAfterHide = DOTween.TotalPlayingTweens();
+                Debug.Log($"Tweens after hide: {tweensAfterHide}");
+
+                handler.gameObject.SetActive(true);
+                yield return new WaitForSecondsRealtime(0.3f);
+            }
+
+            Debug.Log("<color=green>✓ Game Over stress test complete</color>");
+        }
+
+        [ContextMenu("Test/WebGL Memory Stress Test")]
+        private void TestWebGLMemory()
+        {
+            StartCoroutine(WebGLMemoryStressTestCoroutine());
+        }
+
+        private IEnumerator WebGLMemoryStressTestCoroutine()
+        {
+            var factory = FindObjectOfType<CardFactory>();
+            
+            for (int cycle = 0; cycle < 50; cycle++)
+            {
+                Debug.Log($"=== Cycle {cycle + 1}/50 ===");
+                
+                // Simula juego
+                yield return new WaitForSeconds(2f);
+                
+                // Stats
+                long memory = System.GC.GetTotalMemory(false);
+                int tweens = DOTween.TotalPlayingTweens();
+                
+                Debug.Log($"Memory: {memory / 1048576}MB, " +
+                         $"Tweens: {tweens}, " +
+                         $"InUse: {factory.GetInUseCount()}");
+                
+                if (memory > 500000000) // 500MB
+                {
+                    Debug.LogError($"⚠️ HIGH MEMORY at cycle {cycle}!");
+                }
+            }
+        }
     }
 }
