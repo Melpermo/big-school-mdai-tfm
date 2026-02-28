@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71b7109024906d4c9a5cb9f1619ef89, type: 3}
+  m_Name: MG_F17_EN
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.SimpleCardData
+  cardName: Spiritual Retreat
+  category: 1
+  description: The marketing team suggests a 'Glamping' weekend to connect with nature.
+  cardArt: {fileID: -5836265411824101523, guid: 8f5da65bb09728d49be8ca7543c5b73a, type: 3}
+  leftChoiceText: Very expensive
+  rightChoiceText: Attend
+  leftSwipeImpact:
+    budget: 0
+    time: 0
+    morale: -5
+    quality: 0
+  rightSwipeImpact:
+    budget: -5
+    time: -5
+    morale: 10
+    quality: 0
+  useConditions: 0
+  conditions: []
+  nextCardLeft: {fileID: 0}
+  nextCardRight: {fileID: 0}
+  titleID: 
+  descriptionID: 
+  leftChoiceID: 
+  rightChoiceID: 

@@ -506,7 +506,6 @@ GameObject:
   - component: {fileID: 8245431677268549036}
   - component: {fileID: 8530855319921651128}
   - component: {fileID: 1233857488826597483}
-  - component: {fileID: 2846838281046125232}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -633,19 +632,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2846838281046125232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615915368136583482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 132
 --- !u!1 &955353775514213225
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,7 +850,6 @@ GameObject:
   - component: {fileID: 1976855362247657959}
   - component: {fileID: 3401713359408979532}
   - component: {fileID: 2149297005508862545}
-  - component: {fileID: 4006078531007052851}
   m_Layer: 5
   m_Name: DetailsText (TMP)
   m_TagString: Untagged
@@ -993,19 +978,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4006078531007052851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273157445467374423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 252
 --- !u!1 &1554781640785642314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1001,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554781640785642314}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.00032, y: 1.00032, z: 1.00032}
   m_ConstrainProportionsScale: 0
@@ -1915,7 +1887,6 @@ GameObject:
   - component: {fileID: 8929057611058076589}
   - component: {fileID: 5867086273084547192}
   - component: {fileID: 9047809187785255592}
-  - component: {fileID: 7545316617200411058}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2042,19 +2013,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7545316617200411058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2744731976162725731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 
 --- !u!1 &2924769452708137811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,7 +2024,6 @@ GameObject:
   - component: {fileID: 6912177389508519403}
   - component: {fileID: 4097812988349579496}
   - component: {fileID: 2215297965129495746}
-  - component: {fileID: 5908075459801473475}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2193,19 +2150,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5908075459801473475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2924769452708137811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 125
 --- !u!1 &3115965282163035911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,7 +2161,6 @@ GameObject:
   - component: {fileID: 2689228429650219476}
   - component: {fileID: 8017981744642593330}
   - component: {fileID: 6765015976414146601}
-  - component: {fileID: 6753374986164251587}
   m_Layer: 5
   m_Name: TitleText (TMP)
   m_TagString: Untagged
@@ -2344,19 +2287,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6753374986164251587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3115965282163035911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 118
 --- !u!1 &3745413998095590268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,7 +2298,6 @@ GameObject:
   - component: {fileID: 5686038329821012130}
   - component: {fileID: 5491950699280963177}
   - component: {fileID: 3608695824133142251}
-  - component: {fileID: 938290598502829892}
   m_Layer: 5
   m_Name: TitleText (TMP)
   m_TagString: Untagged
@@ -2495,19 +2424,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &938290598502829892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3745413998095590268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 120
 --- !u!1 &3793206397306866655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3621,7 +3537,6 @@ GameObject:
   - component: {fileID: 2752631426114254938}
   - component: {fileID: 110057262894078739}
   - component: {fileID: 7436077431580895890}
-  - component: {fileID: 2166445691370834546}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3748,19 +3663,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &2166445691370834546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5709474844939720346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 123
 --- !u!1 &6242907145836726264
 GameObject:
   m_ObjectHideFlags: 0
@@ -4460,7 +4362,6 @@ GameObject:
   - component: {fileID: 1184371388270224742}
   - component: {fileID: 8573430358566059721}
   - component: {fileID: 6466923247334420138}
-  - component: {fileID: 163548668474911570}
   m_Layer: 5
   m_Name: DetailsText (TMP) (1)
   m_TagString: Untagged
@@ -4588,19 +4489,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &163548668474911570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7824926243049871586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 122
 --- !u!1 &7879034610444840508
 GameObject:
   m_ObjectHideFlags: 0
@@ -5058,7 +4946,6 @@ GameObject:
   - component: {fileID: 5007515006758192854}
   - component: {fileID: 7503341608266204785}
   - component: {fileID: 213472625156373126}
-  - component: {fileID: 6250010817833162001}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5185,16 +5072,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6250010817833162001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9144252962640196422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 124

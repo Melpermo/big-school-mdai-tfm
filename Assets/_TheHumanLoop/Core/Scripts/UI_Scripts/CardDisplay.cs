@@ -1,17 +1,15 @@
-using DG.Tweening;
-using HumanLoop.Data;
-using HumanLoop.Events;
-using HumanLoop.LocalizationSystem;
+﻿using HumanLoop.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-#if DEVELOPMENT_BUILD || UNITY_EDITOR
-using UnityEngine.SceneManagement;
-#endif
-
 namespace HumanLoop.UI
 {
+    /// <summary>
+    /// Pure view component for displaying card data.
+    /// NO animations - only visual state management.
+    /// CardController handles all animations.
+    /// </summary>
     public class CardDisplay : MonoBehaviour
     {
         [Header("General UI")]
@@ -30,84 +28,70 @@ namespace HumanLoop.UI
         [SerializeField] private Image categoryIconImage;
 
         [Header("Flip Visuals")]
-        [SerializeField] private CanvasGroup canvasGroup;
         [SerializeField] private GameObject frontFace;
         [SerializeField] private GameObject backFace;
-        [SerializeField] private float flipDuration = 0.5f;
 
-        [Header("Mechanics GameEvents")]
-        [SerializeField] private GameEventSO onCardAddedEvent;
-        [SerializeField] private GameEventSO onCardFlipEvent;
-
+        // Public properties for CardController to access
         public CardDataSO Data { get; private set; }
+        public GameObject FrontFace => frontFace;
+        public GameObject BackFace => backFace;
+        public TextMeshProUGUI LeftChoiceText => leftChoiceText;
+        public TextMeshProUGUI RightChoiceText => rightChoiceText;
 
-        private Sequence _flipSeq;
-        private Sequence _animateInSeq;
+        // Cached controller reference
+        private CardController _cachedController;
+        public CardController Controller => _cachedController;
 
-        // Bind-safe localization (avoid stale Service)
-        private LocalizationService _boundLoc;
+        #region Unity Lifecycle
 
-        private void OnEnable()
+        private void Awake()
         {
-            _boundLoc = LocalizedTextTMP.Service;
-            if (_boundLoc == null) return;
-
-            _boundLoc.LanguageChanged -= RefreshLocalizedTexts;
-            _boundLoc.LanguageChanged += RefreshLocalizedTexts;
-
-/*
-#if DEVELOPMENT_BUILD || UNITY_EDITOR
-            Debug.Log($"[CardDisplay] ENABLE {GetInstanceID()} - Total: {FindObjectsByType<CardDisplay>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length}");
-#endif*/
+            CacheComponents();
         }
 
-        private void OnDisable()
+        #endregion
+
+        #region Component Caching
+
+        private void CacheComponents()
         {
-            // Kill tweens to avoid leaks in WebGL
-            _flipSeq?.Kill(true);
-            _flipSeq = null;
+            _cachedController = GetComponent<CardController>();
 
-            _animateInSeq?.Kill(true);
-            _animateInSeq = null;
-
-            transform.DOKill(true);
-            if (canvasGroup != null) canvasGroup.DOKill(true);
-
-            if (_boundLoc != null)
+            if (_cachedController == null)
             {
-                _boundLoc.LanguageChanged -= RefreshLocalizedTexts;
-                _boundLoc = null;
+                Debug.LogError("[CardDisplay] CardController component not found!", this);
             }
         }
 
+        #endregion
+
+        #region Setup & Data
+
+        /// <summary>
+        /// Initializes card with data. Pure visual setup, no animations.
+        /// </summary>
         public void Setup(CardDataSO data)
         {
             Data = data;
 
-            artImage.sprite = data.cardArt;
-            ApplyTextsWithLocalization(data);
+            if (artImage != null && data.cardArt != null)
+            {
+                artImage.sprite = data.cardArt;
+            }
 
-            leftChoiceText.alpha = 0;
-            rightChoiceText.alpha = 0;
+            ApplyTexts(data);
+            HideChoices();
         }
 
-        public void SetAsBackground()
-        {
-            frontFace.SetActive(false);
-            backFace.SetActive(true);
-
-            transform.localEulerAngles = new Vector3(0, 180f, 0);
-            transform.localScale = Vector3.one * 0.9f;
-
-            transform.SetAsFirstSibling();
-
-            if (canvasGroup != null)
-                canvasGroup.blocksRaycasts = false;
-        }
-
+        /// <summary>
+        /// Applies category-specific visual style.
+        /// </summary>
         public void ApplyCategoryStyle(Visuals.CategoryStyle style)
         {
-            if (frameImage != null) frameImage.color = style.themeColor;
+            if (frameImage != null)
+            {
+                frameImage.color = style.themeColor;
+            }
 
             if (categoryIconImage != null)
             {
@@ -116,122 +100,120 @@ namespace HumanLoop.UI
             }
         }
 
-        private void RefreshLocalizedTexts()
+        #endregion
+
+        #region Visual State (No Animations)
+
+        /// <summary>
+        /// Sets card to show front face (instant, no animation).
+        /// </summary>
+        public void ShowFrontFace()
         {
-            if (Data == null) return;
-            ApplyTextsWithLocalization(Data);
+            if (frontFace != null) frontFace.SetActive(true);
+            if (backFace != null) backFace.SetActive(false);
         }
 
-        private void ApplyTextsWithLocalization(CardDataSO data)
+        /// <summary>
+        /// Sets card to show back face (instant, no animation).
+        /// </summary>
+        public void ShowBackFace()
         {
-            var loc = _boundLoc ?? LocalizedTextTMP.Service;
-
-            string title = data.cardName;
-            string desc = data.description;
-            string left = data.leftChoiceText;
-            string right = data.rightChoiceText;
-
-            if (data is HumanLoop.Data.SimpleCardData simple && loc != null)
-            {
-                title = Resolve(loc, simple.TitleID, title);
-                desc = Resolve(loc, simple.DescriptionID, desc);
-                left = Resolve(loc, simple.LeftChoiceID, left);
-                right = Resolve(loc, simple.RightChoiceID, right);
-            }
-
-            cardNameText.text = title;
-            descriptionText.text = desc;
-            leftChoiceText.text = left;
-            rightChoiceText.text = right;
+            if (frontFace != null) frontFace.SetActive(false);
+            if (backFace != null) backFace.SetActive(true);
         }
 
-        private static string Resolve(LocalizationService loc, string id, string fallback)
-        {
-            if (string.IsNullOrWhiteSpace(id)) return fallback;
-
-            var translated = loc.Get(id);
-            if (translated.Length >= 2 && translated[0] == '#' && translated[^1] == '#')
-                return fallback;
-
-            return translated;
-        }
-
-        public void FlipToFront()
-        {
-            transform.SetAsLastSibling();
-
-            // Kill any previous flip tweens
-            _flipSeq?.Kill(true);
-            transform.DOKill(true);
-
-            if (canvasGroup != null) canvasGroup.blocksRaycasts = false;
-
-            _flipSeq = DOTween.Sequence()
-                .SetTarget(this); // allows DOTween.Kill(this) if needed
-
-            _flipSeq.Append(transform.DORotate(new Vector3(0, 90f, 0), flipDuration * 0.5f)
-                .SetEase(Ease.InQuad));
-
-            _flipSeq.AppendCallback(() =>
-            {
-                frontFace.SetActive(true);
-                backFace.SetActive(false);
-            });
-
-            _flipSeq.Append(transform.DORotate(Vector3.zero, flipDuration * 0.5f)
-                .SetEase(Ease.OutQuad));
-
-            _flipSeq.Join(transform.DOScale(1f, flipDuration).SetEase(Ease.OutBack));
-
-            _flipSeq.OnComplete(() =>
-            {
-                if (canvasGroup != null) canvasGroup.blocksRaycasts = true;
-            });
-
-            onCardFlipEvent?.Raise();
-        }
-
-        public void AnimateIn()
-        {
-            _animateInSeq?.Kill(true);
-            transform.DOKill(true);
-            if (canvasGroup != null) canvasGroup.DOKill(true);
-
-            transform.localScale = Vector3.one * 0.5f;
-            if (canvasGroup != null) canvasGroup.alpha = 0;
-
-            _animateInSeq = DOTween.Sequence()
-                .SetTarget(this);
-
-            _animateInSeq.Append(transform.DOScale(1f, 0.4f).SetEase(Ease.OutBack));
-            if (canvasGroup != null)
-                _animateInSeq.Join(canvasGroup.DOFade(1f, 0.3f));
-
-            onCardAddedEvent?.Raise();
-        }
-
+        /// <summary>
+        /// Updates choice text visibility based on swipe direction.
+        /// </summary>
         public void UpdateChoiceVisuals(float normalizedOffset)
         {
+            if (leftChoiceText == null || rightChoiceText == null) return;
+
             float alpha = Mathf.Abs(normalizedOffset);
 
             if (normalizedOffset > 0)
             {
+                // Swiping right
                 rightChoiceText.alpha = alpha;
                 leftChoiceText.alpha = 0;
                 rightChoiceText.color = colorRight;
             }
             else
             {
+                // Swiping left
                 leftChoiceText.alpha = alpha;
                 rightChoiceText.alpha = 0;
                 leftChoiceText.color = colorLeft;
             }
         }
 
+        /// <summary>
+        /// Hides both choice texts.
+        /// </summary>
         public void HideChoices()
         {
-            leftChoiceText.alpha = 0;
-            rightChoiceText.alpha = 0;
+            if (leftChoiceText != null) leftChoiceText.alpha = 0;
+            if (rightChoiceText != null) rightChoiceText.alpha = 0;
         }
+
+        #endregion
+
+        #region Private Helpers
+
+        private void ApplyTexts(CardDataSO data)
+        {
+            if (cardNameText != null) cardNameText.text = data.cardName;
+            if (descriptionText != null) descriptionText.text = data.description;
+            if (leftChoiceText != null) leftChoiceText.text = data.leftChoiceText;
+            if (rightChoiceText != null) rightChoiceText.text = data.rightChoiceText;
+        }
+
+        #endregion
+
+        #region Debug
+
+#if UNITY_EDITOR
+        [ContextMenu("Debug/Log Card Data")]
+        private void DebugLogCardData()
+        {
+            if (Data != null)
+            {
+                Debug.Log($"[CardDisplay] Card: {Data.cardName}, Category: {Data.category}");
+            }
+            else
+            {
+                Debug.LogWarning("[CardDisplay] No data assigned!");
+            }
+        }
+
+        [ContextMenu("Debug/Check Controller")]
+        private void DebugCheckController()
+        {
+            if (_cachedController != null)
+            {
+                Debug.Log($"[CardDisplay] Controller: ✓ EXISTS");
+            }
+            else
+            {
+                Debug.LogError($"[CardDisplay] Controller: ✗ NULL", this);
+            }
+        }
+
+        [ContextMenu("Debug/Test Show Front Face")]
+        private void DebugShowFrontFace()
+        {
+            ShowFrontFace();
+            Debug.Log("[CardDisplay] Front face shown");
+        }
+
+        [ContextMenu("Debug/Test Show Back Face")]
+        private void DebugShowBackFace()
+        {
+            ShowBackFace();
+            Debug.Log("[CardDisplay] Back face shown");
+        }
+#endif
+
+        #endregion
     }
 }

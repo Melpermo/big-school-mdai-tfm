@@ -1119,8 +1119,10 @@ MonoBehaviour:
   frontFace: {fileID: 3396508612070417909}
   backFace: {fileID: 700587522213090877}
   flipDuration: 0.5
+  animateInDuration: 0.4
   onCardAddedEvent: {fileID: 0}
   onCardFlipEvent: {fileID: 0}
+  showDebugLogs: 1
 --- !u!114 &4660286139770616286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1135,7 +1137,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.UI.CardController
   fovAngle: 15
   swipeThreshold: 150
+  swipeExitX: 1000
   returnDuration: 0.3
+  swipeDuration: 0.4
+  cardFactory: {fileID: 0}
   onCardSwipedEvent: {fileID: 0}
   onCardReturnedEvent: {fileID: 0}
 --- !u!1 &3396508612070417909

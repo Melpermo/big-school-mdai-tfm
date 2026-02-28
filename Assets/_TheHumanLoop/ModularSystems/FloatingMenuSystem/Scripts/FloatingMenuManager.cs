@@ -1,7 +1,6 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
-using HumanLoop.AudioSystem;
 
 namespace TheHumanLoop.UI
 {
@@ -19,6 +18,9 @@ namespace TheHumanLoop.UI
         [Header("Global Settings")]
         [SerializeField] private bool closeMenuOnWindowOpen = true;
 
+        // Cache para evitar allocations
+        private Coroutine _currentDimmerAnimation;
+
         /// <summary>
         /// Opens a specific window by index and manages the menu state.
         /// This method should be called by the OnClick event of your sub-buttons.
@@ -27,25 +29,16 @@ namespace TheHumanLoop.UI
         {
             if (index < 0 || index >= windows.Count)
             {
-                //Debug.LogWarning($"FloatingMenuManager: Window index {index} out of bounds.");
                 return;
             }
 
-            // 1. Close the floating menu if configured
             if (closeMenuOnWindowOpen)
             {
-                floatingMenu.ToggleMenu(); // This triggers the Close animation
+                floatingMenu.CloseMenu(); // Usa método específico
             }
 
-            // 2. Dimmer Animation
-            dimmerCanvasGroup.gameObject.SetActive(true);
-            dimmerCanvasGroup.DOKill();
-            dimmerCanvasGroup.DOFade(dimmerAlpha, fadeDuration);
-
-            // 3. Play a subtle global 'hit' effect or sound here if desired
-
-            // 4. Open the target window
-            windows[index].Open();           
+            ShowDimmer();
+            windows[index].Open();
         }
 
         /// <summary>
@@ -53,24 +46,64 @@ namespace TheHumanLoop.UI
         /// </summary>
         public void CloseAllWindows()
         {
-            CloseDrimmer();
+            HideDimmer();
 
-            foreach (var window in windows)
+            // Optimización: Solo cerrar ventanas activas
+            for (int i = 0; i < windows.Count; i++)
             {
-                if (window.gameObject.activeSelf)
+                if (windows[i].gameObject.activeSelf)
                 {
-                    window.Close();
+                    windows[i].Close();
                 }
-            }            
+            }
         }
 
-        public void CloseDrimmer()
+        private void ShowDimmer()
         {
-            // --- Dimmer Fade Out ---
-            dimmerCanvasGroup.DOKill();
-            dimmerCanvasGroup.DOFade(0f, fadeDuration).OnComplete(() => {
+            // Stop previous animation
+            if (_currentDimmerAnimation != null)
+            {
+                StopCoroutine(_currentDimmerAnimation);
+            }
+
+            dimmerCanvasGroup.gameObject.SetActive(true);
+            _currentDimmerAnimation = StartCoroutine(FadeDimmerCoroutine(dimmerAlpha));
+        }
+
+        private void HideDimmer()
+        {
+            if (_currentDimmerAnimation != null)
+            {
+                StopCoroutine(_currentDimmerAnimation);
+            }
+
+            _currentDimmerAnimation = StartCoroutine(FadeDimmerCoroutine(0f, () => {
                 dimmerCanvasGroup.gameObject.SetActive(false);
-            });
+            }));
+        }
+
+        private IEnumerator FadeDimmerCoroutine(float targetAlpha, System.Action onComplete = null)
+        {
+            float startAlpha = dimmerCanvasGroup.alpha;
+            float elapsed = 0f;
+
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.unscaledDeltaTime; // Mejor para UI
+                float t = elapsed / fadeDuration;
+                dimmerCanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
+                yield return null;
+            }
+
+            dimmerCanvasGroup.alpha = targetAlpha;
+            onComplete?.Invoke();
+            _currentDimmerAnimation = null;
+        }
+
+        private void OnDestroy()
+        {
+            // Cleanup
+            StopAllCoroutines();
         }
     }
 }

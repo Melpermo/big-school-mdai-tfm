@@ -514,53 +514,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1117767515
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1117767517}
-  - component: {fileID: 1117767516}
-  m_Layer: 0
-  m_Name: GameEventsLauncher
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1117767516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117767515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05805140376b2e54a85fad9f67af75ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TheHumanLoop.Core.GameEventsLauncher
-  gameEventsToLaunch:
-  - {fileID: 11400000, guid: 20a00f71c4c246742b33296bb350fdc0, type: 2}
-  launchOnStart: 0
---- !u!4 &1117767517
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117767515}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1206.4135, y: 472.25793, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1242946914 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6078350397802863057, guid: baac66adfe9dc024288feed7650644dc, type: 3}
@@ -583,6 +536,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f003fcb9ab3781489b30f558044b731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TheHumanLoop.UI.UIWindow
+--- !u!1 &1434807316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1434807318}
+  - component: {fileID: 1434807317}
+  m_Layer: 0
+  m_Name: DebugTestings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1434807317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434807316}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88281970581b8a641b8346460cff8c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DOTweenClearTEst
+  continuousMonitoring: 1
+  monitoringInterval: 1
+  testCardData: {fileID: 0}
+--- !u!4 &1434807318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434807316}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1125.7711, y: 487.00974, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1634889456 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8867507270203727299, guid: 0c7c1ab7d01b6334bb074ad0538b5afc, type: 3}
@@ -624,7 +624,6 @@ GameObject:
   - component: {fileID: 8930016549515379079}
   - component: {fileID: 5622180893029040718}
   - component: {fileID: 2618704261786948250}
-  - component: {fileID: 6534353612236499708}
   m_Layer: 5
   m_Name: LoaddingTipsText (TMP) (4)
   m_TagString: Untagged
@@ -959,19 +958,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &376830462283996061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5430426394004707059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 117
 --- !u!114 &443775477496641217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,7 +1486,6 @@ GameObject:
   - component: {fileID: 8524675929383729959}
   - component: {fileID: 5872644046883994801}
   - component: {fileID: 447202228200528041}
-  - component: {fileID: 5746654498611213948}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1529,19 +1514,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &752211454656849876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7820142873249132894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 282
 --- !u!114 &768505799410229744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1888,19 +1860,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1000058476168747346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6118717430657660793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 114
 --- !u!1 &1005524247936811417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,19 +2385,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1480374246832281287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4305812719283830582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 115
 --- !u!222 &1491797022831487093
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2810,7 +2756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1189.9438, y: -540}
+  m_AnchoredPosition: {x: -1189.939, y: -540}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1966067775300548256
@@ -3044,7 +2990,6 @@ GameObject:
   - component: {fileID: 8270578297379903170}
   - component: {fileID: 9129443313955430693}
   - component: {fileID: 476263333471752165}
-  - component: {fileID: 8598294820246257467}
   m_Layer: 5
   m_Name: LoaddingTipsText (TMP) (2)
   m_TagString: Untagged
@@ -3277,7 +3222,6 @@ GameObject:
   - component: {fileID: 6292298096035168626}
   - component: {fileID: 2927184912115177174}
   - component: {fileID: 8570678473883692468}
-  - component: {fileID: 8009828624548071223}
   m_Layer: 5
   m_Name: PrefixText (TMP)
   m_TagString: Untagged
@@ -3550,7 +3494,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 59.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3870,7 +3814,6 @@ GameObject:
   - component: {fileID: 2410656521378671385}
   - component: {fileID: 8787138723144226083}
   - component: {fileID: 3886993312827638931}
-  - component: {fileID: 6214684597537083482}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4182,7 +4125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1189.9437, y: -540}
+  m_AnchoredPosition: {x: -1189.9388, y: -540}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3133369761965216708
@@ -4428,7 +4371,6 @@ GameObject:
   - component: {fileID: 2293051434697685792}
   - component: {fileID: 4022616209432482935}
   - component: {fileID: 242542947656354942}
-  - component: {fileID: 7106478395173765426}
   m_Layer: 5
   m_Name: LoaddingTipsText (TMP) (1)
   m_TagString: Untagged
@@ -4503,7 +4445,6 @@ GameObject:
   - component: {fileID: 1157125807750501962}
   - component: {fileID: 4196983109143382611}
   - component: {fileID: 3184882551043528833}
-  - component: {fileID: 3665555645892229850}
   m_Layer: 5
   m_Name: TimeLabelText (TMP) (1)
   m_TagString: Untagged
@@ -4715,7 +4656,10 @@ MonoBehaviour:
   - {fileID: 8409974929192393495}
   staggerDelay: 0.05
   animationDuration: 0.4
+  overshoot: 1.70158
   mainButton: {fileID: 4544949180228578965}
+  punchIntensity: 0.2
+  punchDuration: 0.2
 --- !u!1 &3522323400393820640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4892,19 +4836,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3665555645892229850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3341132573941010957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 116
 --- !u!114 &3693657003117685655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5791,7 +5722,6 @@ GameObject:
   - component: {fileID: 155572553645076449}
   - component: {fileID: 199585900017534709}
   - component: {fileID: 2927279313549095766}
-  - component: {fileID: 1480374246832281287}
   m_Layer: 5
   m_Name: MoraleLabelText (TMP)
   m_TagString: Untagged
@@ -6981,7 +6911,6 @@ GameObject:
   - component: {fileID: 1102820891535921014}
   - component: {fileID: 5799081420971844580}
   - component: {fileID: 6362464039454071632}
-  - component: {fileID: 376830462283996061}
   m_Layer: 5
   m_Name: QualityLabelText (TMP)
   m_TagString: Untagged
@@ -7432,19 +7361,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5746654498611213948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686362120593813943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 127
 --- !u!224 &5752663696828441680
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7906,7 +7822,6 @@ GameObject:
   - component: {fileID: 6283222385040239944}
   - component: {fileID: 6554536991392582519}
   - component: {fileID: 3777064471808932237}
-  - component: {fileID: 1000058476168747346}
   m_Layer: 5
   m_Name: BudgetLabelText (TMP) (2)
   m_TagString: Untagged
@@ -8049,19 +7964,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6214684597537083482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2838436836259177311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 128
 --- !u!222 &6226169630218803275
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8345,7 +8247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1189.9438, y: -540}
+  m_AnchoredPosition: {x: -1189.939, y: -540}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6435659442088169637
@@ -8407,19 +8309,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &6534353612236499708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120522736034943656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 280
 --- !u!222 &6554536991392582519
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8740,7 +8629,6 @@ GameObject:
   - component: {fileID: 4408629782215960710}
   - component: {fileID: 3415157343602623575}
   - component: {fileID: 768505799410229744}
-  - component: {fileID: 8875970283657547145}
   m_Layer: 5
   m_Name: LoaddingTipsText (TMP)
   m_TagString: Untagged
@@ -8984,19 +8872,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7106478395173765426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3299879261497455101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 277
 --- !u!224 &7107130820205363064
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9578,7 +9453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1189.9438, y: -540}
+  m_AnchoredPosition: {x: -1189.939, y: -540}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7641221587395555260
@@ -9798,7 +9673,6 @@ GameObject:
   - component: {fileID: 7680480743536025804}
   - component: {fileID: 8195569159127305562}
   - component: {fileID: 991986194374624012}
-  - component: {fileID: 752211454656849876}
   m_Layer: 5
   m_Name: LoadingText (TMP)
   m_TagString: Untagged
@@ -10169,6 +10043,10 @@ PrefabInstance:
       propertyPath: currentDeck
       value: 
       objectReference: {fileID: 11400000, guid: 4708497c0f4a5f64a9416bf586155a3c, type: 2}
+    - target: {fileID: 4097757797443060978, guid: baac66adfe9dc024288feed7650644dc, type: 3}
+      propertyPath: logSpawnEvents
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4301690517015513522, guid: baac66adfe9dc024288feed7650644dc, type: 3}
       propertyPath: _deckManager
       value: 
@@ -10233,19 +10111,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8009828624548071223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2322234905948675929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 113
 --- !u!1 &8033233796363063973
 GameObject:
   m_ObjectHideFlags: 0
@@ -10726,19 +10591,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8365974252648281642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9056876480391143459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 279
 --- !u!224 &8409974929192393495
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10956,6 +10808,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1434807317}
+        m_TargetAssemblyTypeName: DOTweenClearTEst, Assembly-CSharp
+        m_MethodName: ClearDOTweenScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 634146966}
         m_TargetAssemblyTypeName: TheHumanLoop.LoadingScreenSystem.SceneLoader, Assembly-CSharp
         m_MethodName: LoadScenes
@@ -11209,19 +11073,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8598294820246257467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2125814566535060756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 278
 --- !u!222 &8601891911472529916
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11279,8 +11130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fa401fe8a610c42a18c51957c6c052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TheHumanLoop.UI.BackgroundParallax
-  moveIntensity: 30
-  smoothTime: 0.5
+  moveIntensity: 40
+  smoothSpeed: 0.15
+  useVelocitySmoothing: 1
+  smoothTime: 0.3
 --- !u!224 &8715831748333036058
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11439,19 +11292,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8875970283657547145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6905065248143321866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2c42f5c6af34c47b0045d15609d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizedTextTMP
-  _id: 276
 --- !u!224 &8930016549515379079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11534,6 +11374,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1434807317}
+        m_TargetAssemblyTypeName: DOTweenClearTEst, Assembly-CSharp
+        m_MethodName: ClearDOTweenScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 634146966}
         m_TargetAssemblyTypeName: TheHumanLoop.LoadingScreenSystem.SceneLoader, Assembly-CSharp
         m_MethodName: LoadScenes
@@ -11743,7 +11595,6 @@ GameObject:
   - component: {fileID: 7069623257335986859}
   - component: {fileID: 2700095688541405573}
   - component: {fileID: 3012539241789685762}
-  - component: {fileID: 8365974252648281642}
   m_Layer: 5
   m_Name: LoaddingTipsText (TMP) (3)
   m_TagString: Untagged
@@ -11948,5 +11799,5 @@ SceneRoots:
   - {fileID: 8004649909746699753}
   - {fileID: 4031656332401359523}
   - {fileID: 963910552}
-  - {fileID: 1117767517}
   - {fileID: 634146967}
+  - {fileID: 1434807318}
