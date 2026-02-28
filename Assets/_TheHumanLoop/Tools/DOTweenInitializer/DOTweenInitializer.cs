@@ -49,6 +49,26 @@ namespace TheHumanLoop.Tools
             }
         }
 
+        // Añade en la clase DOTweenInitializer
+        private void Update()
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+    // Force cleanup cada 5 segundos en WebGL
+    if (Time.frameCount % 300 == 0)
+    {
+        int before = DOTween.TotalPlayingTweens();
+        if (before > 50)
+        {
+            DOTween.KillAll();
+            DOTween.ClearCachedTweens();
+            Resources.UnloadUnusedAssets();
+            System.GC.Collect();
+            Debug.LogWarning($"[WebGL] Force cleanup: {before} tweens killed");
+        }
+    }
+#endif
+        }
+
         private void InitializeSingleton()
         {
             if (Instance == null)

@@ -372,13 +372,20 @@ namespace HumanLoop.UI
         private void OnSwipeComplete(CardDataSO dataToApply, bool isRight)
         {
             dataToApply?.ApplyEffect(isRight);
-
             OnCardRemovedWithDecision?.Invoke(dataToApply, isRight);
             OnCardRemoved?.Invoke();
 
+            // ← AÑADE ESTE LOG
+            Debug.Log($"[CardController] Returning card to pool: {_display.Data?.cardName}");
+            
             if (cardFactory != null)
             {
                 cardFactory.ReturnToPool(_display);
+                Debug.Log($"[CardController] Card returned. Pool stats - InUse: {cardFactory.GetInUseCount()}");
+            }
+            else
+            {
+                Debug.LogError("[CardController] cardFactory is NULL! Card NOT returned to pool!");
             }
 
             _currentTween = null;
