@@ -1140,7 +1140,7 @@ MonoBehaviour:
   onCardReturnedEvent: {fileID: 11400000, guid: db0e0bfa2f43f2d43922af5e226b3937, type: 2}
   onCardFlipEvent: {fileID: 0}
   onCardAddedEvent: {fileID: 0}
-  showDebugLogs: 1
+  showDebugLogs: 0
 --- !u!1 &3396508612070417909
 GameObject:
   m_ObjectHideFlags: 0

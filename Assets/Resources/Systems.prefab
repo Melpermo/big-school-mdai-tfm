@@ -31,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5768173844549659817}
+  - {fileID: 3148859001486416235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4130230667260314135
@@ -45,6 +46,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ae96effa9809a4f8e4ac151ae79623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SystemsRoot
+--- !u!1 &8644826226398938183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3148859001486416235}
+  - component: {fileID: 447766520295617754}
+  m_Layer: 0
+  m_Name: SceneCleanUpManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3148859001486416235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644826226398938183}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6340331377296736307}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &447766520295617754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644826226398938183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0922b6e3f97d2574eaa7b085ee238618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TheHumanLoop.Tools.SceneCleanupManager
+  aggressiveCleanup: 1
+  cleanupDelay: 0.5
+  showDebugLogs: 0
 --- !u!1001 &6708052357252430426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,6 +147,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2067593665879822611, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
       propertyPath: clearOnSceneLoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5175999586266809580, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902820094822113383, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272081390828434963, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330695869812896815, guid: 6d18c083f5f445a438dc2dac03fd0916, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

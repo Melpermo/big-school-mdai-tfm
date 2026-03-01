@@ -77,6 +77,16 @@ namespace TheHumanLoop.LoadingScreenSystem
         }
 
         /// <summary>
+        /// Loads a scene by its name without animations or loading screen.
+        /// Cleans up unused assets and forces garbage collection before and after loading.
+        /// </summary>
+        /// <param name="sceneName">Name of the scene to load</param>
+        public void LoadScene(string sceneName)
+        {
+            StartCoroutine(LoadAsynchronouslyByName(sceneName));
+        }       
+
+        /// <summary>
         /// Asynchronously loads a scene with progress tracking and animations.
         /// Blends fake and real loading progress for smooth user experience.
         /// </summary>

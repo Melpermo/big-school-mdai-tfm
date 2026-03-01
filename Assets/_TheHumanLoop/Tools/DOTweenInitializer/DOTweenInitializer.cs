@@ -49,21 +49,31 @@ namespace TheHumanLoop.Tools
             }
         }
 
-        // Añade en la clase DOTweenInitializer
         private void Update()
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
     // Force cleanup cada 5 segundos en WebGL
     if (Time.frameCount % 300 == 0)
     {
-        int before = DOTween.TotalPlayingTweens();
-        if (before > 50)
+        int activeTweens = DOTween.TotalPlayingTweens();
+        
+        // Kill excessive tweens
+        if (activeTweens > 50)
         {
             DOTween.KillAll();
             DOTween.ClearCachedTweens();
-            Resources.UnloadUnusedAssets();
-            System.GC.Collect();
-            Debug.LogWarning($"[WebGL] Force cleanup: {before} tweens killed");
+        }
+        
+        // Aggressive memory cleanup
+        Resources.UnloadUnusedAssets();
+        System.GC.Collect();
+        System.GC.WaitForPendingFinalizers();
+        System.GC.Collect();
+        
+        if (showDebugLogs)
+        {
+            long memory = System.GC.GetTotalMemory(false);
+            Debug.LogWarning($"[WebGL] Cleanup: {activeTweens} tweens, Memory: {memory / 1048576}MB");
         }
     }
 #endif
@@ -143,10 +153,31 @@ namespace TheHumanLoop.Tools
         {
             // Clear tweens to prevent carryover between scenes
             ClearAllTweens();
+            
+            // NUEVO: Force cleanup después de cambio de escena
+            StartCoroutine(PostSceneLoadCleanup());
 
             if (showDebugLogs)
             {
-                Debug.Log($"[DOTween] Cleared tweens on scene load: {scene.name}");
+                Debug.Log($"[DOTween] Scene loaded: {scene.name}, triggering cleanup");
+            }
+        }
+
+        private System.Collections.IEnumerator PostSceneLoadCleanup()
+        {
+            // Wait for scene to fully load
+            yield return new WaitForSeconds(1f);
+            
+            // Aggressive cleanup
+            Resources.UnloadUnusedAssets();
+            System.GC.Collect();
+            System.GC.WaitForPendingFinalizers();
+            System.GC.Collect();
+            
+            if (showDebugLogs)
+            {
+                long memory = System.GC.GetTotalMemory(false);
+                Debug.Log($"[DOTween] Post-scene cleanup: {memory / 1048576}MB");
             }
         }
 
