@@ -17,7 +17,11 @@ namespace HumanLoop.UI
         [SerializeField] private Image _gamePlayBackgroundImage;
 
         // References to the game events that trigger the deck moments and the corresponding sprites for visual feedback.
-        [Header("References to Middeck moment")]
+        [Header("References to Startdeck moment")]
+        [SerializeField] private GameEventSO _start_deckMommentGameEventSO;
+        [SerializeField] private Sprite _start_deckMommentSprite;
+
+        [Header("References to Middeck moment")]        
         [SerializeField] private GameEventSO _mid_deckMommentGameEventSO;
         [SerializeField] private Sprite _mid_deckMommentSprite;        
         [SerializeField] private SoundEventSO _mid_deckMommentSoundEventSO;
@@ -39,13 +43,18 @@ namespace HumanLoop.UI
             {
                 if (deckMommentGameEventSO == _mid_deckMommentGameEventSO)
                 {
-                    //Debug.Log("Mid Deck Moment event detected!");
+                    Debug.Log("Mid Deck Moment event detected!");
                     MidDeckMoment();
                 }
                 else if (deckMommentGameEventSO == _end_deckMommentGameEventSO)
                 {
-                    //Debug.Log("End Deck Moment event detected!");
+                    Debug.Log("End Deck Moment event detected!");
                     EndDeckMoment();
+                }
+                else if (deckMommentGameEventSO == _start_deckMommentGameEventSO)
+                { 
+                    Debug.Log("Start Deck Moment event detected!");
+                    StartDeckMoment();
                 }
             }
         }
@@ -62,6 +71,12 @@ namespace HumanLoop.UI
             {
                 AudioManager.Instance.PlaySound(_mid_deckMommentSoundEventSO);
             }
+        }
+
+        private void StartDeckMoment()
+        {
+            //Debug.Log("Start Deck Moment triggered!");
+            UpdateBackgroundImage(_start_deckMommentSprite);
         }
 
         private void MidDeckMoment()

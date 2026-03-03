@@ -29,7 +29,7 @@ namespace HumanLoop.Core
 
         [Header("Scene Loading")]
         [Tooltip("Use async scene loading (recommended for WebGL)")]
-        [SerializeField] private bool useAsyncLoading = true;
+        [SerializeField] private bool useAsyncLoading = true;        
 
         // Tween management
         private Tween _fadeInTween;
@@ -107,6 +107,11 @@ namespace HumanLoop.Core
             {
                 RestartGameSync();
             }
+        }
+
+        public void RestartGameOnSceneStateManager()
+        { 
+            //SceneStateManager.Instance.RestartScene();
         }
 
         #endregion

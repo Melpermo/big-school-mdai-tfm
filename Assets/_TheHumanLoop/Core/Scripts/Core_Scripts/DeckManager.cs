@@ -41,6 +41,12 @@ namespace HumanLoop.Core
         // State tracking
         private bool _isSpawning = false;
 
+        // Card counter
+        [SerializeField] private int _remainingCardsCount = 0;
+        public int RemainingCardsCount => _remainingCardsCount;
+        [SerializeField] private int _cardsPlayedCount = 0;
+        public int CardsPlayedCount => _cardsPlayedCount;
+
         #region Unity Lifecycle
 
         private void OnEnable()
@@ -101,9 +107,13 @@ namespace HumanLoop.Core
                 ShuffleDeck(_activeDeck);
             }
 
+            // NUEVO: Inicializar contador de cartas restantes
+            _remainingCardsCount = _activeDeck.Count;
+            _cardsPlayedCount = 0;
+
             if (logSpawnEvents)
             {
-                Debug.Log($"[DeckManager] Initialized with {_activeDeck.Count} cards");
+                Debug.Log($"[DeckManager] Initialized with {_activeDeck.Count} cards (Remaining: {_remainingCardsCount})");
             }
         }
 
@@ -355,6 +365,94 @@ namespace HumanLoop.Core
             _isSpawning = false;
         }
 
+        /// <summary>
+        /// Called when a card is played. Decrements the remaining cards counter.
+        /// This method should be invoked by a GameEventListener when a card is removed.
+        /// </summary>
+        public void OnCardPlayed()
+        {
+            if (!infiniteLoop)
+            {
+                _remainingCardsCount--;
+                _cardsPlayedCount++;
+
+                if (logSpawnEvents)
+                {
+                    Debug.Log($"[DeckManager] Card played. Remaining cards: {_remainingCardsCount}");
+                    Debug.Log($"[DeckManager] Total cards played: {_cardsPlayedCount}");
+                }
+
+                // Optional: Check if deck is exhausted
+                if (_remainingCardsCount <= 0)
+                {
+                    Debug.LogWarning("[DeckManager] Deck exhausted! No more cards available.");
+                }
+
+
+                // Optional: Check if deck is low (e.g., less than 3 cards remaining)
+                if (_remainingCardsCount <= 3)
+                {
+                    Debug.LogWarning($"[DeckManager] Deck is low! Only {_remainingCardsCount} cards remaining.");
+                }
+
+                // Optional: Check if all cards have been played at least once (if not infinite loop)
+                if (!infiniteLoop && _cardsPlayedCount >= currentDeck.cards.Count)
+                {
+                    Debug.Log($"[DeckManager] All cards have been played at least once.");
+                }
+            }
+            // Note: If infiniteLoop is true, we don't decrement because cards are recycled
+        }
+
+        #endregion
+
+        #region Reset & Cleanup
+
+        /// <summary>
+        /// Resets the deck to initial state (called when restarting game or starting from menu).
+        /// Returns any active cards to pool and reinitializes deck.
+        /// </summary>
+        public void ResetDeck()
+        {
+            if (logSpawnEvents)
+            {
+                Debug.Log("[DeckManager] Resetting deck to initial state...");
+            }
+
+            // 1. Stop any pending spawn delay
+            CleanupTweens();
+
+            // 2. Return current cards to pool
+            if (_currentActiveCard != null && cardFactory != null)
+            {
+                cardFactory.ReturnToPool(_currentActiveCard);
+                _currentActiveCard = null;
+            }
+
+            if (_nextPendingCard != null && cardFactory != null)
+            {
+                cardFactory.ReturnToPool(_nextPendingCard);
+                _nextPendingCard = null;
+            }
+
+            // 3. Clear forced next card
+            _forcedNextCard = null;
+
+            // 4. Reset spawning flag
+            _isSpawning = false;
+
+            // 5. Reinitialize deck (reload and reshuffle)
+            InitializeDeck();
+
+            // 6. Spawn initial cards again
+            SpawnInitialCards();
+
+            if (logSpawnEvents)
+            {
+                Debug.Log($"[DeckManager] Deck reset complete. Total cards: {_remainingCardsCount}");
+            }
+        }
+
         #endregion
 
         #region Cleanup
@@ -440,6 +538,19 @@ namespace HumanLoop.Core
             }
 
             Debug.Log("<color=green>✓ Swipe simulation complete</color>");
+        }
+
+        [ContextMenu("Debug/Log Remaining Cards")]
+        private void DebugLogRemainingCards()
+        {
+            Debug.Log($"[DeckManager] Remaining Cards: {_remainingCardsCount} / {_activeDeck?.Count ?? 0}");
+        }
+
+        [ContextMenu("Test/Simulate Card Played")]
+        private void DebugSimulateCardPlayed()
+        {
+            OnCardPlayed();
+            DebugLogRemainingCards();
         }
 #endif
 
