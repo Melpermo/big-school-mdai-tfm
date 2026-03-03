@@ -113,6 +113,19 @@ namespace HumanLoop.Core
             }
         }
 
+        /// <summary>
+        /// Resets all stats to their initial values.
+        /// PUBLIC - Available in builds.
+        /// </summary>
+        public void ResetToInitialValues()  // ← FUERA de #if UNITY_EDITOR
+        {
+            budget = _initialBudget;
+            time = _initialTime;
+            morale = _initialMorale;
+            quality = _initialQuality;
+            _onStatsChangedEvent?.Raise();
+        }
+
 
 #if (UNITY_EDITOR)
         #region Testing & Debug Methods
@@ -161,22 +174,7 @@ namespace HumanLoop.Core
                 
                 Debug.Log($"[{i}] {status} | {condition.conditionName} ({condition.conditionType}) → {eventName}");
             }
-        }
-
-        /// <summary>
-        /// Resets all stats to their initial values.
-        /// </summary>
-        [ContextMenu("Testing/Reset to Initial Values")]
-        public void ResetToInitialValues()
-        {
-            budget = _initialBudget;
-            time = _initialTime;
-            morale = _initialMorale;
-            quality = _initialQuality;
-
-            _onStatsChangedEvent?.Raise();
-            Debug.Log($"Stats reset to initial values: B:{budget} T:{time} M:{morale} Q:{quality}");
-        }
+        }       
 
         /// <summary>
         /// Tests positive stat change (+10 to all).

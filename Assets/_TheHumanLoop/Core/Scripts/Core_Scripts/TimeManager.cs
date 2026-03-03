@@ -38,5 +38,18 @@ namespace HumanLoop.Core
             if (onTimeAdvancedEvent != null)
                 onTimeAdvancedEvent.Raise();
         }
+
+        /// <summary>
+        /// Resets the current week to starting value.
+        /// Called when restarting the game.
+        /// </summary>
+        public void ResetTime()
+        {
+            CurrentWeek = startingWeek;
+
+            // Optionally raise event to update UI
+            if (onTimeAdvancedEvent != null)
+                onTimeAdvancedEvent.Raise();
+        }
     }
 }

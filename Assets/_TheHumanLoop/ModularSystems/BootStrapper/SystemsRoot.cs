@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SystemsRoot : MonoBehaviour
 {
+    /*
     private static SystemsRoot s_instance;
 
     private void Awake()
@@ -22,5 +23,5 @@ public class SystemsRoot : MonoBehaviour
         {
             s_instance = null;
         }
-    }
+    }*/
 }

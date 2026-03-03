@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3898137233202985707}
   - component: {fileID: 6941493429617087356}
-  - component: {fileID: 9000162833362032849}
   - component: {fileID: 1788277987764516999}
+  - component: {fileID: 7083828148594716403}
   m_Layer: 0
   m_Name: UI_Manager
   m_TagString: Untagged
@@ -32,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5072493391093150420}
   - {fileID: 4952367315190643865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,25 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.UI.TimeViewManager
   timeText: {fileID: 0}
   timeManager: {fileID: 0}
---- !u!114 &9000162833362032849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604440020206634371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae46bdc8dae389f45b6ad57058987241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EndGameUIHandler
-  _endGamePanel: {fileID: 0}
-  _endGameTitleTransform: {fileID: 0}
-  _endGameTitleText: {fileID: 0}
-  _endGameFeedbackMsgText: {fileID: 0}
-  _endGameBG_image: {fileID: 0}
-  _backgroundDimmer: {fileID: 0}
-  _dropDistance: 500
+  punchScale: 0.2
+  punchDuration: 0.3
 --- !u!114 &1788277987764516999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,12 +65,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.UI.DeckMommentsUIHandler
   _gamePlayBackgroundImage: {fileID: 0}
+  _start_deckMommentGameEventSO: {fileID: 11400000, guid: 47d271a6da1a8b9489f3b8b1d29cbeb3, type: 2}
+  _start_deckMommentSprite: {fileID: 8939164973835361536, guid: 2153abde7a0b50a46b31e772a326db9c, type: 3}
   _mid_deckMommentGameEventSO: {fileID: 11400000, guid: 6c4f82a63940c384a9a588d967119e98, type: 2}
-  _mid_deckMommentSprite: {fileID: 0}
-  _mid_deckMommentSoundEventSO: {fileID: 0}
+  _mid_deckMommentSprite: {fileID: -2976967553099596824, guid: 8c679c96ba552344aa0be38de26f469a, type: 3}
+  _mid_deckMommentSoundEventSO: {fileID: 11400000, guid: 535a9b088787eee4393e2145780ab54a, type: 2}
   _end_deckMommentGameEventSO: {fileID: 11400000, guid: f64253a7cba4ef94c850028de8bdebcd, type: 2}
-  _end_deckMommentSprite: {fileID: 0}
-  _end_deckMommentSoundEventSO: {fileID: 0}
+  _end_deckMommentSprite: {fileID: -2976967553099596824, guid: 8c679c96ba552344aa0be38de26f469a, type: 3}
+  _end_deckMommentSoundEventSO: {fileID: 11400000, guid: d78640ee4801ba84e92f2f31a7ec6337, type: 2}
+--- !u!114 &7083828148594716403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604440020206634371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53a7eb96925b9e41bfd5512545c87a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Core.GameOverUIHandler
+  gameOverPanel: {fileID: 0}
+  statsSummaryText: {fileID: 0}
+  timeManager: {fileID: 0}
+  fireMessage: "\xA1Ve ha hablar con recursos humanos! \xA1No has conseguido pasar
+    el corte! Semanas en la empresa:"
+  fadeDuration: 1
+  useAsyncLoading: 0
 --- !u!1 &3887562972803178432
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,6 +103,7 @@ GameObject:
   - component: {fileID: 4229753059227295960}
   - component: {fileID: 1716585680955093362}
   - component: {fileID: 6340674519076544473}
+  - component: {fileID: 7234822084717598480}
   m_Layer: 0
   m_Name: DeckEventsUI_Listeners
   m_TagString: Untagged
@@ -136,13 +142,13 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1604440020206634371}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 1788277987764516999}
+        m_TargetAssemblyTypeName: HumanLoop.UI.DeckMommentsUIHandler, Assembly-CSharp
+        m_MethodName: TriggerDeckMomment
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 11400000, guid: 6c4f82a63940c384a9a588d967119e98, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Events.GameEventSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -166,13 +172,43 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1604440020206634371}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 1788277987764516999}
+        m_TargetAssemblyTypeName: HumanLoop.UI.DeckMommentsUIHandler, Assembly-CSharp
+        m_MethodName: TriggerDeckMomment
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 11400000, guid: f64253a7cba4ef94c850028de8bdebcd, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Events.GameEventSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delayBeforeInvoke: 0
+  usingAsyncTaskMethods: 0
+--- !u!114 &7234822084717598480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887562972803178432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
+  gameEvent: {fileID: 11400000, guid: 47d271a6da1a8b9489f3b8b1d29cbeb3, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1788277987764516999}
+        m_TargetAssemblyTypeName: HumanLoop.UI.DeckMommentsUIHandler, Assembly-CSharp
+        m_MethodName: TriggerDeckMomment
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 47d271a6da1a8b9489f3b8b1d29cbeb3, type: 2}
+          m_ObjectArgumentAssemblyTypeName: HumanLoop.Events.GameEventSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -231,7 +267,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
@@ -261,7 +297,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
@@ -291,7 +327,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
@@ -321,7 +357,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
@@ -335,6 +371,60 @@ MonoBehaviour:
         m_CallState: 2
   delayBeforeInvoke: 0
   usingAsyncTaskMethods: 0
+--- !u!1 &5258515000900603945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5072493391093150420}
+  - component: {fileID: 3034596361342435106}
+  m_Layer: 0
+  m_Name: EndGameUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5072493391093150420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258515000900603945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3898137233202985707}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3034596361342435106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258515000900603945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae46bdc8dae389f45b6ad57058987241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndGameUIHandler
+  _endGamePanel: {fileID: 0}
+  _endGameTitleTransform: {fileID: 0}
+  _endGameTitleText: {fileID: 0}
+  _endGameFeedbackMsgText: {fileID: 0}
+  _endGameBG_image: {fileID: 0}
+  _backgroundDimmer: {fileID: 0}
+  _dropDistance: 500
+  _victoryBounceDuration: 0.8
+  _defeatFadeDuration: 2
+  _shakeStrength: 10
 --- !u!1 &6234212179630614011
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,12 +511,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+        m_TargetAssemblyTypeName: HumanLoop.UI.StatsViewManager, Assembly-CSharp
+        m_MethodName: UpdateUI
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -513,7 +603,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
@@ -543,7 +633,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
@@ -608,7 +698,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
@@ -638,7 +728,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
@@ -668,7 +758,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
@@ -698,7 +788,7 @@ MonoBehaviour:
   onEventRaised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9000162833362032849}
+      - m_Target: {fileID: 3034596361342435106}
         m_TargetAssemblyTypeName: HumanLoop.UI.EndGameUIHandler, Assembly-CSharp
         m_MethodName: SelectConditionTypeToShow
         m_Mode: 2
