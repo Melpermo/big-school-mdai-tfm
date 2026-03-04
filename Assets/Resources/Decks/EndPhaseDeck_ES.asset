@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8a1d94fca599e41b006b62ae814d6f, type: 3}
+  m_Name: EndPhaseDeck_ES
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.DeckSO
+  deckName: 
+  description: 
+  cards:
+  - {fileID: 11400000, guid: 4a96fbf022adf9d429a04df47a9b7dfa, type: 2}
+  - {fileID: 11400000, guid: 8804114af1871074fb6192d1a32bc5e9, type: 2}
+  - {fileID: 11400000, guid: d8876ebf54e57c5489e68332513c6501, type: 2}
+  - {fileID: 11400000, guid: 4d42c93ea4bf6e64eaded7cc3b67bf60, type: 2}
+  - {fileID: 11400000, guid: 50f53b645cd934347b930a6475c05d78, type: 2}
+  - {fileID: 11400000, guid: bb56a76fb0b2e184d95baa9d3811d5bf, type: 2}
+  - {fileID: 11400000, guid: d5b38a4791954be43b179a9d429a4102, type: 2}
+  - {fileID: 11400000, guid: d5dd5464ca854384fb23dcb0b5b547b0, type: 2}
+  - {fileID: 11400000, guid: 8252780280e8b8a4a89618003087bb2b, type: 2}
+  - {fileID: 11400000, guid: 1f6b721c220adca47bc0f53096c7652a, type: 2}
+  - {fileID: 11400000, guid: 43afc7651911f8d45a2451c04da46c5c, type: 2}
+  - {fileID: 11400000, guid: 40672e4560890b5439891a65abc7de54, type: 2}

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1991f4a2bf6a4d42a68cf83a9346ef2, type: 3}
+  m_Name: LocalizationStaticsTable
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.LocalizationSystem.LocalizationStaticsTableSO
+  entries:
+  - key: menu.play
+    spanish: Jugar
+    english: Play
+  - key: menu.quit
+    spanish: Salir
+    english: Quit
+  - key: button.restart
+    spanish: Reiniciar
+    english: Restart
+  - key: button.mainmenu
+    spanish: "Men\xFA Principal"
+    english: Main Menu
+  - key: button.continue
+    spanish: Continuar
+    english: Continue
+  - key: stats.budget
+    spanish: Presupuesto
+    english: Budget
+  - key: stats.time
+    spanish: Tiempo
+    english: Time
+  - key: stats.morale
+    spanish: Moral
+    english: Morale
+  - key: stats.quality
+    spanish: Calidad
+    english: Quality
+  - key: week.label
+    spanish: Semana
+    english: Week
+  - key: victory.title
+    spanish: "\xA1Victoria!"
+    english: Victory!
+  - key: gameover.title
+    spanish: "\xA1Game Over!"
+    english: Game Over!
+  - key: menu.settings
+    spanish: Ajustes
+    english: Settings
+  - key: menu.credits
+    spanish: "Cr\xE9ditos"
+    english: Credits

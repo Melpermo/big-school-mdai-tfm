@@ -106,5 +106,16 @@ namespace HumanLoop.Data
         {
             return isRightSwipe ? nextCardRight : nextCardLeft;
         }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            // Advertir si el texto es muy largo
+            if (description != null && description.Length > 200)
+            {
+                Debug.LogWarning($"[{cardName}] Description muy larga ({description.Length} chars). Recomendado: <200");
+            }
+        }
+#endif
     }
 }

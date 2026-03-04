@@ -9,6 +9,7 @@ namespace HumanLoop.UI
     /// Pure view component for displaying card data.
     /// NO animations - only visual state management.
     /// CardController handles all animations.
+    /// Optimized for WebGL with shader-based flip (no SetActive during animations).
     /// </summary>
     public class CardDisplay : MonoBehaviour
     {
@@ -27,7 +28,11 @@ namespace HumanLoop.UI
         [SerializeField] private Image frameImage;
         [SerializeField] private Image categoryIconImage;
 
-        [Header("Flip Visuals")]
+        [Header("Flip Visuals (Shader-Based)")]
+        [SerializeField] private CanvasGroup visualsCanvasGroup;
+
+        [Header("Legacy Flip References (Not Used with Shader)")]
+        [Tooltip("Keep for backwards compatibility, but no longer using SetActive")]
         [SerializeField] private GameObject frontFace;
         [SerializeField] private GameObject backFace;
 
@@ -47,6 +52,7 @@ namespace HumanLoop.UI
         private void Awake()
         {
             CacheComponents();
+            ValidateVisualsCanvasGroup();
         }
 
         #endregion
@@ -60,6 +66,14 @@ namespace HumanLoop.UI
             if (_cachedController == null)
             {
                 Debug.LogError("[CardDisplay] CardController component not found!", this);
+            }
+        }
+
+        private void ValidateVisualsCanvasGroup()
+        {
+            if (visualsCanvasGroup == null)
+            {
+                Debug.LogWarning("[CardDisplay] visualsCanvasGroup not assigned! Text visibility won't work correctly.", this);
             }
         }
 
@@ -105,21 +119,47 @@ namespace HumanLoop.UI
         #region Visual State (No Animations)
 
         /// <summary>
-        /// Sets card to show front face (instant, no animation).
+        /// Shows front face of card.
+        /// Uses CanvasGroup for text visibility (shader handles actual card flip).
+        /// WebGL-safe: no SetActive during animations.
         /// </summary>
         public void ShowFrontFace()
         {
-            if (frontFace != null) frontFace.SetActive(true);
-            if (backFace != null) backFace.SetActive(false);
+            if (visualsCanvasGroup != null)
+            {
+                visualsCanvasGroup.alpha = 1f;
+                visualsCanvasGroup.blocksRaycasts = true;
+                
+                // NUEVO: Re-enable rendering
+                descriptionText.enabled = true;
+                cardNameText.enabled = true;
+            }
+
+            // Legacy: Keep for backwards compatibility but not used
+            // if (frontFace != null) frontFace.SetActive(true);
+            // if (backFace != null) backFace.SetActive(false);
         }
 
         /// <summary>
-        /// Sets card to show back face (instant, no animation).
+        /// Shows back face of card.
+        /// Uses CanvasGroup to hide texts (shader handles actual card flip).
+        /// WebGL-safe: no SetActive during animations.
         /// </summary>
         public void ShowBackFace()
         {
-            if (frontFace != null) frontFace.SetActive(false);
-            if (backFace != null) backFace.SetActive(true);
+            if (visualsCanvasGroup != null)
+            {
+                visualsCanvasGroup.alpha = 0f;
+                visualsCanvasGroup.blocksRaycasts = false;
+                
+                // NUEVO: Disable rendering cuando no es visible
+                descriptionText.enabled = false;
+                cardNameText.enabled = false;
+            }
+
+            // Legacy: Keep for backwards compatibility but not used
+            // if (frontFace != null) frontFace.SetActive(false);
+            // if (backFace != null) backFace.SetActive(true);
         }
 
         /// <summary>
@@ -203,14 +243,43 @@ namespace HumanLoop.UI
         private void DebugShowFrontFace()
         {
             ShowFrontFace();
-            Debug.Log("[CardDisplay] Front face shown");
+            Debug.Log("[CardDisplay] Front face shown (CanvasGroup alpha = 1)");
         }
 
         [ContextMenu("Debug/Test Show Back Face")]
         private void DebugShowBackFace()
         {
             ShowBackFace();
-            Debug.Log("[CardDisplay] Back face shown");
+            Debug.Log("[CardDisplay] Back face shown (CanvasGroup alpha = 0)");
+        }
+
+        [ContextMenu("Debug/Check Visuals CanvasGroup")]
+        private void DebugCheckVisualsCanvasGroup()
+        {
+            if (visualsCanvasGroup != null)
+            {
+                Debug.Log($"[CardDisplay] Visuals CanvasGroup: ✓ EXISTS (Alpha: {visualsCanvasGroup.alpha})");
+            }
+            else
+            {
+                Debug.LogError("[CardDisplay] Visuals CanvasGroup: ✗ NULL", this);
+            }
+        }
+
+        [ContextMenu("Debug/Log TMP Memory Stats")]
+        private void DebugLogTMPMemory()
+        {
+            int totalChars = 0;
+            if (cardNameText != null) totalChars += cardNameText.text.Length;
+            if (descriptionText != null) totalChars += descriptionText.text.Length;
+            if (leftChoiceText != null) totalChars += leftChoiceText.text.Length;
+            if (rightChoiceText != null) totalChars += rightChoiceText.text.Length;
+            
+            // Estimación: ~20 bytes por carácter en mesh data
+            int estimatedBytes = totalChars * 20;
+            
+            Debug.Log($"[CardDisplay] Total chars: {totalChars}, " +
+                      $"Estimated mesh memory: {estimatedBytes / 1024f:F2}KB");
         }
 #endif
 
