@@ -33,9 +33,19 @@ namespace HumanLoop.Core
         [Tooltip("Raised whenever any stat value changes")]
         [SerializeField] private GameEventSO _onStatsChangedEvent;
 
-        [Header("End Game Conditions. **IMPORTANT: THE ORDER MATTERS.**")]        
-        [Tooltip("List of conditions to check. Each condition contains its own event to raise.")]
-        // IMPORTANT THE ORDER MATTERS. RECOMENDED TO PUT DE GLOBAL GAME OVER AND VICTORY AT THE END.
+        [Header("UI References")]
+        [Tooltip("Direct reference to EndGameUIHandler for displaying end game screens")]
+        [SerializeField] private UI.EndGameUIHandler endGameUIHandler;
+
+        [Tooltip("If true, also raises events (for backwards compatibility)")]
+        [SerializeField] private bool alsoRaiseEvents = false;
+
+        [Header("End Game Conditions Settings")]
+        [Tooltip("If true, uses EndGameConditionLocalizationManager for localized conditions")]
+        [SerializeField] private bool useLocalizedConditions = true;
+
+        [Header("End Game Conditions (Only used if useLocalizedConditions is false)")]
+        [Tooltip("**IMPORTANT: THE ORDER MATTERS.** Specific conditions first, global last.")]
         [SerializeField] private List<EndGameConditionSO> endGameConditionsList;
 
         // Store initial values for reset functionality
@@ -53,7 +63,159 @@ namespace HumanLoop.Core
             _initialBudget = budget;
             _initialTime = time;
             _initialMorale = morale;
-            _initialQuality = quality;
+            _initialQuality = quality;           
+        }
+
+        private void OnEnable()
+        {
+            if (useLocalizedConditions)
+            {
+                LocalizationSystem.LanguageManager.OnLanguageChanged += OnLanguageChanged;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (useLocalizedConditions)
+            {
+                LocalizationSystem.LanguageManager.OnLanguageChanged -= OnLanguageChanged;
+            }
+        }
+
+        private void Start()
+        {
+            if (useLocalizedConditions)
+            {
+                StartCoroutine(WaitAndLoadLocalizedConditions());
+            }
+        }
+
+        /// <summary>
+        /// Waits for EndGameConditionLocalizationManager to fully load conditions, then loads them.
+        /// </summary>
+        private System.Collections.IEnumerator WaitAndLoadLocalizedConditions()
+        {
+            // Wait for instance to exist
+            int retries = 0;
+            const int maxRetries = 20;
+
+            while (LocalizationSystem.EndGameConditionLocalizationManager.Instance == null && retries < maxRetries)
+            {
+                retries++;
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            if (LocalizationSystem.EndGameConditionLocalizationManager.Instance == null)
+            {
+                Debug.LogError("[GameStatsManager] EndGameConditionLocalizationManager.Instance is null after waiting!");
+                yield break;
+            }
+
+            // Wait for conditions to be loaded (check that list is not empty)
+            retries = 0;
+            List<EndGameConditionSO> conditions = null;
+
+            while (retries < maxRetries)
+            {
+                conditions = LocalizationSystem.EndGameConditionLocalizationManager.Instance.GetLocalizedConditionsList();
+                
+                if (conditions != null && conditions.Count > 0)
+                {
+                    break; // Conditions are ready!
+                }
+
+                retries++;
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            // Now load conditions
+            if (conditions != null && conditions.Count > 0)
+            {
+                endGameConditionsList = conditions;
+                Debug.Log($"[GameStatsManager] ✓ Loaded {endGameConditionsList.Count} localized end game conditions");
+            }
+            else
+            {
+                Debug.LogError("[GameStatsManager] Failed to load localized conditions after waiting! " +
+                              "EndGameConditionLocalizationManager returned empty list.");
+            }
+        }
+
+        private void LoadLocalizedConditions()
+        {
+            if (LocalizationSystem.EndGameConditionLocalizationManager.Instance == null)
+            {
+                Debug.LogError("[GameStatsManager] EndGameConditionLocalizationManager.Instance is null!");
+                return;
+            }
+
+            List<EndGameConditionSO> loadedList = LocalizationSystem.EndGameConditionLocalizationManager.Instance.GetLocalizedConditionsList();
+
+            if (loadedList == null || loadedList.Count == 0)
+            {
+                Debug.LogWarning("[GameStatsManager] GetLocalizedConditionsList() returned empty list!");
+                return;
+            }
+
+            endGameConditionsList = loadedList;
+            Debug.Log($"[GameStatsManager] ✓ Reloaded {endGameConditionsList.Count} localized conditions (language changed)");
+        }
+
+        private void OnLanguageChanged(LocalizationSystem.LanguageManager.Language newLanguage)
+        {
+            Debug.Log($"[GameStatsManager] Language changed to {newLanguage}, reloading conditions...");
+            StartCoroutine(ReloadConditionsAfterLanguageChange());
+        }
+
+        /// <summary>
+        /// Reloads conditions after language change, waiting for new conditions to be loaded.
+        /// </summary>
+        private System.Collections.IEnumerator ReloadConditionsAfterLanguageChange()
+        {
+            // Give EndGameConditionLocalizationManager time to reload
+            yield return new WaitForSeconds(0.1f);
+
+            int retries = 0;
+            const int maxRetries = 10;
+            List<EndGameConditionSO> newConditions = null;
+
+            // Wait until new conditions are loaded
+            while (retries < maxRetries)
+            {
+                if (LocalizationSystem.EndGameConditionLocalizationManager.Instance != null)
+                {
+                    newConditions = LocalizationSystem.EndGameConditionLocalizationManager.Instance.GetLocalizedConditionsList();
+                    
+                    if (newConditions != null && newConditions.Count > 0)
+                    {
+                        // Verify it's actually new conditions (different reference)
+                        if (newConditions != endGameConditionsList)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                retries++;
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            // Assign new conditions
+            if (newConditions != null && newConditions.Count > 0)
+            {
+                endGameConditionsList = newConditions;
+                Debug.Log($"[GameStatsManager] ✓ Reloaded {endGameConditionsList.Count} conditions in new language");
+                
+                // Log first condition name to verify language changed
+                if (endGameConditionsList.Count > 0 && endGameConditionsList[0] != null)
+                {
+                    Debug.Log($"[GameStatsManager] First condition: {endGameConditionsList[0].name}");
+                }
+            }
+            else
+            {
+                Debug.LogError("[GameStatsManager] Failed to reload conditions after language change!");
+            }
         }
 
         /// <summary>
@@ -81,7 +243,7 @@ namespace HumanLoop.Core
 
         /// <summary>
         /// Evaluates all registered end game conditions.
-        /// If any condition is met, it raises its own event and stops checking (first match wins).
+        /// If any condition is met, shows UI directly and optionally raises event.
         /// </summary>
         private void CheckEndGameConditions()
         {
@@ -89,8 +251,6 @@ namespace HumanLoop.Core
             {
                 return;
             }
-
-            //Debug.Log($"<color=cyan>Checking {endGameConditionsList.Count} conditions...</color>");
 
             foreach (var endGameCondition in endGameConditionsList)
             {
@@ -100,15 +260,20 @@ namespace HumanLoop.Core
                 }
 
                 bool isMet = endGameCondition.CheckCondition();
-                
-                // Log cada evaluación para debug
-                //Debug.Log($"  [{endGameCondition.conditionName}] → {(isMet ? "<color=red>MET</color>" : "<color=green>not met</color>")}");
 
                 if (isMet)
                 {
-                    //Debug.Log($"<color=yellow>END GAME TRIGGERED: {endGameCondition.conditionName} ({endGameCondition.conditionType})</color>");
-                    endGameCondition.RaiseEvent();
-                    return;
+                    // Direct UI call (NEW - Primary method)
+                    if (endGameUIHandler != null)
+                    {
+                        endGameUIHandler.SelectConditionTypeToShow(endGameCondition);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("[GameStatsManager] endGameUIHandler not assigned! Falling back to events.");
+                    }                    
+
+                    return; // Stop checking after first match
                 }
             }
         }
@@ -167,12 +332,9 @@ namespace HumanLoop.Core
                 }
 
                 bool isMet = condition.CheckCondition();
-                string status = isMet ? "✓ MET" : "✗ NOT MET";
-                string eventName = condition.endGameConditionEvent != null 
-                    ? condition.endGameConditionEvent.name 
-                    : "NO EVENT";
+                string status = isMet ? "✓ MET" : "✗ NOT MET";                
                 
-                Debug.Log($"[{i}] {status} | {condition.conditionName} ({condition.conditionType}) → {eventName}");
+                Debug.Log($"[{i}] {status} | {condition.conditionName}");
             }
         }       
 
@@ -320,6 +482,32 @@ namespace HumanLoop.Core
             Debug.Log($"Budget set to: {budget}");
             _onStatsChangedEvent?.Raise();
             CheckEndGameConditions();
+        }
+
+        [ContextMenu("Debug/Force Reload Localized Conditions")]
+        private void DebugForceReloadConditions()
+        {
+            if (!useLocalizedConditions)
+            {
+                Debug.LogWarning("useLocalizedConditions is false!");
+                return;
+            }
+
+            LoadLocalizedConditions();
+            Debug.Log($"Manual reload complete. Count: {endGameConditionsList?.Count ?? 0}");
+        }
+
+        [ContextMenu("Debug/Log EndGameConditionLocalizationManager Status")]
+        private void DebugLogLocalizationStatus()
+        {
+            bool instanceExists = LocalizationSystem.EndGameConditionLocalizationManager.Instance != null;
+            Debug.Log($"EndGameConditionLocalizationManager.Instance exists: {instanceExists}");
+            
+            if (instanceExists)
+            {
+                var list = LocalizationSystem.EndGameConditionLocalizationManager.Instance.GetLocalizedConditionsList();
+                Debug.Log($"Available conditions: {list?.Count ?? 0}");
+            }
         }
         #endregion
 #endif

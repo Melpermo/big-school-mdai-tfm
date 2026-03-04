@@ -34,12 +34,8 @@ namespace HumanLoop.Data
         [HideInInspector] public float budgetThreshold;
         [HideInInspector] public float timeThreshold;
         [HideInInspector] public float moraleThreshold;
-        [HideInInspector] public float qualityThreshold;        
-        
-
-        [Header("Event to Raise")]
-        [Tooltip("The GameEvent that will be raised when this condition is met")]
-        public GameEventSO endGameConditionEvent;
+        [HideInInspector] public float qualityThreshold;   
+              
 
         [Header("UI Feedback")]
         [Tooltip("Message to display when this condition is met")]
@@ -167,23 +163,7 @@ namespace HumanLoop.Data
             }
         }
 
-        /// <summary>
-        /// Raises the associated game event for this condition.
-        /// Should be called when CheckCondition() returns true.
-        /// </summary>
-        public void RaiseEvent()
-        {
-            if (endGameConditionEvent != null)
-            {
-                //Debug.Log($"Raising event for condition: {conditionName} ({conditionType})");
-                endGameConditionEvent.Raise();
-            }
-            else
-            {
-                //Debug.LogWarning($"No event assigned for condition: {conditionName}");
-                return;
-            }
-        }
+        
 
 #if (UNITY_EDITOR)
         #region Validation
@@ -214,11 +194,6 @@ namespace HumanLoop.Data
             if (string.IsNullOrEmpty(conditionName))
             {
                 Debug.LogWarning("conditionName is empty", this);
-            }
-
-            if (endGameConditionEvent == null)
-            {
-                Debug.LogWarning($"No event assigned for '{conditionName}'", this);
             }
 
             // Validación específica para cada tipo

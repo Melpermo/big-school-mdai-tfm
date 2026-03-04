@@ -8,7 +8,7 @@ namespace HumanLoop.Core
 {
     /// <summary>
     /// Manages the card deck flow, spawning, and cycling.
-    /// Optimized for WebGL with proper state management and refactored for new CardDisplay/CardController architecture.
+    /// Optimized for WebGL with proper state management and localization support.
     /// </summary>
     public class DeckManager : MonoBehaviour
     {
@@ -16,7 +16,12 @@ namespace HumanLoop.Core
         [SerializeField] private CardFactory cardFactory;
 
         [Header("Deck Config")]
+        [Tooltip("If true, loads deck from DeckLocalizationManager. If false, uses assigned deck.")]
+        [SerializeField] private bool useLocalizedDecks = true;
+
+        [Tooltip("Only used if useLocalizedDecks is false")]
         [SerializeField] private DeckSO currentDeck;
+
         [SerializeField] private bool shuffleOnStart = true;
         [SerializeField] private bool infiniteLoop = true;
 
@@ -60,16 +65,62 @@ namespace HumanLoop.Core
             CleanupTweens();
         }
 
+        private void Start()
+        {
+            // Subscribe to language changes
+            if (useLocalizedDecks)
+            {
+                LocalizationSystem.LanguageManager.OnLanguageChanged += OnLanguageChanged;
+            }
+
+            InitializeDeck();
+            SpawnInitialCards();
+        }
+
         private void OnDestroy()
         {
+            if (useLocalizedDecks)
+            {
+                LocalizationSystem.LanguageManager.OnLanguageChanged -= OnLanguageChanged;
+            }
+
             UnsubscribeFromEvents();
             CleanupTweens();
         }
 
-        private void Start()
+        #endregion
+
+        #region Localization Integration
+
+        private void OnLanguageChanged(LocalizationSystem.LanguageManager.Language newLanguage)
         {
-            InitializeDeck();
-            SpawnInitialCards();
+            if (logSpawnEvents)
+            {
+                Debug.Log($"[DeckManager] Language changed to {newLanguage}, reloading deck...");
+            }
+
+            // Get the new localized deck
+            DeckSO newDeck = GetCurrentLocalizedDeck();
+
+            if (newDeck != null)
+            {
+                LoadNewDeck(newDeck);
+            }
+        }
+
+        private DeckSO GetCurrentLocalizedDeck()
+        {
+            if (!useLocalizedDecks)
+                return currentDeck;
+
+            if (LocalizationSystem.DeckLocalizationManager.Instance == null)
+            {
+                Debug.LogError("[DeckManager] DeckLocalizationManager.Instance is null!");
+                return null;
+            }
+
+            // Return EarlyPhase by default (ProgressionManager will update this)
+            return LocalizationSystem.DeckLocalizationManager.Instance.EarlyPhaseDeck;
         }
 
         #endregion
@@ -94,9 +145,15 @@ namespace HumanLoop.Core
 
         private void InitializeDeck()
         {
+            // Get deck based on localization setting
+            if (useLocalizedDecks)
+            {
+                currentDeck = GetCurrentLocalizedDeck();
+            }
+
             if (currentDeck == null)
             {
-                Debug.LogError("[DeckManager] currentDeck is null! Assign a DeckSO.");
+                Debug.LogError("[DeckManager] currentDeck is null! Assign a DeckSO or enable useLocalizedDecks.");
                 return;
             }
 
@@ -107,7 +164,7 @@ namespace HumanLoop.Core
                 ShuffleDeck(_activeDeck);
             }
 
-            // NUEVO: Inicializar contador de cartas restantes
+            // Initialize card counters
             _remainingCardsCount = _activeDeck.Count;
             _cardsPlayedCount = 0;
 
@@ -126,8 +183,8 @@ namespace HumanLoop.Core
                 _currentActiveCard = cardFactory.GetCardFromPool(firstData);
                 if (_currentActiveCard != null && _currentActiveCard.Controller != null)
                 {
-                    _currentActiveCard.Controller.FlipToFront(); // ← Ahora desde Controller
-                    _currentActiveCard.Controller.AnimateIn();   // ← Ahora desde Controller
+                    _currentActiveCard.Controller.FlipToFront();
+                    _currentActiveCard.Controller.AnimateIn();
 
                     if (logSpawnEvents)
                     {
@@ -151,7 +208,7 @@ namespace HumanLoop.Core
                 _nextPendingCard = cardFactory.GetCardFromPool(secondData);
                 if (_nextPendingCard != null && _nextPendingCard.Controller != null)
                 {
-                    _nextPendingCard.Controller.SetAsBackground(); // ← Ahora desde Controller
+                    _nextPendingCard.Controller.SetAsBackground();
 
                     if (logSpawnEvents)
                     {
@@ -171,7 +228,7 @@ namespace HumanLoop.Core
 
         /// <summary>
         /// Updates the current deck and resets the active list.
-        /// Useful for difficulty spikes or phase changes.
+        /// Useful for difficulty spikes, phase changes, or language changes.
         /// </summary>
         public void LoadNewDeck(DeckSO newDeck)
         {
@@ -315,7 +372,7 @@ namespace HumanLoop.Core
                 OnSpawnDelayComplete(previousActive);
             })
             .SetTarget(this)
-            .SetUpdate(true) // Works even if Time.timeScale = 0
+            .SetUpdate(true)
             .SetAutoKill(true);
         }
 
@@ -324,7 +381,7 @@ namespace HumanLoop.Core
             // Flip current active card to front
             if (_currentActiveCard != null && _currentActiveCard.Controller != null)
             {
-                _currentActiveCard.Controller.FlipToFront(); // ← Ahora desde Controller
+                _currentActiveCard.Controller.FlipToFront();
 
                 if (logSpawnEvents)
                 {
@@ -344,7 +401,7 @@ namespace HumanLoop.Core
 
                 if (_nextPendingCard != null && _nextPendingCard.Controller != null)
                 {
-                    _nextPendingCard.Controller.SetAsBackground(); // ← Ahora desde Controller
+                    _nextPendingCard.Controller.SetAsBackground();
 
                     if (logSpawnEvents)
                     {
@@ -367,7 +424,6 @@ namespace HumanLoop.Core
 
         /// <summary>
         /// Called when a card is played. Decrements the remaining cards counter.
-        /// This method should be invoked by a GameEventListener when a card is removed.
         /// </summary>
         public void OnCardPlayed()
         {
@@ -378,30 +434,14 @@ namespace HumanLoop.Core
 
                 if (logSpawnEvents)
                 {
-                    Debug.Log($"[DeckManager] Card played. Remaining cards: {_remainingCardsCount}");
-                    Debug.Log($"[DeckManager] Total cards played: {_cardsPlayedCount}");
+                    Debug.Log($"[DeckManager] Card played. Remaining: {_remainingCardsCount}, Total played: {_cardsPlayedCount}");
                 }
 
-                // Optional: Check if deck is exhausted
                 if (_remainingCardsCount <= 0)
                 {
                     Debug.LogWarning("[DeckManager] Deck exhausted! No more cards available.");
                 }
-
-
-                // Optional: Check if deck is low (e.g., less than 3 cards remaining)
-                if (_remainingCardsCount <= 3)
-                {
-                    Debug.LogWarning($"[DeckManager] Deck is low! Only {_remainingCardsCount} cards remaining.");
-                }
-
-                // Optional: Check if all cards have been played at least once (if not infinite loop)
-                if (!infiniteLoop && _cardsPlayedCount >= currentDeck.cards.Count)
-                {
-                    Debug.Log($"[DeckManager] All cards have been played at least once.");
-                }
             }
-            // Note: If infiniteLoop is true, we don't decrement because cards are recycled
         }
 
         #endregion
@@ -409,8 +449,7 @@ namespace HumanLoop.Core
         #region Reset & Cleanup
 
         /// <summary>
-        /// Resets the deck to initial state (called when restarting game or starting from menu).
-        /// Returns any active cards to pool and reinitializes deck.
+        /// Resets the deck to initial state.
         /// </summary>
         public void ResetDeck()
         {
@@ -419,10 +458,8 @@ namespace HumanLoop.Core
                 Debug.Log("[DeckManager] Resetting deck to initial state...");
             }
 
-            // 1. Stop any pending spawn delay
             CleanupTweens();
 
-            // 2. Return current cards to pool
             if (_currentActiveCard != null && cardFactory != null)
             {
                 cardFactory.ReturnToPool(_currentActiveCard);
@@ -435,16 +472,10 @@ namespace HumanLoop.Core
                 _nextPendingCard = null;
             }
 
-            // 3. Clear forced next card
             _forcedNextCard = null;
-
-            // 4. Reset spawning flag
             _isSpawning = false;
 
-            // 5. Reinitialize deck (reload and reshuffle)
             InitializeDeck();
-
-            // 6. Spawn initial cards again
             SpawnInitialCards();
 
             if (logSpawnEvents)
@@ -465,7 +496,6 @@ namespace HumanLoop.Core
                 _spawnDelayTween = null;
             }
 
-            // Kill all tweens targeting this DeckManager
             DOTween.Kill(this, complete: false);
         }
 
@@ -477,80 +507,35 @@ namespace HumanLoop.Core
         [ContextMenu("Debug/Log Deck State")]
         private void DebugLogDeckState()
         {
+            string currentLanguage = useLocalizedDecks && LocalizationSystem.LanguageManager.Instance != null
+                ? LocalizationSystem.LanguageManager.Instance.CurrentLanguage.ToString()
+                : "N/A";
+
             Debug.Log($"=== DECK MANAGER STATE ===\n" +
+                     $"Use Localized Decks: {useLocalizedDecks}\n" +
+                     $"Current Language: {currentLanguage}\n" +
+                     $"Current Deck: {currentDeck?.deckName ?? "NULL"}\n" +
                      $"Active Deck Cards: {_activeDeck?.Count ?? 0}\n" +
                      $"Current Active Card: {_currentActiveCard?.Data?.cardName ?? "NULL"}\n" +
-                     $"Current Active Controller: {(_currentActiveCard?.Controller != null ? "OK" : "NULL")}\n" +
                      $"Next Pending Card: {_nextPendingCard?.Data?.cardName ?? "NULL"}\n" +
-                     $"Next Pending Controller: {(_nextPendingCard?.Controller != null ? "OK" : "NULL")}\n" +
-                     $"Is Spawning: {_isSpawning}\n" +
-                     $"Forced Next: {_forcedNextCard?.cardName ?? "NONE"}");
+                     $"Is Spawning: {_isSpawning}");
         }
 
-        [ContextMenu("Debug/Force Spawn Next")]
-        private void DebugForceSpawnNext()
+        [ContextMenu("Debug/Force Reload Localized Deck")]
+        private void DebugForceReloadLocalizedDeck()
         {
-            SpawnNextCard();
-        }
-
-        [ContextMenu("Debug/Check Controllers")]
-        private void DebugCheckControllers()
-        {
-            if (_currentActiveCard != null)
+            if (!useLocalizedDecks)
             {
-                bool hasController = _currentActiveCard.Controller != null;
-                Debug.Log($"Current Active Card Controller: {(hasController ? "✓ EXISTS" : "✗ NULL")}");
-            }
-            else
-            {
-                Debug.Log("Current Active Card: NULL");
+                Debug.LogWarning("[DeckManager] useLocalizedDecks is false!");
+                return;
             }
 
-            if (_nextPendingCard != null)
+            DeckSO newDeck = GetCurrentLocalizedDeck();
+            if (newDeck != null)
             {
-                bool hasController = _nextPendingCard.Controller != null;
-                Debug.Log($"Next Pending Card Controller: {(hasController ? "✓ EXISTS" : "✗ NULL")}");
+                LoadNewDeck(newDeck);
+                Debug.Log($"[DeckManager] Force reloaded: {newDeck.deckName}");
             }
-            else
-            {
-                Debug.Log("Next Pending Card: NULL");
-            }
-        }
-
-        [ContextMenu("Test/Simulate 10 Card Swipes")]
-        private void TestSimulateSwipes()
-        {
-            StartCoroutine(TestSimulateSwipesCoroutine());
-        }
-
-        private System.Collections.IEnumerator TestSimulateSwipesCoroutine()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                Debug.Log($"=== Simulating swipe {i + 1}/10 ===");
-
-                // Simulate card removal
-                SpawnNextCard();
-
-                yield return new UnityEngine.WaitForSeconds(1f);
-
-                DebugLogDeckState();
-            }
-
-            Debug.Log("<color=green>✓ Swipe simulation complete</color>");
-        }
-
-        [ContextMenu("Debug/Log Remaining Cards")]
-        private void DebugLogRemainingCards()
-        {
-            Debug.Log($"[DeckManager] Remaining Cards: {_remainingCardsCount} / {_activeDeck?.Count ?? 0}");
-        }
-
-        [ContextMenu("Test/Simulate Card Played")]
-        private void DebugSimulateCardPlayed()
-        {
-            OnCardPlayed();
-            DebugLogRemainingCards();
         }
 #endif
 

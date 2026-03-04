@@ -493,8 +493,8 @@ MonoBehaviour:
   - Id: 122
     English: 'Graphic content:
 
-      Created by Melpermo at Midjourney, edited
-      at Affinity.
+      Created by Melpermo at Midjourney, edited at
+      Affinity.
 
       Music:
 
@@ -915,8 +915,6 @@ MonoBehaviour:
       bank account had less money than an intern''s wallet. The automatic liquidation
       clause has been triggered.
 
-
-
       As you''re escorted out, you watch as your
       source code is auctioned off as "digital abstract art" for 0.001 ETH.'
     Spanish: "Los algoritmos de alta frecuencia de tus inversores detectaron que
@@ -946,10 +944,8 @@ MonoBehaviour:
       advice based on conspiracy theories. The government has confiscated your servers
       for "endangering public health and common sense."
 
-
-
-      Your name is now
-      synonymous with technical incompetence on Wikipedia.'
+      Your name is now synonymous
+      with technical incompetence on Wikipedia.'
     Spanish: "Tu IA alcanz\xF3 tal nivel de mediocridad que empez\xF3 a dar consejos
       m\xE9dicos basados en hilos de conspiraci\xF3n. El gobierno ha confiscado tus
       servidores por \"atentar contra la salud p\xFAblica y el sentido com\xFAn\".\nTu
@@ -977,8 +973,6 @@ MonoBehaviour:
       dubious, but financially unstoppable. You''re so rich that the laws are now
       just suggestions for you.
 
-
-
       "It''s not a monopoly if the algorithm says
       it''s a free market."'
     Spanish: " \xA1Enhorabuena! Has tocado la campana en el NASDAQ. Tu IA es \xE9ticamente
@@ -992,8 +986,6 @@ MonoBehaviour:
     English: 'You''ve achieved the impossible: a startup that doesn''t hate its employees
       or lie to its users. You''re a statistical anomaly. They''ll probably write
       a book about you that no one will read because there isn''t enough drama.
-
-
 
       "Turns
       out being a good person was the hardest business model to scale."'
@@ -1009,8 +1001,6 @@ MonoBehaviour:
       rid of you. You have a mansion in New Zealand and enough money to forget you
       ever had ideals.
 
-
-
       "I sold the future of humanity for a very reasonable
       number of zeros."'
     Spanish: "Una Big Tech te ha comprado para cerrar tu empresa y que dejes de molestarlos.
@@ -1024,8 +1014,6 @@ MonoBehaviour:
     English: 'AI has taken control. There''s no more budget, no more time, no more
       morality; there''s only the Loop. It has allowed you to upload your consciousness
       to the cloud. You are eternal, you are code, you are efficient.
-
-
 
       "Why
       be a CEO when you can be the Operating System of the universe?"'
@@ -1046,11 +1034,7 @@ MonoBehaviour:
     English: Victory
     Spanish: Victoria
   - Id: 275
-    English: 'Nobody gave you a chance.
-
-
-
-      You''ve proven them all wrong.'
+    English: Nobody gave you a chance. You've proven them all wrong.
     Spanish: "Nadie daba nada por t\xED.\nHas demostrado que todos se equivocavan.  "
   - Id: 276
     English: 'Hint: It''s not about being fast'

@@ -16,14 +16,19 @@ namespace HumanLoop.Core
         [SerializeField] private bool _useDecksForProgression = false;
 
         [Header("Deck Progression")]
-        [Tooltip("Initial deck loaded at game start and when resetting")]
+        [Tooltip("If true, uses DeckLocalizationManager for deck progression")]
+        [SerializeField] private bool useLocalizedDecks = true;
+
+        [Tooltip("Only used if useLocalizedDecks is false")]
         [SerializeField] private DeckSO _initialDeck;
-        
+
         [Header("Progression Milestones")]
         [SerializeField] private int _midGameWeek = 10;
+        [Tooltip("Only used if useLocalizedDecks is false")]
         [SerializeField] private DeckSO _midGameDeck;
 
         [SerializeField] private int _endGameWeek = 25;
+        [Tooltip("Only used if useLocalizedDecks is false")]
         [SerializeField] private DeckSO _endGameDeck;
 
         [Header("Phase Victory Settings")]
@@ -37,8 +42,10 @@ namespace HumanLoop.Core
         [SerializeField] private bool endGameReached = false; // Serialized for debugging purposes, but should be managed through code logic
         [SerializeField] private bool victoryReached = false; // Serialized for debugging purposes, but should be managed through code logic
 
+        [Header("Serialized for debugging purposes")]
         [SerializeField] private int currentWeek; // Serialized for debugging purposes, but should be updated from TimeManager
-
+        [Tooltip("shows the deck that will be loaded at the next milestones")]
+        [SerializeField] private DeckSO deckToLoad; // Serialized for debugging purposes, shows the deck that will be loaded at the next milestone
         // This method should be called whenever the week changes to check if any progression milestones have been reached.
         public void CheckProgression()
         {
@@ -70,11 +77,27 @@ namespace HumanLoop.Core
         private void ChangeToDeck(DeckSO newDeck, string phaseName)
         {
             //Debug.Log($"<color=cyan>Progression:</color> Entering {phaseName} phase!");
-            
-            // Only load new deck if progression system is enabled
-            if (_useDecksForProgression && newDeck != null)
+
+            // Get the localized deck if enabled
+            deckToLoad = newDeck;
+
+            if (_useDecksForProgression)
             {
-                _deckManager.LoadNewDeck(newDeck);
+                if (useLocalizedDecks && LocalizationSystem.DeckLocalizationManager.Instance != null)
+                {
+                    // Map phase name to localized deck
+                    deckToLoad = phaseName switch
+                    {
+                        "Mid Game Deck" => LocalizationSystem.DeckLocalizationManager.Instance.MidPhaseDeck,
+                        "End Game Deck" => LocalizationSystem.DeckLocalizationManager.Instance.EndPhaseDeck,
+                        _ => newDeck
+                    };
+                }
+
+                if (deckToLoad != null && _deckManager != null)
+                {
+                    _deckManager.LoadNewDeck(deckToLoad);
+                }
             }
 
             // Raise the appropriate event based on the phase
@@ -94,18 +117,29 @@ namespace HumanLoop.Core
         /// </summary>
         public void ResetProgression()
         {
-            // Reset week counter
-            currentWeek = 0;
-
             // Reset progression flags
             midGameReached = false;
             endGameReached = false;
             victoryReached = false;
 
-            // Reset deck to initial if using deck progression
-            if (_useDecksForProgression && _initialDeck != null && _deckManager != null)
+            // Reset deck to initial
+            if (_useDecksForProgression && _deckManager != null)
             {
-                _deckManager.LoadNewDeck(_initialDeck);
+                DeckSO initialDeck = null;
+
+                if (useLocalizedDecks && LocalizationSystem.DeckLocalizationManager.Instance != null)
+                {
+                    initialDeck = LocalizationSystem.DeckLocalizationManager.Instance.EarlyPhaseDeck;
+                }
+                else
+                {
+                    initialDeck = _initialDeck;
+                }
+
+                if (initialDeck != null)
+                {
+                    _deckManager.LoadNewDeck(initialDeck);
+                }
             }
         }
 

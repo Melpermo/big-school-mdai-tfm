@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0a5be7365e3954893031836c603f35, type: 3}
+  m_Name: FailMorale_ES
+  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Data.EndGameConditionSO
+  conditionName: "MOT\xCDN EN EL REPOSITORIO"
+  conditionType: 3
+  statToCheck: 3
+  threshold: 5
+  budgetThreshold: 0
+  timeThreshold: 0
+  moraleThreshold: 5
+  qualityThreshold: 0
+  endGameConditionEvent: {fileID: 11400000, guid: e3ee88fda3fe9014392e550198dfe6a5, type: 2}
+  endGameMessage: "El equipo de ingenier\xEDa no solo ha dimitido; han inyectado
+    un virus que reemplaza cada l\xEDnea de c\xF3digo por la palabra \"CRUNCH\".
+    Tu oficina est\xE1 vac\xEDa, excepto por un post-it que dice: \"Buena suerte
+    debugueando esto solo\".\nTe han bloqueado en LinkedIn. Todos ellos.\r\n"
+  endGameBG_image: {fileID: -4066530092468677500, guid: 9e3d2b9e52728054bb6fd2b631a9b922, type: 3}
+  conditionNameID: 257
+  endGameMessageID: 258
