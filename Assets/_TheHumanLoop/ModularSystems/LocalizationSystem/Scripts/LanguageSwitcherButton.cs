@@ -41,7 +41,8 @@ namespace TheHumanLoop.LocalizationSystem
 
         void Start()
         {
-            CacheComponents();            
+            CacheComponents();
+            LanguageManager.Instance.SetLanguage(LanguageManager.Language.Spanish);
             UpdateButtonVisuals(LanguageManager.Instance.CurrentLanguage);
         }
         #endregion

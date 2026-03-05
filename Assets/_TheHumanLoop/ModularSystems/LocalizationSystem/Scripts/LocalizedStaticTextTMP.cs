@@ -21,6 +21,9 @@ namespace HumanLoop.LocalizationSystem
         [Tooltip("If true, uses string.Format with dynamic values")]
         [SerializeField] private bool useFormatting = false;
 
+        [Header("Unsuscribe from OnLanguageChanged on")]
+        [SerializeField] private bool unsubscribeOnDisable = false; // Option to control when to unsubscribe from language change events
+
         [Header("Debug")]
         [SerializeField] private bool showDebugLogs = false;
 
@@ -48,6 +51,14 @@ namespace HumanLoop.LocalizationSystem
         }
 
         private void OnDisable()
+        {
+            if (unsubscribeOnDisable)
+            {
+                LanguageManager.OnLanguageChanged -= OnLanguageChanged;
+            }
+        }
+
+        private void OnDestroy()
         {
             LanguageManager.OnLanguageChanged -= OnLanguageChanged;
         }
