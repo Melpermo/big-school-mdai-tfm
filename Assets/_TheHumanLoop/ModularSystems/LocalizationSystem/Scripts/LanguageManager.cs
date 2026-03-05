@@ -33,7 +33,7 @@ namespace HumanLoop.LocalizationSystem
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
-                //LoadLanguagePreference();
+                LoadLanguagePreference();
             }
             else
             {
@@ -44,12 +44,6 @@ namespace HumanLoop.LocalizationSystem
         #endregion
 
         #region Public API
-
-        void Start()
-        {
-            LoadLanguagePreference();
-            Debug.Log($"[LanguageManager] Starting with language: {_currentLanguage}");
-        }
 
         public Language CurrentLanguage => _currentLanguage;
 

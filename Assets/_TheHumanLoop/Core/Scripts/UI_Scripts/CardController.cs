@@ -3,6 +3,7 @@ using HumanLoop.Core;
 using HumanLoop.Data;
 using HumanLoop.Events;
 using System;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -50,6 +51,7 @@ namespace HumanLoop.UI
 
         // State
         private Vector2 _startPosition;
+        private float _lockedYPosition; // ← Y axis lock
         private bool _isBusy;
         private bool _isInBackground;
 
@@ -210,14 +212,21 @@ namespace HumanLoop.UI
         {
             if (_isBusy) return;
             CleanupTweens();
+
+            // Capture the Y position at the start of the drag
+            _lockedYPosition = _rectTransform.anchoredPosition.y;
         }
 
         public void OnDrag(PointerEventData eventData)
         {
             if (_isBusy) return;
 
-            _rectTransform.anchoredPosition += eventData.delta;
-
+            // Only apply horizontal movement (X-axis)
+            Vector2 currentPos = _rectTransform.anchoredPosition;
+            currentPos.x += eventData.delta.x; // Just modify X
+            currentPos.y = _lockedYPosition;   // Hold Y constant
+            _rectTransform.anchoredPosition = currentPos;
+            
             float xOffset = _rectTransform.anchoredPosition.x - _startPosition.x;
             float normalizedOffset = Mathf.Clamp(xOffset / swipeThreshold, -1f, 1f);
 

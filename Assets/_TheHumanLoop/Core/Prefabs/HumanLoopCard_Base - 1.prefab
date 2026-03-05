@@ -1114,6 +1114,7 @@ MonoBehaviour:
   colorRight: {r: 0, g: 1, b: 0, a: 1}
   frameImage: {fileID: 1544961741434710789}
   categoryIconImage: {fileID: 486520776896638507}
+  visualsCanvasGroup: {fileID: 0}
   frontFace: {fileID: 3396508612070417909}
   backFace: {fileID: 700587522213090877}
 --- !u!114 &4660286139770616286

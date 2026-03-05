@@ -55,3 +55,30 @@ MonoBehaviour:
   - key: menu.credits
     spanish: "Cr\xE9ditos"
     english: Credits
+  - key: info.swipe
+    spanish: "- Desliza la carta levemente para ver la decisi\xF3n de ese lado."
+    english: '- Swipe the card slightly to see the decision for that side.'
+  - key: info.drag
+    spanish: "- Una vez decidido, arrastra la carta hacia el lado en cuesti\xF3n."
+    english: '- Once you''ve decided, drag the card to the corresponding side.'
+  - key: info.decision
+    spanish: "- Las barras de estad\xEDsticas cambiar\xE1n en funci\xF3n de lo decidido. "
+    english: '- The stat bars will change depending on your decision.'
+  - key: crtds.graphics
+    spanish: "Gr\xE1ficos generados en Midjourney por Melpermo"
+    english: Graphics generated in Midjourney by Melpermo
+  - key: crtds.graphicsedit
+    spanish: "Gr\xE1ficos editados en Affinity por Melpermo"
+    english: Graphics edited in Affinity by Melpermo
+  - key: crtds.music
+    spanish: "M\xFAsicas generadas con Gemini por Melpermo"
+    english: Music generated with Gemini by Melpermo
+  - key: crtds.audiosfx
+    spanish: Efectos sonido por DUSTYROOM.COM y VINCENT T
+    english: Sound effects by DUSTYROOM.COM and VINCENT T
+  - key: audio.music
+    spanish: "M\xFAsica"
+    english: Music
+  - key: audio.ambient
+    spanish: Ambiente
+    english: Atmosphere
