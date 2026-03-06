@@ -82,3 +82,9 @@ MonoBehaviour:
   - key: audio.ambient
     spanish: Ambiente
     english: Atmosphere
+  - key: crtds.gameby
+    spanish: Juego por
+    english: Game by
+  - key: crtds.credits
+    spanish: "Cr\xE9ditos"
+    english: Credits
