@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using HumanLoop.AudioSystem;
 using HumanLoop.Data;
 using TMPro;
 using UnityEngine;
@@ -32,6 +33,13 @@ namespace HumanLoop.UI
 
         [Tooltip("Vibration intensity for shake effect")]
         [SerializeField] private float _shakeStrength = 10f;
+
+        [Header("EndGameMoments SoundEventSOs")]
+        [SerializeField] private SoundEventSO _victorySoundEvent;
+        [SerializeField] private SoundEventSO _gameOverSoundEvent;
+        [SerializeField] private SoundEventSO _specialFailSoundEvent;
+        [SerializeField] private SoundEventSO _specialMetSoundEvent;       
+
 
         // Cached data
         private Vector3 _originalTitlePos;
@@ -72,16 +80,62 @@ namespace HumanLoop.UI
                 return;
             }
 
+            // Determine if it's a victory or defeat condition
             bool isVictory = endGameCondition.conditionType == EndGameConditionSO.ConditionType.Victory ||
                             endGameCondition.conditionType == EndGameConditionSO.ConditionType.SpecialMet;
-
+             
             if (isVictory)
             {
+                // Play victory sequence
                 PlayVictorySequence(endGameCondition);
+
+                // Play appropriate sound based on condition type
+                PlayCorrespondingSound(endGameCondition);
+
             }
             else
             {
+                // Play defeat sequence
                 PlayDefeatSequence(endGameCondition);
+
+                // Play appropriate sound based on condition type
+                PlayCorrespondingSound(endGameCondition);
+            }
+        }
+
+        // Plays the corresponding sound based on the end game condition type
+        private void PlayCorrespondingSound(EndGameConditionSO endGameConditionSO)
+        {
+            switch (endGameConditionSO.conditionType)
+            { 
+                case EndGameConditionSO.ConditionType.Victory:
+                    if (_victorySoundEvent != null)
+                    {
+                        AudioManager.Instance.PlaySound(_victorySoundEvent);
+                    }
+                    break;
+                case EndGameConditionSO.ConditionType.GameOver:
+                    if (_gameOverSoundEvent != null)
+                    {
+                        AudioManager.Instance.PlaySound(_gameOverSoundEvent);
+                    }
+                    break;
+                case EndGameConditionSO.ConditionType.SpecialMet:
+                    if (_specialMetSoundEvent != null)
+                    {
+                        AudioManager.Instance.PlaySound(_specialMetSoundEvent);
+                    }
+                    break;
+                case EndGameConditionSO.ConditionType.SpecialFailed:
+                    if (_specialFailSoundEvent != null)
+                    {
+                        AudioManager.Instance.PlaySound(_specialFailSoundEvent);
+                    }
+                    break;
+                default:
+                    AudioManager.Instance.PlaySound(_gameOverSoundEvent);
+                    //Debug.LogWarning($"[EndGameUIHandler] Unhandled condition type: {endGameConditionSO.conditionType}");
+                    break;
             }
         }
 
