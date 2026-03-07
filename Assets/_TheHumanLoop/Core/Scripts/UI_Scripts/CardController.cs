@@ -32,6 +32,13 @@ namespace HumanLoop.UI
         [SerializeField] private float flipDuration = 0.5f;
         [SerializeField] private float appearDuration = 0.4f;
 
+        [Header("Platform Optimization")]
+        [Tooltip("If false, cards appear instantly without flip animation (recommended for WebGL if OOM issues persist)")]
+        [SerializeField] private bool enableFlipAnimation = true;
+
+        [Tooltip("Duration for instant appear fade when flip is disabled")]
+        [SerializeField] private float instantAppearFadeDuration = 0.2f;
+
         [Header("Dependencies")]
         [SerializeField] private CardFactory cardFactory;
 
@@ -58,6 +65,7 @@ namespace HumanLoop.UI
         // Tween management
         private Sequence _activeSequence;
         private Tween _currentTween;
+        private Tween _delayedFaceSwitch; // ← NUEVO: Para sincronizar cara
 
         #region Unity Lifecycle
 
@@ -182,26 +190,73 @@ namespace HumanLoop.UI
         }
 
         /// <summary>
-        /// Animates flip from background to front.
+        /// Animates flip from background to front, or appears instantly if flip disabled.
         /// </summary>
         public void FlipToFront()
         {
             if (showDebugLogs)
-                Debug.Log($"[CardController] FlipToFront: {_display.Data?.cardName}, IsBackground: {_isInBackground}");
+                Debug.Log($"[CardController] FlipToFront: {_display.Data?.cardName}, IsBackground: {_isInBackground}, EnableFlip: {enableFlipAnimation}");
 
             _rectTransform.SetAsLastSibling();
 
-            if (_isInBackground)
+            // Check if flip animation is enabled
+            if (enableFlipAnimation)
             {
-                AnimateFlipFromBackground();
+                // NORMAL: Full flip animation
+                if (_isInBackground)
+                {
+                    AnimateFlipFromBackground();
+                }
+                else
+                {
+                    AnimateFlipFresh();
+                }
             }
             else
             {
-                AnimateFlipFresh();
+                // WEBGL FALLBACK: Instant appear without flip
+                InstantAppearFromBackground();
             }
 
             _isInBackground = false;
             onCardFlipEvent?.Raise();
+        }
+
+        /// <summary>
+        /// Instantly shows card without flip animation.
+        /// WebGL-optimized: minimal memory usage, no rotation tweens.
+        /// </summary>
+        private void InstantAppearFromBackground()
+        {
+            CleanupTweens();
+
+            _canvasGroup.blocksRaycasts = false;
+            _canvasGroup.interactable = false;
+
+            // Set to front orientation immediately
+            _rectTransform.localEulerAngles = Vector3.zero;
+            _rectTransform.localScale = Vector3.one;
+
+            // Show front face immediately (triggers fade in CardDisplay)
+            _display.ShowFrontFace();
+
+            // Simple fade-in sequence (much lighter than full flip)
+            _activeSequence = DOTween.Sequence()
+                .SetTarget(_rectTransform)
+                .SetAutoKill(true)
+                .SetRecyclable(true)
+                .SetUpdate(true);
+
+            // Just fade in the canvas group
+            _activeSequence.Append(
+                _canvasGroup.DOFade(1f, instantAppearFadeDuration)
+                    .SetEase(Ease.OutQuad)
+            );
+
+            _activeSequence.OnComplete(OnFlipComplete);
+
+            if (showDebugLogs)
+                Debug.Log($"[CardController] Instant appear (no flip) complete");
         }
 
         #endregion
@@ -266,28 +321,30 @@ namespace HumanLoop.UI
             // Force start from 180°
             _rectTransform.localEulerAngles = new Vector3(0, 180f, 0);
 
+            // NUEVO: Programar cambio de cara a 90° (mitad del flip)
+            float halfFlipDuration = flipDuration * 0.5f;
+            _delayedFaceSwitch = DOVirtual.DelayedCall(halfFlipDuration, () => {
+                _display.ShowFrontFace();
+                _delayedFaceSwitch = null;
+            })
+            .SetTarget(this)
+            .SetUpdate(true)
+            .SetAutoKill(true);
+
+            // Animación principal (sin callback)
             _activeSequence = DOTween.Sequence()
                 .SetTarget(_rectTransform)
                 .SetAutoKill(true)
                 .SetRecyclable(true)
                 .SetUpdate(true);
 
-            // Rotate 180° → 90°
+            // Rotate 180° → 0° (continuo, sin paradas)
             _activeSequence.Append(
-                _rectTransform.DOLocalRotate(new Vector3(0, 90f, 0), flipDuration * 0.5f, RotateMode.Fast)
-                    .SetEase(Ease.InQuad)
-            );
-
-            // Swap faces at 90°
-            _activeSequence.AppendCallback(() => _display.ShowFrontFace());
-
-            // Rotate 90° → 0°
-            _activeSequence.Append(
-                _rectTransform.DOLocalRotate(Vector3.zero, flipDuration * 0.5f, RotateMode.Fast)
+                _rectTransform.DOLocalRotate(Vector3.zero, flipDuration, RotateMode.Fast)
                     .SetEase(Ease.OutQuad)
             );
 
-            // Scale 0.9 → 1.0
+            // Scale 0.9 → 1.0 (paralelo)
             _activeSequence.Join(
                 _rectTransform.DOScale(1f, flipDuration)
                     .SetEase(Ease.OutBack)
@@ -433,6 +490,13 @@ namespace HumanLoop.UI
             {
                 _currentTween.Kill(complete: false);
                 _currentTween = null;
+            }
+
+            // NUEVO: Limpiar delayed face switch
+            if (_delayedFaceSwitch != null && _delayedFaceSwitch.IsActive())
+            {
+                _delayedFaceSwitch.Kill(complete: false);
+                _delayedFaceSwitch = null;
             }
 
             if (_rectTransform != null)

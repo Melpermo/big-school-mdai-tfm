@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1116,11 +1116,13 @@ MonoBehaviour:
   rightChoiceText: {fileID: 8525713127892234496}
   colorLeft: {r: 1, g: 0, b: 0, a: 1}
   colorRight: {r: 0, g: 1, b: 0, a: 1}
+  style: {fileID: 11400000, guid: 81e2307862d0fa84a9fa4da9b894ed2d, type: 2}
   frameImage: {fileID: 1544961741434710789}
   categoryIconImage: {fileID: 486520776896638507}
   visualsCanvasGroup: {fileID: 262037612516596641}
   frontFace: {fileID: 3396508612070417909}
   backFace: {fileID: 700587522213090877}
+  faceFadeDuration: 0.15
 --- !u!114 &4660286139770616286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,6 +1142,8 @@ MonoBehaviour:
   swipeDuration: 0.4
   flipDuration: 0.5
   appearDuration: 0.4
+  enableFlipAnimation: 1
+  instantAppearFadeDuration: 0.2
   cardFactory: {fileID: 0}
   onCardSwipedEvent: {fileID: 11400000, guid: 53176cd84c28a504bb90b4ad915c3adc, type: 2}
   onCardReturnedEvent: {fileID: 11400000, guid: db0e0bfa2f43f2d43922af5e226b3937, type: 2}

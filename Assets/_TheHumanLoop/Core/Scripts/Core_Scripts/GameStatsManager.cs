@@ -82,6 +82,14 @@ namespace HumanLoop.Core
             }
         }
 
+        private void OnDestroy()
+        {
+            if (useLocalizedConditions)
+            {
+                LocalizationSystem.LanguageManager.OnLanguageChanged -= OnLanguageChanged;
+            }
+        }
+
         private void Start()
         {
             if (useLocalizedConditions)

@@ -84,7 +84,7 @@ namespace HumanLoop.LocalizationSystem
             {
                 int savedLang = PlayerPrefs.GetInt(LANGUAGE_PREF_KEY);
                 _currentLanguage = (Language)savedLang;
-                Debug.Log($"[LanguageManager] Loaded language: {_currentLanguage}");
+                //Debug.Log($"[LanguageManager] Loaded language: {_currentLanguage}");
             }
             else
             {
