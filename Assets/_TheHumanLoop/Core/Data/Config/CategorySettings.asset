@@ -15,7 +15,7 @@ MonoBehaviour:
   styles:
   - category: 0
     themeColor: {r: 0.30495724, g: 0.6084486, b: 0.8396226, a: 0.8235294}
-    categoryIcon: {fileID: 868416852857514076, guid: 981918ff8d237284484ccdd1f9fcb9ab, type: 3}
+    categoryIcon: {fileID: -6183281476591958904, guid: 315b56fca5e50c94699c2719bac81e48, type: 3}
   - category: 2
     themeColor: {r: 0.8392157, g: 0.791482, b: 0.3058824, a: 0.8235294}
     categoryIcon: {fileID: 1409639051, guid: 9a4876b7521927945b148c857cceff55, type: 3}
@@ -27,7 +27,7 @@ MonoBehaviour:
     categoryIcon: {fileID: 652240306, guid: cb94e3db8bfccbd49afc657bf7892183, type: 3}
   - category: 4
     themeColor: {r: 1, g: 0.4117647, b: 0.7058824, a: 1}
-    categoryIcon: {fileID: 868416852857514076, guid: 981918ff8d237284484ccdd1f9fcb9ab, type: 3}
+    categoryIcon: {fileID: 73616529339548525, guid: 315b56fca5e50c94699c2719bac81e48, type: 3}
   - category: 5
     themeColor: {r: 1, g: 0.8431373, b: 0, a: 1}
-    categoryIcon: {fileID: 868416852857514076, guid: 981918ff8d237284484ccdd1f9fcb9ab, type: 3}
+    categoryIcon: {fileID: -237754298405107911, guid: 315b56fca5e50c94699c2719bac81e48, type: 3}

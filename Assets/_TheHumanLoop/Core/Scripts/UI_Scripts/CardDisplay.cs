@@ -1,4 +1,6 @@
-﻿using HumanLoop.Data;
+﻿using DG.Tweening;
+using HumanLoop.Data;
+using HumanLoop.Visuals;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +27,7 @@ namespace HumanLoop.UI
         [SerializeField] private Color colorRight = Color.green;
 
         [Header("Category Visuals")]
+        [SerializeField] CardCategorySettingsSO style;
         [SerializeField] private Image frameImage;
         [SerializeField] private Image categoryIconImage;
 
@@ -35,6 +38,10 @@ namespace HumanLoop.UI
         [Tooltip("Keep for backwards compatibility, but no longer using SetActive")]
         [SerializeField] private GameObject frontFace;
         [SerializeField] private GameObject backFace;
+
+        [Header("Fade Settings")]
+        [Tooltip("Duration for face fade in/out transitions")]
+        [SerializeField] private float faceFadeDuration = 0.15f;
 
         // Public properties for CardController to access
         public CardDataSO Data { get; private set; }
@@ -47,12 +54,20 @@ namespace HumanLoop.UI
         private CardController _cachedController;
         public CardController Controller => _cachedController;
 
+        // NEW: Tween para fade del visualsCanvasGroup
+        private Tween _faceFadeTween;
+
         #region Unity Lifecycle
 
         private void Awake()
         {
             CacheComponents();
             ValidateVisualsCanvasGroup();
+        }
+
+        private void OnDestroy()
+        {
+            CleanupFadeTween();
         }
 
         #endregion
@@ -100,17 +115,20 @@ namespace HumanLoop.UI
         /// <summary>
         /// Applies category-specific visual style.
         /// </summary>
-        public void ApplyCategoryStyle(Visuals.CategoryStyle style)
+        public void ApplyCategoryStyle(CardDataSO data)
         {
-            if (frameImage != null)
+            Debug.Log($"[CardDisplay] Applying category style for {data.category}");
+            if (style == null)
             {
-                frameImage.color = style.themeColor;
+                Debug.LogWarning("[CardDisplay] style (CardCategorySettingsSO) not assigned! Cannot apply category visuals.", this);
+                return;
             }
 
-            if (categoryIconImage != null)
+            var categorySettings = style.GetStyle(data.category);
+
+            if (frameImage != null)
             {
-                categoryIconImage.sprite = style.categoryIcon;
-                categoryIconImage.color = Color.white;
+                frameImage.color = categorySettings.themeColor;
             }
         }
 
@@ -119,47 +137,53 @@ namespace HumanLoop.UI
         #region Visual State (No Animations)
 
         /// <summary>
-        /// Shows front face of card.
-        /// Uses CanvasGroup for text visibility (shader handles actual card flip).
-        /// WebGL-safe: no SetActive during animations.
+        /// Shows front face of card with smooth fade transition.
+        /// Uses CanvasGroup alpha fade (shader handles actual card flip).
+        /// WebGL-safe: smooth transition without SetActive.
         /// </summary>
         public void ShowFrontFace()
         {
-            if (visualsCanvasGroup != null)
-            {
-                visualsCanvasGroup.alpha = 1f;
-                visualsCanvasGroup.blocksRaycasts = true;
-                
-                // NUEVO: Re-enable rendering
-                descriptionText.enabled = true;
-                cardNameText.enabled = true;
-            }
+            if (visualsCanvasGroup == null) return;
 
-            // Legacy: Keep for backwards compatibility but not used
-            // if (frontFace != null) frontFace.SetActive(true);
-            // if (backFace != null) backFace.SetActive(false);
+            // Cancel any active fade
+            CleanupFadeTween();
+
+            // Fade in to alpha 1
+            _faceFadeTween = visualsCanvasGroup
+                .DOFade(1f, faceFadeDuration)
+                .SetEase(Ease.OutQuad)
+                .SetTarget(visualsCanvasGroup)
+                .SetAutoKill(true)
+                .OnComplete(() => {
+                    visualsCanvasGroup.blocksRaycasts = true;
+                    _faceFadeTween = null;
+                });
         }
 
         /// <summary>
-        /// Shows back face of card.
-        /// Uses CanvasGroup to hide texts (shader handles actual card flip).
-        /// WebGL-safe: no SetActive during animations.
+        /// Shows back face of card with smooth fade transition.
+        /// Uses CanvasGroup alpha fade (shader handles actual card flip).
+        /// WebGL-safe: smooth transition without SetActive.
         /// </summary>
         public void ShowBackFace()
         {
-            if (visualsCanvasGroup != null)
-            {
-                visualsCanvasGroup.alpha = 0f;
-                visualsCanvasGroup.blocksRaycasts = false;
-                
-                // NUEVO: Disable rendering cuando no es visible
-                descriptionText.enabled = false;
-                cardNameText.enabled = false;
-            }
+            if (visualsCanvasGroup == null) return;
 
-            // Legacy: Keep for backwards compatibility but not used
-            // if (frontFace != null) frontFace.SetActive(false);
-            // if (backFace != null) backFace.SetActive(true);
+            // Cancel any active fade
+            CleanupFadeTween();
+
+            // Disable raycasts immediately (don't wait for fade)
+            visualsCanvasGroup.blocksRaycasts = false;
+
+            // Fade out to alpha 0
+            _faceFadeTween = visualsCanvasGroup
+                .DOFade(0f, faceFadeDuration)
+                .SetEase(Ease.InQuad)
+                .SetTarget(visualsCanvasGroup)
+                .SetAutoKill(true)
+                .OnComplete(() => {
+                    _faceFadeTween = null;
+                });
         }
 
         /// <summary>
@@ -206,6 +230,15 @@ namespace HumanLoop.UI
             if (descriptionText != null) descriptionText.text = data.description;
             if (leftChoiceText != null) leftChoiceText.text = data.leftChoiceText;
             if (rightChoiceText != null) rightChoiceText.text = data.rightChoiceText;
+        }
+
+        private void CleanupFadeTween()
+        {
+            if (_faceFadeTween != null && _faceFadeTween.IsActive())
+            {
+                _faceFadeTween.Kill(complete: false);
+                _faceFadeTween = null;
+            }
         }
 
         #endregion
