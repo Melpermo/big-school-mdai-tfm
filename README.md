@@ -16,6 +16,8 @@ BIG School
 # Gameplay Preview
 
 ![Gameplay](Docs/gameplay/gameplay.gif)
+![gameplay](https://github.com/user-attachments/assets/e4666340-9208-4ce6-9cce-f9843ad5d7af)
+
 
 A short gameplay preview showing the core decision mechanic where each card choice affects the development metrics of the studio.
 
