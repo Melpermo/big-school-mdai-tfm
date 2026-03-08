@@ -15,7 +15,6 @@ BIG School
 
 # Gameplay Preview
 
-![Gameplay](Docs/gameplay/gameplay.gif)
 ![gameplay](https://github.com/user-attachments/assets/e4666340-9208-4ce6-9cce-f9843ad5d7af)
 
 
@@ -293,7 +292,7 @@ The main menu allows the player to start a new run, access the options menu, and
 
 ### Decision Cards
 
-![Decision Cards](Docs/screenshots/card_decision.png)
+![Decision Cards](Docs/screenShots/card_decision.png)
 
 Cards represent events occurring during development.
 
@@ -303,7 +302,7 @@ Each decision affects the project's core metrics.
 
 ### Gameplay Metrics
 
-![Gameplay Metrics](Docs/screenshots/gameplay_metrics.png)
+![Gameplay Metrics](Docs/screenShots/gameplay_metrics.png)
 
 The player must balance:
 
@@ -316,7 +315,7 @@ The player must balance:
 
 ### End Game Screen
 
-![End Game](Docs/screenshots/endgame.png)
+![End Game](Docs/screenShots/endgame.png)
 
 Different failure conditions trigger specific end game events.
 
