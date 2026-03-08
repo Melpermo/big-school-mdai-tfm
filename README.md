@@ -285,7 +285,7 @@ AI tools were used as **creative and technical assistants**, not as replacements
 
 ### Main Menu
 
-![Main Menu](Docs/screenshots/main_menu.png)
+![Main Menu](Docs/screenShots/mainmenu.png)
 
 The main menu allows the player to start a new run, access the options menu, and change the language.
 
