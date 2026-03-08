@@ -20,7 +20,6 @@ MonoBehaviour:
   timeThreshold: 5
   moraleThreshold: 0
   qualityThreshold: 0
-  endGameConditionEvent: {fileID: 11400000, guid: e3da0ab7be6046a409ca10edb380c9d8, type: 2}
   endGameMessage: 'You took so long to iterate that the market has forgotten about
     you. Yesterday, an open-source AI launched by a teenager on a Reddit forum does
     the same thing as you, ten times faster and with a more modern logo.
@@ -28,6 +27,6 @@ MonoBehaviour:
     Your
     project is now "Legacy Code." Nobody wants to maintain it. Nobody wants to use
     it.'
-  endGameBG_image: {fileID: -1078479964429213216, guid: 5073c447963fd5c4da1387add752bdb0, type: 3}
+  endGameBG_image: {fileID: -7591281326148218530, guid: 20039235276f98c4faf846c21abdc952, type: 3}
   conditionNameID: 261
   endGameMessageID: 262

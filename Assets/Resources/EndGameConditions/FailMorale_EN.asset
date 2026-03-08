@@ -20,13 +20,12 @@ MonoBehaviour:
   timeThreshold: 0
   moraleThreshold: 5
   qualityThreshold: 0
-  endGameConditionEvent: {fileID: 11400000, guid: e3ee88fda3fe9014392e550198dfe6a5, type: 2}
   endGameMessage: 'The engineering team hasn''t just quit; they''ve injected a virus
     that replaces every line of code with the word "CRUNCH." Your office is empty
     except for a Post-it note that says, "Good luck debugging this alone."
 
     They''ve
     blocked you on LinkedIn. All of them.'
-  endGameBG_image: {fileID: -4066530092468677500, guid: 9e3d2b9e52728054bb6fd2b631a9b922, type: 3}
+  endGameBG_image: {fileID: -1153349384252956699, guid: 913e093ee4edf0c4d830f9525acae282, type: 3}
   conditionNameID: 257
   endGameMessageID: 258

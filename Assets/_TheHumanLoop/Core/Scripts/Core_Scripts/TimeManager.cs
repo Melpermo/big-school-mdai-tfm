@@ -26,11 +26,7 @@ namespace HumanLoop.Core
         {
             CardController.OnCardRemoved -= AdvanceTime;
         }
-
-        private void OnDestroy()
-        {
-            CardController.OnCardRemoved -= AdvanceTime;
-        }
+       
 
         private void AdvanceTime()
         {

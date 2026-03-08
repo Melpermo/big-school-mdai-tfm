@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 2153abde7a0b50a46b31e772a326db9c
+guid: 913e093ee4edf0c4d830f9525acae282
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8939164973835361536
-    second: HumanLoop_office_day_bg_0
+      213: 4731506168365821467
+    second: Endings_1_0
+  - first:
+      213: -1153349384252956699
+    second: Endings_1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -76,7 +79,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 0
+    compressionQuality: 50
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
@@ -139,23 +142,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HumanLoop_office_day_bg_0
+      name: Endings_1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 31
+        y: 516
+        width: 962
+        height: 502
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 00d12169e2b4e0c70800000000000000
-      internalID: 8939164973835361536
+      spriteID: b1ea302aacfa9a140800000000000000
+      internalID: 4731506168365821467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Endings_1_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 6
+        width: 962
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5efdfa188da7effe0800000000000000
+      internalID: -1153349384252956699
       vertices: []
       indices: 
       edges: []
@@ -164,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e15ef4b81d7729046b39c86eb1c9a78e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HumanLoop_office_day_bg_0: 8939164973835361536
+      Endings_1_0: 4731506168365821467
+      Endings_1_1: -1153349384252956699
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

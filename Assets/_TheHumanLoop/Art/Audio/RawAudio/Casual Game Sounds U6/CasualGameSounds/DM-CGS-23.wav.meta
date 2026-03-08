@@ -18,11 +18,11 @@ AudioImporter:
   serializedVersion: 8
   defaultSettings:
     serializedVersion: 2
-    loadType: 0
+    loadType: 2
     sampleRateSetting: 2
     sampleRateOverride: 22050
-    compressionFormat: 2
-    quality: 1
+    compressionFormat: 1
+    quality: 0.5
     conversionMode: 0
     preloadAudioData: 1
   platformSettingOverrides: {}

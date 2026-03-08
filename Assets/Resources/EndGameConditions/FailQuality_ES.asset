@@ -20,11 +20,10 @@ MonoBehaviour:
   timeThreshold: 0
   moraleThreshold: 0
   qualityThreshold: 5
-  endGameConditionEvent: {fileID: 11400000, guid: 1013c2cc04972b04c8794a835e0233bf, type: 2}
   endGameMessage: "Tu IA alcanz\xF3 tal nivel de mediocridad que empez\xF3 a dar
     consejos m\xE9dicos basados en hilos de conspiraci\xF3n. El gobierno ha confiscado
     tus servidores por \"atentar contra la salud p\xFAblica y el sentido com\xFAn\".\nTu
     nombre ahora es sin\xF3nimo de incompetencia t\xE9cnica en Wikipedia.\r\n"
-  endGameBG_image: {fileID: 8231591557063265317, guid: 6f43675d85e2a7c4485856431ae81d16, type: 3}
+  endGameBG_image: {fileID: 2201622689159597920, guid: 3a92ce33f96cf0a48af9e5d8c18932a3, type: 3}
   conditionNameID: 259
   endGameMessageID: 260

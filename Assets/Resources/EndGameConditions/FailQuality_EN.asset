@@ -20,13 +20,12 @@ MonoBehaviour:
   timeThreshold: 0
   moraleThreshold: 0
   qualityThreshold: 5
-  endGameConditionEvent: {fileID: 11400000, guid: 1013c2cc04972b04c8794a835e0233bf, type: 2}
   endGameMessage: 'Your AI reached such a level of mediocrity that it started giving
     medical advice based on conspiracy theories. The government has confiscated your
     servers for "endangering public health and common sense."
 
     Your name is now
     synonymous with technical incompetence on Wikipedia.'
-  endGameBG_image: {fileID: 8231591557063265317, guid: 6f43675d85e2a7c4485856431ae81d16, type: 3}
+  endGameBG_image: {fileID: 2201622689159597920, guid: 3a92ce33f96cf0a48af9e5d8c18932a3, type: 3}
   conditionNameID: 259
   endGameMessageID: 260

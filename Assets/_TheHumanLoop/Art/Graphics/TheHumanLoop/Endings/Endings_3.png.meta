@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 8894076d4c2121f47b2a77d57e4c8fb5
+guid: 3a92ce33f96cf0a48af9e5d8c18932a3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8843077587497018482
-    second: HumanLoop_Port_tired_male_senior_developer_0
+      213: 2201622689159597920
+    second: Endings_3_0
+  - first:
+      213: 6870715683561058696
+    second: Endings_3_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -76,7 +79,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 0
+    compressionQuality: 50
     crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
@@ -139,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HumanLoop_Port_tired_male_senior_developer_0
+      name: Endings_3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 512
-        height: 512
+        x: 31
+        y: 516
+        width: 962
+        height: 502
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +157,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2746af3963ce8ba70800000000000000
-      internalID: 8843077587497018482
+      spriteID: 06f4ccccb2cbd8e10800000000000000
+      internalID: 2201622689159597920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Endings_3_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 6
+        width: 962
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 881bc57f28fa95f50800000000000000
+      internalID: 6870715683561058696
       vertices: []
       indices: 
       edges: []
@@ -174,7 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HumanLoop_Port_tired_male_senior_developer_0: 8843077587497018482
+      Endings_3_0: 2201622689159597920
+      Endings_3_1: 6870715683561058696
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
