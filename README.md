@@ -22,6 +22,64 @@ A short gameplay preview showing the core decision mechanic where each card choi
 
 ---
 
+# Technologies Used
+
+* Unity
+* C#
+* DOTween
+* ScriptableObjects
+* Git / GitHub
+
+---
+
+# _TheHumanLoop Project Structure (basics)
+
+```
+
+Assets
+└── _TheHumanLoop
+|   ├── Art
+|   │   ├── Audio
+|   │   └── Graphics
+|   ├── Core
+|   │   ├── Data
+|   │   ├── Prefabs
+│   │   └── Scripts
+|   |       ├── Core_Scripts
+|   |       ├── Enums
+|   |       ├── ScriptableObjects
+|   |       |    ├── CardCategorySettingsSO
+|   |       |    |    └── Editor
+|   |       |    ├── CardDataSO
+|   |       |    ├── DeckSO
+|   |       |    └── EndGameConditions
+|   |       └── UI_Scripts
+|   ├── Materials  
+|   ├── ModularSystems
+|   |   ├── AudioSystem
+|   |   ├── GameEventSystem_NP
+|   |   └── LocalizationSystem
+|   ├── Scenes
+|   └── Tools
+|       ├── CardCSVImporterTool
+|            └── Editor
+|       ├── CheatMenu
+|            └── Editor
+|       ├── Debug
+|       ├── DeckBuilderWindowTool
+|            └── Editor
+|       ├── PlayerPrefsEditor
+|            └── Editor
+|       └── SceneCleanupManager
+├── Resources
+├── Decks
+└── EndGameConditions
+├── Settings
+└── TextMesh Pro
+```
+
+---
+
 # Overview
 
 **The Human Loop** is a decision-based card game where the player takes the role of a developer managing a small game studio.
@@ -104,19 +162,20 @@ A central controller manages the lifecycle of the game.
 ```mermaid
 flowchart TD
 
-SceneStateManager --> DecisionManager
-SceneStateManager --> ProgressionManager
-SceneStateManager --> TimeManager
 SceneStateManager --> GameStatsManager
+GameStatsManager --> DeckManager
 
-DecisionManager --> GameStatsManager
-DecisionManager --> UI_System
+GameStatsManager --> TimeManager
+GameStatsManager --> ProgressionManager
+GameStatsManager --> UI_System
 
-ProgressionManager --> DecisionManager
+DeckManager --> CardFactory
+CardFactory --> CardController
+CardFactory --> CardDisplay
 
-TimeManager --> GameStatsManager
+CardController --> GameEventSystem
 
-UI_System --> CardDisplay
+UI_System --> EndGameUIHandler
 UI_System --> EndGameUIHandler
 
 EndGameUIHandler --> AudioManager
@@ -366,31 +425,6 @@ Localization was implemented using **ScriptableObject-driven assets**, separatin
 ## Audio Event Simplification
 
 EndGame audio events were moved directly into the **EndGameUIHandler**, removing unnecessary GameEvent layers.
-
----
-
-# Technologies Used
-
-* Unity
-* C#
-* DOTween
-* ScriptableObjects
-* Git / GitHub
-
----
-
-# Project Structure
-
-```
-Assets
-└── _TheHumanLoop
-    ├── Scenes
-    ├── ModularSystems
-    ├── ScriptableObjects
-    ├── Cards
-    ├── UI
-    └── Audio
-```
 
 ---
 
