@@ -110,6 +110,7 @@ namespace HumanLoop.UI
 
             ApplyTexts(data);
             HideChoices();
+            ApplyCategoryStyle(data);
         }
 
         /// <summary>
@@ -129,6 +130,7 @@ namespace HumanLoop.UI
             if (frameImage != null)
             {
                 frameImage.color = categorySettings.themeColor;
+                categoryIconImage.sprite = categorySettings.categoryIcon;
             }
         }
 

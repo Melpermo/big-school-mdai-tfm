@@ -20,8 +20,7 @@ MonoBehaviour:
   timeThreshold: 0
   moraleThreshold: 0
   qualityThreshold: 0
-  endGameConditionEvent: {fileID: 11400000, guid: 465834c4bcfd9a94b86da8f3ed3f63f6, type: 2}
   endGameMessage: "No se puede hacer peor. Ma\xF1ana ve a recursos humanos."
-  endGameBG_image: {fileID: -2422919567074118822, guid: 135ef4653790dd4479df9ade84d0156b, type: 3}
+  endGameBG_image: {fileID: -2671252659967038323, guid: cb40e1a375ddd944382c6a20898fe2ca, type: 3}
   conditionNameID: 271
   endGameMessageID: 272

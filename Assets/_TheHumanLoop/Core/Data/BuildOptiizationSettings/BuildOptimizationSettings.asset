@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Core.BuildOptimizationSettings
   autoOptimizeCardFlipForWebGL: 0
   useManualOverride: 0
-  manualFlipAnimationEnabled: 1
+  manualFlipAnimationEnabled: 0
   logOptimizationChanges: 0

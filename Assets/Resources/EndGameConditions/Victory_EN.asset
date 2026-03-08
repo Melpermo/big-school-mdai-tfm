@@ -20,8 +20,7 @@ MonoBehaviour:
   timeThreshold: 90
   moraleThreshold: 90
   qualityThreshold: 90
-  endGameConditionEvent: {fileID: 11400000, guid: e1cac95e3b9da644db9485a2aa020121, type: 2}
   endGameMessage: Nobody gave you a chance. You've proven them all wrong.
-  endGameBG_image: {fileID: -732806593422712635, guid: 06a9ef8c2fd55b045ac9afde59e9b294, type: 3}
+  endGameBG_image: {fileID: -7189466737977511516, guid: 20039235276f98c4faf846c21abdc952, type: 3}
   conditionNameID: 274
   endGameMessageID: 275

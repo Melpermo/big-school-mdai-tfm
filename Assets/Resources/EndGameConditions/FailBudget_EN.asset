@@ -20,13 +20,12 @@ MonoBehaviour:
   timeThreshold: 0
   moraleThreshold: 0
   qualityThreshold: 0
-  endGameConditionEvent: {fileID: 11400000, guid: e309802837f047148b4ad175fe5e866e, type: 2}
   endGameMessage: 'Your investors'' high-frequency trading algorithms detected that
     your bank account had less money than an intern''s wallet. The automatic liquidation
     clause has been triggered.
 
     As you''re escorted out, you watch as your source
     code is auctioned off as "digital abstract art" for 0.001 ETH.'
-  endGameBG_image: {fileID: 2208499457303467514, guid: 7cdfd204901cd3842955513228a23132, type: 3}
+  endGameBG_image: {fileID: 4731506168365821467, guid: 913e093ee4edf0c4d830f9525acae282, type: 3}
   conditionNameID: 255
   endGameMessageID: 256

@@ -20,13 +20,12 @@ MonoBehaviour:
   timeThreshold: 0
   moraleThreshold: 0
   qualityThreshold: 95
-  endGameConditionEvent: {fileID: 11400000, guid: c6abf5d0def53fc42aa1a02ab172d583, type: 2}
   endGameMessage: 'A Big Tech company bought you out to shut down your business and
     get rid of you. You have a mansion in New Zealand and enough money to forget
     you ever had ideals.
 
     "I sold the future of humanity for a very reasonable
     number of zeros."'
-  endGameBG_image: {fileID: 1240252703462659968, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
+  endGameBG_image: {fileID: -4012310211170330182, guid: 74c18bd3d546bb242945ea8aee59da8b, type: 3}
   conditionNameID: 267
   endGameMessageID: 268
