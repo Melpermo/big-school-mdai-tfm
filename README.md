@@ -32,6 +32,23 @@ A short gameplay preview showing the core decision mechanic where each card choi
 
 ---
 
+# Overview
+
+**The Human Loop** is a decision-based card game where the player takes the role of a developer managing a small game studio.
+
+Each decision affects four critical project resources:
+
+* Morale
+* Time
+* Quality
+* Budget
+
+The player must balance these resources while navigating the unpredictable realities of game development.
+
+The goal is simple: **ship the game before the project collapses**.
+
+---
+
 # _TheHumanLoop Project Structure (basics)
 
 ```
@@ -77,23 +94,6 @@ Assets
 ├── Settings
 └── TextMesh Pro
 ```
-
----
-
-# Overview
-
-**The Human Loop** is a decision-based card game where the player takes the role of a developer managing a small game studio.
-
-Each decision affects four critical project resources:
-
-* Morale
-* Time
-* Quality
-* Budget
-
-The player must balance these resources while navigating the unpredictable realities of game development.
-
-The goal is simple: **ship the game before the project collapses**.
 
 ---
 
@@ -164,28 +164,30 @@ flowchart TD
 
 SceneStateManager --> GameStatsManager
 GameStatsManager --> DeckManager
-
 GameStatsManager --> TimeManager
 GameStatsManager --> ProgressionManager
-GameStatsManager --> UI_System
+GameStatsManager --> EndGameUIManager
+GameStatsManager --> GameEventSystem
 
-DeckManager --> CardFactory
+GameStatsManager --> SceneStateManager
+
+TimeManager --> GameStatsManager
+ProgressionManager --> GameStatsManager
+
+DeckManager --> CardFactory 
 CardFactory --> CardController
-CardFactory --> CardDisplay
-
+CardFactory --> GameStatsManager
+CardFactory --> GameEventSystem
+CardController --> CardDisplay
 CardController --> GameEventSystem
 
-UI_System --> EndGameUIHandler
-UI_System --> EndGameUIHandler
+EndGameUIManager --> AudioManager
+GameEventSystem --> AudioManager
 
-EndGameUIHandler --> AudioManager
-
-AudioManager --> SoundEventSO
-
-GameStatsManager --> EndGameUIHandler
 ```
 
 ---
+
 
 # Core Systems
 
@@ -293,10 +295,23 @@ Supported languages:
 * English
 * Spanish
 
+```mermaid
+flowchart TD
+
+LenguageManager --> DeckLocalizationManager
+LenguageManager --> EndGameLocalitationManager
+LenguageManager --> LocalizedStaticTest
+DeckLocalizationManager --> DeckManager
+DeckManager --> CardFactory
+CardFactory --> CardDisplay
+EndGameLocalitationManager --> EndGameUIManager
+LocalizedStaticTest --> StaticTexts[Localize Static texts]
+```
+
 Documentation can be found in:
 
 ```
-Assets/_TheHumanLoop/ModularSystems
+Assets/_TheHumanLoop/ModularSystems/LocalizationSystem
 ```
 
 ---
