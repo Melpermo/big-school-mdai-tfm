@@ -1,8 +1,8 @@
 ﻿using HumanLoop.Events;
-using HumanLoop.Data;   
+using HumanLoop.Data;
+using HumanLoop.UI;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.VisualScripting;
 
 namespace HumanLoop.Core
 {
@@ -35,7 +35,8 @@ namespace HumanLoop.Core
 
         [Header("UI References")]
         [Tooltip("Direct reference to EndGameUIHandler for displaying end game screens")]
-        [SerializeField] private UI.EndGameUIHandler endGameUIHandler;
+        [SerializeField] private EndGameUIHandler endGameUIHandler;
+        [SerializeField] private StatsViewManager gameStatsUIHandler; 
 
         [Tooltip("If true, also raises events (for backwards compatibility)")]
         [SerializeField] private bool alsoRaiseEvents = false;
@@ -235,7 +236,10 @@ namespace HumanLoop.Core
             morale = Mathf.Clamp(morale + m, 0, 100);
             quality = Mathf.Clamp(quality + q, 0, 100);
 
-            // Notify all listeners that stats have changed (updates UI, etc.)
+            // Notify all listeners that stats have changed (updates UI, etc.)            
+            gameStatsUIHandler.UpdateUI();
+
+            // Also raise individual stat changed events for UI updates (if needed)
             _onStatsChangedEvent?.Raise();
 
             // Check if any end game condition has been triggered

@@ -8,14 +8,19 @@ namespace HumanLoop.Core
     {
         [Header("Settings")]
         [SerializeField] private int startingWeek = 1;
-        [SerializeField] private GameEventSO onTimeAdvancedEvent;
+
+        [SerializeField] private TimeViewManager timeViewManager; // Reference to the TimeViewManager to update the UI when time advances
+
+        [Header("Raise Event Optional")]
+        [Tooltip("Optional event to raise when time advances. if it's null it doesn't happened")]
+        [SerializeField] private GameEventSO onTimeAdvancedEvent;        
 
         public int CurrentWeek { get; private set; }
 
         private void Awake()
         {
-            CurrentWeek = startingWeek;
-        }
+            SetInitValues();
+        }      
 
         private void OnEnable()
         {
@@ -26,11 +31,22 @@ namespace HumanLoop.Core
         {
             CardController.OnCardRemoved -= AdvanceTime;
         }
-       
+
+        private void SetInitValues()
+        {
+            CurrentWeek = startingWeek;
+            if (timeViewManager != null)
+            {
+                timeViewManager.UpdateTimeUI();
+            }
+        }
+
 
         private void AdvanceTime()
         {
             CurrentWeek++;
+            timeViewManager.UpdateTimeUI();
+            
             if (onTimeAdvancedEvent != null)
                 onTimeAdvancedEvent.Raise();
         }

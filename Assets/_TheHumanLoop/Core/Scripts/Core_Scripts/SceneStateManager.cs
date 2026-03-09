@@ -7,8 +7,8 @@ namespace HumanLoop.Core
 {
     /// <summary>
     /// Manages transitions between Main Menu and Game within a single scene.
-    /// Eliminates scene loading entirely for maximum performance and memory stability.
-    /// Uses CanvasGroup for smooth transitions without destroying GameObjects.
+    /// Optimized for performance: Uses Canvas.enabled to stop rendering without destroying hierarchy.
+    /// Optional fade transition for visual polish.
     /// </summary>
     public class SceneStateManager : MonoBehaviour
     {
@@ -22,6 +22,21 @@ namespace HumanLoop.Core
         [SerializeField] private CanvasGroup mainMenuCanvasGroup;
         [SerializeField] private CanvasGroup gameSceneCanvasGroup;
 
+        [Header("Canvas Components (Performance)")]
+        [Tooltip("Canvas component of Main Menu - disabling stops rendering while preserving geometry")]
+        [SerializeField] private Canvas mainMenuCanvas;
+        
+        [Tooltip("Canvas component of Game Scene - disabling stops rendering while preserving geometry")]
+        [SerializeField] private Canvas gameSceneCanvas;
+
+        [Header("Visual Transition (Optional)")]
+        [Tooltip("If true, uses black fade overlay for transitions. If false, instant switch (better performance)")]
+        [SerializeField] private bool useFadeTransition = true;
+        
+        [SerializeField] private CanvasGroup fadeCanvasGroup;
+        [SerializeField] private Canvas fadeCanvas;
+        [SerializeField] private float fadeDuration = 0.5f;
+
         [Header("Game Managers")]
         [SerializeField] private GameStatsManager statsManager;
         [SerializeField] private TimeManager timeManager;
@@ -34,10 +49,6 @@ namespace HumanLoop.Core
         [SerializeField] private TimeViewManager timeViewManager;
         [SerializeField] private EndGameUIHandler endGameUIHandler;
         [SerializeField] private GameOverUIHandler gameOverUIHandler;
-
-        [Header("Fade Settings")]
-        [SerializeField] private CanvasGroup fadeCanvasGroup;
-        [SerializeField] private float fadeDuration = 0.5f;
 
         [Header("Debug")]
         [SerializeField] private bool showDebugLogs = false;
@@ -56,34 +67,50 @@ namespace HumanLoop.Core
             {
                 Destroy(gameObject);
                 return;
-            }            
+            }
         }
+
         #endregion
 
-        #region Initialization        
+        #region Initialization
 
         void Start()
         {
-            // Ensure we start with the main menu visible and game scene hidden
-            ShowMainMenuImmediate();           
+            ShowMainMenuImmediate();
         }
 
         private void ShowMainMenuImmediate()
         {
-            // Show main menu
+            // Main Menu: Visible
             if (mainMenuCanvasGroup != null)
             {
                 mainMenuCanvasGroup.alpha = 1f;
                 mainMenuCanvasGroup.interactable = true;
                 mainMenuCanvasGroup.blocksRaycasts = true;
             }
+            
+            if (mainMenuCanvas != null)
+            {
+                mainMenuCanvas.enabled = true;
+            }
 
-            // Hide game scene
+            // Game Scene: Hidden
             if (gameSceneCanvasGroup != null)
             {
-                gameSceneCanvasGroup.alpha = 0f;
+                gameSceneCanvasGroup.alpha = 1f; // Keep at 1, Canvas.enabled controls visibility
                 gameSceneCanvasGroup.interactable = false;
                 gameSceneCanvasGroup.blocksRaycasts = false;
+            }
+            
+            if (gameSceneCanvas != null)
+            {
+                gameSceneCanvas.enabled = false; // Stop rendering
+            }
+
+            // Fade: Hidden
+            if (fadeCanvas != null)
+            {
+                fadeCanvas.enabled = false;
             }
         }
 
@@ -91,27 +118,18 @@ namespace HumanLoop.Core
 
         #region Public API - State Transitions
 
-        /// <summary>
-        /// Transitions from Main Menu to Game Scene with fade.
-        /// </summary>
         public void ShowGameScene()
         {
             if (_isTransitioning) return;
             StartCoroutine(TransitionToGameCoroutine());
         }
 
-        /// <summary>
-        /// Restarts the game (after Game Over) without changing scenes.
-        /// </summary>
         public void RestartGame()
         {
             if (_isTransitioning) return;
             StartCoroutine(RestartGameCoroutine());
         }
 
-        /// <summary>
-        /// Returns to Main Menu from Game Scene with fade.
-        /// </summary>
         public void ShowMainMenu()
         {
             if (_isTransitioning) return;
@@ -129,21 +147,25 @@ namespace HumanLoop.Core
             if (showDebugLogs)
                 Debug.Log("[SceneStateManager] Transitioning to Game...");
 
-            // Fade to black
-            yield return StartCoroutine(FadeIn());
+            // Optional fade to black
+            if (useFadeTransition)
+            {
+                yield return StartCoroutine(FadeIn());
+            }
 
-            // Hide main menu, show game scene
+            // Switch: Hide menu, show game
             HideMainMenu();
             ShowGameScene_Internal();
 
-            // NUEVO: Reset game state (igual que Restart)
+            // Reset game state
             ResetGame();
-
-            // Wait one frame for reset to complete
             yield return null;
 
-            // Fade from black
-            yield return StartCoroutine(FadeOut());
+            // Optional fade from black
+            if (useFadeTransition)
+            {
+                yield return StartCoroutine(FadeOut());
+            }
 
             _isTransitioning = false;
 
@@ -153,7 +175,6 @@ namespace HumanLoop.Core
                 Debug.Log($"[SceneStateManager] Game started. Memory: {mem / 1048576}MB");
             }
         }
-
 
         private IEnumerator RestartGameCoroutine()
         {
@@ -165,20 +186,22 @@ namespace HumanLoop.Core
                 Debug.Log($"[SceneStateManager] Restarting game... Memory: {memBefore / 1048576}MB");
             }
 
-            // Fade to black
-            yield return StartCoroutine(FadeIn());
+            // Optional fade to black
+            if (useFadeTransition)
+            {
+                yield return StartCoroutine(FadeIn());
+            }
 
-            // Game scene remains visible, just cleanup
+            // Cleanup and reset
             CleanupGame();
-
-            // Small delay for cleanup
             yield return new WaitForSeconds(0.2f);
-
-            // Reset game state
             ResetGame();
 
-            // Fade from black
-            yield return StartCoroutine(FadeOut());
+            // Optional fade from black
+            if (useFadeTransition)
+            {
+                yield return StartCoroutine(FadeOut());
+            }
 
             _isTransitioning = false;
 
@@ -196,18 +219,22 @@ namespace HumanLoop.Core
             if (showDebugLogs)
                 Debug.Log("[SceneStateManager] Returning to Main Menu...");
 
-            // Fade to black
-            yield return StartCoroutine(FadeIn());
+            // Optional fade to black
+            if (useFadeTransition)
+            {
+                yield return StartCoroutine(FadeIn());
+            }
 
-            // Cleanup game
+            // Cleanup and switch
             CleanupGame();
-
-            // Hide game scene, show main menu
             HideGameScene();
             ShowMainMenu_Internal();
 
-            // Fade from black
-            yield return StartCoroutine(FadeOut());
+            // Optional fade from black
+            if (useFadeTransition)
+            {
+                yield return StartCoroutine(FadeOut());
+            }
 
             _isTransitioning = false;
 
@@ -220,58 +247,82 @@ namespace HumanLoop.Core
 
         #endregion
 
-        #region Canvas Group Control
+        #region Canvas Control (Performance Optimized)  
 
         private void ShowMainMenu_Internal()
         {
+            // Enable interactivity
             if (mainMenuCanvasGroup != null)
             {
-                mainMenuCanvasGroup.alpha = 1f;
                 mainMenuCanvasGroup.interactable = true;
                 mainMenuCanvasGroup.blocksRaycasts = true;
             }
 
+            // CRITICAL: Enable Canvas to start rendering
+            if (mainMenuCanvas != null)
+            {
+                mainMenuCanvas.enabled = true;
+            }
+
             if (showDebugLogs)
-                Debug.Log("[SceneStateManager] Main Menu shown");
+                Debug.Log("[SceneStateManager] Main Menu shown (Canvas enabled)");
         }
 
         private void HideMainMenu()
         {
+            // Disable interactivity
             if (mainMenuCanvasGroup != null)
             {
-                mainMenuCanvasGroup.alpha = 0f;
                 mainMenuCanvasGroup.interactable = false;
                 mainMenuCanvasGroup.blocksRaycasts = false;
             }
 
+            // CRITICAL: Disable Canvas to stop rendering (preserves geometry buffer)
+            if (mainMenuCanvas != null)
+            {
+                mainMenuCanvas.enabled = false;
+            }
+
             if (showDebugLogs)
-                Debug.Log("[SceneStateManager] Main Menu hidden");
+                Debug.Log("[SceneStateManager] Main Menu hidden (Canvas disabled)");
         }
 
         private void ShowGameScene_Internal()
         {
+            // Enable interactivity
             if (gameSceneCanvasGroup != null)
             {
-                gameSceneCanvasGroup.alpha = 1f;
                 gameSceneCanvasGroup.interactable = true;
                 gameSceneCanvasGroup.blocksRaycasts = true;
-            }            
+            }
+
+            // CRITICAL: Enable Canvas to start rendering
+            if (gameSceneCanvas != null)
+            {
+                gameSceneCanvas.enabled = true;
+            }
 
             if (showDebugLogs)
-                Debug.Log("[SceneStateManager] Game Scene shown");
+                Debug.Log("[SceneStateManager] Game Scene shown (Canvas enabled)");
         }
 
         private void HideGameScene()
         {
+            // Disable interactivity
             if (gameSceneCanvasGroup != null)
             {
-                gameSceneCanvasGroup.alpha = 0f;
                 gameSceneCanvasGroup.interactable = false;
                 gameSceneCanvasGroup.blocksRaycasts = false;
             }
 
+            // CRITICAL: Disable Canvas to stop rendering (preserves geometry buffer)
+            if (gameSceneCanvas != null)
+            {
+                gameSceneCanvas.enabled = false;
+            }
+
             if (showDebugLogs)
-                Debug.Log("[SceneStateManager] Game Scene hidden");
+                Debug.Log("[SceneStateManager] Game Scene hidden (Canvas disabled)");
         }
 
         #endregion
@@ -280,65 +331,39 @@ namespace HumanLoop.Core
 
         private void ResetGame()
         {
-            // 1. Reset Stats to initial values
             if (statsManager != null)
-            {
                 statsManager.ResetToInitialValues();
-            }
 
-            // 2. Reset Time to starting week
             if (timeManager != null)
-            {
                 timeManager.ResetTime();
-            }
 
-            // 3. Reset Progression flags and deck
             if (progressionManager != null)
-            {
                 progressionManager.ResetProgression();
-            }
 
-            // 4. Reset Deck to initial state (spawns first cards)
             if (deckManager != null)
-            {
                 deckManager.ResetDeck();
-            }
 
-            // 5. Hide end game UIs
             if (endGameUIHandler != null)
-            {
                 endGameUIHandler.HideUI();
-            }
 
             if (gameOverUIHandler != null)
-            {
                 gameOverUIHandler.gameObject.SetActive(false);
-            }
 
-            // 6. Update UI to reflect reset state
             if (statsViewManager != null)
-            {
                 statsViewManager.UpdateUI();
-            }
 
             if (timeViewManager != null)
-            {
                 timeViewManager.UpdateTimeUI();
-            }
 
             if (showDebugLogs)
-            {
-                Debug.Log("[SceneStateManager] Game reset complete - All managers reset to initial state");
-            }
+                Debug.Log("[SceneStateManager] Game reset complete");
         }
 
         private void CleanupGame()
         {
-            // Kill all active tweens
             DOTween.KillAll();
             DOTween.ClearCachedTweens();
 
-            // Hide UIs
             if (endGameUIHandler != null)
                 endGameUIHandler.HideUI();
 
@@ -351,14 +376,16 @@ namespace HumanLoop.Core
 
         #endregion
 
-        #region Fade Effects
+        #region Fade Effects (Optional Transition)
 
         private IEnumerator FadeIn()
         {
-            if (fadeCanvasGroup == null) yield break;
+            if (fadeCanvasGroup == null || fadeCanvas == null) yield break;
 
-            fadeCanvasGroup.gameObject.SetActive(true);
+            // Enable fade canvas
+            fadeCanvas.enabled = true;
             fadeCanvasGroup.blocksRaycasts = true;
+            fadeCanvasGroup.alpha = 0f;
 
             float elapsed = 0f;
             while (elapsed < fadeDuration)
@@ -373,7 +400,9 @@ namespace HumanLoop.Core
 
         private IEnumerator FadeOut()
         {
-            if (fadeCanvasGroup == null) yield break;
+            if (fadeCanvasGroup == null || fadeCanvas == null) yield break;
+
+            fadeCanvasGroup.alpha = 1f;
 
             float elapsed = 0f;
             while (elapsed < fadeDuration)
@@ -385,7 +414,9 @@ namespace HumanLoop.Core
 
             fadeCanvasGroup.alpha = 0f;
             fadeCanvasGroup.blocksRaycasts = false;
-            fadeCanvasGroup.gameObject.SetActive(false);
+            
+            // Disable fade canvas
+            fadeCanvas.enabled = false;
         }
 
         #endregion
@@ -421,9 +452,10 @@ namespace HumanLoop.Core
         [ContextMenu("Debug/Log Canvas State")]
         private void TestLogCanvasState()
         {
-            Debug.Log($"=== CANVAS GROUP STATE ===\n" +
-                     $"Main Menu - Alpha: {mainMenuCanvasGroup?.alpha}, Interactable: {mainMenuCanvasGroup?.interactable}\n" +
-                     $"Game Scene - Alpha: {gameSceneCanvasGroup?.alpha}, Interactable: {gameSceneCanvasGroup?.interactable}");
+            Debug.Log($"=== CANVAS STATE ===\n" +
+                     $"Main Menu Canvas: {(mainMenuCanvas != null ? (mainMenuCanvas.enabled ? "ENABLED" : "DISABLED") : "NULL")}\n" +
+                     $"Game Scene Canvas: {(gameSceneCanvas != null ? (gameSceneCanvas.enabled ? "ENABLED" : "DISABLED") : "NULL")}\n" +
+                     $"Fade Canvas: {(fadeCanvas != null ? (fadeCanvas.enabled ? "ENABLED" : "DISABLED") : "NULL")}");
         }
 #endif
 

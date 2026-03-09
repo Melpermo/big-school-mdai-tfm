@@ -30,8 +30,6 @@ namespace HumanLoop.UI
         [SerializeField] private Sprite _end_deckMommentSprite;
         [SerializeField] private SoundEventSO _end_deckMommentSoundEventSO;     
 
-
-
         // This method is called to trigger a deck moment based on the provided game event.
         public void TriggerDeckMomment(GameEventSO deckMommentGameEventSO)
         {
