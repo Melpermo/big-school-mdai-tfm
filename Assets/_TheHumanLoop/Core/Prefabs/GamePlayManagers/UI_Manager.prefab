@@ -66,12 +66,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.UI.DeckMommentsUIHandler
   _gamePlayBackgroundImage: {fileID: 0}
   _start_deckMommentGameEventSO: {fileID: 11400000, guid: 47d271a6da1a8b9489f3b8b1d29cbeb3, type: 2}
-  _start_deckMommentSprite: {fileID: 8939164973835361536, guid: 2153abde7a0b50a46b31e772a326db9c, type: 3}
+  _start_deckMommentSprite: {fileID: 560436930240785758, guid: ea3b764da82ab3443b3f2e0b6dcd3f14, type: 3}
   _mid_deckMommentGameEventSO: {fileID: 11400000, guid: 6c4f82a63940c384a9a588d967119e98, type: 2}
-  _mid_deckMommentSprite: {fileID: -2976967553099596824, guid: 8c679c96ba552344aa0be38de26f469a, type: 3}
+  _mid_deckMommentSprite: {fileID: -8949630351903492883, guid: ea3b764da82ab3443b3f2e0b6dcd3f14, type: 3}
   _mid_deckMommentSoundEventSO: {fileID: 11400000, guid: 535a9b088787eee4393e2145780ab54a, type: 2}
   _end_deckMommentGameEventSO: {fileID: 11400000, guid: f64253a7cba4ef94c850028de8bdebcd, type: 2}
-  _end_deckMommentSprite: {fileID: -2976967553099596824, guid: 8c679c96ba552344aa0be38de26f469a, type: 3}
+  _end_deckMommentSprite: {fileID: -8949630351903492883, guid: ea3b764da82ab3443b3f2e0b6dcd3f14, type: 3}
   _end_deckMommentSoundEventSO: {fileID: 11400000, guid: d78640ee4801ba84e92f2f31a7ec6337, type: 2}
 --- !u!114 &7083828148594716403
 MonoBehaviour:
@@ -425,6 +425,10 @@ MonoBehaviour:
   _victoryBounceDuration: 0.8
   _defeatFadeDuration: 2
   _shakeStrength: 10
+  _victorySoundEvent: {fileID: 11400000, guid: 436fff23543084042a26c0272e90edc6, type: 2}
+  _gameOverSoundEvent: {fileID: 11400000, guid: afaf14834d44e90408f0d048c5b3bb74, type: 2}
+  _specialFailSoundEvent: {fileID: 11400000, guid: b0b0275b194bc784c866093eda2e7483, type: 2}
+  _specialMetSoundEvent: {fileID: 11400000, guid: 535a9b088787eee4393e2145780ab54a, type: 2}
 --- !u!1 &6234212179630614011
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,8 +472,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4952367315190643865}
-  - component: {fileID: 7582888125318786533}
-  - component: {fileID: 7510381543065236634}
   m_Layer: 0
   m_Name: UI_Listeners
   m_TagString: Untagged
@@ -494,66 +496,6 @@ Transform:
   - {fileID: 4229753059227295960}
   m_Father: {fileID: 3898137233202985707}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7582888125318786533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6804535469944617847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
-  gameEvent: {fileID: 11400000, guid: 145373ab02f58504f9e041b35b585bfb, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HumanLoop.UI.StatsViewManager, Assembly-CSharp
-        m_MethodName: UpdateUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delayBeforeInvoke: 0
-  usingAsyncTaskMethods: 0
---- !u!114 &7510381543065236634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6804535469944617847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94ad3801360498a48893a1139353d190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Events.GameEventListener
-  gameEvent: {fileID: 11400000, guid: 5b5936b3b974b8b42b41d57870083a6c, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6941493429617087356}
-        m_TargetAssemblyTypeName: HumanLoop.UI.TimeViewManager, Assembly-CSharp
-        m_MethodName: UpdateTimeUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delayBeforeInvoke: 0
-  usingAsyncTaskMethods: 0
 --- !u!1 &7472301242308545734
 GameObject:
   m_ObjectHideFlags: 0
