@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using HumanLoop.Data;
+﻿using HumanLoop.Data;
 using HumanLoop.Visuals;
 using TMPro;
 using UnityEngine;
@@ -11,7 +10,7 @@ namespace HumanLoop.UI
     /// Pure view component for displaying card data.
     /// NO animations - only visual state management.
     /// CardController handles all animations.
-    /// Optimized for WebGL with shader-based flip (no SetActive during animations).
+    /// Optimized for performance: Uses Canvas.enabled for instant show/hide without fade.
     /// </summary>
     public class CardDisplay : MonoBehaviour
     {
@@ -31,17 +30,17 @@ namespace HumanLoop.UI
         [SerializeField] private Image frameImage;
         [SerializeField] private Image categoryIconImage;
 
-        [Header("Flip Visuals (Shader-Based)")]
+        [Header("Flip Visuals (Performance Optimized)")]
+        [Tooltip("Canvas component controlling text visibility - disabling stops rendering")]
+        [SerializeField] private Canvas visualsCanvas;
+
+        [Tooltip("Optional CanvasGroup for raycast blocking (alpha always 1)")]
         [SerializeField] private CanvasGroup visualsCanvasGroup;
 
-        [Header("Legacy Flip References (Not Used with Shader)")]
-        [Tooltip("Keep for backwards compatibility, but no longer using SetActive")]
+        [Header("Legacy Flip References (Not Used)")]
+        [Tooltip("Keep for backwards compatibility")]
         [SerializeField] private GameObject frontFace;
         [SerializeField] private GameObject backFace;
-
-        [Header("Fade Settings")]
-        [Tooltip("Duration for face fade in/out transitions")]
-        [SerializeField] private float faceFadeDuration = 0.15f;
 
         // Public properties for CardController to access
         public CardDataSO Data { get; private set; }
@@ -54,20 +53,12 @@ namespace HumanLoop.UI
         private CardController _cachedController;
         public CardController Controller => _cachedController;
 
-        // NEW: Tween para fade del visualsCanvasGroup
-        private Tween _faceFadeTween;
-
         #region Unity Lifecycle
 
         private void Awake()
         {
             CacheComponents();
-            ValidateVisualsCanvasGroup();
-        }
-
-        private void OnDestroy()
-        {
-            CleanupFadeTween();
+            ValidateVisualsCanvas();
         }
 
         #endregion
@@ -84,11 +75,11 @@ namespace HumanLoop.UI
             }
         }
 
-        private void ValidateVisualsCanvasGroup()
+        private void ValidateVisualsCanvas()
         {
-            if (visualsCanvasGroup == null)
+            if (visualsCanvas == null)
             {
-                Debug.LogWarning("[CardDisplay] visualsCanvasGroup not assigned! Text visibility won't work correctly.", this);
+                Debug.LogWarning("[CardDisplay] visualsCanvas not assigned! Text visibility won't work correctly.", this);
             }
         }
 
@@ -110,7 +101,7 @@ namespace HumanLoop.UI
 
             ApplyTexts(data);
             HideChoices();
-            ApplyCategoryStyle(data);
+            ApplyCategoryStyle(data);            
         }
 
         /// <summary>
@@ -118,7 +109,6 @@ namespace HumanLoop.UI
         /// </summary>
         public void ApplyCategoryStyle(CardDataSO data)
         {
-            Debug.Log($"[CardDisplay] Applying category style for {data.category}");
             if (style == null)
             {
                 Debug.LogWarning("[CardDisplay] style (CardCategorySettingsSO) not assigned! Cannot apply category visuals.", this);
@@ -136,56 +126,46 @@ namespace HumanLoop.UI
 
         #endregion
 
-        #region Visual State (No Animations)
+        #region Visual State (Instant, No Animations)
 
         /// <summary>
-        /// Shows front face of card with smooth fade transition.
-        /// Uses CanvasGroup alpha fade (shader handles actual card flip).
-        /// WebGL-safe: smooth transition without SetActive.
+        /// Shows front face of card (instant).
+        /// Enables Canvas rendering for maximum performance.
         /// </summary>
         public void ShowFrontFace()
         {
-            if (visualsCanvasGroup == null) return;
+            // Enable Canvas to start rendering
+            if (visualsCanvas != null)
+            {
+                visualsCanvas.enabled = true;
+            }
 
-            // Cancel any active fade
-            CleanupFadeTween();
-
-            // Fade in to alpha 1
-            _faceFadeTween = visualsCanvasGroup
-                .DOFade(1f, faceFadeDuration)
-                .SetEase(Ease.OutQuad)
-                .SetTarget(visualsCanvasGroup)
-                .SetAutoKill(true)
-                .OnComplete(() => {
-                    visualsCanvasGroup.blocksRaycasts = true;
-                    _faceFadeTween = null;
-                });
+            // Optional: Enable raycasts if CanvasGroup is used
+            if (visualsCanvasGroup != null)
+            {
+                visualsCanvasGroup.alpha = 1f; // Always 1
+                visualsCanvasGroup.blocksRaycasts = true;
+            }
         }
 
         /// <summary>
-        /// Shows back face of card with smooth fade transition.
-        /// Uses CanvasGroup alpha fade (shader handles actual card flip).
-        /// WebGL-safe: smooth transition without SetActive.
+        /// Shows back face of card (instant).
+        /// Disables Canvas to stop rendering (preserves geometry buffer).
         /// </summary>
         public void ShowBackFace()
         {
-            if (visualsCanvasGroup == null) return;
+            // Disable Canvas to stop rendering
+            if (visualsCanvas != null)
+            {
+                visualsCanvas.enabled = false;
+            }
 
-            // Cancel any active fade
-            CleanupFadeTween();
-
-            // Disable raycasts immediately (don't wait for fade)
-            visualsCanvasGroup.blocksRaycasts = false;
-
-            // Fade out to alpha 0
-            _faceFadeTween = visualsCanvasGroup
-                .DOFade(0f, faceFadeDuration)
-                .SetEase(Ease.InQuad)
-                .SetTarget(visualsCanvasGroup)
-                .SetAutoKill(true)
-                .OnComplete(() => {
-                    _faceFadeTween = null;
-                });
+            // Optional: Disable raycasts if CanvasGroup is used
+            if (visualsCanvasGroup != null)
+            {
+                visualsCanvasGroup.alpha = 1f; // Keep at 1
+                visualsCanvasGroup.blocksRaycasts = false;
+            }
         }
 
         /// <summary>
@@ -234,15 +214,6 @@ namespace HumanLoop.UI
             if (rightChoiceText != null) rightChoiceText.text = data.rightChoiceText;
         }
 
-        private void CleanupFadeTween()
-        {
-            if (_faceFadeTween != null && _faceFadeTween.IsActive())
-            {
-                _faceFadeTween.Kill(complete: false);
-                _faceFadeTween = null;
-            }
-        }
-
         #endregion
 
         #region Debug
@@ -278,26 +249,32 @@ namespace HumanLoop.UI
         private void DebugShowFrontFace()
         {
             ShowFrontFace();
-            Debug.Log("[CardDisplay] Front face shown (CanvasGroup alpha = 1)");
+            Debug.Log("[CardDisplay] Front face shown (Canvas enabled)");
         }
 
         [ContextMenu("Debug/Test Show Back Face")]
         private void DebugShowBackFace()
         {
             ShowBackFace();
-            Debug.Log("[CardDisplay] Back face shown (CanvasGroup alpha = 0)");
+            Debug.Log("[CardDisplay] Back face shown (Canvas disabled)");
         }
 
-        [ContextMenu("Debug/Check Visuals CanvasGroup")]
-        private void DebugCheckVisualsCanvasGroup()
+        [ContextMenu("Debug/Check Visuals Canvas")]
+        private void DebugCheckVisualsCanvas()
         {
-            if (visualsCanvasGroup != null)
+            if (visualsCanvas != null)
             {
-                Debug.Log($"[CardDisplay] Visuals CanvasGroup: ✓ EXISTS (Alpha: {visualsCanvasGroup.alpha})");
+                string state = visualsCanvas.enabled ? "ENABLED (Rendering)" : "DISABLED (Not Rendering)";
+                Debug.Log($"[CardDisplay] Visuals Canvas: ✓ EXISTS - {state}");
             }
             else
             {
-                Debug.LogError("[CardDisplay] Visuals CanvasGroup: ✗ NULL", this);
+                Debug.LogError("[CardDisplay] Visuals Canvas: ✗ NULL", this);
+            }
+
+            if (visualsCanvasGroup != null)
+            {
+                Debug.Log($"[CardDisplay] Visuals CanvasGroup: Alpha={visualsCanvasGroup.alpha:F2}, Raycasts={visualsCanvasGroup.blocksRaycasts}");
             }
         }
 
@@ -309,10 +286,10 @@ namespace HumanLoop.UI
             if (descriptionText != null) totalChars += descriptionText.text.Length;
             if (leftChoiceText != null) totalChars += leftChoiceText.text.Length;
             if (rightChoiceText != null) totalChars += rightChoiceText.text.Length;
-            
+
             // Estimación: ~20 bytes por carácter en mesh data
             int estimatedBytes = totalChars * 20;
-            
+
             Debug.Log($"[CardDisplay] Total chars: {totalChars}, " +
                       $"Estimated mesh memory: {estimatedBytes / 1024f:F2}KB");
         }
