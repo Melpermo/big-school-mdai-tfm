@@ -15,12 +15,11 @@ BIG School
 
 # Gameplay Preview
 
-![gameplay](Docs/gameplay/gameplay.gif)
-
+# ![gameplay](Docs/gameplay/gameplay.gif)
 
 A short gameplay preview showing the core decision mechanic where each card choice affects the development metrics of the studio.
 
-⬇ Download the playable MVP build from the **Releases** section.
+# ⬇ Download the playable MVP build from the **Releases** section.
 
 ---
 
