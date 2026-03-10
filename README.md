@@ -20,6 +20,8 @@ BIG School
 
 A short gameplay preview showing the core decision mechanic where each card choice affects the development metrics of the studio.
 
+⬇ Download the playable MVP build from the **Releases** section.
+
 ---
 
 # Technologies Used
