@@ -489,6 +489,20 @@ Possible future improvements include:
 
 ---
 
-# License
+## License
 
 This project was developed as part of the Final Master's Project for the **AI Development Program at BIG School**.
+
+The source code of this project is licensed under the MIT License.
+
+See the LICENSE file for details.
+
+## Assets
+
+All visual and audiovisual assets (including card artwork, illustrations,
+and graphics) are NOT included under the MIT License.
+
+They remain the intellectual property of the author and may not be reused
+without permission.
+
+See ASSETS_LICENSE.md for details.
