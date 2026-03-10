@@ -243,6 +243,14 @@ Responsible for:
 * End game presentation
 * Options menu
 
+# Canvas.enabled pattern across all UI systems.
+
+- SceneStateManager: Canvas.enabled for MainMenu/GameScene (remove fade coroutines)
+- EndGameUIHandler: Canvas.enabled for EndGamePanel/Title
+- CardDisplay: Canvas.enabled for Visuals (remove DOTween fade)
+- CardController: Add CanvasGroup + Graphic Raycaster for drag events
+- Remove GameOverUIHandler (functionality integrated into EndGameUIHandler) 
+
 ---
 
 ### AudioManager
@@ -257,7 +265,7 @@ The card interface uses a **shader-based flip system**.
 
 The shader automatically determines whether the card front or back should be visible based on the card's rotation.
 
-UI visibility is handled using **CanvasGroup** rather than enabling/disabling GameObjects.
+UI visibility is handled using **Canvas** enabling/disabling to avoid to rerenderer the elements again and again.
 
 Benefits:
 
@@ -417,9 +425,18 @@ Benefits:
 
 ## UI Lifecycle Optimization
 
-UI elements previously used `SetActive()` for visibility control.
+UI visibility is handled using **Canvas** enabling/disabling to avoid to rerenderer the elements again and again.
 
-This was replaced with **CanvasGroup-based visibility** to reduce UI lifecycle overhead and prevent animation glitches.
+```
+SceneStateManager (Root Controller)
+├── MainMenu Canvas ← Canvas.enabled
+├── GameScene Canvas ← Canvas.enabled
+│   ├── Cards (CardDisplay) ← Canvas.enabled
+│   ├── Stats UI (StatsViewManager) ← Direct update
+│   ├── Time UI (TimeViewManager) ← Direct update
+│   └── EndGame UI (EndGameUIHandler) ← Canvas.enabled
+└── Fade Overlay ← Optional transition
+```
 
 ---
 
