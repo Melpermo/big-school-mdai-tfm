@@ -9,7 +9,8 @@ namespace HumanLoop.UI
 {
     /// <summary>
     /// Handles end game UI animations and presentation.
-    /// Optimized for WebGL with proper tween cleanup and no memory leaks.
+    /// Optimized for performance: Uses Canvas.enabled for instant show/hide.
+    /// DOTween animations maintained for visual polish (efficient).
     /// </summary>
     public class EndGameUIHandler : MonoBehaviour
     {
@@ -20,6 +21,13 @@ namespace HumanLoop.UI
         [SerializeField] private TextMeshProUGUI _endGameFeedbackMsgText;
         [SerializeField] private Image _endGameBG_image;
         [SerializeField] private CanvasGroup _backgroundDimmer;
+
+        [Header("Canvas Components (Performance)")]
+        [Tooltip("Canvas component of EndGame Panel - disabling stops rendering")]
+        [SerializeField] private Canvas _endGamePanelCanvas;
+
+        [Tooltip("Canvas component of Title - disabling stops rendering")]
+        [SerializeField] private Canvas _endGameTitleCanvas;
 
         [Header("Animation Settings")]
         [Tooltip("Distance title drops from above")]
@@ -38,15 +46,14 @@ namespace HumanLoop.UI
         [SerializeField] private SoundEventSO _victorySoundEvent;
         [SerializeField] private SoundEventSO _gameOverSoundEvent;
         [SerializeField] private SoundEventSO _specialFailSoundEvent;
-        [SerializeField] private SoundEventSO _specialMetSoundEvent;       
-
+        [SerializeField] private SoundEventSO _specialMetSoundEvent;
 
         // Cached data
         private Vector3 _originalTitlePos;
 
         // Tween management
         private Sequence _activeSequence;
-        private Tween _infiniteLoopTween; // ← Reference to infinite loop
+        private Tween _infiniteLoopTween;
 
         #region Unity Lifecycle
 
@@ -83,59 +90,16 @@ namespace HumanLoop.UI
             // Determine if it's a victory or defeat condition
             bool isVictory = endGameCondition.conditionType == EndGameConditionSO.ConditionType.Victory ||
                             endGameCondition.conditionType == EndGameConditionSO.ConditionType.SpecialMet;
-             
+
             if (isVictory)
             {
-                // Play victory sequence
                 PlayVictorySequence(endGameCondition);
-
-                // Play appropriate sound based on condition type
                 PlayCorrespondingSound(endGameCondition);
-
             }
             else
             {
-                // Play defeat sequence
                 PlayDefeatSequence(endGameCondition);
-
-                // Play appropriate sound based on condition type
                 PlayCorrespondingSound(endGameCondition);
-            }
-        }
-
-        // Plays the corresponding sound based on the end game condition type
-        private void PlayCorrespondingSound(EndGameConditionSO endGameConditionSO)
-        {
-            switch (endGameConditionSO.conditionType)
-            { 
-                case EndGameConditionSO.ConditionType.Victory:
-                    if (_victorySoundEvent != null)
-                    {
-                        AudioManager.Instance.PlaySound(_victorySoundEvent);
-                    }
-                    break;
-                case EndGameConditionSO.ConditionType.GameOver:
-                    if (_gameOverSoundEvent != null)
-                    {
-                        AudioManager.Instance.PlaySound(_gameOverSoundEvent);
-                    }
-                    break;
-                case EndGameConditionSO.ConditionType.SpecialMet:
-                    if (_specialMetSoundEvent != null)
-                    {
-                        AudioManager.Instance.PlaySound(_specialMetSoundEvent);
-                    }
-                    break;
-                case EndGameConditionSO.ConditionType.SpecialFailed:
-                    if (_specialFailSoundEvent != null)
-                    {
-                        AudioManager.Instance.PlaySound(_specialFailSoundEvent);
-                    }
-                    break;
-                default:
-                    AudioManager.Instance.PlaySound(_gameOverSoundEvent);
-                    //Debug.LogWarning($"[EndGameUIHandler] Unhandled condition type: {endGameConditionSO.conditionType}");
-                    break;
             }
         }
 
@@ -146,8 +110,9 @@ namespace HumanLoop.UI
         {
             CleanupAllTweens();
 
-            _endGamePanel.SetActive(false);
-            _endGameTitleTransform.gameObject.SetActive(false);
+            // Disable Canvas rendering (performance optimized)
+            SetCanvasState(_endGamePanelCanvas, false);
+            SetCanvasState(_endGameTitleCanvas, false);
 
             if (_backgroundDimmer != null)
             {
@@ -172,7 +137,7 @@ namespace HumanLoop.UI
                 .SetAutoKill(true)
                 .SetRecyclable(true);
 
-            // Dim background
+            // Dim background (fade is appropriate here for visual effect)
             if (_backgroundDimmer != null)
             {
                 _activeSequence.Append(_backgroundDimmer.DOFade(1f, 0.5f));
@@ -210,7 +175,7 @@ namespace HumanLoop.UI
                 .SetAutoKill(true)
                 .SetRecyclable(true);
 
-            // Darken background
+            // Darken background (fade is appropriate here for visual effect)
             if (_backgroundDimmer != null)
             {
                 _activeSequence.Append(_backgroundDimmer.DOFade(1f, 1.5f));
@@ -220,7 +185,7 @@ namespace HumanLoop.UI
             _endGameTitleText.alpha = 0;
             _endGameTitleTransform.localScale = Vector3.one * 0.8f;
 
-            // Fade in text
+            // Fade in text (part of animation, not visibility control)
             _activeSequence.Append(_endGameTitleText.DOFade(1f, _defeatFadeDuration));
 
             // Sink slowly (parallel)
@@ -249,15 +214,14 @@ namespace HumanLoop.UI
                 _infiniteLoopTween.Kill();
             }
 
-            // Create NEW infinite pulse tween with proper reference
+            // Create infinite pulse tween
             _infiniteLoopTween = _endGameTitleTransform
                 .DOScale(1.1f, 1.5f)
                 .SetEase(Ease.InOutSine)
                 .SetLoops(-1, LoopType.Yoyo)
                 .SetTarget(_endGameTitleTransform)
-                .SetAutoKill(false); // Keep alive until manually killed
+                .SetAutoKill(false);
 
-            // Clear sequence reference (completed)
             _activeSequence = null;
         }
 
@@ -268,13 +232,56 @@ namespace HumanLoop.UI
 
         #endregion
 
+        #region Sound Management
+
+        /// <summary>
+        /// Plays the corresponding sound based on the end game condition type.
+        /// </summary>
+        private void PlayCorrespondingSound(EndGameConditionSO endGameConditionSO)
+        {
+            if (AudioManager.Instance == null) return;
+
+            switch (endGameConditionSO.conditionType)
+            {
+                case EndGameConditionSO.ConditionType.Victory:
+                    if (_victorySoundEvent != null)
+                        AudioManager.Instance.PlaySound(_victorySoundEvent);
+                    break;
+
+                case EndGameConditionSO.ConditionType.GameOver:
+                    if (_gameOverSoundEvent != null)
+                        AudioManager.Instance.PlaySound(_gameOverSoundEvent);
+                    break;
+
+                case EndGameConditionSO.ConditionType.SpecialMet:
+                    if (_specialMetSoundEvent != null)
+                        AudioManager.Instance.PlaySound(_specialMetSoundEvent);
+                    break;
+
+                case EndGameConditionSO.ConditionType.SpecialFailed:
+                    if (_specialFailSoundEvent != null)
+                        AudioManager.Instance.PlaySound(_specialFailSoundEvent);
+                    break;
+
+                default:
+                    if (_gameOverSoundEvent != null)
+                        AudioManager.Instance.PlaySound(_gameOverSoundEvent);
+                    break;
+            }
+        }
+
+        #endregion
+
         #region UI Management
 
         private void InitializeUI()
         {
             _originalTitlePos = _endGameTitleTransform.localPosition;
-            _endGamePanel.SetActive(false);
             _endGameTitleTransform.localScale = Vector3.zero;
+
+            // Disable Canvas rendering (performance optimized)
+            SetCanvasState(_endGamePanelCanvas, false);
+            SetCanvasState(_endGameTitleCanvas, false);
 
             if (_backgroundDimmer != null)
             {
@@ -286,8 +293,9 @@ namespace HumanLoop.UI
         {
             CleanupAllTweens();
 
-            _endGamePanel.SetActive(true);
-            _endGameTitleTransform.gameObject.SetActive(true);
+            // Enable Canvas rendering (performance optimized)
+            SetCanvasState(_endGamePanelCanvas, true);
+            SetCanvasState(_endGameTitleCanvas, true);
 
             _endGameTitleText.text = endGameCondition.conditionName;
             _endGameFeedbackMsgText.text = endGameCondition.endGameMessage;
@@ -309,6 +317,16 @@ namespace HumanLoop.UI
             {
                 _backgroundDimmer.alpha = 0;
             }
+        }
+
+        /// <summary>
+        /// Enables/disables Canvas rendering.
+        /// CRITICAL for performance: Disabled canvas stops rendering but preserves geometry buffer.
+        /// </summary>
+        private void SetCanvasState(Canvas canvas, bool enabled)
+        {
+            if (canvas == null) return;
+            canvas.enabled = enabled;
         }
 
         #endregion
@@ -361,7 +379,7 @@ namespace HumanLoop.UI
                 "¡Enhorabuena! Has completado el juego exitosamente.",
                 EndGameConditionSO.ConditionType.Victory
             );
-            PlayVictorySequence(testCondition);
+            SelectConditionTypeToShow(testCondition);
         }
 
         [ContextMenu("Test/Defeat Animation")]
@@ -372,7 +390,7 @@ namespace HumanLoop.UI
                 "El proyecto ha colapsado. Intenta de nuevo.",
                 EndGameConditionSO.ConditionType.GameOver
             );
-            PlayDefeatSequence(testCondition);
+            SelectConditionTypeToShow(testCondition);
         }
 
         [ContextMenu("Test/Hide UI")]
@@ -388,6 +406,21 @@ namespace HumanLoop.UI
             bool loopActive = _infiniteLoopTween != null && _infiniteLoopTween.IsActive();
 
             Debug.Log($"[EndGameUIHandler] Sequence Active: {sequenceActive}, Infinite Loop Active: {loopActive}");
+        }
+
+        [ContextMenu("Debug/Check Canvas State")]
+        private void DebugCheckCanvasState()
+        {
+            Debug.Log($"=== ENDGAME CANVAS STATE ===\n" +
+                     $"Panel Canvas: {GetCanvasStateString(_endGamePanelCanvas)}\n" +
+                     $"Title Canvas: {GetCanvasStateString(_endGameTitleCanvas)}\n" +
+                     $"Background Dimmer Alpha: {_backgroundDimmer?.alpha:F2}");
+        }
+
+        private string GetCanvasStateString(Canvas canvas)
+        {
+            if (canvas == null) return "NULL";
+            return canvas.enabled ? "ENABLED (Rendering)" : "DISABLED (Not Rendering)";
         }
 
         private EndGameConditionSO CreateTestCondition(string name, string message, EndGameConditionSO.ConditionType type)

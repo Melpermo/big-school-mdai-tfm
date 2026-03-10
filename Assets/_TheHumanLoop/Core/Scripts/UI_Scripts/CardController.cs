@@ -1,11 +1,10 @@
-﻿using DG.Tweening;
+﻿using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using DG.Tweening;
 using HumanLoop.Core;
 using HumanLoop.Data;
 using HumanLoop.Events;
-using System;
-using Unity.Burst.CompilerServices;
-using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace HumanLoop.UI
 {
@@ -13,13 +12,16 @@ namespace HumanLoop.UI
     /// Handles all card animations, drag mechanics, and lifecycle.
     /// Calls CardDisplay for visual state changes.
     /// </summary>
-    [RequireComponent(typeof(RectTransform))]
-    [RequireComponent(typeof(CanvasGroup))]
+    [RequireComponent(typeof(RectTransform))]    
     [RequireComponent(typeof(CardDisplay))]
     public class CardController : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
         public static event Action OnCardRemoved;
         public static event Action<CardDataSO, bool> OnCardRemovedWithDecision;
+
+        [Header("VisualsContainer CnavasGroup")]
+        [Tooltip("Manage interaction and blockRaycast of the drag and swipe movement")]
+        [SerializeField] private CanvasGroup _visualContainerCanvasGroup;       
 
         [Header("Swipe Settings")]
         [SerializeField] private float fovAngle = 15f;
@@ -36,8 +38,8 @@ namespace HumanLoop.UI
         [Tooltip("If false, cards appear instantly without flip animation (recommended for WebGL if OOM issues persist)")]
         [SerializeField] private bool enableFlipAnimation = true;
 
-        [Tooltip("Duration for instant appear fade when flip is disabled")]
-        [SerializeField] private float instantAppearFadeDuration = 0.2f;
+        //[Tooltip("Duration for instant appear fade when flip is disabled")]
+        //[SerializeField] private float instantAppearFadeDuration = 0.2f;
 
         [Header("Dependencies")]
         [SerializeField] private CardFactory cardFactory;
@@ -53,7 +55,7 @@ namespace HumanLoop.UI
 
         // Cached components
         private RectTransform _rectTransform;
-        private CanvasGroup _canvasGroup;
+       
         private CardDisplay _display;
 
         // State
@@ -99,7 +101,7 @@ namespace HumanLoop.UI
         private void CacheComponents()
         {
             _rectTransform = GetComponent<RectTransform>();
-            _canvasGroup = GetComponent<CanvasGroup>();
+            //_canvasGroup = GetComponent<CanvasGroup>();
             _display = GetComponent<CardDisplay>();
         }
 
@@ -121,8 +123,8 @@ namespace HumanLoop.UI
             _rectTransform.localRotation = Quaternion.identity;
             _rectTransform.localScale = Vector3.one;
 
-            _canvasGroup.alpha = 1f;
-            _canvasGroup.blocksRaycasts = false; // Enabled after flip
+            //_visualContainerCanvasGroup.alpha = 1f;
+            _visualContainerCanvasGroup.blocksRaycasts = false; // Enabled after flip
 
             _display.HideChoices();
 
@@ -146,7 +148,6 @@ namespace HumanLoop.UI
             CleanupTweens();
 
             _rectTransform.localScale = Vector3.one * 0.5f;
-            _canvasGroup.alpha = 0f;
 
             _activeSequence = DOTween.Sequence()
                 .SetTarget(_rectTransform)
@@ -155,12 +156,18 @@ namespace HumanLoop.UI
                 .SetUpdate(true);
 
             _activeSequence.Append(_rectTransform.DOScale(1f, appearDuration).SetEase(Ease.OutBack));
-            _activeSequence.Join(_canvasGroup.DOFade(1f, appearDuration * 0.75f));
 
             _activeSequence.OnComplete(() => {
+                // CRITICAL: Enable raycasts after appear animation
+                if (_visualContainerCanvasGroup != null)
+                {
+                    _visualContainerCanvasGroup.blocksRaycasts = true;
+                    _visualContainerCanvasGroup.interactable = true;
+                }
+
                 _activeSequence = null;
                 if (showDebugLogs)
-                    Debug.Log($"[CardController] AnimateIn complete");
+                    Debug.Log($"[CardController] AnimateIn complete, raycasts enabled");
             });
 
             onCardAddedEvent?.Raise();
@@ -180,10 +187,10 @@ namespace HumanLoop.UI
             _rectTransform.localScale = Vector3.one * 0.9f;
             _rectTransform.SetAsFirstSibling();
 
-            if (_canvasGroup != null)
+            if (_visualContainerCanvasGroup != null)
             {
-                _canvasGroup.blocksRaycasts = false;
-                _canvasGroup.interactable = false;
+                _visualContainerCanvasGroup.blocksRaycasts = false;
+                _visualContainerCanvasGroup.interactable = false;
             }
 
             _isInBackground = true;
@@ -230,8 +237,8 @@ namespace HumanLoop.UI
         {
             CleanupTweens();
 
-            _canvasGroup.blocksRaycasts = false;
-            _canvasGroup.interactable = false;
+            _visualContainerCanvasGroup.blocksRaycasts = false;
+            _visualContainerCanvasGroup.interactable = false;
 
             // Set to front orientation immediately
             _rectTransform.localEulerAngles = Vector3.zero;
@@ -248,10 +255,11 @@ namespace HumanLoop.UI
                 .SetUpdate(true);
 
             // Just fade in the canvas group
+            /*
             _activeSequence.Append(
-                _canvasGroup.DOFade(1f, instantAppearFadeDuration)
+                _visualContainerCanvasGroup.DOFade(1f, instantAppearFadeDuration)
                     .SetEase(Ease.OutQuad)
-            );
+            );*/
 
             _activeSequence.OnComplete(OnFlipComplete);
 
@@ -262,6 +270,15 @@ namespace HumanLoop.UI
         #endregion
 
         #region Drag Handlers
+
+        /// <summary>
+        /// Handles all card animations, drag mechanics, and lifecycle.
+        /// 
+        /// SETUP REQUIREMENTS:
+        /// - VisualsContainer must have CanvasGroup (controls interactivity)
+        /// - Visuals child must have Canvas + Graphic Raycaster (enables UI events)
+        /// - Graphic Raycaster settings: Blocking Objects = None
+        /// </summary>
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -315,8 +332,8 @@ namespace HumanLoop.UI
         {
             CleanupTweens();
 
-            _canvasGroup.blocksRaycasts = false;
-            _canvasGroup.interactable = false;
+            _visualContainerCanvasGroup.blocksRaycasts = false;
+            _visualContainerCanvasGroup.interactable = false;
 
             // Force start from 180°
             _rectTransform.localEulerAngles = new Vector3(0, 180f, 0);
@@ -324,7 +341,7 @@ namespace HumanLoop.UI
             // NUEVO: Programar cambio de cara a 90° (mitad del flip)
             float halfFlipDuration = flipDuration * 0.5f;
             _delayedFaceSwitch = DOVirtual.DelayedCall(halfFlipDuration, () => {
-                _display.ShowFrontFace();
+                _display.ShowFrontFace(); // ← Now is instant (Canvas.enabled)
                 _delayedFaceSwitch = null;
             })
             .SetTarget(this)
@@ -377,10 +394,10 @@ namespace HumanLoop.UI
 
         private void OnFlipComplete()
         {
-            if (_canvasGroup != null)
+            if (_visualContainerCanvasGroup != null)
             {
-                _canvasGroup.blocksRaycasts = true;
-                _canvasGroup.interactable = true;
+                _visualContainerCanvasGroup.blocksRaycasts = true;
+                _visualContainerCanvasGroup.interactable = true;
 
                 if (showDebugLogs)
                     Debug.Log($"[CardController] Flip complete, raycasts enabled");
@@ -470,8 +487,8 @@ namespace HumanLoop.UI
 
         private void SetRaycast(bool enabled)
         {
-            if (_canvasGroup != null)
-                _canvasGroup.blocksRaycasts = enabled;
+            if (_visualContainerCanvasGroup != null)
+                _visualContainerCanvasGroup.blocksRaycasts = enabled;
         }
 
         #endregion

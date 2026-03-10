@@ -1,20 +1,23 @@
 using DG.Tweening;
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace HumanLoop.Core
 {
     /// <summary>
-    /// Handles Game Over UI presentation and scene restart.
-    /// Optimized for WebGL with async scene loading and proper tween cleanup.
+    /// Handles Game Over UI presentation.
+    /// Optimized for performance: Uses Canvas.enabled for instant show/hide.
+    /// DOTween fade animation maintained for visual polish (efficient).
     /// </summary>
     public class GameOverUIHandler : MonoBehaviour
     {
         [Header("UI References")]
         [SerializeField] private CanvasGroup gameOverPanel;
         [SerializeField] private TextMeshProUGUI statsSummaryText;
+
+        [Header("Canvas Components (Performance)")]
+        [Tooltip("Canvas component of Game Over Panel - disabling stops rendering")]
+        [SerializeField] private Canvas gameOverPanelCanvas;
 
         [Header("Dependencies")]
         [SerializeField] private TimeManager timeManager;
@@ -26,10 +29,6 @@ namespace HumanLoop.Core
         [Header("Animation Settings")]
         [Tooltip("Duration of fade-in animation")]
         [SerializeField] private float fadeDuration = 1f;
-
-        [Header("Scene Loading")]
-        [Tooltip("Use async scene loading (recommended for WebGL)")]
-        [SerializeField] private bool useAsyncLoading = true;        
 
         // Tween management
         private Tween _fadeInTween;
@@ -63,7 +62,9 @@ namespace HumanLoop.Core
                 return;
             }
 
-            gameOverPanel.gameObject.SetActive(false);
+            // Disable Canvas rendering (performance optimized)
+            SetCanvasState(gameOverPanelCanvas, false);
+
             gameOverPanel.alpha = 0f;
             gameOverPanel.interactable = false;
             gameOverPanel.blocksRaycasts = false;
@@ -75,7 +76,7 @@ namespace HumanLoop.Core
 
         /// <summary>
         /// Displays the Game Over panel with fade animation.
-        /// Called by GameEventListener in response to Game Over event.
+        /// Called by GameStatsManager when game over condition is met.
         /// </summary>
         public void HandleGameOver()
         {
@@ -89,29 +90,37 @@ namespace HumanLoop.Core
         }
 
         /// <summary>
-        /// Restarts the current scene.
-        /// Uses async loading if enabled for better WebGL performance.
+        /// Restarts the game through SceneStateManager.
         /// </summary>
         public void RestartGame()
         {
             CleanupTweens();
 
-            // Ensure time is running
-            Time.timeScale = 1f;
-
-            if (useAsyncLoading)
+            if (SceneStateManager.Instance != null)
             {
-                StartCoroutine(RestartGameAsync());
+                SceneStateManager.Instance.RestartGame();
             }
             else
             {
-                RestartGameSync();
+                Debug.LogError("[GameOverUIHandler] SceneStateManager.Instance is null! Cannot restart game.");
             }
         }
 
-        public void RestartGameOnSceneStateManager()
-        { 
-            //SceneStateManager.Instance.RestartScene();
+        /// <summary>
+        /// Returns to main menu through SceneStateManager.
+        /// </summary>
+        public void ReturnToMainMenu()
+        {
+            CleanupTweens();
+
+            if (SceneStateManager.Instance != null)
+            {
+                SceneStateManager.Instance.ShowMainMenu();
+            }
+            else
+            {
+                Debug.LogError("[GameOverUIHandler] SceneStateManager.Instance is null! Cannot return to menu.");
+            }
         }
 
         #endregion
@@ -120,17 +129,19 @@ namespace HumanLoop.Core
 
         private void ShowGameOverPanel()
         {
-            // Cleanup any previous animation
             CleanupTweens();
 
-            // Activate panel
-            gameOverPanel.gameObject.SetActive(true);
+            // Enable Canvas rendering (performance optimized)
+            SetCanvasState(gameOverPanelCanvas, true);
+
             gameOverPanel.alpha = 0f;
+            gameOverPanel.interactable = false;
+            gameOverPanel.blocksRaycasts = false;
 
             // Update stats text
             UpdateStatsText();
 
-            // Fade in animation
+            // Fade in animation (appropriate for visual effect)
             _fadeInTween = gameOverPanel
                 .DOFade(1f, fadeDuration)
                 .SetUpdate(true) // Works even if Time.timeScale = 0
@@ -143,8 +154,11 @@ namespace HumanLoop.Core
         private void OnFadeInComplete()
         {
             // Enable interaction after fade completes
-            gameOverPanel.interactable = true;
-            gameOverPanel.blocksRaycasts = true;
+            if (gameOverPanel != null)
+            {
+                gameOverPanel.interactable = true;
+                gameOverPanel.blocksRaycasts = true;
+            }
 
             _fadeInTween = null;
         }
@@ -167,34 +181,14 @@ namespace HumanLoop.Core
             statsSummaryText.text = $"{fireMessage} {timeManager.CurrentWeek}";
         }
 
-        #endregion
-
-        #region Scene Loading
-
-        private void RestartGameSync()
+        /// <summary>
+        /// Enables/disables Canvas rendering.
+        /// CRITICAL for performance: Disabled canvas stops rendering but preserves geometry buffer.
+        /// </summary>
+        private void SetCanvasState(Canvas canvas, bool enabled)
         {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentSceneIndex);
-        }
-
-        private IEnumerator RestartGameAsync()
-        {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-            // Optional: Show loading indicator here
-            // loadingIndicator?.SetActive(true);
-
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(currentSceneIndex);
-
-            // Wait until scene is loaded
-            while (!asyncLoad.isDone)
-            {
-                // Optional: Update loading progress bar
-                // float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-                // loadingProgressBar?.SetProgress(progress);
-
-                yield return null;
-            }
+            if (canvas == null) return;
+            canvas.enabled = enabled;
         }
 
         #endregion
@@ -231,8 +225,15 @@ namespace HumanLoop.Core
         [ContextMenu("Test/Restart Game")]
         private void TestRestartGame()
         {
-            Debug.Log("[GameOverUIHandler] Testing restart (will reload scene)");
+            Debug.Log("[GameOverUIHandler] Testing restart");
             RestartGame();
+        }
+
+        [ContextMenu("Test/Return to Menu")]
+        private void TestReturnToMenu()
+        {
+            Debug.Log("[GameOverUIHandler] Testing return to menu");
+            ReturnToMainMenu();
         }
 
         [ContextMenu("Debug/Check Tween Status")]
@@ -240,6 +241,22 @@ namespace HumanLoop.Core
         {
             bool fadeActive = _fadeInTween != null && _fadeInTween.IsActive();
             Debug.Log($"[GameOverUIHandler] Fade Tween Active: {fadeActive}");
+        }
+
+        [ContextMenu("Debug/Check Canvas State")]
+        private void DebugCheckCanvasState()
+        {
+            Debug.Log($"=== GAMEOVER CANVAS STATE ===\n" +
+                     $"Panel Canvas: {GetCanvasStateString(gameOverPanelCanvas)}\n" +
+                     $"Panel Alpha: {gameOverPanel?.alpha:F2}\n" +
+                     $"Panel Interactable: {gameOverPanel?.interactable}\n" +
+                     $"Panel Blocks Raycasts: {gameOverPanel?.blocksRaycasts}");
+        }
+
+        private string GetCanvasStateString(Canvas canvas)
+        {
+            if (canvas == null) return "NULL";
+            return canvas.enabled ? "ENABLED (Rendering)" : "DISABLED (Not Rendering)";
         }
 
         private void OnValidate()

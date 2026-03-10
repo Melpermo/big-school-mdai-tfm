@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3898137233202985707}
   - component: {fileID: 6941493429617087356}
   - component: {fileID: 1788277987764516999}
-  - component: {fileID: 7083828148594716403}
   m_Layer: 0
   m_Name: UI_Manager
   m_TagString: Untagged
@@ -73,25 +72,6 @@ MonoBehaviour:
   _end_deckMommentGameEventSO: {fileID: 11400000, guid: f64253a7cba4ef94c850028de8bdebcd, type: 2}
   _end_deckMommentSprite: {fileID: -8949630351903492883, guid: ea3b764da82ab3443b3f2e0b6dcd3f14, type: 3}
   _end_deckMommentSoundEventSO: {fileID: 11400000, guid: d78640ee4801ba84e92f2f31a7ec6337, type: 2}
---- !u!114 &7083828148594716403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604440020206634371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53a7eb96925b9e41bfd5512545c87a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HumanLoop.Core.GameOverUIHandler
-  gameOverPanel: {fileID: 0}
-  statsSummaryText: {fileID: 0}
-  timeManager: {fileID: 0}
-  fireMessage: "\xA1Ve ha hablar con recursos humanos! \xA1No has conseguido pasar
-    el corte! Semanas en la empresa:"
-  fadeDuration: 1
-  useAsyncLoading: 0
 --- !u!1 &3887562972803178432
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,6 +401,8 @@ MonoBehaviour:
   _endGameFeedbackMsgText: {fileID: 0}
   _endGameBG_image: {fileID: 0}
   _backgroundDimmer: {fileID: 0}
+  _endGamePanelCanvas: {fileID: 0}
+  _endGameTitleCanvas: {fileID: 0}
   _dropDistance: 500
   _victoryBounceDuration: 0.8
   _defeatFadeDuration: 2

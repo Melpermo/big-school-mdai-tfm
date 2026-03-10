@@ -47,8 +47,7 @@ namespace HumanLoop.Core
         [Header("Game UI")]
         [SerializeField] private StatsViewManager statsViewManager;
         [SerializeField] private TimeViewManager timeViewManager;
-        [SerializeField] private EndGameUIHandler endGameUIHandler;
-        [SerializeField] private GameOverUIHandler gameOverUIHandler;
+        [SerializeField] private EndGameUIHandler endGameUIHandler;        
 
         [Header("Debug")]
         [SerializeField] private bool showDebugLogs = false;
@@ -346,9 +345,6 @@ namespace HumanLoop.Core
             if (endGameUIHandler != null)
                 endGameUIHandler.HideUI();
 
-            if (gameOverUIHandler != null)
-                gameOverUIHandler.gameObject.SetActive(false);
-
             if (statsViewManager != null)
                 statsViewManager.UpdateUI();
 
@@ -366,9 +362,6 @@ namespace HumanLoop.Core
 
             if (endGameUIHandler != null)
                 endGameUIHandler.HideUI();
-
-            if (gameOverUIHandler != null)
-                gameOverUIHandler.gameObject.SetActive(false);
 
             if (showDebugLogs)
                 Debug.Log("[SceneStateManager] Game cleaned up");
