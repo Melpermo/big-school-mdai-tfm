@@ -19,9 +19,11 @@ BIG School
 
 A short gameplay preview showing the core decision mechanic where each card choice affects the development metrics of the studio.
 
-## Download the playable **MVP Windows build** of the game.
+## Download the Game
 
-[![Download](https://img.shields.io/badge/Download-Windows%20Build-blue?style=for-the-badge&logo=windows)](https://github.com/Melpermo/big-school-mdai-tfm/releases/download/v1.0.0/TheHumanLoopWindows64_1.0.0.zip)
+[![Download on itch.io](https://img.shields.io/badge/Download%20on-itch.io-FA5C5C?style=for-the-badge&logo=itch.io)](https://melpermo.itch.io/the-human-loop)
+
+Current version: **v1.0.0 (MVP)**
 
 You can also access all builds from the [Releases](../../releases) section.
 
